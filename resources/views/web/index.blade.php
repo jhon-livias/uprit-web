@@ -5,10 +5,12 @@
         <div class="swiper-wrapper">
             @foreach($sliders as $slider)
             <div class="swiper-slide slider-principal slider-con-video">
+                @if($slider->video)
                 <video class="slider-video" autoplay muted loop playsinline>
                     <source src="{{ asset('slider_principal_videos/' . $slider->video) }}" type="video/mp4">
                     Tu navegador no soporta videos HTML5.
                 </video>
+                @endif
 
                 <div class="thumbnail-bg-content content-video">
                     <div class="container edublink-animated-shape">
@@ -405,7 +407,9 @@
                         <div class="swiper-slide">
                             <div class="testimonial-grid">
                                 <div class="thumbnail">
+                                    @if($testimonio->imagen)
                                     <img src="{{ asset('testimonios_imagenes/' . $testimonio->imagen) }}" alt="Testimonial">
+                                    @endif
                                     <span class="qoute-icon"><i class="icon-26"></i></span>
 
                                 </div>
