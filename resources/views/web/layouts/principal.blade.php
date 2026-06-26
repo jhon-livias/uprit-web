@@ -57,7 +57,6 @@
         </svg>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="{{asset('web/assets/js/vendor/modernizr.min.js')}}"></script>
     <script src="{{asset('web/assets/js/vendor/jquery.min.js')}}"></script>
     <script src="{{asset('web/assets/js/vendor/bootstrap.min.js')}}"></script>
@@ -83,7 +82,6 @@
     <script src="{{asset('web/assets/js/vendor/isInViewport.jquery.min.js')}}"></script>
     @yield('scripts')
     <script src="{{asset('web/assets/js/app.js')}}"></script>
-    <script defer="" src="beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"a20ec01fca4642afae77adbf9c39fb58","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
@@ -800,6 +798,10 @@
             const right = document.querySelector('.blog-right');
             const section = document.querySelector('.edu-blog-area');
 
+            if (!left || !right || !section) {
+                return;
+            }
+
             const observer = new IntersectionObserver((entries) => {
 
                 entries.forEach(entry => {
@@ -832,7 +834,6 @@
             const modal = document.getElementById("chatbotModal");
             const closeBtn = document.getElementById("closeChatbot");
             const contactoBtn = document.getElementById("contactoBtn");
-            console.log(contactoBtn);
             const chatResponse = document.getElementById("chatResponse");
             let historial = [];
             let carreraSeleccionada = "";
@@ -1827,8 +1828,7 @@
 
 
 
-            contactoBtn.addEventListener("click", (e) => {
-                console.log("click chatbot");
+            contactoBtn?.addEventListener("click", (e) => {
                 e.preventDefault();
                 historial = [];
                 modal.style.display = "flex";
