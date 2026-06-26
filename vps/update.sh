@@ -52,6 +52,27 @@ echo "==> Permisos"
 sudo chown -R www-data:www-data storage bootstrap/cache
 sudo chmod -R 775 storage bootstrap/cache
 
+UPLOAD_DIRS=(
+  public/testimonios_imagenes
+  public/slider_principal_videos
+  public/slider_principal_imagenes
+  public/slider_carreras_imagenes
+  public/noticias_imagenes
+  public/noticias_autor_imagenes
+  public/brochures_carreras
+  public/brochures_imagenes
+  public/reclamos_evidencia
+  public/carreras_docentes
+)
+
+for dir in "${UPLOAD_DIRS[@]}"; do
+  mkdir -p "${APP_DIR}/${dir}"
+done
+
+sudo chown -R ubuntu:www-data "${APP_DIR}/public"
+sudo find "${APP_DIR}/public" -type d -exec chmod 775 {} \;
+sudo find "${APP_DIR}/public" -type f -exec chmod 664 {} \;
+
 echo "==> Recargar Apache"
 sudo apache2ctl configtest
 sudo systemctl reload apache2

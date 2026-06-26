@@ -1,6 +1,8 @@
 $(function() {
 
-    $('.colorpicker').colorpicker();
+    if ($.fn.colorpicker && $('.colorpicker').length) {
+        $('.colorpicker').colorpicker();
+    }
 
 
     //Masked Input ============================================================================================================================
