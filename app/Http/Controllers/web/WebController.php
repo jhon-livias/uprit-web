@@ -20,9 +20,14 @@ class WebController extends Controller
     //
     public function index()
     {
-        $sliders = Slider::orderby('orden', 'asc')->get();
+        $sliders = Slider::whereNotNull('video')
+            ->where('video', '!=', '')
+            ->orderby('orden', 'asc')
+            ->get();
         $noticias = Noticia::orderBy('fecha', 'desc')->get();
-        $testimonios = Testimonio::all();
+        $testimonios = Testimonio::whereNotNull('imagen')
+            ->where('imagen', '!=', '')
+            ->get();
         $sliderscarrera = SliderCarrera::orderby('orden', 'asc')->get();
         return view('web.index', compact('sliders', 'noticias', 'testimonios', 'sliderscarrera'));
     }
