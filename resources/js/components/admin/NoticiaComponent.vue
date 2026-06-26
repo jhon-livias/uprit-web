@@ -789,7 +789,7 @@ export default {
             formData.append('autor_descripcion', this.noticia.autor_descripcion);
             formData.append('autor_imagen', this.noticia.autor_imagen);
             formData.append('descripcion_total', this.noticia.descripcion_total);
-            axios.post(route('noticias.edit'), formData).then((response) => {
+            axios.post(route('noticias.edit', this.noticia.id), formData).then((response) => {
                 if (response.data) {
                     Swal.fire({
                         icon: 'success',
