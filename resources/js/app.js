@@ -16,7 +16,8 @@ const app = createApp({});
 
 app.config.globalProperties.route = window.route;
 app.config.globalProperties.asset = (path) => {
-    return window.location.origin + path;
+    const normalized = String(path).replace(/^\/+/, "");
+    return `${window.location.origin}/${normalized}`;
 };
 
 app.component("categoria-component", CategoriaComponent);

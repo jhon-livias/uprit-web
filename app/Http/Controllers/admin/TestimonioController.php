@@ -8,18 +8,16 @@ use App\Models\Testimonio;
 
 class TestimonioController extends Controller
 {
-    //
     public function index()
     {
-        
         return view('admin.pages.testimonios.index');
     }
 
-    public function getTestimonios(){
+    public function getTestimonios()
+    {
         $testimonios = Testimonio::all();
         return response()->json($testimonios);
     }
-
 
     public function store(Request $request)
     {
@@ -32,11 +30,11 @@ class TestimonioController extends Controller
         if ($request->hasFile('imagen')) {
             $file = $request->file('imagen');
             $nameimg = 'testimonio_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
-            $path = public_path() . '/testimonios_imagenes/';
+            $path = $this->testimoniosUploadPath();
             $file->move($path, $nameimg);
             $testimonio->imagen = $nameimg;
         }
-        
+
         $testimonio->save();
 
         return response()->json(true);
@@ -52,18 +50,18 @@ class TestimonioController extends Controller
 
         if ($request->hasFile('imagen')) {
             if ($testimonio->imagen) {
-                $oldFilePath = public_path() . '/testimonios_imagenes/' . $testimonio->imagen;
+                $oldFilePath = public_path('testimonios_imagenes/' . $testimonio->imagen);
                 if (file_exists($oldFilePath)) {
                     unlink($oldFilePath);
                 }
             }
             $file = $request->file('imagen');
             $nameimg = 'testimonio_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
-            $path = public_path() . '/testimonios_imagenes/';
+            $path = $this->testimoniosUploadPath();
             $file->move($path, $nameimg);
             $testimonio->imagen = $nameimg;
         }
-        
+
         $testimonio->save();
 
         return response()->json(true);
@@ -73,12 +71,23 @@ class TestimonioController extends Controller
     {
         $testimonio = Testimonio::find($id);
         if ($testimonio->imagen) {
-            $oldFilePath = public_path() . '/testimonios_imagenes/' . $testimonio->imagen;
+            $oldFilePath = public_path('testimonios_imagenes/' . $testimonio->imagen);
             if (file_exists($oldFilePath)) {
                 unlink($oldFilePath);
             }
         }
         $testimonio->delete();
         return response()->json(true);
+    }
+
+    private function testimoniosUploadPath(): string
+    {
+        $path = public_path('testimonios_imagenes');
+
+        if (!is_dir($path)) {
+            mkdir($path, 0775, true);
+        }
+
+        return $path . '/';
     }
 }
