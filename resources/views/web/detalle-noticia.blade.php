@@ -44,7 +44,12 @@
                                     <h6 class="title">Etiquetas:</h6>
                                     <div class="tag-list">
 
-                                    @foreach(json_decode($noticia->tags, true) as $tag)
+                                    @php
+                                        $tags = is_array($noticia->tags)
+                                            ? $noticia->tags
+                                            : json_decode($noticia->tags ?? '[]', true) ?? [];
+                                    @endphp
+                                    @foreach($tags as $tag)
                                     <a href="#">{{ $tag }}</a>
                                     @endforeach
 
