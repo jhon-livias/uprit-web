@@ -82,7 +82,7 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::get('/get_categorias_noticias', [NoticiaController::class, 'getCatNoticia'])->name('noticias.get.categoria');
     Route::get('/get_noticias', [NoticiaController::class, 'getNoticias'])->name('noticias.get');
     Route::post('/noticias/store', [NoticiaController::class, 'store'])->name('noticias.store');
-    Route::post('/noticias/edit/{id}', [NoticiaController::class, 'update'])->name('noticias.edit');
+    Route::post('/noticias/edit', [NoticiaController::class, 'update'])->name('noticias.edit');
     Route::post('/noticias/delete/{id}', [NoticiaController::class, 'delete'])->name('noticias.delete');
     Route::post('/noticias/categorias/store', [NoticiaController::class, 'storeCategoria'])->name('noticias.categorias.store');
     Route::post('/noticias/categorias/edit', [NoticiaController::class, 'updateCategoria'])->name('noticias.categorias.edit');
