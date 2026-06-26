@@ -17,6 +17,9 @@ EC2_HOST="ec2-13-217-220-99.compute-1.amazonaws.com"
 # Por defecto apunta al .pem en la misma carpeta que este script.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PEM_FILE="${SCRIPT_DIR}/RepositoryMagazine.pem"
+if [[ ! -f "${PEM_FILE}" ]]; then
+  PEM_FILE="${HOME}/Documents/UPRIT/RepositoryMagazine.pem"
+fi
 
 # Usuario SSH de la instancia (Amazon Linux suele usar ec2-user; Ubuntu usa ubuntu)
 SSH_USER="ubuntu"
