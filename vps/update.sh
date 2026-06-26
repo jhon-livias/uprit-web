@@ -20,6 +20,8 @@ cd "$APP_DIR"
 
 if $DO_PULL; then
   echo "==> Git pull"
+  sudo chown -R ubuntu:www-data "$APP_DIR"
+  sudo chmod -R 775 storage bootstrap/cache
   git fetch origin "${GIT_BRANCH}"
   git reset --hard "origin/${GIT_BRANCH}"
   git clean -fd \
