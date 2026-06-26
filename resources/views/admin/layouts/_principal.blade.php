@@ -153,7 +153,6 @@
 
     <script src="{{ asset('admin/assets/vendor/dropify/js/dropify.min.js') }}"></script>
     <script src="{{ asset('admin/assets/js/pages/forms/dropify.js') }}"></script>
-    <script src="{{asset('admin/assets/js/pages/forms/advanced-form-elements.js')}}"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{asset('admin/admin/toastr/toastr.js')}}"></script>
