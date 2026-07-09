@@ -141,7 +141,7 @@
 
                                                             <p>
                                                                Instituto de Investigaciones Minera y Responsabilidad Social <br>
-                                                               <a href="">Más Información</a>
+                                                               <a href="{{ route('asesores') }}">Más Información</a>
                                                             </p>
 
                                                         </div>
@@ -181,7 +181,7 @@
 
                                                             <p>
                                                                 Instituto de Investigación de Infraestructura y Vivienda <br>
-                                                                <a href="">Más Información</a>
+                                                                <a href="{{ route('asesores') }}">Más Información</a>
                                                         </div>
 
                                                     </div>
@@ -218,7 +218,7 @@
 
                                                             <p>
                                                                 Instituto de Investigaciones Asuntos Legales y Judiciales Globales <br>
-                                                                <a href="">Más Información</a>
+                                                                <a href="{{ route('asesores') }}">Más Información</a>
                                                         </div>
 
                                                     </div>
@@ -256,7 +256,7 @@
 
                                                             <p>
                                                                 Ecosistema de difusión de la inteligencia artificial. <br>
-                                                                <a href="">Más Información</a>
+                                                                <a href="{{ route('asesores') }}">Más Información</a>
                                                         </div>
 
                                                     </div>
@@ -293,7 +293,7 @@
 
                                                             <p>
                                                                Incubación e Innovation Factory. <br>
-                                                                <a href="">Más Información</a>
+                                                                <a href="{{ route('asesores') }}">Más Información</a>
                                                         </div>
 
                                                     </div>
@@ -316,7 +316,7 @@
                     <div class="text-block text-center">
                         <h3 class="title">Laboratorios de Investigación</h3>
                         <p>Nuestros laboratorios de enseñanza e investigación brindan servicios a empresas. Puedes rentar espacio y equipos, o solicitar estudios y ensayos específicos.</p>
-                        <a href="">Laboratorios.ingenieria@uprit.edu.pe</a>
+                        <a href="mailto:Laboratorios.ingenieria@uprit.edu.pe">Laboratorios.ingenieria@uprit.edu.pe</a>
                     </div>
                     
                 </div>
@@ -328,7 +328,7 @@
                             <h4 class="widget-title">Categorias</h4>
                             <div class="content">
                                 <ul class="category-list lista-vist-sec">
-                                    <li><a href="{{ route('web.noticias') }}">Uprit Exprets - Blog</a></li>
+                                    <li><a href="{{ route('web.noticias') }}">Uprit Experts - Blog</a></li>
                                             <li><a href="{{ route('direccion') }}">Dirección de Investigación</a></li>
                                             <li><a href="{{ route('centro_investigacion') }}">Centro de Investigación</a></li>
                                             <li><a href="#">Servicios para Empresas</a></li>

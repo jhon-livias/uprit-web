@@ -2,7 +2,7 @@
 <div class="edu-brand-area brand-area-4 gap-lg-bottom-equal convenios-area">
     <div class="container">
         <div class="section-title section-center" data-sal-delay="50" data-sal="slide-up" data-sal-duration="1000">
-            <span class="pre-title ">CALIDAD ACADÉMICA VALIDAD POR</span>
+            <span class="pre-title ">CALIDAD ACADÉMICA VALIDADA POR</span>
             <h2 class="title letra-gris">Organismos Nacionales e Internacionales </h2>
             <span class="shape-line letra-gris"><i class="icon-19"></i></span>
             <p class="letra-gris">En UPRIT, creemos firmemente en la colaboración para potenciar tu futuro profesional. </p>
@@ -91,11 +91,11 @@
                         <h4 class="widget-title gris-footer footer-titulo footer-accordion-btn">Menú Principal</h4>
                         <div class="inner footer-accordion-content">
                             <ul class="footer-link link-hover footer-lista">
-                                <li><a href="{{ route('web.noticias') }}" class="gris-footer">Uprit Exprets - Blog</a></li>
-                                            <li><a href="#" class="gris-footer">Dirección de Investigación</a></li>
-                                            <li><a href="#" class="gris-footer">Centro de Investigación</a></li>
-                                            <li><a href="#" class="gris-footer">Servicios para Empresas</a></li>
-                                            <li><a href="https://drive.google.com/drive/folders/136MRdt_fKaUNK7kLVfmbnlR863c7Ox8E" target="_blank" class="gris-footer">Reglamentos de Investigación</a></li>
+                                <li><a href="{{ route('web.noticias') }}" class="gris-footer">Uprit Experts - Blog</a></li>
+                                <li><a href="{{ route('direccion') }}" class="gris-footer">Dirección de Investigación</a></li>
+                                <li><a href="{{ route('centro_investigacion') }}" class="gris-footer">Centro de Investigación</a></li>
+                                <li><a href="#" class="gris-footer">Servicios para Empresas</a></li>
+                                <li><a href="https://drive.google.com/drive/folders/136MRdt_fKaUNK7kLVfmbnlR863c7Ox8E" target="_blank" rel="noopener noreferrer" class="gris-footer">Reglamentos de Investigación</a></li>
                             </ul>
                         </div>
                     </div>
@@ -105,14 +105,14 @@
                         <h4 class="widget-title gris-footer footer-titulo footer-accordion-btn">Información</h4>
                         <div class="inner footer-accordion-content">
                             <ul class="footer-link link-hover footer-lista">
-                                <li><a href="{{route('transparencia')}}" class="gris-footer">Transparencia</a></li>
-                                <li><a href="#" class="gris-footer">Becas y Ayudas Financieras</a></li>
+                                <li><a href="{{ route('transparencia') }}" class="gris-footer">Transparencia</a></li>
+                                <li><a href="{{ route('becas') }}" class="gris-footer">Becas y Ayudas Financieras</a></li>
                                 <li><a href="#" class="gris-footer">Bolsa de Trabajo</a></li>
-                                <li><a href="#" class="gris-footer">Defensoría Universitaria</a></li>
+                                <li><a href="{{ route('defensoria') }}" class="gris-footer">Defensoría Universitaria</a></li>
                                 <li><a href="#" class="gris-footer">Nuestros Campus</a></li>
                                 <li><a href="#" class="gris-footer">Políticas de Privacidad</a></li>
                                 <li><a href="#" class="gris-footer">Términos y Condiciones</a></li>
-                                <li><a href="#l" class="gris-footer">Eliminación de Datos</a></li>
+                                <li><a href="#" class="gris-footer">Eliminación de Datos</a></li>
                             </ul>
                         </div>
                     </div>
@@ -124,10 +124,10 @@
                             <ul class="footer-link link-hover footer-lista">
                                 <li><a href="#" class="gris-footer">ERP</a></li>
                                 <li><a href="#" class="gris-footer">Biblioteca Virtual</a></li>
-                                <li><a href="https://repositorio.uprit.edu.pe/" class="gris-footer">Repositorio - ALICIA</a></li>
+                                <li><a href="https://repositorio.uprit.edu.pe/" target="_blank" rel="noopener noreferrer" class="gris-footer">Repositorio - ALICIA</a></li>
                                 <li><a href="#" class="gris-footer">Bolsa de Trabajo</a></li>
                                 <li><a href="#" class="gris-footer">Correo Institucional</a></li>
-                                <li><a href="https://moodle.uprit.edu.pe/login/index.php" class="gris-footer">Aula Virtual</a></li>
+                                <li><a href="https://moodle.uprit.edu.pe/login/index.php" target="_blank" rel="noopener noreferrer" class="gris-footer">Aula Virtual</a></li>
                             </ul>
                         </div>
                     </div>
@@ -140,16 +140,16 @@
             <div class="footer-bottom-custom">
 
                 <div class="footer-social">
-                    <a href="https://www.instagram.com/upritrujillo"><img src="{{asset('web/imagenes/footer/redes_01.svg')}}" alt="Facebook"></a>
-                    <a href="https://www.facebook.com/uptrujillo"><img src="{{asset('web/imagenes/footer/redes_02.svg')}}" alt="Instagram"></a>
-                    <a href="https://www.linkedin.com/school/universidad-privada-de-trujillo/"><img src="{{asset('web/imagenes/footer/redes_03.svg')}}" alt="LinkedIn"></a>
-                    <a href="https://x.com/UpritTrujillo"><img src="{{asset('web/imagenes/footer/redes_04.svg')}}" alt="X"></a>
-                    <a href="https://www.tiktok.com/@upritoficial/"><img src="{{asset('web/imagenes/footer/redes_05.svg')}}" alt="TikTok"></a>
+                    <a href="https://www.instagram.com/upritrujillo" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en Instagram"><img src="{{asset('web/imagenes/footer/redes_01.svg')}}" alt="Instagram"></a>
+                    <a href="https://www.facebook.com/uptrujillo" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en Facebook"><img src="{{asset('web/imagenes/footer/redes_02.svg')}}" alt="Facebook"></a>
+                    <a href="https://www.linkedin.com/school/universidad-privada-de-trujillo/" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en LinkedIn"><img src="{{asset('web/imagenes/footer/redes_03.svg')}}" alt="LinkedIn"></a>
+                    <a href="https://x.com/UpritTrujillo" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en X"><img src="{{asset('web/imagenes/footer/redes_04.svg')}}" alt="X"></a>
+                    <a href="https://www.tiktok.com/@upritoficial/" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en TikTok"><img src="{{asset('web/imagenes/footer/redes_05.svg')}}" alt="TikTok"></a>
                 </div>
 
                 <div class="footer-center">
                     <img src="{{asset('web/imagenes/footer/logo_uprit_footer.svg')}}" alt="Logo UPRIT" class="footer-logo">
-                    <p class="gris-footer">© Copyright 2026 | Universidad Privada de Trujillo | Desarrollado por: <a href="https://pyrusstudio.com/" style="color:#919598 !important;" target="_blank">Pyrusstudio.com</a> </p>
+                    <p class="gris-footer">© {{ date('Y') }} Universidad Privada de Trujillo | Desarrollado por: <a href="https://pyrusstudio.com/" style="color:#919598 !important;" target="_blank" rel="noopener noreferrer">Pyrusstudio.com</a></p>
                 </div>
 
                 <div class="footer-book">

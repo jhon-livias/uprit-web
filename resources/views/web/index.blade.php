@@ -218,7 +218,7 @@
         <div class="section-title section-center" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
             <span class="pre-title letra-blanca">NUESTRAS PLATAFORMAS</span>
 
-            <h2 class="title letra-blanca">Tu Universidad en un solo Click </h2><span class="shape-line rojo-claro"><i class="icon-19"></i></span>
+            <h2 class="title letra-blanca">Tu Universidad en un solo clic</h2><span class="shape-line rojo-claro"><i class="icon-19"></i></span>
             <p class="letra-blanca">Gestiona tu vida académica con soluciones integrales que conectan tu talento con los recursos digitales más avanzados de la UPRIT. </p>
         </div>
 

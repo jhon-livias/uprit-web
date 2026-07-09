@@ -558,7 +558,7 @@
 
                                                         <div class="course-lesson">
 
-                                                            <p>El postulante completa los requisitos de admisión y test correspondiente y podrá ser admitido con Matricula Condicionada por la Dirección de Registro académico.
+                                                            <p>El postulante completa los requisitos de admisión y test correspondiente y podrá ser admitido con Matrícula Condicionada por la Dirección de Registro académico.
                                                             </p>
                                                         </div>
 

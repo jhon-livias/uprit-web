@@ -247,7 +247,7 @@
                             <h4 class="widget-title">Categorias</h4>
                             <div class="content">
                                 <ul class="category-list lista-vist-sec">
-                                    <li><a href="{{ route('web.noticias') }}">Uprit Exprets - Blog</a></li>
+                                    <li><a href="{{ route('web.noticias') }}">Uprit Experts - Blog</a></li>
                                             <li><a href="{{ route('direccion') }}">Dirección de Investigación</a></li>
                                             <li><a href="{{ route('centro_investigacion') }}">Centro de Investigación</a></li>
                                             <li><a href="#">Servicios para Empresas</a></li>

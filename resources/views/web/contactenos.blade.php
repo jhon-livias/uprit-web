@@ -8,9 +8,9 @@
                 <h1 class="title">Contáctenos</h1>
             </div>
             <ul class="edu-breadcrumb mas-bajo">
-                <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('web.index') }}">Inicio</a></li>
                 <li class="separator"><i class="icon-angle-right"></i></li>
-                <li class="breadcrumb-item"><a href="#">Contáctenos</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/contactenos') }}">Contáctenos</a></li>
             </ul>
         </div>
     </div>
@@ -35,7 +35,7 @@
                             <p>Nos pondremos en contacto contigo lo más pronto posible<br><a href="mailto:informes@uprit.edu.pe">informes@uprit.edu.pe</a></p>
                         </li>
                         <li>
-                            <h5 class="title">Llamanos</h5>
+                            <h5 class="title">Llámanos</h5>
                             <p>Lunes a Viernes de 8:00 am a 5:00 pm<br>
                                 <a href="tel:+51970597183">+51 970 597 183</a></p>
                         </li>
@@ -46,10 +46,10 @@
                         </li>
                     </ul>
                     <ul class="social-share">
-                        <li><a href="https://www.instagram.com/upritrujillo"><i class="icon-instagram"></i></a></li>
-                        <li><a href="https://www.facebook.com/uptrujillo"><i class="icon-facebook"></i></a></li>
-                        <li><a href="https://x.com/UpritTrujillo"><i class="icon-twitter"></i></a></li>
-                        <li><a href="https://www.linkedin.com/school/universidad-privada-de-trujillo/"><i class="icon-linkedin2"></i></a></li>
+                        <li><a href="https://www.instagram.com/upritrujillo" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en Instagram"><i class="icon-instagram"></i></a></li>
+                        <li><a href="https://www.facebook.com/uptrujillo" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en Facebook"><i class="icon-facebook"></i></a></li>
+                        <li><a href="https://x.com/UpritTrujillo" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en X"><i class="icon-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/school/universidad-privada-de-trujillo/" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en LinkedIn"><i class="icon-linkedin2"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -114,7 +114,7 @@
                                     <option value="Psicología">Psicología</option>
                                     <option value="Derecho (Presencial)">Derecho (Presencial)</option>
                                     <option value="Arquitectura y Urbanismo">Arquitectura y Urbanismo</option>
-                                    <option value="Ingenieria Industrial">Ingenieria Industrial</option>
+                                    <option value="Ingenieria Industrial">Ingeniería Industrial</option>
                                     <option value="Educación Inicial">Educación Inicial</option>
                                     <option value="Educación Primaria">Educación Primaria</option>
                                     <option value="Educación Secundaria con Mención en Ciencias Sociales">Educación Secundaria con Mención en Ciencias Sociales</option>

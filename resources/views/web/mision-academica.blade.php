@@ -169,7 +169,7 @@
                         </ul>
                         <h3>Más Información</h3>
                         <ul>
-                            <li>Para más informes sobre misiones internacionales, comunícate con nosotros a través de nuestro correo electrónico: <a href="" style="color: #91001E;">doing.business@uprit.edu.pe</a></li>
+                            <li>Para más informes sobre misiones internacionales, comunícate con nosotros a través de nuestro correo electrónico: <a href="mailto:doing.business@uprit.edu.pe" style="color: #91001E;">doing.business@uprit.edu.pe</a></li>
                         </ul>
                     </div>
 

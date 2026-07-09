@@ -113,7 +113,7 @@
                                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
                                                         <div class="course-lesson">
-                                                            <p><a href="">defensoriauniversitaria@uprit.edu.pe</a></p>
+                                                            <p><a href="mailto:defensoriauniversitaria@uprit.edu.pe">defensoriauniversitaria@uprit.edu.pe</a></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -964,7 +964,7 @@
                                     <div class="course-lesson">
                                         <p>Paso 1: Descarga el formato, completa los datos resaltados y adjunta los documentos (opcional dependiendo del caso)Ver Documento
                                             <br>
-                                            Paso 2: Escanea el documento y envíalo al correo institucional:defensoriauniversitaria@uprit.edu.pe
+                                            Paso 2: Escanea el documento y envíalo al correo institucional: <a href="mailto:defensoriauniversitaria@uprit.edu.pe">defensoriauniversitaria@uprit.edu.pe</a>
                                         </p>
                                     </div>
                                 </div>

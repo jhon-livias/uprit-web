@@ -301,7 +301,7 @@
                             </a>
 
                             <!-- Botón flecha -->
-                            <a href="#"
+                            <a href="{{ route('honors') }}"
                                 style="
                 border:1px solid #91001E;
                 color:#91001E;
@@ -545,7 +545,7 @@
                                     <li><a href="{{ route('global') }}">Uprit Global/Internacional</a></li>
                                     <li><a href="{{ route('honors') }}">Honors College</a></li>
                                     <li><a href="{{ route('alumni') }}">Alumni - Red de Egresados</a></li>
-                                    <li><a href="{{ route('programa') }}">Programa VIVE Emprededor</a></li>
+                                    <li><a href="{{ route('programa') }}">Programa VIVE Emprendedor</a></li>
                                     <li><a href="#">Uprit Store</a></li>
 
                                 </ul>

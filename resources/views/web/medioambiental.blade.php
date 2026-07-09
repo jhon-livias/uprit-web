@@ -75,7 +75,7 @@
                                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
                                                         <div class="course-lesson">
-                                                            <p><a href="">seguridad@uprit.edu.pe</a></p>
+                                                            <p><a href="mailto:seguridad@uprit.edu.pe">seguridad@uprit.edu.pe</a></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -447,7 +447,8 @@
 
                                 <div class="accordion-body">
                                     <div class="course-lesson">
-                                        <p><a href="">objetos.extraviados@udem.edu.mx</a></p>
+                                        {{-- TODO: confirmar email real --}}
+                                        <p><a href="mailto:objetos.extraviados@uprit.edu.pe">objetos.extraviados@uprit.edu.pe</a></p>
                                     </div>
                                 </div>
 

@@ -335,7 +335,7 @@
                             </li>
                         </ul>
                         <h3 class="title">Ayuda con Vivienda – Residencias</h3>
-                        <p>Te ayudamos a ubicar viviendas cercanas al Campus para que te puedas alojar cómodamente. Para más información sobre requisitos, universidades con convenios, costos y plazos de postulación, contáctanos: <a href="" style="color:#91001E">oficina.internacional@uprit.edu.pe</a></p>
+                        <p>Te ayudamos a ubicar viviendas cercanas al Campus para que te puedas alojar cómodamente. Para más información sobre requisitos, universidades con convenios, costos y plazos de postulación, contáctanos: <a href="mailto:oficina.internacional@uprit.edu.pe" style="color:#91001E">oficina.internacional@uprit.edu.pe</a></p>
                     </div>
                     <div class="text-block text-center" style="margin-top: ;">
                         <p>Te invitamos a ser parte de nuestra comunidad global y a escribir el próximo capítulo de tu formación en Perú. ¡Esperamos verte pronto en la UPRIT!</p>

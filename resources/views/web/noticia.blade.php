@@ -145,7 +145,7 @@
                     </div>
                     <div class="edu-blog-widget widget-categories">
                         <div class="inner">
-                            <h4 class="widget-title">Categorias</h4>
+                            <h4 class="widget-title">Categorías</h4>
                             <div class="content">
                                 <ul class="category-list">
                                     @foreach($categorias as $categoria)
