@@ -32,7 +32,7 @@
                         </li>
                         <li>
                             <h5 class="title">Email</h5>
-                            <p>Nos pondremos en contácto contigo lo más pronto posible<br><a href="https://mail.google.com/mail/?view=cm&fs=1&to=informes@uprit.edu.pe"><span class="__cf_email__" data-cfemail="e98c8d9c8b85808782a98c91888499858cc78a8684">informes@uprit.edu.pe</span></a></p>
+                            <p>Nos pondremos en contacto contigo lo más pronto posible<br><a href="mailto:informes@uprit.edu.pe">informes@uprit.edu.pe</a></p>
                         </li>
                         <li>
                             <h5 class="title">Llamanos</h5>
@@ -58,6 +58,11 @@
                     <div class="section-title">
                         <h4 class="title">Solicita Información</h4>
                         <p>Tú eliges cómo estudiar</p>
+                    </div>
+                    <div class="alert alert-warning mb-4" role="alert">
+                        <strong>Formulario temporalmente deshabilitado.</strong>
+                        Para consultas, contáctanos directamente a
+                        <a href="mailto:informes@uprit.edu.pe" class="fw-semibold text-decoration-underline">informes@uprit.edu.pe</a>
                     </div>
                     <form class="rnt-contact-form rwt-dynamic-form" id="contact-form" method="POST" action="mail.php">
                         <div class="row row--10">
@@ -137,7 +142,7 @@
                                 <input type="text" placeholder="Whatsapp">
                             </div>
                             <div class="form-group col-12">
-                                <button class="rn-btn edu-btn btn-medium submit-btn" name="submit" type="submit">Postular <i class="icon-4"></i></button>
+                                <button class="rn-btn edu-btn btn-medium submit-btn" name="submit" type="submit" disabled>Postular <i class="icon-4"></i></button>
                             </div>
                         </div>
                     </form>

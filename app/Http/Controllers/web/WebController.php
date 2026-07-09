@@ -72,7 +72,7 @@ class WebController extends Controller
 
     public function detallenoticia($id)
     {
-        $noticia = Noticia::find($id);
+        $noticia = Noticia::findOrFail($id);
         $categorias = CategoriaNoticia::all();
         $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
         return view('web.detalle-noticia', compact('noticia', 'categorias', 'ultimasnoticias'));
@@ -80,8 +80,8 @@ class WebController extends Controller
 
     public function detallecarrera($id)
     {
-        $carrera = Carrera::find($id);
-        $categoria = Categoria::find($carrera->categoria_id);
+        $carrera = Carrera::findOrFail($id);
+        $categoria = Categoria::findOrFail($carrera->categoria_id);
         return view('web.detalle-carrera', compact('carrera', 'categoria'));
     }
 
@@ -233,7 +233,35 @@ class WebController extends Controller
         return view('web.centro_investigacion', compact('ultimasnoticias'));
     }
 
+    public function autoridades()
+    {
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        return view('web.autoridades', compact('ultimasnoticias'));
+    }
 
+    public function rednexo()
+    {
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        return view('web.red-nexo', compact('ultimasnoticias'));
+    }
+
+    public function a2iprograma()
+    {
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        return view('web.a2iprograma', compact('ultimasnoticias'));
+    }
+
+    public function medioambiental()
+    {
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        return view('web.medioambiental', compact('ultimasnoticias'));
+    }
+
+    public function defensoria()
+    {
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        return view('web.defensoria', compact('ultimasnoticias'));
+    }
 
     public function storeReclamo(Request $request)
     {
@@ -249,6 +277,34 @@ class WebController extends Controller
                 'spam' => 'Se detectó una posible actividad automática.'
             ]);
         }
+
+        $request->validate([
+            'nombres'      => 'required|string|max:100',
+            'apellidos'    => 'required|string|max:100',
+            'dni'          => 'required|digits_between:8,12',
+            'correo'       => 'required|email|max:150',
+            'telefono'     => 'nullable|string|max:20',
+            'sede'         => 'required|string|max:100',
+            'tipo'         => 'required|string|max:100',
+            'tipo_reclamo' => 'required|string|max:100',
+            'descripcion'  => 'required|string|min:10|max:2000',
+            'evidencia'    => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:5120',
+        ], [
+            'nombres.required'      => 'El nombre es obligatorio.',
+            'apellidos.required'    => 'Los apellidos son obligatorios.',
+            'dni.required'          => 'El DNI es obligatorio.',
+            'dni.digits_between'    => 'El DNI debe tener entre 8 y 12 dígitos.',
+            'correo.required'       => 'El correo electrónico es obligatorio.',
+            'correo.email'          => 'Ingrese un correo válido.',
+            'sede.required'         => 'Seleccione una sede.',
+            'tipo.required'         => 'Seleccione el tipo de reclamo.',
+            'tipo_reclamo.required' => 'Seleccione la categoría del reclamo.',
+            'descripcion.required'  => 'La descripción es obligatoria.',
+            'descripcion.min'       => 'La descripción debe tener al menos 10 caracteres.',
+            'evidencia.mimes'       => 'La evidencia debe ser JPG, PNG o PDF.',
+            'evidencia.max'         => 'La evidencia no puede superar 5 MB.',
+        ]);
+
         $reclamo = new Reclamo();
         $reclamo->razon_social = $request->razon_social;
         $reclamo->ruc = $request->ruc;

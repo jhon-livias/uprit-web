@@ -98,8 +98,12 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
 
 Route::get('/', [WebController::class, 'index'])->name('web.index');
 Route::get('/noticias/{categoria?}', [WebController::class, 'noticias'])->name('web.noticias');
-Route::get('/detalle-noticia/{id}', [WebController::class, 'detallenoticia'])->name('web.detallenoticia');
-Route::get('/detalle-carrera/{id}', [WebController::class, 'detallecarrera'])->name('web.detallecarrera');
+Route::get('/detalle-noticia/{id}', [WebController::class, 'detallenoticia'])
+    ->name('web.detallenoticia')
+    ->whereNumber('id');
+Route::get('/detalle-carrera/{id}', [WebController::class, 'detallecarrera'])
+    ->name('web.detallecarrera')
+    ->whereNumber('id');
 Route::get('/soporte', [WebController::class, 'soporte'])->name('soporte');
 Route::get('/salud', [WebController::class, 'salud'])->name('salud');
 Route::get('/futbol', [WebController::class, 'futbol'])->name('futbol');

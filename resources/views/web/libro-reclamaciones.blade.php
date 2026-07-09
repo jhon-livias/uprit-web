@@ -23,6 +23,16 @@
 
     @csrf
 
+    @if ($errors->any())
+        <div class="alert alert-danger mb-4 container mt-4">
+            <ul class="mb-0 ps-3">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <section class="privacy-policy-area">
         <div class="container">
             <div class="row row--30">
