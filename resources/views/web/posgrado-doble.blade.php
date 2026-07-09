@@ -80,10 +80,10 @@
                     </div>
                     <div class="text-block text-center" style="margin-top: -30px;">
                         <p style="margin-bottom:30px;">
-                            Para más información sobre qué programas aplican a estos dobles grados, las condiciones y costos asociados, comunícate con el área de admisión de la Universidad.
+                            Para más información sobre qué programas aplican a estos dobles grados, las condiciones y costos asociados, <a href="{{ route('asesores') }}">comunícate con el área de admisión de la Universidad</a>.
                         </p>
                         <p style="margin-bottom:30px;">
-                            <a href="" style="color: #91001E;">posgrado.admision@uprit.edu.pe</a>
+                            <a href="mailto:posgrado.admision@uprit.edu.pe" style="color: #91001E;">posgrado.admision@uprit.edu.pe</a>
                         </p>
                     </div>
 

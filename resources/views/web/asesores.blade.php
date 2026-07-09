@@ -26,7 +26,7 @@
                         </h3>
 
                         <p style="margin-bottom:30px;">
-                            Tines dudas en tu proceso de admisión, ¡Contactanos!
+                            ¿Tienes dudas en tu proceso de admisión? <a href="{{ route('asesores') }}">Contáctanos</a>
                         </p>
                     </div>
                     <div class="row g-4">
@@ -48,11 +48,11 @@
 
                                     <p style="font-weight:600;">Asesor de Admisión</p>
 
-                                    <a href="#" style="display:block;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px;">
+                                    <a href="https://wa.me/51970597183?text=Hola,%20necesito%20informaci%C3%B3n%20sobre%20admisi%C3%B3n" target="_blank" rel="noopener noreferrer" style="display:block;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px;">
                                         <i class="ri-whatsapp-line"></i> Contactar 
                                     </a>
 
-                                    <a href="#" style="display:block;border:1px solid #ddd;color:#444;padding:12px;border-radius:10px;text-decoration:none;">
+                                    <a href="https://wa.me/51970597183?text=Hola,%20quiero%20programar%20una%20cita%20con%20un%20asesor" target="_blank" rel="noopener noreferrer" style="display:block;border:1px solid #ddd;color:#444;padding:12px;border-radius:10px;text-decoration:none;">
                                         <i class="ri-calendar-line"></i> Programa una cita 
                                     </a>
 
@@ -77,11 +77,11 @@
 
                                     <p style="font-weight:600;">Asesor de Admisión</p>
 
-                                    <a href="#" style="display:block;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px;">
+                                    <a href="https://wa.me/51970597183?text=Hola,%20necesito%20informaci%C3%B3n%20sobre%20admisi%C3%B3n" target="_blank" rel="noopener noreferrer" style="display:block;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px;">
                                         <i class="ri-whatsapp-line"></i> Contactar 
                                     </a>
 
-                                    <a href="#" style="display:block;border:1px solid #ddd;color:#444;padding:12px;border-radius:10px;text-decoration:none;">
+                                    <a href="https://wa.me/51970597183?text=Hola,%20quiero%20programar%20una%20cita%20con%20un%20asesor" target="_blank" rel="noopener noreferrer" style="display:block;border:1px solid #ddd;color:#444;padding:12px;border-radius:10px;text-decoration:none;">
                                         <i class="ri-calendar-line"></i> Programa una cita 
                                     </a>
 
@@ -106,11 +106,11 @@
 
                                     <p style="font-weight:600;">Asesor de Admisión</p>
 
-                                    <a href="#" style="display:block;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px;">
+                                    <a href="https://wa.me/51970597183?text=Hola,%20necesito%20informaci%C3%B3n%20sobre%20admisi%C3%B3n" target="_blank" rel="noopener noreferrer" style="display:block;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px;">
                                         <i class="ri-whatsapp-line"></i> Contactar 
                                     </a>
 
-                                    <a href="#" style="display:block;border:1px solid #ddd;color:#444;padding:12px;border-radius:10px;text-decoration:none;">
+                                    <a href="https://wa.me/51970597183?text=Hola,%20quiero%20programar%20una%20cita%20con%20un%20asesor" target="_blank" rel="noopener noreferrer" style="display:block;border:1px solid #ddd;color:#444;padding:12px;border-radius:10px;text-decoration:none;">
                                         <i class="ri-calendar-line"></i> Programa una cita 
                                     </a>
 
@@ -127,7 +127,7 @@
                 <div class="edu-blog-sidebar textos-derecha">
                     <div class="edu-blog-widget widget-categories">
                         <div class="inner">
-                            <h4 class="widget-title">Categorias</h4>
+                            <h4 class="widget-title">Categorías</h4>
                             <div class="content">
                                 <ul class="category-list lista-vist-sec">
                                     <li><a href="{{ route('convalidacion') }}">Convalidaciones / Traslados</a></li>

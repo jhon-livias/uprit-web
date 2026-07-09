@@ -104,7 +104,7 @@
                                                 <option value="Psicología">Psicología</option>
                                                 <option value="Derecho (Presencial)">Derecho (Presencial)</option>
                                                 <option value="Arquitectura y Urbanismo">Arquitectura y Urbanismo</option>
-                                                <option value="Ingenieria Industrial">Ingenieria Industrial</option>
+                                                <option value="Ingenieria Industrial">Ingeniería Industrial</option>
                                                 <option value="Educación Inicial">Educación Inicial</option>
                                                 <option value="Educación Primaria">Educación Primaria</option>
                                                 <option value="Educación Secundaria con Mención en Ciencias Sociales">Educación Secundaria con Mención en Ciencias Sociales</option>

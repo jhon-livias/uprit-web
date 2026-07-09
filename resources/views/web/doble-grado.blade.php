@@ -124,9 +124,9 @@
                     </div>
                     <div class="text-block text-center" style="margin-top: -30px;">                   
                         <p>
-                            Para más información sobre qué programas aplican a estos dobles grados, las condiciones y costos asociados, comunícate con el área de admisión de la Universidad.
+                            Para más información sobre qué programas aplican a estos dobles grados, las condiciones y costos asociados, <a href="{{ route('asesores') }}">comunícate con el área de admisión de la Universidad</a>.
                         </p>
-                        <p> <a href="" style="color: #91001E;"> admision@uprit.edu.pe</a></p>
+                        <p> <a href="mailto:admision@uprit.edu.pe" style="color: #91001E;">admision@uprit.edu.pe</a></p>
                     </div>
                     <div class="text-block">
                         <h3 class="title">Ventajas del Doble Grado de la misma universidad (UPRIT)</h3>

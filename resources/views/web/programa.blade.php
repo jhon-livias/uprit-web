@@ -54,7 +54,7 @@
 
                                                                 <span style="color: #000; display:block;">
 
-                                                                    <a href="#" style="color:#91001E; font-weight:700;">
+                                                                    <a href="{{ route('asesores') }}" style="color:#91001E; font-weight:700;">
                                                                         Más información
                                                                     </a>
                                                                 </span>
@@ -77,7 +77,7 @@
 
                                                                 <span style="color: #000; display:block;">
 
-                                                                    <a href="#" style="color:#91001E; font-weight:700;">
+                                                                    <a href="{{ route('asesores') }}" style="color:#91001E; font-weight:700;">
                                                                         Más información
                                                                     </a>
                                                                 </span>
@@ -100,7 +100,7 @@
 
                                                                 <span style="color: #000; display:block;">
 
-                                                                    <a href="#" style="color:#91001E; font-weight:700;">
+                                                                    <a href="{{ route('asesores') }}" style="color:#91001E; font-weight:700;">
                                                                         Más información
                                                                     </a>
                                                                 </span>
@@ -124,7 +124,7 @@
 
                                                                 <span style="color: #000; display:block;">
 
-                                                                    <a href="#" style="color:#91001E; font-weight:700;">
+                                                                    <a href="{{ route('asesores') }}" style="color:#91001E; font-weight:700;">
                                                                         Más información
                                                                     </a>
                                                                 </span>
@@ -425,7 +425,7 @@
                                     <li><a href="{{ route('global') }}">Uprit Global/Internacional</a></li>
                                     <li><a href="{{ route('honors') }}">Honors Collage</a></li>
                                     <li><a href="{{ route('alumni') }}">Alumni - Red de Egresados</a></li>
-                                    <li><a href="{{ route('programa') }}">Programa VIVE Emprededor</a></li>
+                                    <li><a href="{{ route('programa') }}">Programa VIVE Emprendedor</a></li>
                                     <li><a href="#">Uprit Store</a></li>
 
                                 </ul>

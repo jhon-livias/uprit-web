@@ -1148,7 +1148,7 @@
 
                                                                 <br>
 
-                                                                <a href="mailto:oficina.internacional@uprit.edu.pe" style="color:#91001E; text-decoration: underline;">
+                                                                <a href="mailto:internationalagreements@uprit.edu" style="color:#91001E; text-decoration: underline;">
                                                                     internationalagreements@uprit.edu
                                                                 </a>
                                                             </p>
@@ -1267,7 +1267,7 @@
                                     <li><a href="{{ route('global') }}">Uprit Global/Internacional</a></li>
                                     <li><a href="{{ route('honors') }}">Honors College</a></li>
                                     <li><a href="{{ route('alumni') }}">Alumni - Red de Egresados</a></li>
-                                    <li><a href="{{ route('programa') }}">Programa VIVE Emprededor</a></li>
+                                    <li><a href="{{ route('programa') }}">Programa VIVE Emprendedor</a></li>
                                     <li><a href="#">Uprit Store</a></li>
 
                                 </ul>

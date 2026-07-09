@@ -12,7 +12,7 @@
                 <div class="header-top-right">
                     <ul class="header-info sup-derecha">
                         <li class="raya"><a href="{{route('web.noticias')}}" class="hov-sup">Noticias</a></li>
-                        <li class="raya"><a href="{{route('transparencia')}}" class="hov-sup">Transparecia</a></li>
+                        <li class="raya"><a href="{{route('transparencia')}}" class="hov-sup">Transparencia</a></li>
                         <li class="submenu-platform menu-plataforma ">
                             <a href="#" class="hov-sup">
                                 Nuestra Plataforma
@@ -172,7 +172,7 @@
                                     <li>
 
                                         <ul class="submenu mega-sub-menu mega-sub-menu-01">
-                                            <li><a href="{{ route('web.noticias') }}">Uprit Exprets - Blog</a></li>
+                                            <li><a href="{{ route('web.noticias') }}">Uprit Experts - Blog</a></li>
                                             <li><a href="{{ route('direccion') }}">Dirección de Investigación</a></li>
                                             <li><a href="{{ route('centro_investigacion') }}">Centro de Investigación</a></li>
                                             <li><a href="#">Servicios para Empresas</a></li>
@@ -195,7 +195,7 @@
                                             <li><a href="{{ route('honors') }}">Honors College</a></li>
                                             <li><a href="{{ route('global') }}">Uprit Global/Internacional</a></li>
                                             <li><a href="{{ route('alumni') }}">Alumni - Red de Egresados</a></li>
-                                            <li><a href="{{ route('programa') }}">Programa VIVE Emprededor</a></li>
+                                            <li><a href="{{ route('programa') }}">Programa VIVE Emprendedor</a></li>
                                             <li><a href="#">Uprit Store</a></li>
                                         </ul>
                                     </li>
@@ -220,10 +220,10 @@
                                 </ul>
                             </li>
                             <li class="has-droupdown boton-li">
-                                <button class="edu-btn btn-secondary d-flex align-items-center gap-2">
+                                <a href="{{ route('asesores') }}" class="edu-btn btn-secondary d-flex align-items-center gap-2">
                                     <iconify-icon icon="mdi:pencil" style="font-size:20px"></iconify-icon>
                                     Postula Aquí
-                                </button>
+                                </a>
                             </li>
                         </ul>
                     </nav>
@@ -277,15 +277,15 @@
                             <a href="#">Infórmate Más</a>
 
                             <ul class="submenu">
-                                <li><a href="#">Convalidaciones / Traslados</a></li>
-                                <li><a href="#">Programas Doble Grado</a></li>
-                                <li><a href="#">Beca18</a></li>
-                                <li><a href="#">Tu intercambio en Perú</a></li>
-                                <li><a href="#">Taller de Titulación</a></li>
+                                <li><a href="{{ route('convalidacion') }}">Convalidaciones / Traslados</a></li>
+                                <li><a href="{{ route('doble-grado') }}">Programas Doble Grado</a></li>
+                                <li><a href="{{ route('beca18') }}">Beca18</a></li>
+                                <li><a href="{{ route('intercambio-peru') }}">Tu intercambio en Perú</a></li>
+                                <li><a href="{{ route('taller-titulacion') }}">Taller de Titulación</a></li>
                                 <li><a href="#">Vive Previamente Nuestras Carreras</a></li>
                                 <li><a href="#">Prospecto de Admisión</a></li>
                                 <li><a href="#">Resultados Admisión</a></li>
-                                <li><a href="#">Asesores de Admisión</a></li>
+                                <li><a href="{{ route('asesores') }}">Asesores de Admisión</a></li>
                                 <li><a href="#">Registra Amigo Referido</a></li>
                                 <li><a href="#">Prematricúlate</a></li>
                             </ul>
@@ -315,10 +315,15 @@
                             <a href="#">Infórmate Más</a>
 
                             <ul class="submenu">
+                                <li><a href="{{ route('convalidacion') }}">Convalidaciones / Traslados</a></li>
+                                <li><a href="{{ route('doble-grado') }}">Programas Doble Grado</a></li>
+                                <li><a href="{{ route('beca18') }}">Beca18</a></li>
+                                <li><a href="{{ route('intercambio-peru') }}">Tu intercambio en Perú</a></li>
+                                <li><a href="{{ route('taller-titulacion') }}">Taller de Titulación</a></li>
+                                <li><a href="{{ route('asesores') }}">Asesores de Admisión</a></li>
                                 <li><a href="#">Vive Previamente Nuestras Carreras</a></li>
                                 <li><a href="#">Prospecto de Admisión</a></li>
                                 <li><a href="#">Resultados Admisión</a></li>
-                                <li><a href="#">Asesores de Admisión</a></li>
                                 <li><a href="#">Registra Amigo Referido</a></li>
                                 <li><a href="#">Prematricúlate</a></li>
                                 <li><a href="#">Segunda Carrera profesional</a></li>
@@ -366,11 +371,11 @@
                             <a href="#">Infórmate Más</a>
 
                             <ul class="submenu">
-                                <li><a href="#">UGS Escuela de Posgrado</a></li>
-                                <li><a href="#">Programas Doble Grado</a></li>
-                                <li><a href="#">Misiones Académicas Internacionales</a></li>
-                                <li><a href="#">Vive nuestros Másteres y Doctorados</a></li>
-                                <li><a href="#">Asesores de Admisión</a></li>
+                                <li><a href="{{ route('escuela-posgrado') }}">UGS Escuela de Posgrado</a></li>
+                                <li><a href="{{ route('posgrado-doble') }}">Programas Doble Grado</a></li>
+                                <li><a href="{{ route('mision-academica') }}">Misiones Académicas Internacionales</a></li>
+                                <li><a href="{{ route('vive') }}">Vive nuestros Másteres y Doctorados</a></li>
+                                <li><a href="{{ route('asesores') }}">Asesores de Admisión</a></li>
                                 <li><a href="#">Registra Amigo Referido</a></li>
                                 <li><a href="#">Prematricúlate</a></li>
                             </ul>
@@ -379,7 +384,15 @@
                     </ul>
                 </li>
 
-                <li><a href="#">Innovación</a></li>
+                <li class="has-droupdown"><a href="#">Innovación</a>
+                    <ul class="submenu">
+                        <li><a href="{{ route('web.noticias') }}">Uprit Experts - Blog</a></li>
+                        <li><a href="{{ route('direccion') }}">Dirección de Investigación</a></li>
+                        <li><a href="{{ route('centro_investigacion') }}">Centro de Investigación</a></li>
+                        <li><a href="#">Servicios para Empresas</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/136MRdt_fKaUNK7kLVfmbnlR863c7Ox8E" target="_blank" rel="noopener noreferrer">Reglamentos de Investigación</a></li>
+                    </ul>
+                </li>
                 <li class="has-droupdown"><a href="#">Servicios</a>
                     <ul class="submenu">
                         <li><a href="{{ route('soporte') }}">Uprit Data: Soporte Técnico</a></li>
@@ -390,19 +403,19 @@
                         <li><a href="{{ route('honors') }}">Honors College</a></li>
                         <li><a href="{{ route('global') }}">Uprit Global/Internacional</a></li>
                         <li><a href="{{ route('alumni') }}">Alumni - Red de Egresados</a></li>
-                        <li><a href="{{ route('programa') }}">Programa VIVE Emprededor</a></li>
+                        <li><a href="{{ route('programa') }}">Programa VIVE Emprendedor</a></li>
                         <li><a href="#">Uprit Store</a></li>
                     </ul>
                 </li>
                 <li class="has-droupdown"><a href="#">Conócenos</a>
                     <ul class="submenu">
-                        <li><a href="#">¿Por qué Estudiar en la Uprit?</a></li>
-                        <li><a href="#">Modelo Educativo: Método L4P</a></li>
-                        <li><a href="#">Nuestras autoridades</a></li>
-                        <li><a href="#">Nuestra Red Nexo Uprit</a></li>
-                        <li><a href="#">A2i Programa Aceleración hacia la industria</a></li>
-                        <li><a href="#">Defensoría Universitaria</a></li>
-                        <li><a href="#">Política Medioambiental (S.S.O.M.A)</a></li>
+                        <li><a href="{{ route('porque') }}">¿Por qué Estudiar en la Uprit?</a></li>
+                        <li><a href="{{ route('modelo-educativo') }}">Modelo Educativo: Método L4P</a></li>
+                        <li><a href="{{ route('autoridades') }}">Nuestras autoridades</a></li>
+                        <li><a href="{{ route('red-nexo') }}">Nuestra Red Nexo Uprit</a></li>
+                        <li><a href="{{ route('a2iprograma') }}">A2i Programa Aceleración hacia la industria</a></li>
+                        <li><a href="{{ route('defensoria') }}">Defensoría Universitaria</a></li>
+                        <li><a href="{{ route('medioambiental') }}">Política Medioambiental (S.S.O.M.A)</a></li>
                         <li><a href="#">Convenios y Afiliaciones</a></li>
                         <li><a href="#">Acceso a la Información Pública</a></li>
                     </ul>
@@ -410,10 +423,10 @@
                 <li><a href="{{ route('web.noticias') }}">Noticias</a></li>
                 <li><a href="{{route('transparencia')}}">Transparencia</a></li>
                 <li>
-                    <button class="edu-btn btn-secondary d-flex align-items-center gap-2">
+                    <a href="{{ route('asesores') }}" class="edu-btn btn-secondary d-flex align-items-center gap-2">
                         <iconify-icon icon="mdi:pencil" style="font-size:20px"></iconify-icon>
                         Postula Aquí
-                    </button>
+                    </a>
                 </li>
             </ul>
         </div>

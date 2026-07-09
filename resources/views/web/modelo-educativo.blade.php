@@ -509,7 +509,7 @@
                         </div>
                     </div>
                     <div class="text-block text-center" style="margin-top: -30px;">
-                        <p>Contacto: <a href="" style="color: #91001E;"> Cooperación.educativa@uprit.edu.pe</a> </p>
+                        <p>Contacto: <a href="mailto:Cooperacion.educativa@uprit.edu.pe" style="color: #91001E;">Cooperación.educativa@uprit.edu.pe</a></p>
                         <p>El Programa A2i, con similar objetivo, se desarrolla con la asesoría de la Universidad Estatal de Carolina del Norte (NC State University).</p>
                     </div>
 

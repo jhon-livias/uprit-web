@@ -344,7 +344,7 @@
                             </a>
 
                             <!-- Botón flecha -->
-                            <a href="#"
+                            <a href="{{ route('asesores') }}"
                                 style="
                 border:1px solid #91001E;
                 color:#91001E;
