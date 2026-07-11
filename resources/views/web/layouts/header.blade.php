@@ -220,10 +220,10 @@
                                 </ul>
                             </li>
                             <li class="has-droupdown boton-li">
-                                <a href="{{ route('asesores') }}" class="edu-btn btn-secondary d-flex align-items-center gap-2">
+                                <button class="edu-btn btn-secondary d-flex align-items-center gap-2">
                                     <iconify-icon icon="mdi:pencil" style="font-size:20px"></iconify-icon>
                                     Postula Aquí
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </nav>
@@ -423,10 +423,10 @@
                 <li><a href="{{ route('web.noticias') }}">Noticias</a></li>
                 <li><a href="{{route('transparencia')}}">Transparencia</a></li>
                 <li>
-                    <a href="{{ route('asesores') }}" class="edu-btn btn-secondary d-flex align-items-center gap-2">
+                    <button class="edu-btn btn-secondary d-flex align-items-center gap-2">
                         <iconify-icon icon="mdi:pencil" style="font-size:20px"></iconify-icon>
                         Postula Aquí
-                    </a>
+                    </button>
                 </li>
             </ul>
         </div>
