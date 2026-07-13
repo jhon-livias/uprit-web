@@ -149,7 +149,7 @@
 
                 <div class="footer-center">
                     <img src="{{asset('web/imagenes/footer/logo_uprit_footer.svg')}}" alt="Logo UPRIT" class="footer-logo">
-                    <p class="gris-footer">© {{ date('Y') }} Universidad Privada de Trujillo | Desarrollado por: <a href="https://pyrusstudio.com/" style="color:#919598 !important;" target="_blank" rel="noopener noreferrer">Pyrusstudio.com</a></p>
+                    <p class="gris-footer">© {{ date('Y') }} Universidad Privada de Trujillo | Desarrollado por: Uprit Data</p>
                 </div>
 
                 <div class="footer-book">

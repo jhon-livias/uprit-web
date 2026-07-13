@@ -19,12 +19,12 @@
                             </a>
 
                             <ul class="platform-dropdown">
-                                <li style="padding-bottom: 0px;"><a href="#">ERP</a></li>
+                                <li style="padding-bottom: 0px;"><a href="https://intranet.uprit.edu.pe/">ERP</a></li>
                                 <li style="padding-bottom: 0px; padding-top: 5px;"><a href="#">Biblioteca Virtual</a></li>
                                 <li style="padding-bottom: 0px; padding-top: 5px;"><a href="https://repositorio.uprit.edu.pe/">Repositorio - ALICIA</a></li>
                                 <li style="padding-bottom: 0px; padding-top: 5px;"><a href="#">Bolsa de Trabajo</a></li>
                                 <li style="padding-bottom: 0px; padding-top: 5px;"><a href="#">Correo Institucional</a></li>
-                                <li style=" padding-top: 0px;"><a href="https://moodle.uprit.edu.pe/login/index.php">Aula Virtual</a></li>
+                                <li style=" padding-top: 0px;"><a href="https://moodle.uprit.edu.pe">Aula Virtual</a></li>
 
                         </li>
                     </ul>
