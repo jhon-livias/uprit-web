@@ -131,9 +131,7 @@
                     <div class="m-stack__item m-stack__item--center">
                         <span class="m-footer__copyright" style="color:#fff;">
                             2018 a la actualidad &copy; UNIVERSIDAD PRIVADA DE TRUJILLO
-                            <span>DESARROLLADO POR :
-                                <a href="http://pyrusstudio.com" style="color:#fff;" title="Pyrus Studio" target="_blank">WWW.PYRUSSTUDIO.COM</a>
-                            </span>
+                            <span>DESARROLLADO POR UPRIT DATA</span>
                         </span>
                     </div>
                 </div>
