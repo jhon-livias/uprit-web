@@ -220,7 +220,10 @@
                                 </ul>
                             </li>
                             <li class="has-droupdown boton-li">
-                                <postula-modal-component></postula-modal-component>
+                                <button type="button" class="edu-btn btn-secondary d-flex align-items-center gap-2" data-postula-trigger>
+                                    <iconify-icon icon="mdi:pencil" style="font-size:20px"></iconify-icon>
+                                    Postula Aquí
+                                </button>
                             </li>
                         </ul>
                     </nav>
@@ -420,7 +423,10 @@
                 <li><a href="{{ route('web.noticias') }}">Noticias</a></li>
                 <li><a href="{{route('transparencia')}}">Transparencia</a></li>
                 <li>
-                    <postula-modal-component></postula-modal-component>
+                    <button type="button" class="edu-btn btn-secondary d-flex align-items-center gap-2" data-postula-trigger>
+                        <iconify-icon icon="mdi:pencil" style="font-size:20px"></iconify-icon>
+                        Postula Aquí
+                    </button>
                 </li>
             </ul>
         </div>
