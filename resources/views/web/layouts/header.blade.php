@@ -19,12 +19,12 @@
                             </a>
 
                             <ul class="platform-dropdown">
-                                <li style="padding-bottom: 0px;"><a href="https://intranet.uprit.edu.pe/">ERP</a></li>
-                                <li style="padding-bottom: 0px; padding-top: 5px;"><a href="#">Biblioteca Virtual</a></li>
-                                <li style="padding-bottom: 0px; padding-top: 5px;"><a href="https://repositorio.uprit.edu.pe/">Repositorio - ALICIA</a></li>
-                                <li style="padding-bottom: 0px; padding-top: 5px;"><a href="#">Bolsa de Trabajo</a></li>
-                                <li style="padding-bottom: 0px; padding-top: 5px;"><a href="#">Correo Institucional</a></li>
-                                <li style=" padding-top: 0px;"><a href="https://moodle.uprit.edu.pe">Aula Virtual</a></li>
+                                <li style="padding-bottom: 0px;"><a href="https://intranet.uprit.edu.pe/" target="_blank">ERP</a></li>
+                                <li style="padding-bottom: 0px; padding-top: 5px;"><a href="https://www.digitaliapublishing.com/" target="_blank" rel="noopener">Biblioteca Virtual</a></li>
+                                <li style="padding-bottom: 0px; padding-top: 5px;"><a href="https://repositorio.uprit.edu.pe/" target="_blank">Repositorio - ALICIA</a></li>
+                                <!-- <li style="padding-bottom: 0px; padding-top: 5px;"><a href="#">Bolsa de Trabajo</a></li> -->
+                                <!-- <li style="padding-bottom: 0px; padding-top: 5px;"><a href="#">Correo Institucional</a></li> -->
+                                <li style=" padding-top: 0px;"><a href="https://moodle.uprit.edu.pe" target="_blank">Aula Virtual</a></li>
 
                         </li>
                     </ul>
@@ -153,7 +153,7 @@
 
                                                 <ul class="content-lista">
                                                     <li><a href="{{ route('escuela-posgrado') }}">UGS Escuela de Posgrado</a></li>
-                                                    <li><a href="{{ route('posgrado-doble') }}">Programas Doble Grado</a></li>  
+                                                    <li><a href="{{ route('posgrado-doble') }}">Programas Doble Grado</a></li>
                                                     <li><a href="{{ route('mision-academica') }}">Misiones Académicas Internacionales</a></li>
                                                     <li><a href="{{ route('vive') }}">Vive nuestros Másteres y Doctorados</a></li>
                                                     <li><a href="{{ route('asesores') }}">Asesores de Admisión</a></li>
@@ -208,11 +208,11 @@
 
                                         <ul class="submenu mega-sub-menu mega-sub-menu-01">
                                             <li><a href="{{ route('porque') }}">¿Por qué Estudiar en la Uprit?</a></li>
-                                            <li><a href="{{ route('modelo-educativo') }}">Modelo Educativo: Método L4P</a></li>  
-                                            <li><a href="{{ route('autoridades') }}">Nuestras autoridades</a></li> 
+                                            <li><a href="{{ route('modelo-educativo') }}">Modelo Educativo: Método L4P</a></li>
+                                            <li><a href="{{ route('autoridades') }}">Nuestras autoridades</a></li>
                                             <li><a href="{{ route('red-nexo') }}">Nuestra Red Nexo Uprit</a></li>
-                                            <li><a href="{{ route('a2iprograma') }}">A2i Programa Aceleración hacia la industria</a></li>  
-                                            <li><a href="{{ route('defensoria') }}">Defensoría Universitaria</a></li> 
+                                            <li><a href="{{ route('a2iprograma') }}">A2i Programa Aceleración hacia la industria</a></li>
+                                            <li><a href="{{ route('defensoria') }}">Defensoría Universitaria</a></li>
                                             <li><a href="{{ route('medioambiental') }}">Política Medioambiental (S.S.O.M.A)</a></li>
                                         </ul>
                                     </li>
