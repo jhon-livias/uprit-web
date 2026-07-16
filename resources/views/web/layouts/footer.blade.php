@@ -77,7 +77,7 @@
                         <h4 class="widget-title gris-footer footer-titulo">Contáctanos</h4>
 
                         <span style="margin-bottom: 0px; font-weight: bold;" class="gris-footer">Central telefónica:</span>
-                        <span style="display:block; margin-bottom:20px;" class="gris-footer">+51933248529</span>
+                        <span style="display:block; margin-bottom:20px;" class="gris-footer">+51933248429</span>
                         <span style="margin-bottom: 0px; font-weight: bold;" class="gris-footer">Ubícanos en:</span> <br>
                         <span style="display:block; margin-bottom: 20px;" class="gris-footer">Mz Z' Lote 1, Urb.Semirústica El Bosque (Esq.Av.Carr.Industrial a Laredo y Av.Villareal) Trujillo, Perú</span>
                         </span>
@@ -185,7 +185,7 @@
         <iconify-icon icon="mdi:wheelchair"></iconify-icon>
     </a>
 
-    <a href="https://api.whatsapp.com/send?phone=%2B51933248529&context=AferTi8xZX836bsH1jwi_SMA_wJ5XhwsM8Ykr7oA6jN0Axmgusf4_o5E0hZaTmh9dEIUIonhdp3E2uHQ9EFB0zAJ5YkOnQRElIjAfwGuWTyXgtrLJ0AQDOTKZuCErkGWiPv24e0Eu2riCwhTyruS2LoSUA&source=FB_Page&app=facebook&entry_point=page_cta&fbclid=IwY2xjawKjA_tleHRuA2FlbQIxMABicmlkETFxam4wb0VPYTlIRUZLcjdNAR48jGqyZHyQapDXwxRZatsFzr5p58GPK1q5br-7XLxOYlGkawtbWv5koMLmsQ_aem_6f09mYlMquvt7aKbArCx8Q" class="menu-item whatsapp" target="_blank">
+    <a href="https://api.whatsapp.com/send?phone=%2B51933248429&context=AferTi8xZX836bsH1jwi_SMA_wJ5XhwsM8Ykr7oA6jN0Axmgusf4_o5E0hZaTmh9dEIUIonhdp3E2uHQ9EFB0zAJ5YkOnQRElIjAfwGuWTyXgtrLJ0AQDOTKZuCErkGWiPv24e0Eu2riCwhTyruS2LoSUA&source=FB_Page&app=facebook&entry_point=page_cta&fbclid=IwY2xjawKjA_tleHRuA2FlbQIxMABicmlkETFxam4wb0VPYTlIRUZLcjdNAR48jGqyZHyQapDXwxRZatsFzr5p58GPK1q5br-7XLxOYlGkawtbWv5koMLmsQ_aem_6f09mYlMquvt7aKbArCx8Q" class="menu-item whatsapp" target="_blank">
         <iconify-icon icon="mdi:whatsapp"></iconify-icon>
     </a>
 

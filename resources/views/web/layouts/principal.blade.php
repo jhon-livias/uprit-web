@@ -1085,7 +1085,7 @@
                         <div class="chat-links">
 
                             <a
-                                href="https://wa.me/51933248529"
+                                href="https://wa.me/51933248429"
                                 target="_blank"
                                 class="mini-action whatsapp">
 
