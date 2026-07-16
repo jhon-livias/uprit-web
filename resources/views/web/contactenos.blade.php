@@ -37,12 +37,12 @@
                         <li>
                             <h5 class="title">Llámanos</h5>
                             <p>Lunes a Viernes de 8:00 am a 5:00 pm<br>
-                                <a href="tel:+51970597183">+51 970 597 183</a></p>
+                                <a href="tel:+51933248529">+51 933 248 529</a></p>
                         </li>
                         <li>
                             <h5 class="title">Escríbenos por Whatsapp</h5>
                             <p>Te responderemos a la brevedad posible<br>
-                                <a href="https://api.whatsapp.com/send?phone=%2B51970597183&context=AferTi8xZX836bsH1jwi_SMA_wJ5XhwsM8Ykr7oA6jN0Axmgusf4_o5E0hZaTmh9dEIUIonhdp3E2uHQ9EFB0zAJ5YkOnQRElIjAfwGuWTyXgtrLJ0AQDOTKZuCErkGWiPv24e0Eu2riCwhTyruS2LoSUA&source=FB_Page&app=facebook&entry_point=page_cta&fbclid=IwY2xjawKjA_tleHRuA2FlbQIxMABicmlkETFxam4wb0VPYTlIRUZLcjdNAR48jGqyZHyQapDXwxRZatsFzr5p58GPK1q5br-7XLxOYlGkawtbWv5koMLmsQ_aem_6f09mYlMquvt7aKbArCx8Q" target="_blank">+51 970 597 183</a></p>
+                                <a href="https://api.whatsapp.com/send?phone=%2B51933248529&context=AferTi8xZX836bsH1jwi_SMA_wJ5XhwsM8Ykr7oA6jN0Axmgusf4_o5E0hZaTmh9dEIUIonhdp3E2uHQ9EFB0zAJ5YkOnQRElIjAfwGuWTyXgtrLJ0AQDOTKZuCErkGWiPv24e0Eu2riCwhTyruS2LoSUA&source=FB_Page&app=facebook&entry_point=page_cta&fbclid=IwY2xjawKjA_tleHRuA2FlbQIxMABicmlkETFxam4wb0VPYTlIRUZLcjdNAR48jGqyZHyQapDXwxRZatsFzr5p58GPK1q5br-7XLxOYlGkawtbWv5koMLmsQ_aem_6f09mYlMquvt7aKbArCx8Q" target="_blank">+51 933 248 529</a></p>
                         </li>
                     </ul>
                     <ul class="social-share">

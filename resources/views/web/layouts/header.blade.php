@@ -6,7 +6,7 @@
                     <ul class="header-info">
                         <li id="fecha"></li>
                         <li style="padding-right:0px"><iconify-icon icon="mdi:phone" style="font-size:14px; margin-top:5px"></iconify-icon></li>
-                        <li style="padding-left:5px">Central telefónica: +51970597183</li>
+                        <li style="padding-left:5px">Central telefónica: +51933248529</li>
                     </ul>
                 </div>
                 <div class="header-top-right">
