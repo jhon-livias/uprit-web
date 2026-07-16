@@ -200,7 +200,7 @@
 
                 </div>
             </div>
-            
+
         </div>
     </div>
     <div class="hero-slider-bg-controls">
@@ -231,7 +231,7 @@
                         </svg>
                     </div>
                     <div class="content">
-                        <a href="course-one.html">
+                        <a href="https://intranet.uprit.edu.pe/" target="_blank">
                             <h5 class="title letra-blanca">ERP</h5>
                         </a>
                     </div>
@@ -246,7 +246,7 @@
                         </svg>
                     </div>
                     <div class="content">
-                        <a href="course-one.html">
+                        <a href="https://www.digitaliapublishing.com/" target="_blank">
                             <h5 class="title letra-blanca">Biblioteca Virtual</h5>
                         </a>
                     </div>
@@ -261,14 +261,14 @@
                         </svg>
                     </div>
                     <div class="content">
-                        <a href="https://repositorio.uprit.edu.pe/">
+                        <a href="https://repositorio.uprit.edu.pe/" target="_blank">
                             <h5 class="title letra-blanca">Repositorio - ALICIA</h5>
                         </a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-6" data-sal-delay="50" data-sal="slide-up" data-sal-duration="800">
+            <!-- <div class="col-lg-4 col-md-6" data-sal-delay="50" data-sal="slide-up" data-sal-duration="800">
                 <div class="categorie-grid categorie-style-2 color-tertiary-style fondo-transparente">
                     <div class="icon">
                         <svg width="44" height="100%" viewBox="0 0 45 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
@@ -276,14 +276,14 @@
                         </svg>
                     </div>
                     <div class="content">
-                        <a href="course-one.html">
+                        <a href="course-one.html" target="_blank">
                             <h5 class="title letra-blanca">Bolsa de Trabajo</h5>
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="col-lg-4 col-md-6" data-sal-delay="100" data-sal="slide-up" data-sal-duration="800">
+            <!-- <div class="col-lg-4 col-md-6" data-sal-delay="100" data-sal="slide-up" data-sal-duration="800">
                 <div class="categorie-grid categorie-style-2 color-extra02-style fondo-transparente">
                     <div class="icon">
                         <svg width="44" height="100%" viewBox="0 0 45 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
@@ -291,12 +291,12 @@
                         </svg>
                     </div>
                     <div class="content">
-                        <a href="course-one.html">
+                        <a href="course-one.html" target="_blank">
                             <h5 class="title letra-blanca">Correo Institucional</h5>
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="col-lg-4 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                 <div class="categorie-grid categorie-style-2 color-extra03-style fondo-transparente">
@@ -306,7 +306,7 @@
                         </svg>
                     </div>
                     <div class="content">
-                        <a href="https://moodle.uprit.edu.pe/login/index.php">
+                        <a href="https://moodle.uprit.edu.pe/login/index.php" target="_blank">
                             <h5 class="title letra-blanca">Aula Virtual</h5>
                         </a>
                     </div>

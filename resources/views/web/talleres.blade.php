@@ -13,7 +13,7 @@
             </ul>
         </div>
     </div>
-    
+
 </div>
 <section class="privacy-policy-area">
     <div class="container">
@@ -26,7 +26,7 @@
                             <li>La universidad promueve el enriquecimiento cultural y la integración de la comunidad estudiantil a través de diversos clubes y eventos.</li>
                         </ul>
                     </div>
-                   
+
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                             <div class="course-tab-content">
@@ -108,7 +108,7 @@
                                     <li><a href="{{ route('honors') }}">Honors College</a></li>
                                     <li><a href="{{ route('alumni') }}">Alumni - Red de Egresados</a></li>
                                     <li><a href="{{ route('programa') }}">Programa VIVE Emprendedor</a></li>
-                                    <li><a href="#">Uprit Store</a></li>
+                                    <!-- <li><a href="#">Uprit Store</a></li> -->
 
                                 </ul>
                             </div>
