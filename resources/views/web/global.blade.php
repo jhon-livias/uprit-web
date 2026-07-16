@@ -1091,7 +1091,7 @@
                         </div>
                     </div>
                     <div class="text-block">
-                        <h3 class="title">Acuerdos y Redes Internacionales</h3>                     
+                        <h3 class="title">Acuerdos y Redes Internacionales</h3>
                     </div>
                     <div class="tab-content" id="myTabContentAcu">
 
@@ -1268,7 +1268,7 @@
                                     <li><a href="{{ route('honors') }}">Honors College</a></li>
                                     <li><a href="{{ route('alumni') }}">Alumni - Red de Egresados</a></li>
                                     <li><a href="{{ route('programa') }}">Programa VIVE Emprendedor</a></li>
-                                    <li><a href="#">Uprit Store</a></li>
+                                    <!-- <li><a href="#">Uprit Store</a></li> -->
 
                                 </ul>
                             </div>

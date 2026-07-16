@@ -219,7 +219,7 @@
                                                             <div class="item-programa">
                                                                 <span>✓</span>
                                                                 <p>Mostrar un directorio de abogados locales licenciados para ejercer ante la USPTO.</p>
-                                                            </div>                                                           
+                                                            </div>
 
                                                         </div>
 
@@ -269,7 +269,7 @@
                                                             <div class="item-programa">
                                                                 <span>✓</span>
                                                                 <p>Brindar asesoramiento legal sobre su búsqueda o solicitud.</p>
-                                                            </div>                                                                                              
+                                                            </div>
                                                         </div>
 
                                                     </div>
@@ -338,8 +338,8 @@
 
                                                         <div class="course-lesson">
                                                             <p>
-                                                             Las clases de la Clínica de Emprendimiento de StartUprit ofrecen la oportunidad de trabajar 
-                                                             con emprendedores reales en los problemas que buscan resolver. A través de proyectos de un 
+                                                             Las clases de la Clínica de Emprendimiento de StartUprit ofrecen la oportunidad de trabajar
+                                                             con emprendedores reales en los problemas que buscan resolver. A través de proyectos de un
                                                              semestre, desarrollarán y perfeccionarán habilidades clave para el emprendimiento y su carrera profesional.
                                                             </p>
                                                         </div>
@@ -378,7 +378,7 @@
                                                         <div class="course-lesson">
                                                             <p>
                                                                 Participar en la Clínica de Emprendimiento es una excelente oportunidad
-                                                                 para que las startups y empresas colaboren en sus proyectos. Este programa 
+                                                                 para que las startups y empresas colaboren en sus proyectos. Este programa
                                                                  es gratuito y les permite obtener un valor añadido de nuestros equipos de estudiantes,
                                                                   mientras contribuyen al desarrollo de la próxima generación de emprendedores.
                                                             </p>
@@ -426,7 +426,7 @@
                                     <li><a href="{{ route('honors') }}">Honors Collage</a></li>
                                     <li><a href="{{ route('alumni') }}">Alumni - Red de Egresados</a></li>
                                     <li><a href="{{ route('programa') }}">Programa VIVE Emprendedor</a></li>
-                                    <li><a href="#">Uprit Store</a></li>
+                                    <!-- <li><a href="#">Uprit Store</a></li> -->
 
                                 </ul>
                             </div>

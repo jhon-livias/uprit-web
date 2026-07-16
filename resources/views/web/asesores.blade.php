@@ -49,11 +49,11 @@
                                     <p style="font-weight:600;">Asesor de Admisión</p>
 
                                     <a href="https://wa.me/51970597183?text=Hola,%20necesito%20informaci%C3%B3n%20sobre%20admisi%C3%B3n" target="_blank" rel="noopener noreferrer" style="display:block;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px;">
-                                        <i class="ri-whatsapp-line"></i> Contactar 
+                                        <i class="ri-whatsapp-line"></i> Contactar
                                     </a>
 
                                     <a href="https://wa.me/51970597183?text=Hola,%20quiero%20programar%20una%20cita%20con%20un%20asesor" target="_blank" rel="noopener noreferrer" style="display:block;border:1px solid #ddd;color:#444;padding:12px;border-radius:10px;text-decoration:none;">
-                                        <i class="ri-calendar-line"></i> Programa una cita 
+                                        <i class="ri-calendar-line"></i> Programa una cita
                                     </a>
 
                                 </div>
@@ -78,11 +78,11 @@
                                     <p style="font-weight:600;">Asesor de Admisión</p>
 
                                     <a href="https://wa.me/51970597183?text=Hola,%20necesito%20informaci%C3%B3n%20sobre%20admisi%C3%B3n" target="_blank" rel="noopener noreferrer" style="display:block;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px;">
-                                        <i class="ri-whatsapp-line"></i> Contactar 
+                                        <i class="ri-whatsapp-line"></i> Contactar
                                     </a>
 
                                     <a href="https://wa.me/51970597183?text=Hola,%20quiero%20programar%20una%20cita%20con%20un%20asesor" target="_blank" rel="noopener noreferrer" style="display:block;border:1px solid #ddd;color:#444;padding:12px;border-radius:10px;text-decoration:none;">
-                                        <i class="ri-calendar-line"></i> Programa una cita 
+                                        <i class="ri-calendar-line"></i> Programa una cita
                                     </a>
 
                                 </div>
@@ -107,11 +107,11 @@
                                     <p style="font-weight:600;">Asesor de Admisión</p>
 
                                     <a href="https://wa.me/51970597183?text=Hola,%20necesito%20informaci%C3%B3n%20sobre%20admisi%C3%B3n" target="_blank" rel="noopener noreferrer" style="display:block;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px;">
-                                        <i class="ri-whatsapp-line"></i> Contactar 
+                                        <i class="ri-whatsapp-line"></i> Contactar
                                     </a>
 
                                     <a href="https://wa.me/51970597183?text=Hola,%20quiero%20programar%20una%20cita%20con%20un%20asesor" target="_blank" rel="noopener noreferrer" style="display:block;border:1px solid #ddd;color:#444;padding:12px;border-radius:10px;text-decoration:none;">
-                                        <i class="ri-calendar-line"></i> Programa una cita 
+                                        <i class="ri-calendar-line"></i> Programa una cita
                                     </a>
 
                                 </div>

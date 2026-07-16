@@ -13,7 +13,7 @@
             </ul>
         </div>
     </div>
-    
+
 </div>
 <section class="privacy-policy-area">
     <div class="container">
@@ -31,7 +31,7 @@
                             <div class="course-tab-content">
                                 <div class="course-overview">
 
-                                    
+
 
                                     <div class="course-curriculam mb--90">
 
@@ -117,7 +117,7 @@
                                                 <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
                                                         <div class="course-lesson">
-                                                            <p>Si necesitas ayuda, puedes ingresar tu solicitud directamente en el siguiente enlace para recibir soporte de UPRIT DATA.</p>                                
+                                                            <p>Si necesitas ayuda, puedes ingresar tu solicitud directamente en el siguiente enlace para recibir soporte de UPRIT DATA.</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -134,7 +134,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="edu-blog-sidebar textos-derecha">
-                    
+
                     <div class="edu-blog-widget widget-categories">
                         <div class="inner">
                             <h4 class="widget-title">Categorias</h4>
@@ -149,7 +149,7 @@
                                     <li><a href="{{ route('honors') }}">Honors College</a></li>
                                     <li><a href="{{ route('alumni') }}">Alumni - Red de Egresados</a></li>
                                     <li><a href="{{ route('programa') }}">Programa VIVE Emprendedor</a></li>
-                                    <li><a href="#">Uprit Store</a></li>
+                                    <!-- <li><a href="#">Uprit Store</a></li> -->
 
                                 </ul>
                             </div>

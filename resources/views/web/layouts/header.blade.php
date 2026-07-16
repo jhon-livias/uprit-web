@@ -196,7 +196,7 @@
                                             <li><a href="{{ route('global') }}">Uprit Global/Internacional</a></li>
                                             <li><a href="{{ route('alumni') }}">Alumni - Red de Egresados</a></li>
                                             <li><a href="{{ route('programa') }}">Programa VIVE Emprendedor</a></li>
-                                            <li><a href="#">Uprit Store</a></li>
+                                            <!-- <li><a href="#">Uprit Store</a></li> -->
                                         </ul>
                                     </li>
 
@@ -404,7 +404,7 @@
                         <li><a href="{{ route('global') }}">Uprit Global/Internacional</a></li>
                         <li><a href="{{ route('alumni') }}">Alumni - Red de Egresados</a></li>
                         <li><a href="{{ route('programa') }}">Programa VIVE Emprendedor</a></li>
-                        <li><a href="#">Uprit Store</a></li>
+                        <!-- <li><a href="#">Uprit Store</a></li> -->
                     </ul>
                 </li>
                 <li class="has-droupdown"><a href="#">Conócenos</a>
