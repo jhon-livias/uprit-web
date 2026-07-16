@@ -9,7 +9,14 @@ export default defineConfig({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
         }),
-        vue(),
+        vue({
+            template: {
+                compilerOptions: {
+                    // iconify-icon es un web component nativo, no un componente Vue
+                    isCustomElement: (tag) => tag === 'iconify-icon',
+                },
+            },
+        }),
         tailwindcss(),
     ],
     server: {
