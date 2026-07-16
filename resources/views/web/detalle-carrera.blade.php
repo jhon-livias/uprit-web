@@ -7,8 +7,8 @@
 
             <div class="swiper-slide slider-principal">
                 <img src="{{asset('web/imagenes/slider/slider03.webp')}}"
-                    class="slider-img"
-                    alt="image">
+                    class=""
+                    alt="image" style="width: 100%; height: 100%; object-fit: cover;" />
 
                 <div class="thumbnail-bg-content detalle-bg-content">
                     <div class="container edublink-animated-shape">
@@ -17,124 +17,27 @@
 
                             <div class="col-lg-7 text-list-sec">
                                 <div class="banner-content slider-lista">
-                                    <h1 class="title"
-                                        data-sal-delay="100"
-                                        data-sal="slide-up"
-                                        data-sal-duration="1000">
-                                        {{$categoria->nombre}}
+                                    <h1 class="title">
+                                        {{$carrera->nombre}}
                                     </h1>
 
                                     <div class="banner-btn"
-                                        data-sal-delay="400"
-                                        data-sal="slide-up"
-                                        data-sal-duration="1000">
+                                        <div class="contenido-texto">
+                                        <p class="descripcion-carrera">
+                                            {{$carrera->descripcion}}
+                                        </p>
 
-                                        <ul class="lista-carreras">
-                                            @foreach($categoria->carreras as $item)
-                                            <li>
-                                                <a href="{{route('web.detallecarrera', $item->id)}}">
-                                                    {{$item->nombre}}
-                                                </a>
-                                            </li>
-                                            @endforeach
+                                        <div class="fecha-examen">
+                                            Exámen de Admisión: {{ \Carbon\Carbon::parse($carrera->admision)->locale('es')->translatedFormat('j \d\e F \d\e Y') }}
+                                        </div>
 
-
-                                        </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-5">
-                                <div class="formulario-slider">
-
-                                    <div class="form-header">
-                                        Solicita Información
-                                    </div>
-
-                                    <form>
-
-                                        <div class="form-checks">
-                                            <label>
-                                                <input type="radio" name="modalidad">
-                                                Presencial
-                                            </label>
-
-                                            <label>
-                                                <input type="radio" name="modalidad">
-                                                Virtual
-                                            </label>
-
-                                            <label>
-                                                <input type="radio" name="modalidad">
-                                                Semipresencial
-                                            </label>
-
-                                            <label>
-                                                <input type="radio" name="modalidad">
-                                                Hyflex
-                                            </label>
-                                        </div>
-
-                                        <!-- INPUTS -->
-                                        <div class="form-group">
-                                            <select>
-                                                <option value="" selected="" disabled>Tipo de Programa</option>
-                                                <option value="PREGRADO">Pregrado Regular</option>
-                                                <option value="MAESTRIA">Maestría</option>
-                                                <option value="DOCTORADO">Doctorado</option>
-                                                <option value="DIPLOMADO">Diplomados y Cursos de Especialización</option>
-                                                <option value="POST_DOCTORADO">Posdoctorado</option>
-                                                <option value="SECOND_SPECIALITY">Segunda Especialidad</option>
-                                                <option value="CAREERS_FOR_WORKERS">Pregrado Puede</option>
-                                                <option value="TRANSFER">Traslado de Carrera Profesional</option>
-                                                <option value="DEGREE_COMPLETION">Titulación / Licenciatura</option>
-                                                <option value="EXPERIENCE_INTERNATIONAL_PERU">Experiencia Internacional en Perú</option>
-                                                <option value="MISION_ACADEMIC_INTERNATIONAL">Misiones Académicas Internacionales</option>
-                                                <option value="CONGRESS_SUMMITS">Congresos - SUMMITS</option>
-                                                <option value="BOOTCAMPS">Bootcamps</option>
-                                                <option value="MOOC">MOOC</option>
-                                                <option value="WEBINARS">Webinars</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <select>
-                                                <option value="" selected="" disabled>Programa de Interés</option>
-                                                <option value="Administración Portuaria y de Transporte Intermodal">Administración Portuaria y de Transporte Intermodal</option>
-                                                <option value="Psicología">Psicología</option>
-                                                <option value="Derecho (Presencial)">Derecho (Presencial)</option>
-                                                <option value="Arquitectura y Urbanismo">Arquitectura y Urbanismo</option>
-                                                <option value="Ingenieria Industrial">Ingeniería Industrial</option>
-                                                <option value="Educación Inicial">Educación Inicial</option>
-                                                <option value="Educación Primaria">Educación Primaria</option>
-                                                <option value="Educación Secundaria con Mención en Ciencias Sociales">Educación Secundaria con Mención en Ciencias Sociales</option>
-                                                <option value="Administración de Empresas">Administración de Empresas</option>
-                                                <option value="Contabilidad y Finanzas">Contabilidad y Finanzas</option>
-                                                <option value="Ingeniería Civil">Ingeniería Civil</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-row-custom">
-                                            <input type="text" placeholder="Nombres">
-                                            <input type="text" placeholder="Apellidos">
-                                        </div>
-
-                                        <div class="form-row-custom">
-                                            <input type="text" placeholder="DNI">
-                                            <input type="text" placeholder="Documento">
-                                        </div>
-
-                                        <div class="form-row-custom">
-                                            <input type="email" placeholder="Correo">
-                                            <input type="text" placeholder="Whatsapp">
-                                        </div>
-                                        <button type="submit" class="btn-postular">
-                                            Postular
-                                        </button>
-
-                                    </form>
-
-                                </div>
+              
                             </div>
 
                         </div>
@@ -152,42 +55,6 @@
 
 
 
-<div class="edu-breadcrumb-area breadcrumb-style-8 banner-carrera">
-
-    <div class="breadcrumb-right-wrapper">
-        <div class="container">
-
-            <div class="breadcrumb-inner">
-
-                <div class="contenido-banner">
-
-                    <!-- TEXTO -->
-                    <div class="contenido-texto">
-
-                        <h1 class="titulo-carrera">
-                            {{$carrera->nombre}}
-                        </h1>
-
-                        <p class="descripcion-carrera">
-                            {{$carrera->descripcion}}
-                        </p>
-
-                        <div class="fecha-examen">
-                            Exámen de Admisión: {{ \Carbon\Carbon::parse($carrera->admision)->locale('es')->translatedFormat('j \d\e F \d\e Y') }}
-                        </div>
-
-                    </div>
-
-
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-
-</div>
 
 <section class="edu-section-gap course-details-area">
     <div class="container">
