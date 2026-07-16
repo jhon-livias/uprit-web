@@ -1843,6 +1843,11 @@
 
         });
     </script>
+
+    <div id="app">
+        <postula-modal-component></postula-modal-component>
+    </div>
+    @vite(['resources/js/app.js'])
 </body>
 
 </html>

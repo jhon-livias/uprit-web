@@ -1,15 +1,4 @@
 <template>
-    <!-- Trigger: mismo aspecto visual que el botón original del header -->
-    <button
-        class="edu-btn btn-secondary d-flex align-items-center gap-2"
-        @click="open"
-        aria-haspopup="dialog"
-        :aria-expanded="isOpen"
-    >
-        <iconify-icon icon="mdi:pencil" style="font-size:20px"></iconify-icon>
-        Postula Aquí
-    </button>
-
     <!-- Modal renderizado directamente en <body> para evitar conflictos de z-index -->
     <Teleport to="body">
         <Transition name="postula-fade">
@@ -83,9 +72,26 @@ const onKeydown = (e) => {
     if (e.key === 'Escape' && isOpen.value) close();
 };
 
-onMounted(() => window.addEventListener('keydown', onKeydown));
+let triggerElements = [];
+
+const bindTriggers = () => {
+    triggerElements = Array.from(document.querySelectorAll('[data-postula-trigger]'));
+    triggerElements.forEach((el) => el.addEventListener('click', open));
+};
+
+const unbindTriggers = () => {
+    triggerElements.forEach((el) => el.removeEventListener('click', open));
+    triggerElements = [];
+};
+
+onMounted(() => {
+    window.addEventListener('keydown', onKeydown);
+    bindTriggers();
+});
+
 onUnmounted(() => {
     window.removeEventListener('keydown', onKeydown);
+    unbindTriggers();
     document.body.style.overflow = '';
 });
 </script>
