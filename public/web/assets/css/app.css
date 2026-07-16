@@ -4663,7 +4663,7 @@ button.edu-btn.btn-round:hover {
 
 @media only screen and (min-width:992px) {
     .sidebar-top-position {
-        margin-top: -375px;
+        margin-top: -650px;
         position: relative;
         z-index: 2
     }
@@ -42751,7 +42751,7 @@ html[dir="rtl"] .swiper-testimonial-slider-wrapper .swiper-slide.swiper-slide-vi
 }
 
 .detalle-bg-content {
-    top: 30px !important;
+    top: 0 !important;
 }
 
 /* RADIO BUTTONS */
