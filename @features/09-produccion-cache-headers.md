@@ -38,3 +38,17 @@ Configura optimizaciones de producción para Laravel y assets estáticos.
 - Verificar `config/app.php`, `bootstrap/app.php`
 
 ---
+
+## Resultado aplicado
+
+| Componente | Cambio |
+|------------|--------|
+| `public/.htaccess` | Gzip/brotli + `Cache-Control` por ruta (build, web/assets, uploads) |
+| `vps/nginx-static-cache.conf.example` | Ya existía; misma política que Apache |
+| `vps/deploy.sh` / `vps/update.sh` | `php artisan optimize` + invalidación menú opcional |
+| `.env.example` | Comentarios producción (`APP_DEBUG=false`, `LOG_LEVEL`) |
+| `README.md` | Sección «Deploy y cachés» |
+
+**Verificación:** en producción, DevTools → Network → un `.css` en `/web/assets/` debe mostrar `Cache-Control: public, max-age=604800, must-revalidate`. HTML de Laravel no debe llevar cache largo.
+
+---
