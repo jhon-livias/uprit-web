@@ -26,7 +26,6 @@ class WebController extends Controller
             ->get();
         $noticias = Noticia::with('categoriaNoticia')
             ->orderBy('fecha', 'desc')
-            ->limit(6)
             ->get();
         $testimonios = Testimonio::whereNotNull('imagen')
             ->where('imagen', '!=', '')
@@ -63,7 +62,7 @@ class WebController extends Controller
             ->withQueryString();
 
         $ultimasnoticias = Noticia::orderBy('fecha', 'desc')
-            ->limit(3)
+            
             ->get();
 
         return view('web.noticia', compact(
@@ -77,7 +76,7 @@ class WebController extends Controller
     {
         $noticia = Noticia::findOrFail($id);
         $categorias = CategoriaNoticia::all();
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.detalle-noticia', compact('noticia', 'categorias', 'ultimasnoticias'));
     }
 
@@ -90,179 +89,179 @@ class WebController extends Controller
 
     public function soporte()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.soporte', compact('ultimasnoticias'));
     }
 
     public function salud()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.salud', compact('ultimasnoticias'));
     }
 
     public function futbol()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.futbol', compact('ultimasnoticias'));
     }
 
     public function libroreclamaciones()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.libro-reclamaciones', compact('ultimasnoticias'));
     }
 
     public function transparencia()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.transparencia', compact('ultimasnoticias'));
     }
 
     public function talleres()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.talleres', compact('ultimasnoticias'));
     }
 
     public function becas()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.becas', compact('ultimasnoticias'));
     }
 
     public function honors()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.honors', compact('ultimasnoticias'));
     }
     public function global()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.global', compact('ultimasnoticias'));
     }
     public function alumni()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.alumni', compact('ultimasnoticias'));
     }
     public function programa()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(6)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.programa', compact('ultimasnoticias'));
     }
     
         public function convalidacion()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.convalidacion', compact('ultimasnoticias'));
     }
 
     public function doblegrado()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.doble-grado', compact('ultimasnoticias'));
     }
 
     public function becadieciocho()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.beca18', compact('ultimasnoticias'));
     }
 
     public function intercambioperu()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get(); 
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get(); 
         return view('web.intercambio-peru', compact('ultimasnoticias'));
     }
 
     public function tallertitulacion()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get(); 
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get(); 
         return view('web.taller-titulacion', compact('ultimasnoticias'));
     }
 
     public function asesores()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get(); 
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get(); 
         return view('web.asesores', compact('ultimasnoticias'));
     }
     
      public function escuelaposgrado()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();   
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();   
         return view('web.escuela-posgrado', compact('ultimasnoticias'));
     }
 
     public function posgradodoble()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();   
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();   
         return view('web.posgrado-doble', compact('ultimasnoticias'));
     }
 
     public function misionacademica()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();   
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();   
         return view('web.mision-academica', compact('ultimasnoticias'));
     }
 
     public function vive()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();   
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();   
         return view('web.vive', compact('ultimasnoticias'));
     }
     
     public function porque()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();  
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();  
         return view('web.porque', compact('ultimasnoticias'));
     }
 
     public function modeloeducativo()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();   
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();   
         return view('web.modelo-educativo', compact('ultimasnoticias'));
     }
     
     
     public function direccion()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();       
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();       
         return view('web.direccion', compact('ultimasnoticias'));
     }
 
     public function centro_investigacion()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();       
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();       
         return view('web.centro_investigacion', compact('ultimasnoticias'));
     }
 
     public function autoridades()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.autoridades', compact('ultimasnoticias'));
     }
 
     public function rednexo()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.red-nexo', compact('ultimasnoticias'));
     }
 
     public function a2iprograma()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.a2iprograma', compact('ultimasnoticias'));
     }
 
     public function medioambiental()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.medioambiental', compact('ultimasnoticias'));
     }
 
     public function defensoria()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.defensoria', compact('ultimasnoticias'));
     }
 
