@@ -35,3 +35,20 @@ Optimiza la carga de assets en `@resources/views/web/layouts/principal.blade.php
 **Métrica objetivo:** bajar requests totales (actualmente ~102) y tiempo hasta DOMContentLoaded (< 3s).
 
 ---
+
+## Resultado aplicado
+
+| Cambio | Detalle |
+|--------|---------|
+| Swiper | **Revertido:** tema `app.js` requiere Swiper **8** local; scripts inline usan Swiper **11** CDN después de `app.js` (orden original). Unificar a una sola versión rompe el header. |
+| Iconify | **Revertido** al `<head>` sin `defer` (evita layout roto en barra superior) |
+| Google Fonts | `400;500;600;700` + `preconnect` (se mantiene — seguro) |
+| `preconnect` | `fonts.googleapis.com` / `fonts.gstatic.com` |
+| Defer vendor | **No aplicado** al resto: hay muchos `<script>` inline que dependen de jQuery/Swiper en parseo |
+| Quitar libs | **No aplicado** — Isotope, Odometer, etc. los usa `app.js` del tema si hay markup |
+
+**Requests menos (fase 5 parcial):** fuentes reducidas; Swiper duplicado **no eliminable** sin migrar `app.js` a Swiper 11.
+
+**Verificación:** home (hero, sliders secundarios, testimonios, marquesina), footer `brandSwiper`, detalle carrera, iconos Iconify en header.
+
+---
