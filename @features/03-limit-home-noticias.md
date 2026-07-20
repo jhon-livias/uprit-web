@@ -20,8 +20,10 @@ La vista `@resources/views/web/index.blade.php` solo muestra la primera noticia 
 3. Añadir `loading="lazy"` a imágenes de noticias below-the-fold.
 4. Eager load `categoriaNoticia` para evitar N+1.
 
-**Restricciones:**
-- No cambiar diseño visual.
+**Restricciones (obligatorias):**
+- **No cambiar diseño visual ni cantidad de noticias visibles** en home.
+- Contar en `index.blade.php` cuántas noticias muestra la vista (destacada + lateral) y usar ese número exacto en `limit()`, no menos.
+- Mismas imágenes, mismos textos, mismo orden; solo menos queries y lazy en imágenes claramente below-the-fold.
 - Solo tocar home; otras rutas que usan noticias quedan igual.
 
 **Archivos:**

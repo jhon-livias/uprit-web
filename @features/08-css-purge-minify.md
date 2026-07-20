@@ -18,6 +18,13 @@ Reduce el peso de `@public/web/assets/css/app.css` (~990 KB / 45151 líneas).
 **NO hacer en esta fase:**
 - Reescribir todo el tema.
 - Migrar a Tailwind en web pública (solo admin usa Vite/Tailwind).
+- **PurgeCSS agresivo** que quite clases usadas por JS, `:hover`, menú móvil o estados del tema.
+- Deploy de CSS recortado sin comparar visualmente home + carrera + footer.
+
+**Restricciones (obligatorias):**
+- **Prioridad: paridad visual.** Si el CSS pesa menos pero algo se ve roto, no entregar el cambio.
+- Separar `uprit-custom.css` está bien; no mover reglas del tema que afecten layout global sin probar.
+- Documentar qué se eliminó; preferir eliminar bloques claramente de demo/RTL/dark duplicado del theme vendor.
 
 **Entregable:**
 - Reducción medible del KB de CSS en Network tab.
@@ -29,3 +36,31 @@ Reduce el peso de `@public/web/assets/css/app.css` (~990 KB / 45151 líneas).
 - `resources/views/web/layouts/principal.blade.php`
 
 ---
+
+## Resultado aplicado (conservador)
+
+Script: `node scripts/split-uprit-css.mjs` (re-ejecutable sobre backup si hace falta).
+
+| Archivo | Antes | Después |
+|---------|-------|---------|
+| `app.css` | ~990 KB / 45151 líneas | ~824 KB / 36831 líneas |
+| `uprit-custom.css` | — | ~51 KB / 3271 líneas |
+| **Total descargado** | ~990 KB | ~875 KB (−~115 KB) |
+
+### Eliminado de `app.css` (no usado en UPRIT)
+
+1. **RTL** (`html[dir="rtl"]`, líneas 37991–41879): el sitio no define `dir="rtl"` en ninguna vista.
+2. **Theme preview / landing demo** (`.pv-*`, `.edublink-landing-page`, líneas 19163–20315): páginas demo del theme EduBlink, sin referencias en `resources/views/web/`.
+3. **`@import` Google Fonts** en CSS: duplicado; Spartan ya carga en `principal.blade.php`.
+4. Selectores `.pv-*` en el reset global de listas (5 líneas).
+
+### Movido a `uprit-custom.css` (sin cambio visual)
+
+Reglas custom UPRIT desde ~línea 41881: preloader, hero, header sticky, marquesina, convenios, footer, carreras, chatbot, etc.
+
+### No tocado (paridad visual)
+
+- Bloque `.dark-mode` completo (toggle en `principal.blade.php`).
+- CSS vendor en `<head>` (lightbox, odometer, etc.) — revisión aparte si se condiciona por página.
+- PurgeCSS agresivo del resto del theme.
+

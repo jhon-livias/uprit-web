@@ -23,10 +23,12 @@ Arregla el preloader lento en `@resources/views/web/layouts/principal.blade.php`
 4. Reducir la transición CSS del preloader a ~300ms.
 5. Añadir botón "Saltar" opcional solo si el preloader sigue visible tras 2s (accesibilidad).
 
-**Restricciones:**
+**Restricciones (obligatorias):**
+- **Solo rendimiento:** el sitio debe verse y comportarse igual que antes.
 - Cambio mínimo y enfocado; no refactorizar todo el tema.
-- Mantener el diseño visual actual (logo UPRIT sobre fondo #91001E).
-- Probar que el preloader desaparece y la página es usable.
+- Mantener el diseño visual actual (logo UPRIT sobre fondo #91001E, mismas transiciones visibles al usuario).
+- No cambiar HTML del preloader salvo lo estrictamente necesario para ocultarlo antes.
+- Probar home y una página interna; comparar captura antes/después.
 
 **Archivos principales:**
 - `resources/views/web/layouts/principal.blade.php`

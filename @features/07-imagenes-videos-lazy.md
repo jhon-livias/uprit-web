@@ -27,8 +27,11 @@ Optimiza imágenes y videos pesados en la web pública.
    - Lazy load imágenes en `@resources/views/web/index.blade.php`.
    - Width/height explícitos donde falten (reduce CLS).
 
-**Restricciones:**
+**Restricciones (obligatorias):**
+- **Misma apariencia:** mismas imágenes, videos y cantidad de slides; el usuario no debe notar diferencia salvo carga más rápida.
 - Mantener autoplay del primer video visible (UX actual).
+- **No lazy load** en hero, primer slide, logo, preloader ni marquesina above-the-fold.
+- Marquesina: si se optimiza repetición de iconos, el loop visual debe ser idéntico (misma velocidad y densidad).
 - No re-encoding de videos en este paso (solo HTML/JS); sugerir compresión manual si hay MP4 > 5MB.
 
 **Archivos:**

@@ -8,6 +8,7 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$DIR"
 
 PROMPTS=(
+  "00-reglas-diseño.md|Fase 0: Reglas — rendimiento sin cambiar diseño"
   "01-preloader-fix.md|Fase 1: Arreglar preloader (impacto inmediato)"
   "02-backend-cache-queries.md|Fase 2: Cachear queries del menú (TTFB)"
   "03-limit-home-noticias.md|Fase 3: Limitar noticias en home"
@@ -39,6 +40,7 @@ list_prompts() {
     ((i++)) || true
   done
   echo "Comandos:"
+  echo "  bash prompts.sh 0            Reglas de diseño (pegar primero)"
   echo "  bash prompts.sh <número>     Mostrar prompt (copiar al chat)"
   echo "  bash prompts.sh all          Mostrar índice + instrucciones"
   echo ""
@@ -81,7 +83,8 @@ show_prompt() {
 
 show_all_index() {
   list_prompts
-  echo "Orden sugerido: ejecutar fases 1 → 5 primero (mayor impacto)."
+  echo "Orden sugerido: fase 0 siempre; luego 9 → 2 → 1 → 5 (una fase, probar, commit)."
+  echo "No ejecutar todas seguidas: fases 5, 7 y 8 suelen alterar el diseño."
   echo "Métricas actuales: DOMContentLoaded ~8.5s | Load ~1.1 min | ~12 MB"
 }
 
@@ -120,7 +123,7 @@ case "${1:-menu}" in
     echo "  bash prompts.sh           Menú interactivo"
     echo "  bash prompts.sh list      Listar prompts"
     echo "  bash prompts.sh all       Índice + métricas"
-    echo "  bash prompts.sh <1-9>     Imprimir prompt para copiar"
+    echo "  bash prompts.sh <0-9>     Imprimir prompt para copiar"
     echo "  bash prompts.sh 1 | clip  Copiar fase 1 (Windows Git Bash)"
     ;;
   *)
