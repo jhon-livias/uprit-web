@@ -57,8 +57,7 @@
         <div class="features-grid-wrap">
             <div class="features-box features-style-3 color-primary-style edublink-svg-animate">
                 <div class="icon">
-                    <img class="svgInject" src="{{asset('web/imagenes/icon01.svg')}}" alt="animated icon">
-                    <!-- <i class="icon-34"></i> -->
+                    @include('web.partials.icons.icon01')
                 </div>
                 <div class="content">
                     <h4 class="title">Presencial</h4>
@@ -67,7 +66,7 @@
             </div>
             <div class="features-box features-style-3 color-secondary-style edublink-svg-animate">
                 <div class="icon">
-                    <img class="svgInject" src="{{asset('web/imagenes/icon02.svg')}}" alt="animated icon">
+                    @include('web.partials.icons.icon02')
                 </div>
                 <div class="content">
                     <h4 class="title">Semipresencial</h4>
@@ -76,8 +75,7 @@
             </div>
             <div class="features-box features-style-3 color-extra02-style edublink-svg-animate">
                 <div class="icon">
-                    <img class="svgInject" src="{{asset('web/imagenes/icon03.svg')}}" alt="animated icon">
-                    <!-- <i class="icon-36"></i> -->
+                    @include('web.partials.icons.icon03')
                 </div>
                 <div class="content">
                     <h4 class="title">A Distancia</h4>
@@ -616,4 +614,27 @@
         </ul>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof Vivus === 'undefined') {
+            return;
+        }
+
+        document.querySelectorAll('.features-area-3 .feature-icon').forEach(function (svg) {
+            new Vivus(svg, { duration: 80 });
+        });
+
+        document.querySelectorAll('.features-area-3 .edublink-svg-animate').forEach(function (box) {
+            box.addEventListener('mouseenter', function () {
+                var svg = this.querySelector('.feature-icon');
+                if (svg) {
+                    new Vivus(svg, { duration: 50 });
+                }
+            });
+        });
+    });
+</script>
 @endsection
