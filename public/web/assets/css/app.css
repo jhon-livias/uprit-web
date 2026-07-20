@@ -912,8 +912,8 @@
     overflow: hidden;
     background-image: -webkit-linear-gradient(70deg, #91001E 0%, #91001E 100%);
     background-image: linear-gradient(20deg, #91001E 0%, #91001E 100%);
-    -webkit-transition: all 1.5s ease-out;
-    transition: all 1.5s ease-out
+    -webkit-transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out
 }
 
 #edublink-preloader.loaded .preloader-close-btn-wraper {
@@ -925,8 +925,8 @@
     bottom: 0;
     right: 0;
     padding: 30px;
-    -webkit-transition: all 1.5s ease-out;
-    transition: all 1.5s ease-out
+    -webkit-transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out
 }
 
 .preloader-close-btn-wraper .preloader-close-btn {
