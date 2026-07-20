@@ -41,11 +41,13 @@ Reduce el peso de `@public/web/assets/css/app.css` (~990 KB / 45151 líneas).
 
 Script: `node scripts/split-uprit-css.mjs` (re-ejecutable sobre backup si hace falta).
 
-| Archivo | Antes | Después |
-|---------|-------|---------|
-| `app.css` | ~990 KB / 45151 líneas | ~824 KB / 36831 líneas |
-| `uprit-custom.css` | — | ~51 KB / 3271 líneas |
-| **Total descargado** | ~990 KB | ~875 KB (−~115 KB) |
+| Archivo | Antes | Después (actual en repo) |
+|---------|-------|---------------------------|
+| `app.css` | ~990 KB / 45151 líneas | **~824 KB / 36830 líneas** |
+| `uprit-custom.css` | — | **~52 KB / 3282 líneas** |
+| **Total descargado** | ~990 KB | **~876 KB** (−~114 KB) |
+
+> Medición local: `app.css` 843708 bytes, `uprit-custom.css` 53094 bytes. El script `split-uprit-css.mjs` solo debe ejecutarse **una vez** sobre el `app.css` original; si ya se aplicó, no volver a correr (rompe rangos de líneas).
 
 ### Eliminado de `app.css` (no usado en UPRIT)
 
@@ -60,7 +62,13 @@ Reglas custom UPRIT desde ~línea 41881: preloader, hero, header sticky, marques
 
 ### No tocado (paridad visual)
 
-- Bloque `.dark-mode` completo (toggle en `principal.blade.php`).
+- Bloque `.dark-mode` completo (toggle en `principal.blade.php`); referencias `.pv-*` restantes solo en reglas dark-mode del theme.
 - CSS vendor en `<head>` (lightbox, odometer, etc.) — revisión aparte si se condiciona por página.
 - PurgeCSS agresivo del resto del theme.
+
+### Verificación en repo
+
+- `principal.blade.php` líneas 23–24: `app.css` + `uprit-custom.css`.
+- `app.css`: sin `html[dir="rtl"]` ni `.edublink-landing-page`.
+- `uprit-custom.css`: `#edublink-preloader`, `.convenios-area`, hero, marquesina, chatbot, etc.
 
