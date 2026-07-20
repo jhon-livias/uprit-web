@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
 use App\Models\NivelAcademico;
+use App\Services\WebNavigationCache;
 
 class CategoriaController extends Controller
 {
@@ -30,6 +31,7 @@ class CategoriaController extends Controller
         $categoria->padre_id = $request->padre_id;
         $categoria->nombre = $request->nombre;
         $categoria->save();
+        WebNavigationCache::forget();
         return response()->json(true);
     }
     public function update(Request $request)
@@ -39,6 +41,7 @@ class CategoriaController extends Controller
         $categoria->padre_id = $request->padre_id;
         $categoria->nombre = $request->nombre;
         $categoria->save();
+        WebNavigationCache::forget();
         return response()->json(true);
     }
 
@@ -57,6 +60,7 @@ class CategoriaController extends Controller
         }
 
         $categoria->delete();
+        WebNavigationCache::forget();
 
         return response()->json(true);
     }

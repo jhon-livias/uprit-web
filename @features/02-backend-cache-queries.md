@@ -38,3 +38,24 @@ Esto alimenta el menú del header y el chatbot vía `View::share()`.
 - Opcional: `app/Observers/` si encaja con el proyecto
 
 ---
+
+## Resultado aplicado
+
+| Componente | Detalle |
+|------------|---------|
+| `app/Services/WebNavigationCache.php` | Caché con `Cache::remember()` — menú ligero + chatbot completo |
+| `AppServiceProvider` | `View::share()` vía servicio |
+| `principal.blade.php` | JSON del chatbot usa `chatbot*Categorias` (datos completos) |
+| `header.blade.php` | Sin cambios — usa `pregradoCategorias` etc. (solo id/nombre) |
+| Admin | `WebNavigationCache::forget()` en Categoria, Carrera, Nivel |
+
+**Keys de caché:** `web.nav.nivel_academico`, `web.nav.menu.*`, `web.nav.chatbot.*`
+
+**TTL:** `WEB_NAV_CACHE_TTL` en `.env` (default 3600 s)
+
+**Invalidar manualmente:**
+```bash
+php artisan tinker --execute="App\Services\WebNavigationCache::forget();"
+```
+
+---

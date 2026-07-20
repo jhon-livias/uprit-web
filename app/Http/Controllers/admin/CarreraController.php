@@ -11,6 +11,7 @@ use App\Models\CarreraPregunta;
 use App\Models\CarreraMalla;
 use App\Models\CarreraPerfilEgresado;
 use App\Models\CarreraDocente;
+use App\Services\WebNavigationCache;
 
 
 class CarreraController extends Controller
@@ -55,6 +56,7 @@ class CarreraController extends Controller
             $carrera->imagen = $nameimg;
         }
         $carrera->save();
+        WebNavigationCache::forget();
         return response()->json(true);
     }
 
@@ -98,6 +100,7 @@ class CarreraController extends Controller
 
 
         $carrera->save();
+        WebNavigationCache::forget();
         return response()->json(true);
     }
 
@@ -111,6 +114,7 @@ class CarreraController extends Controller
             }
         }
         $carrera->delete();
+        WebNavigationCache::forget();
 
         return response()->json(true);
     }
@@ -154,6 +158,7 @@ class CarreraController extends Controller
             }
         }
 
+        WebNavigationCache::forget();
         return response()->json(true);
     }
 
@@ -190,6 +195,7 @@ class CarreraController extends Controller
             }
         }
 
+        WebNavigationCache::forget();
         return response()->json(true);
     }
 
@@ -205,6 +211,7 @@ class CarreraController extends Controller
         }
 
         $carrera_perfil->save();
+        WebNavigationCache::forget();
 
         return response()->json(true);
     }
@@ -270,6 +277,7 @@ class CarreraController extends Controller
             }
         }
 
+        WebNavigationCache::forget();
         return response()->json(true);
     }
 }
