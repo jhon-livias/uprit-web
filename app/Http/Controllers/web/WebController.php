@@ -24,7 +24,10 @@ class WebController extends Controller
             ->where('video', '!=', '')
             ->orderby('orden', 'asc')
             ->get();
-        $noticias = Noticia::orderBy('fecha', 'desc')->get();
+        $noticias = Noticia::with('categoriaNoticia')
+            ->orderBy('fecha', 'desc')
+            ->limit(6)
+            ->get();
         $testimonios = Testimonio::whereNotNull('imagen')
             ->where('imagen', '!=', '')
             ->get();

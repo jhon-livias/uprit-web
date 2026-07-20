@@ -323,11 +323,13 @@
             <span class="shape-line"><i class="icon-19"></i></span>
         </div>
         <div class="row g-5 row--45">
+            @if($noticias->isNotEmpty())
+            @php
+                $principal = $noticias->first();
+                $noticiasLaterales = $noticias->skip(1);
+            @endphp
             <!-- Start Blog Grid  -->
             <div class="col-lg-6 col-12 blog-left" data-sal-delay="50" data-sal="slide-up" data-sal-duration="800">
-                @php
-                $principal = $noticias->first();
-                @endphp
                 <div class="edu-blog blog-style-2 first-large-blog">
                     <div class="inner">
                         <div class="thumbnail">
@@ -354,12 +356,12 @@
                 </div>
             </div>
             <div class="col-lg-6 blog-right" data-sal-delay="100" data-sal="slide-up" data-sal-duration="800">
-                @foreach($noticias->skip(1) as $noticia)
+                @foreach($noticiasLaterales as $noticia)
                 <div class="edu-blog blog-style-2">
                     <div class="inner">
                         <div class="thumbnail">
                             <a href="{{route('web.detallenoticia',$noticia->id)}}">
-                                <img src="{{ asset('noticias_imagenes/' . $noticia->imagen) }}" style="width: 240px;" alt="Blog Images">
+                                <img src="{{ asset('noticias_imagenes/' . $noticia->imagen) }}" style="width: 240px;" alt="Blog Images" loading="lazy" decoding="async">
                             </a>
                             <div class="blog-date">
                                 <span class="day">{{ \Carbon\Carbon::parse($noticia->fecha)->format('d') }}</span>
@@ -381,6 +383,7 @@
                 @endforeach
 
             </div>
+            @endif
         </div>
     </div>
 </div>

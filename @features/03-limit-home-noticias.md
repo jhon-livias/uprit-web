@@ -31,3 +31,16 @@ La vista `@resources/views/web/index.blade.php` solo muestra la primera noticia 
 - `resources/views/web/index.blade.php`
 
 ---
+
+## Resultado aplicado
+
+| Cambio | Detalle |
+|--------|---------|
+| Query home | `with('categoriaNoticia')->limit(6)->get()` — 1 destacada + hasta 5 laterales |
+| Vista | `$noticiasLaterales = $noticias->skip(1)` sobre colección ya acotada; `@if($noticias->isNotEmpty())` |
+| Lazy load | Solo imágenes del listado lateral (`loading="lazy" decoding="async"`) |
+| Otras rutas | Sin cambios (`noticias()`, `detalle`, etc.) |
+
+**Conteo en vista:** 1 `$principal` + `$noticias->skip(1)` → máximo **6** noticias visibles (mismo layout del tema `blog-area-3`).
+
+---
