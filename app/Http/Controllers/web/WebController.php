@@ -147,7 +147,7 @@ class WebController extends Controller
     }
     public function programa()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(3)->get();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->limit(6)->get();
         return view('web.programa', compact('ultimasnoticias'));
     }
     

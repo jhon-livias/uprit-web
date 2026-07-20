@@ -712,6 +712,8 @@
 .mega-contenido {
     flex: 1;
     padding: 35px;
+    max-height: min(75vh, 720px);
+    overflow-y: auto;
 }
 
 /* cajas */
