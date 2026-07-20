@@ -6,8 +6,12 @@
             @foreach($sliders as $slider)
             <div class="swiper-slide slider-principal slider-con-video">
                 @if($slider->video)
-                <video class="slider-video" autoplay muted loop playsinline>
+                <video class="slider-video" muted loop playsinline @if($loop->first) autoplay preload="auto" @else preload="none" @endif>
+                    @if($loop->first)
                     <source src="{{ asset('slider_principal_videos/' . $slider->video) }}" type="video/mp4">
+                    @else
+                    <source data-src="{{ asset('slider_principal_videos/' . $slider->video) }}" type="video/mp4">
+                    @endif
                     Tu navegador no soporta videos HTML5.
                 </video>
                 @endif
@@ -127,17 +131,17 @@
             </div>
             <div class="col-lg-6">
                 <div class="about-image-gallery">
-                    <img class="main-img-1" data-sal-delay="100" data-sal="slide-up" data-sal-duration="800" src="{{asset('web/imagenes/about/about-04.webp')}}" alt="About Image">
-                    <img class="main-img-2" data-sal-delay="100" data-sal="slide-left" data-sal-duration="800" src="{{asset('web/imagenes/about/about-05.webp')}}" alt="About Image">
+                    <img class="main-img-1" data-sal-delay="100" data-sal="slide-up" data-sal-duration="800" src="{{asset('web/imagenes/about/about-04.webp')}}" alt="About Image" width="520" height="520" loading="lazy" decoding="async">
+                    <img class="main-img-2" data-sal-delay="100" data-sal="slide-left" data-sal-duration="800" src="{{asset('web/imagenes/about/about-05.webp')}}" alt="About Image" width="280" height="350" loading="lazy" decoding="async">
                     <ul class="shape-group">
                         <li class="shape-1 scene" data-sal-delay="500" data-sal="fade" data-sal-duration="200">
-                            <img data-depth="2" src="{{asset('web/imagenes/shape-13.webp')}}" alt="Shape">
+                            <img data-depth="2" src="{{asset('web/imagenes/shape-13.webp')}}" alt="" width="80" height="80" loading="lazy" decoding="async">
                         </li>
                         <li class="shape-2 scene" data-sal-delay="500" data-sal="fade" data-sal-duration="200">
-                            <img data-depth="-2" src="{{asset('web/assets/images/about/shape-39.png')}}" alt="Shape">
+                            <img data-depth="-2" src="{{asset('web/assets/images/about/shape-39.png')}}" alt="" width="80" height="80" loading="lazy" decoding="async">
                         </li>
                         <li class="shape-3 scene" data-sal-delay="500" data-sal="fade" data-sal-duration="200">
-                            <img data-depth="2" src="{{asset('web/imagenes/shape-07.webp')}}" alt="Shape">
+                            <img data-depth="2" src="{{asset('web/imagenes/shape-07.webp')}}" alt="" width="80" height="80" loading="lazy" decoding="async">
                         </li>
                         <li class="shape-4" data-sal-delay="500" data-sal="fade" data-sal-duration="200">
                             <span></span>
@@ -149,10 +153,10 @@
     </div>
     <ul class="shape-group">
         <li class="shape-escudo">
-            <img src="{{asset('web/imagenes/sello02.webp')}}">
+            <img src="{{asset('web/imagenes/sello02.webp')}}" alt="" width="120" height="120" loading="lazy" decoding="async">
         </li>
         <li class="shape-5">
-            <img class="rotateit" src="{{asset('web/imagenes/sello01.webp')}}" alt="Shape">
+            <img class="rotateit" src="{{asset('web/imagenes/sello01.webp')}}" alt="" width="120" height="120" loading="lazy" decoding="async">
         </li>
         <li class="shape-6">
             <span></span>
@@ -191,7 +195,7 @@
                 <div class="swiper-wrapper">
                     @foreach($sliderscarrera as $slcarrera)
                     <div class="swiper-slide">
-                        <div class="slide-image" data-background="{{ asset('slider_carreras_imagenes/' . $slcarrera->imagen) }}">
+                        <div class="slide-image" @if($loop->first) data-background="{{ asset('slider_carreras_imagenes/' . $slcarrera->imagen) }}" @else data-bg-lazy="{{ asset('slider_carreras_imagenes/' . $slcarrera->imagen) }}" @endif>
                         </div>
                     </div>
                     @endforeach
@@ -409,7 +413,7 @@
                             <div class="testimonial-grid">
                                 <div class="thumbnail">
                                     @if($testimonio->imagen)
-                                    <img src="{{ asset('testimonios_imagenes/' . $testimonio->imagen) }}" alt="Testimonial">
+                                    <img src="{{ asset('testimonios_imagenes/' . $testimonio->imagen) }}" alt="Testimonial" width="120" height="120" loading="lazy" decoding="async">
                                     @endif
                                     <span class="qoute-icon"><i class="icon-26"></i></span>
 
@@ -446,43 +450,7 @@
     <div class="features-wrapper">
         <div class="feature-wrap">
             <div class="features-track">
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
-                <div class="feature-text">Licenciamiento SUNEDU</div>
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
-                <div class="feature-text">Bolsa de Trabajo</div>
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
-                <div class="feature-text">Metodología L4P</div>
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
-                <div class="feature-text">Certificados Blockchain</div>
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
-                <div class="feature-text">Sistema STA</div>
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
-                <div class="feature-text">Cátedra Rockstar</div>
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
-                <div class="feature-text">Campus Ecológico</div>
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
-                <div class="feature-text">Actitud Emprendedora</div>
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
-                <div class="feature-text">Movilidad Internacional</div>
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
-                <div class="feature-text">Licenciamiento SUNEDU</div>
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
-                <div class="feature-text">Bolsa de Trabajo</div>
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
-                <div class="feature-text">Metodología L4P</div>
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
-                <div class="feature-text">Certificados Blockchain</div>
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
-                <div class="feature-text">Sistema STA</div>
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
-                <div class="feature-text">Cátedra Rockstar</div>
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
-                <div class="feature-text">Campus Ecológico</div>
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
-                <div class="feature-text">Actitud Emprendedora</div>
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
-                <div class="feature-text">Movilidad Internacional</div>
-                <img class="features-icon" src="{{asset('web/imagenes/icon-uprit.webp')}}" alt="">
+                @include('web.partials.marquesina-track', ['marquesinaIconHome' => true])
             </div>
         </div>
     </div>
@@ -611,8 +579,8 @@
         </div>
         <ul class="shape-group">
             <li class="shape-1" data-sal-delay="200" data-sal="fade" data-sal-duration="1000">
-                <img class="d-block-shape-light" data-depth="2" src="{{asset('web/assets/images/others/map-shape-3.png')}}" alt="Shape">
-                <img class="d-none-shape-dark" data-depth="2" src="{{asset('web/assets/images/others/dark-map-2-shape-3.png')}}" alt="Shape">
+                <img class="d-block-shape-light" data-depth="2" src="{{asset('web/assets/images/others/map-shape-3.png')}}" alt="" width="600" height="400" loading="lazy" decoding="async">
+                <img class="d-none-shape-dark" data-depth="2" src="{{asset('web/assets/images/others/dark-map-2-shape-3.png')}}" alt="" width="600" height="400" loading="lazy" decoding="async">
             </li>
         </ul>
     </div>
@@ -638,6 +606,93 @@
                 }
             });
         });
+    });
+
+    window.addEventListener('load', function () {
+        function syncHeroSlideVideo(swiper) {
+            if (!swiper || !swiper.slides) {
+                return;
+            }
+
+            swiper.slides.forEach(function (slide) {
+                var video = slide.querySelector('.slider-video');
+                if (!video) {
+                    return;
+                }
+
+                var isActive = slide.classList.contains('swiper-slide-active');
+                var source = video.querySelector('source');
+
+                if (isActive) {
+                    if (source && source.dataset.src && !source.getAttribute('src')) {
+                        source.src = source.dataset.src;
+                        video.load();
+                    }
+
+                    var tryPlay = function () {
+                        if (slide.classList.contains('swiper-slide-active')) {
+                            video.play().catch(function () {});
+                        }
+                    };
+
+                    if (video.readyState >= 2) {
+                        tryPlay();
+                    } else {
+                        video.addEventListener('loadeddata', tryPlay, { once: true });
+                        video.addEventListener('canplay', tryPlay, { once: true });
+                    }
+                } else {
+                    video.pause();
+                }
+            });
+        }
+
+        function bindHeroVideoSync() {
+            var heroEl = document.querySelector('.university-activator');
+            var swiper = heroEl && heroEl.swiper;
+
+            if (!swiper || swiper.__upritHeroVideoBound) {
+                return;
+            }
+
+            swiper.__upritHeroVideoBound = true;
+            syncHeroSlideVideo(swiper);
+            swiper.on('slideChangeTransitionEnd', function () {
+                syncHeroSlideVideo(swiper);
+            });
+            swiper.on('slideChange', function () {
+                syncHeroSlideVideo(swiper);
+            });
+        }
+
+        bindHeroVideoSync();
+        window.setTimeout(bindHeroVideoSync, 300);
+
+        function applyCareerSlideBackground(slide) {
+            if (!slide) {
+                return;
+            }
+
+            var bg = slide.querySelector('.slide-image[data-bg-lazy]:not([data-bg-loaded])');
+            if (!bg || !bg.dataset.bgLazy) {
+                return;
+            }
+
+            bg.style.backgroundImage = "url('" + bg.dataset.bgLazy + "')";
+            bg.style.backgroundPosition = 'center';
+            bg.style.backgroundSize = 'cover';
+            bg.dataset.bgLoaded = '1';
+        }
+
+        var careerEl = document.querySelector('.health-slider-main');
+        var careerSwiper = careerEl && careerEl.swiper;
+
+        if (careerSwiper) {
+            applyCareerSlideBackground(careerSwiper.slides[careerSwiper.activeIndex]);
+            careerSwiper.on('slideChange', function () {
+                applyCareerSlideBackground(careerSwiper.slides[careerSwiper.activeIndex]);
+            });
+        }
     });
 </script>
 @endsection

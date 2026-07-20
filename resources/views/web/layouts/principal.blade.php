@@ -49,7 +49,8 @@
             <img
                 class="logo-light"
                 src="{{ asset('web/imagenes/logo_uprit_light.svg') }}"
-                alt="Corporate Logo">
+                alt="Corporate Logo"
+                fetchpriority="high">
         </div>
     </div>
     <script>

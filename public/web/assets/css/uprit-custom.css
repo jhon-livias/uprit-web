@@ -2468,6 +2468,17 @@ body.dark-mode .list-noticia-bg {
     background: #91001E;
 }
 
+.features-area-9 .features-wrapper .feature-wrap .features-track .features-icon {
+    display: inline-block;
+    height: 30px;
+    flex: 0 0 30px;
+    background: url('../imagenes/icon-uprit2.webp') center / contain no-repeat;
+}
+
+.features-area-9 .features-wrapper .feature-wrap .features-track .features-icon.features-icon--home {
+    background-image: url('../imagenes/icon-uprit.webp');
+}
+
 .marquesina .features-wrapper .feature-wrap .features-track .feature-text {
     color: #fff;
 }

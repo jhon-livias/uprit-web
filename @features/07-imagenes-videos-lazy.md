@@ -39,3 +39,19 @@ Optimiza imágenes y videos pesados en la web pública.
 - CSS relacionado en `public/web/assets/css/app.css` (marquesina, solo si necesario)
 
 ---
+
+## Resultado aplicado
+
+| Área | Cambio |
+|------|--------|
+| Hero MP4 | Solo slide 0 con `src` + `autoplay`; resto `data-src`, `preload="metadata"`; carga en `slideChange` |
+| Slider carreras | Primer slide `data-background`; resto `data-bg-lazy` + script en `@section('scripts')` |
+| Marquesina | Partial `marquesina-track.blade.php`: icono vía CSS (`span.features-icon`), 1 request por icono |
+| Home imágenes | `loading="lazy"` en about, testimonios, FAQ shapes; noticia lateral (Fase 3); **sin lazy** en hero ni noticia destacada |
+| Preloader | `fetchpriority="high"` en logo SVG |
+
+**Videos > 5 MB:** comprimir manualmente en `public/slider_principal_videos/` (HandBrake / ffmpeg); esta fase no re-encodea.
+
+**Verificación:** hero autoplay slide 1; cambiar slide carga video; slider carreras muestra fondo al navegar; marquesina anima igual (20s, −1750px).
+
+---
