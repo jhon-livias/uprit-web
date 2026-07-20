@@ -608,91 +608,141 @@
         });
     });
 
-    window.addEventListener('load', function () {
-        function syncHeroSlideVideo(swiper) {
-            if (!swiper || !swiper.slides) {
-                return;
-            }
-
-            swiper.slides.forEach(function (slide) {
-                var video = slide.querySelector('.slider-video');
-                if (!video) {
-                    return;
-                }
-
-                var isActive = slide.classList.contains('swiper-slide-active');
-                var source = video.querySelector('source');
-
-                if (isActive) {
-                    if (source && source.dataset.src && !source.getAttribute('src')) {
-                        source.src = source.dataset.src;
-                        video.load();
-                    }
-
-                    var tryPlay = function () {
-                        if (slide.classList.contains('swiper-slide-active')) {
-                            video.play().catch(function () {});
-                        }
-                    };
-
-                    if (video.readyState >= 2) {
-                        tryPlay();
-                    } else {
-                        video.addEventListener('loadeddata', tryPlay, { once: true });
-                        video.addEventListener('canplay', tryPlay, { once: true });
-                    }
-                } else {
-                    video.pause();
-                }
-            });
-        }
-
-        function bindHeroVideoSync() {
-            var heroEl = document.querySelector('.university-activator');
-            var swiper = heroEl && heroEl.swiper;
-
-            if (!swiper || swiper.__upritHeroVideoBound) {
-                return;
-            }
-
-            swiper.__upritHeroVideoBound = true;
-            syncHeroSlideVideo(swiper);
-            swiper.on('slideChangeTransitionEnd', function () {
-                syncHeroSlideVideo(swiper);
-            });
-            swiper.on('slideChange', function () {
-                syncHeroSlideVideo(swiper);
-            });
-        }
-
-        bindHeroVideoSync();
-        window.setTimeout(bindHeroVideoSync, 300);
-
-        function applyCareerSlideBackground(slide) {
-            if (!slide) {
-                return;
-            }
-
-            var bg = slide.querySelector('.slide-image[data-bg-lazy]:not([data-bg-loaded])');
-            if (!bg || !bg.dataset.bgLazy) {
-                return;
-            }
-
-            bg.style.backgroundImage = "url('" + bg.dataset.bgLazy + "')";
-            bg.style.backgroundPosition = 'center';
-            bg.style.backgroundSize = 'cover';
-            bg.dataset.bgLoaded = '1';
-        }
-
-        var careerEl = document.querySelector('.health-slider-main');
-        var careerSwiper = careerEl && careerEl.swiper;
-
-        if (careerSwiper) {
-            applyCareerSlideBackground(careerSwiper.slides[careerSwiper.activeIndex]);
-            careerSwiper.on('slideChange', function () {
-                applyCareerSlideBackground(careerSwiper.slides[careerSwiper.activeIndex]);
-            });
-        }
-    });
 </script>
 @endsection
+
+@push('after_app_scripts')
+<script>
+(function () {
+    function loadAndPlayHeroVideo(slide) {
+        if (!slide) {
+            return;
+        }
+
+        var video = slide.querySelector('.slider-video');
+        if (!video) {
+            return;
+        }
+
+        var source = video.querySelector('source');
+        if (source && source.dataset.src && !source.getAttribute('src')) {
+            source.src = source.dataset.src;
+            video.load();
+        } else if (video.paused && video.readyState < 2 && source && source.getAttribute('src')) {
+            video.load();
+        }
+
+        var tryPlay = function () {
+            video.play().catch(function () {});
+        };
+
+        if (video.readyState >= 2) {
+            tryPlay();
+        } else {
+            video.addEventListener('canplay', tryPlay, { once: true });
+        }
+    }
+
+    function syncHeroSlideVideo(swiper) {
+        if (!swiper || !swiper.slides || !swiper.slides.length) {
+            return;
+        }
+
+        var activeIndex = swiper.activeIndex;
+
+        swiper.slides.forEach(function (slide, index) {
+            var video = slide.querySelector('.slider-video');
+            if (!video) {
+                return;
+            }
+
+            if (index === activeIndex) {
+                loadAndPlayHeroVideo(slide);
+            } else {
+                video.pause();
+            }
+        });
+    }
+
+    function bindHeroVideoSync() {
+        var heroEl = document.querySelector('.university-activator.swiper-principal');
+        if (!heroEl) {
+            return true;
+        }
+
+        var swiper = heroEl.swiper;
+
+        if (!swiper) {
+            return false;
+        }
+
+        if (swiper.__upritHeroVideoBound) {
+            return true;
+        }
+
+        swiper.__upritHeroVideoBound = true;
+        syncHeroSlideVideo(swiper);
+        swiper.on('slideChangeTransitionEnd', function () {
+            syncHeroSlideVideo(swiper);
+        });
+
+        return true;
+    }
+
+    function applyCareerSlideBackground(slide) {
+        if (!slide) {
+            return;
+        }
+
+        var bg = slide.querySelector('.slide-image[data-bg-lazy]:not([data-bg-loaded])');
+        if (!bg || !bg.dataset.bgLazy) {
+            return;
+        }
+
+        bg.style.backgroundImage = "url('" + bg.dataset.bgLazy + "')";
+        bg.style.backgroundPosition = 'center';
+        bg.style.backgroundSize = 'cover';
+        bg.dataset.bgLoaded = '1';
+    }
+
+    function bindCareerLazyBackgrounds() {
+        var careerEl = document.querySelector('.health-slider-main');
+        if (!careerEl) {
+            return true;
+        }
+
+        var careerSwiper = careerEl.swiper;
+
+        if (!careerSwiper) {
+            return false;
+        }
+
+        if (careerSwiper.__upritCareerBgBound) {
+            return true;
+        }
+
+        careerSwiper.__upritCareerBgBound = true;
+        applyCareerSlideBackground(careerSwiper.slides[careerSwiper.activeIndex]);
+        careerSwiper.on('slideChange', function () {
+            applyCareerSlideBackground(careerSwiper.slides[careerSwiper.activeIndex]);
+        });
+
+        return true;
+    }
+
+    var homeSwiperInitAttempts = 0;
+
+    function initHomeSwiperHelpers() {
+        homeSwiperInitAttempts += 1;
+        var heroReady = bindHeroVideoSync();
+        var careerReady = bindCareerLazyBackgrounds();
+
+        if ((!heroReady || !careerReady) && homeSwiperInitAttempts < 120) {
+            window.requestAnimationFrame(initHomeSwiperHelpers);
+        }
+    }
+
+    initHomeSwiperHelpers();
+})();
+</script>
+@endpush
