@@ -43,3 +43,22 @@ Optimiza Iconify y SVG inject según métricas de Network tab.
 **Objetivo:** eliminar fetches lentos a mdi.json en carga inicial; reducir dependencia de svg-inject para above-the-fold.
 
 ---
+
+## Resultado aplicado
+
+| Componente | Cambio |
+|------------|--------|
+| Iconify MDI | Subset local (~10 KB): `public/web/assets/iconify/mdi-subset.json` + `public/web/assets/js/uprit-mdi-icons.js` |
+| `principal.blade.php` | `IconifyIcon.addCollection()` antes de render — **sin requests a api.iconify.design** |
+| Home features | `icon01–03` inline en `resources/views/web/partials/icons/` (elimina 3 fetches svg-inject) |
+| `index.blade.php` | Vivus en `@section('scripts')` (misma animación: 80 ms carga, 50 ms hover) |
+| Request `rum` | **No encontrado en el repo** — probable extensión del navegador, CDN o analytics externo; no modificado |
+
+**Regenerar subset** (si añades iconos MDI nuevos):
+```bash
+# Actualizar lista en scripts/fetch-mdi-subset (ver mdi-subset.json)
+```
+
+**Verificación:** Network tab → no debe aparecer `mdi.json?icons=...` ni `icon01.svg` en home.
+
+---

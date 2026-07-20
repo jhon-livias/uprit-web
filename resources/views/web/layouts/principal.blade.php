@@ -26,7 +26,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="{{ asset('web/assets/js/uprit-mdi-icons.js') }}" as="script">
+    <script src="{{ asset('web/assets/js/uprit-mdi-icons.js') }}"></script>
     <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <script>
+        (function () {
+            if (window.IconifyIcon && window.__UPRIT_MDI_ICONS) {
+                IconifyIcon.addCollection(window.__UPRIT_MDI_ICONS);
+            }
+        })();
+    </script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/opendyslexic@1.0.3/opendyslexic.min.css">
     @yield('styles')
