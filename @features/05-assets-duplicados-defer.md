@@ -20,10 +20,13 @@ Optimiza la carga de assets en `@resources/views/web/layouts/principal.blade.php
 4. Reducir Google Fonts a pesos 400, 600, 700 con `display=swap`.
 5. Identificar librerías no usadas en páginas web públicas y comentar/eliminar las que no se necesiten (grep en `resources/views/web/`).
 
-**Restricciones:**
-- No romper sliders, modales, chatbot ni menú móvil.
-- Probar home y al menos una página interna (ej. detalle carrera).
-- Cambio conservador: si dudas de una librería, déjala.
+**Restricciones (obligatorias):**
+- **Cero cambio visual:** mismos sliders, modales, menú, tipografías e iconos.
+- No quitar librerías sin grep en `resources/views/web/` y prueba en la página que las usa.
+- `defer` solo si el orden jQuery → plugins → app.js se mantiene; si algo deja de funcionar, revertir defer en ese script.
+- Al quitar Swiper duplicado, conservar la versión que ya usa el código (probar todos los Swiper de home y carreras).
+- Reducir Google Fonts solo si los pesos 400/600/700 cubren el CSS actual (revisar `app.css`); no cambiar aspecto del texto.
+- Probar home y al menos una página interna (ej. detalle carrera) antes y después.
 
 **Archivos:**
 - `resources/views/web/layouts/principal.blade.php`

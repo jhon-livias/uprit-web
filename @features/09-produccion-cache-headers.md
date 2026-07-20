@@ -27,7 +27,8 @@ Configura optimizaciones de producción para Laravel y assets estáticos.
 
 5. **Documentar** en `@features/README.md` o comentario en deploy cómo invalidar cachés tras cambios en menú/carreras.
 
-**Restricciones:**
+**Restricciones (obligatorias):**
+- **Solo infra:** headers, cache Laravel, deploy; no tocar HTML/CSS/JS de la web pública.
 - No commitear `.env`.
 - Cambios compatibles con hosting actual (Apache/XAMpp/nginx — detectar qué usa el proyecto).
 

@@ -26,8 +26,10 @@ Incluyen relaciones profundas (docentes, malla, preguntas, perfil) que inflan el
 1. Crear ruta `GET /api/chatbot/menu` que devuelva JSON mínimo.
 2. Cargar datos del chatbot solo al abrir el modal (click en contacto), no en cada page load.
 
-**Requisitos:**
+**Requisitos (obligatorios):**
 - Leer el script del chatbot en `principal.blade.php` (~líneas 832-1845) para identificar qué campos realmente necesita.
+- **Paridad funcional:** el chatbot debe mostrar las mismas respuestas y datos que antes; solo reducir peso del HTML.
+- No eliminar campos hasta probar flujos: pregrado, posgrado, carrera concreta, volver atrás.
 - Mantener funcionalidad del chatbot intacta.
 - Reducir KB del HTML document.
 

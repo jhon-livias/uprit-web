@@ -34,6 +34,12 @@ Optimiza Iconify y SVG inject según métricas de Network tab.
 - `resources/views/web/layouts/principal.blade.php`
 - Buscar: `grep -r "iconify-icon\|svgInject\|rum" resources/views/web/`
 
+**Restricciones (obligatorias):**
+- **Los iconos deben verse idénticos** (mismo tamaño, color, alineación). No sustituir por otro set si cambia el aspecto.
+- Preferir precarga/bundle de los mismos iconos MDI; inline SVG solo como copia pixel-equivalente.
+- SVG inject: si se inlinean icon01–03, mantener mismas dimensiones y animación Vivus si existía.
+- No eliminar `rum`/analytics si eso rompe otra cosa; solo diferir carga sin cambiar UX.
+
 **Objetivo:** eliminar fetches lentos a mdi.json en carga inicial; reducir dependencia de svg-inject para above-the-fold.
 
 ---

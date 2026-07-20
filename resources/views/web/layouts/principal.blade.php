@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{asset('web/assets/css/vendor/tipped.min.css')}}">
 
     <link rel="stylesheet" href="{{asset('web/assets/css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('web/assets/css/uprit-custom.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
