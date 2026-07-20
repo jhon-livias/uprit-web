@@ -1,5 +1,48 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
+## UPRIT Web — Deploy y cachés (producción)
+
+Hosting principal: **Apache** (`vps/deploy.sh` habilita `rewrite`, `headers`, `expires`, `deflate`, `brotli`).
+
+### Pipeline en servidor
+
+```bash
+composer install --no-dev --optimize-autoloader --no-interaction
+npm ci && npm run build
+php artisan optimize          # config:cache + route:cache + view:cache
+```
+
+En VPS: `./vps/update.sh --pull`
+
+### Variables `.env` en producción
+
+```env
+APP_ENV=production
+APP_DEBUG=false
+LOG_LEVEL=warning
+```
+
+### Invalidar cachés Laravel
+
+```bash
+php artisan optimize:clear
+```
+
+Tras editar categorías/carreras en admin (cuando exista `WebNavigationCache`):
+
+```bash
+php artisan tinker --execute="App\Services\WebNavigationCache::forget();"
+```
+
+### Assets estáticos
+
+- **Apache:** `public/.htaccess` — gzip/brotli + `Cache-Control` por ruta.
+- **nginx:** incluir `vps/nginx-static-cache.conf.example` en el `server { }`.
+
+Subidas (`noticias_imagenes/`, `slider_*`, etc.): `max-age=86400`. Tema `/web/assets/` CSS/JS: 7 días. Fuentes/imágenes vendor: 1 año.
+
+Más detalle: `@features/README.md` (Fase 9).
+
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
