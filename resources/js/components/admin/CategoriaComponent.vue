@@ -251,7 +251,9 @@ export default {
         storeCategoria() {
             let formData = new FormData();
             formData.append('nivel_academico_id', this.categoria.nivel_academico_id);
-            formData.append('padre_id', this.categoria.padre_id);
+            if (this.categoria.padre_id !== null && this.categoria.padre_id !== '') {
+                formData.append('padre_id', this.categoria.padre_id);
+            }
             formData.append('nombre', this.categoria.nombre);
             axios.post(route('categorias.store'), formData).then((response) => {
                 if (response.data) {
@@ -281,7 +283,9 @@ export default {
             let formData = new FormData();
             formData.append('id', this.categoria.id);
             formData.append('nivel_academico_id', this.categoria.nivel_academico_id);
-            formData.append('padre_id', this.categoria.padre_id);
+            if (this.categoria.padre_id !== null && this.categoria.padre_id !== '') {
+                formData.append('padre_id', this.categoria.padre_id);
+            }
             formData.append('nombre', this.categoria.nombre);
             axios.post(route('categorias.edit'), formData).then((response) => {
                 if (response.data) {
