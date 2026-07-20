@@ -1145,8 +1145,8 @@ export default {
             formData.append('grado_obtenido', this.carrera.grado_obtenido);
             formData.append('titulacion', this.carrera.titulacion);
             formData.append('modalidades', this.carrera.modalidades);
-            formData.append('brochure', this.carrera.brochure);
-            formData.append('imagen', this.carrera.imagen);
+            this.appendFileIfSelected(formData, 'brochure', this.carrera.brochure);
+            this.appendFileIfSelected(formData, 'imagen', this.carrera.imagen);
             axios.post(route('carreras.store'), formData).then((response) => {
                 if (response.data) {
                     Swal.fire({
@@ -1228,8 +1228,8 @@ export default {
             formData.append('grado_obtenido', this.carrera.grado_obtenido);
             formData.append('titulacion', this.carrera.titulacion);
             formData.append('modalidades', this.carrera.modalidades);
-            formData.append('brochure', this.carrera.brochure);
-            formData.append('imagen', this.carrera.imagen);
+            this.appendFileIfSelected(formData, 'brochure', this.carrera.brochure);
+            this.appendFileIfSelected(formData, 'imagen', this.carrera.imagen);
             axios.post(route('carreras.edit'), formData).then((response) => {
                 if (response.data) {
                     Swal.fire({
@@ -1284,47 +1284,38 @@ export default {
             });
         },
 
+        appendFileIfSelected(formData, key, value) {
+            if (value instanceof File) {
+                formData.append(key, value);
+            }
+        },
+
         imagen(event) {
-            var drEvent = $('.dropify').dropify(
-            );
-            drEvent = drEvent.data('dropify');
-            drEvent.resetPreview();
-            drEvent.settings.defaultFile = "";
-            drEvent.destroy();
-            drEvent.init();
-            this.carrera.imagen = event.target.files[0];
+            const file = event.target.files?.[0];
+            if (file) {
+                this.carrera.imagen = file;
+            }
         },
 
         imagen_edit(event) {
-            var drEvent = $('.dropify').dropify(
-            );
-            drEvent = drEvent.data('dropify');
-            drEvent.resetPreview();
-            drEvent.settings.defaultFile = "";
-            drEvent.destroy();
-            drEvent.init();
-            this.carrera.imagen = event.target.files[0];
+            const file = event.target.files?.[0];
+            if (file) {
+                this.carrera.imagen = file;
+            }
         },
+
         brochure(event) {
-            var drEvent = $('.dropify').dropify(
-            );
-            drEvent = drEvent.data('dropify');
-            drEvent.resetPreview();
-            drEvent.settings.defaultFile = "";
-            drEvent.destroy();
-            drEvent.init();
-            this.carrera.brochure = event.target.files[0];
+            const file = event.target.files?.[0];
+            if (file) {
+                this.carrera.brochure = file;
+            }
         },
 
         brochure_edit(event) {
-            var drEvent = $('.dropify').dropify(
-            );
-            drEvent = drEvent.data('dropify');
-            drEvent.resetPreview();
-            drEvent.settings.defaultFile = "";
-            drEvent.destroy();
-            drEvent.init();
-            this.carrera.brochure = event.target.files[0];
+            const file = event.target.files?.[0];
+            if (file) {
+                this.carrera.brochure = file;
+            }
         },
 
         agregarFaq() {
