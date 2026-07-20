@@ -882,9 +882,9 @@
             let carreraSeleccionada = "";
             let categoriaSeleccionada = null;
             const nivelesAcademicos = @json($nivelAcademico);
-            const pregradoCategorias = @json($pregradoCategorias);
-            const pregradoPuedeCategorias = @json($pregradoPuedeCategorias);
-            const posgradoCategorias = @json($posgradoCategorias);
+            const pregradoCategorias = @json($chatbotPregradoCategorias);
+            const pregradoPuedeCategorias = @json($chatbotPregradoPuedeCategorias);
+            const posgradoCategorias = @json($chatbotPosgradoCategorias);
 
             const menu = {
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\NivelAcademico;
+use App\Services\WebNavigationCache;
 
 class NivelController extends Controller
 {
@@ -25,6 +26,7 @@ class NivelController extends Controller
         $nivel = new NivelAcademico();
         $nivel->nombre = $request->nombre;
         $nivel->save();
+        WebNavigationCache::forget();
         return response()->json(true);
     }
     public function update(Request $request)
@@ -32,6 +34,7 @@ class NivelController extends Controller
         $nivel = NivelAcademico::find($request->id);
         $nivel->nombre = $request->nombre;
         $nivel->save();
+        WebNavigationCache::forget();
         return response()->json(true);
     }
 
@@ -45,6 +48,7 @@ class NivelController extends Controller
         }
 
         $nivel->delete();
+        WebNavigationCache::forget();
 
         return response()->json(true);
     }
