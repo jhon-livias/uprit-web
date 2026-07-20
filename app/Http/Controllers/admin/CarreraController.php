@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use App\Models\Carrera;
 use App\Models\Categoria;
 use App\Models\CarreraDescripcion;
@@ -41,19 +42,13 @@ class CarreraController extends Controller
         $carrera->grado_obtenido = $request->grado_obtenido;
         $carrera->titulacion = $request->titulacion;
         $carrera->modalidades = $request->modalidades;
-        if ($request->hasFile('brochure')) {
-            $file = $request->file('brochure');
-            $nameimg = 'brochure_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
-            $path = public_path() . '/brochures_carreras/';
-            $file->move($path, $nameimg);
-            $carrera->brochure = $nameimg;
+        $brochure = $this->savePublicUpload($request, 'brochure', 'brochures_carreras', 'brochure');
+        if ($brochure !== null) {
+            $carrera->brochure = $brochure;
         }
-        if ($request->hasFile('imagen')) {
-            $file = $request->file('imagen');
-            $nameimg = 'imagen_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
-            $path = public_path() . '/brochures_imagenes/';
-            $file->move($path, $nameimg);
-            $carrera->imagen = $nameimg;
+        $imagen = $this->savePublicUpload($request, 'imagen', 'brochures_imagenes', 'imagen');
+        if ($imagen !== null) {
+            $carrera->imagen = $imagen;
         }
         $carrera->save();
         WebNavigationCache::forget();
@@ -71,33 +66,14 @@ class CarreraController extends Controller
         $carrera->grado_obtenido = $request->grado_obtenido;
         $carrera->titulacion = $request->titulacion;
         $carrera->modalidades = $request->modalidades;
-        if ($request->hasFile('brochure')) {
-            if ($carrera->brochure) {
-                $oldFilePath = public_path() . '/brochures_carreras/' . $carrera->brochure;
-                if (file_exists($oldFilePath)) {
-                    unlink($oldFilePath);
-                }
-            }
-            $file = $request->file('brochure');
-            $nameimg = 'brochure_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
-            $path = public_path() . '/brochures_carreras/';
-            $file->move($path, $nameimg);
-            $carrera->brochure = $nameimg;
+        $brochure = $this->savePublicUpload($request, 'brochure', 'brochures_carreras', 'brochure', $carrera->brochure);
+        if ($brochure !== null) {
+            $carrera->brochure = $brochure;
         }
-        if ($request->hasFile('imagen')) {
-            if ($carrera->imagen) {
-                $oldFilePath = public_path() . '/brochures_imagenes/' . $carrera->imagen;
-                if (file_exists($oldFilePath)) {
-                    unlink($oldFilePath);
-                }
-            }
-            $file = $request->file('imagen');
-            $nameimg = 'imagen_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
-            $path = public_path() . '/brochures_imagenes/';
-            $file->move($path, $nameimg);
-            $carrera->imagen = $nameimg;
+        $imagen = $this->savePublicUpload($request, 'imagen', 'brochures_imagenes', 'imagen', $carrera->imagen);
+        if ($imagen !== null) {
+            $carrera->imagen = $imagen;
         }
-
 
         $carrera->save();
         WebNavigationCache::forget();
@@ -279,5 +255,37 @@ class CarreraController extends Controller
 
         WebNavigationCache::forget();
         return response()->json(true);
+    }
+
+    private function savePublicUpload(
+        Request $request,
+        string $field,
+        string $directory,
+        string $prefix,
+        ?string $oldFilename = null
+    ): ?string {
+        if (!$request->hasFile($field)) {
+            return null;
+        }
+
+        $file = $request->file($field);
+        if (!$file->isValid()) {
+            return null;
+        }
+
+        $path = public_path($directory);
+        File::ensureDirectoryExists($path, 0775);
+
+        if ($oldFilename) {
+            $oldFilePath = $path . DIRECTORY_SEPARATOR . $oldFilename;
+            if (is_file($oldFilePath)) {
+                unlink($oldFilePath);
+            }
+        }
+
+        $filename = $prefix . '_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
+        $file->move($path, $filename);
+
+        return $filename;
     }
 }
