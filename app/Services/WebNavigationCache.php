@@ -159,6 +159,8 @@ class WebNavigationCache
         return $query
             ->with([
                 'carreras' => fn ($q) => $q->select($carreraColumns)->orderBy('nombre'),
+                'hijos' => fn ($q) => $q->select($categoriaColumns)->orderBy('nombre'),
+                'hijos.carreras' => fn ($q) => $q->select($carreraColumns)->orderBy('nombre'),
             ])
             ->orderBy('nombre')
             ->get();
