@@ -17,6 +17,17 @@ class Categoria extends Model
         
     ];
 
+    public function setPadreIdAttribute(mixed $value): void
+    {
+        if ($value === null || $value === '' || $value === 'null' || $value === 'undefined') {
+            $this->attributes['padre_id'] = null;
+
+            return;
+        }
+
+        $this->attributes['padre_id'] = (int) $value;
+    }
+
     public function nivelAcademico()
     {
         return $this->belongsTo(NivelAcademico::class);
