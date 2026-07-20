@@ -41,6 +41,48 @@
                 alt="Corporate Logo">
         </div>
     </div>
+    <script>
+        (function () {
+            var preloader = document.getElementById('edublink-preloader');
+            if (!preloader) return;
+
+            var hidden = false;
+
+            function hidePreloader() {
+                if (hidden) return;
+                hidden = true;
+                preloader.classList.add('is-hidden');
+                window.setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 300);
+            }
+
+            function showSkipButton() {
+                if (hidden || preloader.querySelector('.preloader-close-btn-wraper')) return;
+
+                var wrap = document.createElement('div');
+                wrap.className = 'preloader-close-btn-wraper';
+
+                var btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'preloader-close-btn';
+                btn.textContent = 'Saltar';
+                btn.addEventListener('click', hidePreloader);
+
+                wrap.appendChild(btn);
+                preloader.appendChild(wrap);
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', hidePreloader);
+            } else {
+                hidePreloader();
+            }
+
+            window.setTimeout(showSkipButton, 2000);
+            window.setTimeout(hidePreloader, 3000);
+        })();
+    </script>
 
     <div id="main-wrapper" class="main-wrapper">
 
