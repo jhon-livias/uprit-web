@@ -39,3 +39,33 @@ Incluyen relaciones profundas (docentes, malla, preguntas, perfil) que inflan el
 - Opcional: `routes/web.php` + método en `WebController`
 
 ---
+
+## Resultado aplicado (Opción A)
+
+| Componente | Cambio |
+|------------|--------|
+| `WebNavigationCache` | `buildChatbotByNivel()` + `mapCarreraForChatbot()` — arrays mínimos cacheados |
+| `principal.blade.php` | Ya usa `$chatbotPregradoCategorias`, `$chatbotPregradoPuedeCategorias`, `$chatbotPosgradoCategorias` (Fase 2) |
+| Menú header | Sigue con `$pregradoCategorias` / `$posgradoCategorias` ligeros (id/nombre) |
+
+### Campos por carrera (solo los que usa `mostrarRespuesta()`)
+
+- **General:** `id`, `nombre`, `admision`, `duracion`, `grado_obtenido`, `titulacion`, `modalidades`
+- **Descripción:** `detalle_descripcion.descripcion`, `detalle_descripcion.oportunidades`
+- **Perfil:** `perfil_egresado.descripcion`
+- **Docentes:** `nombre`, `tags`, `correo`, `departamento` (sin `imagen`, `linkedin`, etc.)
+- **Malla:** `ciclo`, `descripcion`, `cursos`
+- **Preguntas:** `pregunta`, `respuesta`
+
+### Peso JSON embebido (medido en dev)
+
+| Dataset | Antes (Eloquent completo, pregrado) | Después (mínimo) |
+|---------|-------------------------------------|------------------|
+| Pregrado | ~279 KB | ~166 KB (−41%) |
+| **Total 3 datasets** | ~800+ KB estimado | **~501 KB** |
+
+Invalidar caché tras deploy o al editar carreras: `WebNavigationCache::forget()` (ya en controllers admin).
+
+**Verificación manual:** flujos pregrado → buscar carrera → Información General / Descripción / Malla / Docentes; posgrado con subcategorías; volver atrás.
+
+---
