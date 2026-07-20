@@ -59,6 +59,11 @@
                                             @foreach($categoria->carreras as $carrera)
                                             <li><a href="{{route('web.detallecarrera', $carrera->id)}}">{{ $carrera->nombre }}</a></li>
                                             @endforeach
+                                            @foreach($categoria->hijos as $hijo)
+                                                @foreach($hijo->carreras as $carrera)
+                                                <li><a href="{{route('web.detallecarrera', $carrera->id)}}">{{ $carrera->nombre }}</a></li>
+                                                @endforeach
+                                            @endforeach
                                         </ul>
                                     </li>
                                     @endforeach
@@ -85,6 +90,11 @@
                                         <ul class="submenu mega-sub-menu mega-sub-menu-01">
                                             @foreach($categoria->carreras as $carrera)
                                             <li><a href="{{route('web.detallecarrera', $carrera->id)}}">{{ $carrera->nombre }}</a></li>
+                                            @endforeach
+                                            @foreach($categoria->hijos as $hijo)
+                                                @foreach($hijo->carreras as $carrera)
+                                                <li><a href="{{route('web.detallecarrera', $carrera->id)}}">{{ $carrera->nombre }}</a></li>
+                                                @endforeach
                                             @endforeach
                                         </ul>
                                     </li>
@@ -269,6 +279,11 @@
                                 @foreach($categoria->carreras as $carrera)
                                 <li><a href="{{route('web.detallecarrera', $carrera->id)}}">{{ $carrera->nombre }}</a></li>
                                 @endforeach
+                                @foreach($categoria->hijos as $hijo)
+                                    @foreach($hijo->carreras as $carrera)
+                                    <li><a href="{{route('web.detallecarrera', $carrera->id)}}">{{ $carrera->nombre }}</a></li>
+                                    @endforeach
+                                @endforeach
                             </ul>
                         </li>
                         @endforeach
@@ -306,6 +321,11 @@
                             <ul class="submenu">
                                 @foreach($categoria->carreras as $carrera)
                                 <li><a href="{{route('web.detallecarrera', $carrera->id)}}">{{ $carrera->nombre }}</a></li>
+                                @endforeach
+                                @foreach($categoria->hijos as $hijo)
+                                    @foreach($hijo->carreras as $carrera)
+                                    <li><a href="{{route('web.detallecarrera', $carrera->id)}}">{{ $carrera->nombre }}</a></li>
+                                    @endforeach
                                 @endforeach
                             </ul>
                         </li>
