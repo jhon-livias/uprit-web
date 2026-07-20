@@ -36,3 +36,17 @@ Arregla el preloader lento en `@resources/views/web/layouts/principal.blade.php`
 - `public/web/assets/css/app.css` (solo reglas del preloader)
 
 ---
+
+## Resultado aplicado
+
+| Requisito | Implementación |
+|-----------|----------------|
+| Ocultar en `DOMContentLoaded` | Script inline en `principal.blade.php` (líneas ~44–85) |
+| Fallback 3 s | `setTimeout(hidePreloader, 3000)` |
+| Botón «Saltar» a los 2 s | Inyectado por JS si sigue visible |
+| Transición ~300 ms | `app.css` + `.is-hidden` en `uprit-custom.css` |
+| `app.js` | **Sin tocar** — `sitePreloader()` sigue atado a `window.load`; el script en Blade lo sustituye de forma explícita |
+
+**Verificación:** recarga `/` con caché desactivada; el preloader debe desaparecer antes del evento **Load** del Network tab.
+
+---
