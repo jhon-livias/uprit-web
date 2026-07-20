@@ -12,13 +12,12 @@
     <link rel="stylesheet" href="{{asset('web/assets/css/vendor/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('web/assets/css/vendor/icomoon.css')}}">
     <link rel="stylesheet" href="{{asset('web/assets/css/vendor/remixicon.css')}}">
-    <link rel="stylesheet" href="{{asset('web/assets/css/vendor/magnifypopup.min.css')}}">
-    <link rel="stylesheet" href="{{asset('web/assets/css/vendor/odometer.min.css')}}">
-    <link rel="stylesheet" href="{{asset('web/assets/css/vendor/lightbox.min.css')}}">
     <link rel="stylesheet" href="{{asset('web/assets/css/vendor/animation.min.css')}}">
-    <link rel="stylesheet" href="{{asset('web/assets/css/vendor/jqueru-ui-min.css')}}">
     <link rel="stylesheet" href="{{asset('web/assets/css/vendor/swiper-bundle.min.css')}}">
-    <link rel="stylesheet" href="{{asset('web/assets/css/vendor/tipped.min.css')}}">
+    @foreach ($webVendorAssets['css'] as $vendorCss)
+    <link rel="stylesheet" href="{{ asset($vendorCss) }}">
+    @endforeach
+    @stack('web_vendor_css')
 
     <link rel="stylesheet" href="{{asset('web/assets/css/app.css')}}">
     <link rel="stylesheet" href="{{asset('web/assets/css/uprit-custom.css')}}">
@@ -118,25 +117,21 @@
     <script src="{{asset('web/assets/js/vendor/sal.min.js')}}"></script>
     <script src="{{asset('web/assets/js/vendor/jquery.waypoints.js')}}"></script>
     <script src="{{asset('web/assets/js/vendor/backtotop.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/magnifypopup.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/jquery.countdown.min.js')}}"></script>
     <script src="{{asset('web/assets/js/vendor/jQuery.rProgressbar.min.js')}}"></script>
     <script src="{{asset('web/assets/js/vendor/easypie.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/odometer.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/isotop.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/imageloaded.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/lightbox.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/paralax.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/paralax-scroll.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/jquery-ui.min.js')}}"></script>
+    @foreach ($webVendorAssets['js'] as $vendorJs)
+    <script src="{{ asset($vendorJs) }}"></script>
+    @endforeach
+    @stack('web_vendor_js')
     <script src="{{asset('web/assets/js/vendor/swiper-bundle.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/svg-inject.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/vivus.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/tipped.min.js')}}"></script>
     <script src="{{asset('web/assets/js/vendor/smooth-scroll.min.js')}}"></script>
     <script src="{{asset('web/assets/js/vendor/isInViewport.jquery.min.js')}}"></script>
+    @if ($webVendorAssets['load_stubs'])
+    <script src="{{ asset('web/assets/js/uprit-vendor-stubs.js') }}"></script>
+    @endif
     @yield('scripts')
     <script src="{{asset('web/assets/js/app.js')}}"></script>
+    @stack('after_app_scripts')
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>

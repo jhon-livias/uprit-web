@@ -63,8 +63,23 @@ Reglas custom UPRIT desde ~línea 41881: preloader, hero, header sticky, marques
 ### No tocado (paridad visual)
 
 - Bloque `.dark-mode` completo (toggle en `principal.blade.php`); referencias `.pv-*` restantes solo en reglas dark-mode del theme.
-- CSS vendor en `<head>` (lightbox, odometer, etc.) — revisión aparte si se condiciona por página.
 - PurgeCSS agresivo del resto del theme.
+
+### Vendors CSS/JS condicionados
+
+Auditoría: `node scripts/audit-web-vendors.mjs`
+
+| Vendor | Vistas UPRIT | Carga |
+|--------|--------------|--------|
+| magnifypopup, odometer, lightbox, jquery-ui, tipped | ninguna | **Eliminado globalmente** |
+| countdown, isotope, svg-inject | ninguna | **Eliminado globalmente** |
+| vivus, parallax | solo home (`web.index`) | **Condicional** |
+
+- Servicio: `app/Services/WebVendorAssets.php`
+- Stubs: `public/web/assets/js/uprit-vendor-stubs.js` (antes de `app.js`)
+- Layout: bucles `$webVendorAssets['css']` / `['js']` en `principal.blade.php`
+
+**Ahorro estimado:** ~63 KB CSS + ~239 KB JS en páginas internas; home ~63 KB CSS + ~207 KB JS.
 
 ### Verificación en repo
 
