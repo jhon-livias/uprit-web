@@ -9,7 +9,7 @@
             <ul class="edu-breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('web.index')}}">Inicio</a></li>
                 <li class="separator"><i class="icon-angle-right"></i></li>
-                <li class="breadcrumb-item"><a href="{{route('convalidacion')}}">Más Información</a></li>
+                <li class="breadcrumb-item"><a href="{{route('convalidacion')}}">Convalidación</a></li>
             </ul>
         </div>
     </div>
