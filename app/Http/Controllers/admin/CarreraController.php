@@ -17,6 +17,8 @@ use App\Services\WebNavigationCache;
 
 class CarreraController extends Controller
 {
+    private const BROCHURE_MAX_KB = 102400;
+
     //
     public function getCarrera()
     {
@@ -42,6 +44,9 @@ class CarreraController extends Controller
         $carrera->grado_obtenido = $request->grado_obtenido;
         $carrera->titulacion = $request->titulacion;
         $carrera->modalidades = $request->modalidades;
+        $request->validate([
+            'brochure' => 'nullable|file|mimes:pdf|max:' . self::BROCHURE_MAX_KB,
+        ]);
         $brochure = $this->savePublicUpload($request, 'brochure', 'brochures_carreras', 'brochure');
         if ($brochure !== null) {
             $carrera->brochure = $brochure;
@@ -66,6 +71,9 @@ class CarreraController extends Controller
         $carrera->grado_obtenido = $request->grado_obtenido;
         $carrera->titulacion = $request->titulacion;
         $carrera->modalidades = $request->modalidades;
+        $request->validate([
+            'brochure' => 'nullable|file|mimes:pdf|max:' . self::BROCHURE_MAX_KB,
+        ]);
         $brochure = $this->savePublicUpload($request, 'brochure', 'brochures_carreras', 'brochure', $carrera->brochure);
         if ($brochure !== null) {
             $carrera->brochure = $brochure;
