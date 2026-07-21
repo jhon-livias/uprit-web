@@ -48,7 +48,7 @@ class Carrera extends Model
 
     public function docentes()
     {
-        return $this->hasMany(CarreraDocente::class, 'carrera_id');
+        return $this->belongsToMany(Docente::class, 'carrera_docente', 'carrera_id', 'docente_id');
     }
 
     public function malla()

@@ -11,7 +11,7 @@ use App\Models\CarreraDescripcion;
 use App\Models\CarreraPregunta;
 use App\Models\CarreraMalla;
 use App\Models\CarreraPerfilEgresado;
-use App\Models\CarreraDocente;
+use App\Models\Docente;
 use App\Services\WebNavigationCache;
 
 
@@ -202,66 +202,18 @@ class CarreraController extends Controller
 
     public function storeDocente(Request $request)
     {
-        CarreraDocente::where('carrera_id', $request->carrera_id)->delete();
+        $carrera = Carrera::findOrFail($request->carrera_id);
+        $docenteIds = collect($request->docente_ids ?? [])
+            ->filter(fn ($id) => $id !== null && $id !== '')
+            ->map(fn ($id) => (int) $id)
+            ->unique()
+            ->values()
+            ->all();
 
-
-        if ($request->nombre) {
-
-            foreach ($request->nombre as $index => $nombre) {
-
-                if (trim($nombre) != '') {
-
-                    $docente = new CarreraDocente();
-
-                    $docente->carrera_id = $request->carrera_id;
-
-                    $docente->nombre = $nombre;
-
-                    $docente->correo = $request->correo[$index] ?? null;
-
-                    $docente->departamento = $request->departamento[$index] ?? null;
-
-                    $docente->descripcion = $request->descripcion[$index] ?? null;
-
-                    $docente->linkedin = $request->linkedin[$index] ?? null;
-
-
-                    $tags = json_decode(
-                        $request->etiquetas_tags[$index] ?? '[]',
-                        true
-                    );
-
-                    $tags = array_map(function ($tag) {
-                        return $tag['value'];
-                    }, $tags);
-
-                    $docente->tags = $tags;
-
-                    if ($request->hasFile("imagen_$index")) {
-                        $imagen = $request->file("imagen_$index");
-
-                        $nombreImagen =
-                            time() . '_' . $imagen->getClientOriginalName();
-
-                        $imagen->move(
-                            public_path('carreras_docentes'),
-                            $nombreImagen
-                        );
-
-                        $docente->imagen =
-                            'carreras_docentes/' . $nombreImagen;
-                    } else {
-                        $docente->imagen =
-                            $request->imagen_actual[$index] ?? null;
-                    }
-
-
-                    $docente->save();
-                }
-            }
-        }
+        $carrera->docentes()->sync($docenteIds);
 
         WebNavigationCache::forget();
+
         return response()->json(true);
     }
 

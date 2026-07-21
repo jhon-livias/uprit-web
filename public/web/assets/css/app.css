@@ -29849,9 +29849,9 @@ only screen and (max-width:767px) {
 
 .mainmenu-nav .mainmenu>li>a {
     color: var(--color-heading);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
-    padding: 0 26px;
+    padding: 0 20px;
     display: block;
     height: 90px;
     line-height: 94px;

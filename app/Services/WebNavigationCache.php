@@ -186,12 +186,12 @@ class WebNavigationCache
         $carreraRelationConstraints = [
             'carreras.detalle_descripcion' => fn ($q) => $q->select('carrera_id', 'descripcion', 'oportunidades'),
             'carreras.perfilEgresado' => fn ($q) => $q->select('carrera_id', 'descripcion'),
-            'carreras.docentes' => fn ($q) => $q->select('carrera_id', 'nombre', 'tags', 'correo', 'departamento')->orderBy('id'),
+            'carreras.docentes' => fn ($q) => $q->select('docentes.id', 'docentes.nombre', 'docentes.tags', 'docentes.correo', 'docentes.departamento')->orderBy('docentes.id'),
             'carreras.malla' => fn ($q) => $q->select('carrera_id', 'ciclo', 'descripcion', 'cursos')->orderBy('id'),
             'carreras.preguntas' => fn ($q) => $q->select('carrera_id', 'pregunta', 'respuesta')->orderBy('id'),
             'hijos.carreras.detalle_descripcion' => fn ($q) => $q->select('carrera_id', 'descripcion', 'oportunidades'),
             'hijos.carreras.perfilEgresado' => fn ($q) => $q->select('carrera_id', 'descripcion'),
-            'hijos.carreras.docentes' => fn ($q) => $q->select('carrera_id', 'nombre', 'tags', 'correo', 'departamento')->orderBy('id'),
+            'hijos.carreras.docentes' => fn ($q) => $q->select('docentes.id', 'docentes.nombre', 'docentes.tags', 'docentes.correo', 'docentes.departamento')->orderBy('docentes.id'),
             'hijos.carreras.malla' => fn ($q) => $q->select('carrera_id', 'ciclo', 'descripcion', 'cursos')->orderBy('id'),
             'hijos.carreras.preguntas' => fn ($q) => $q->select('carrera_id', 'pregunta', 'respuesta')->orderBy('id'),
         ];

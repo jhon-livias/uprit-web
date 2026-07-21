@@ -51,6 +51,10 @@
                             <a href="{{ route('categorias.index') }}"><i class="icon-tag"></i>
                                 <span>Categorías</span></a>
                         </li>
+                        <li id="docentes">
+                            <a href="{{ route('docentes.index') }}"><i class="fa fa-users"></i>
+                                <span>Docentes</span></a>
+                        </li>
                         <li id="carreras">
                             <a href="{{ route('carreras.index') }}"><i class="icon-briefcase"></i>
                                 <span>Carreras</span></a>
