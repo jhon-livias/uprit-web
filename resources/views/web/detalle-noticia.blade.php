@@ -5,11 +5,7 @@
 <!--=====================================-->
 
 
-@include('web.partials.breadcrumb', [
-    'route' => 'web.detallenoticia',
-    'routeParams' => [$noticia->id],
-    'title' => $noticia->titulo,
-])
+@include('web.partials.breadcrumb', ['title' => $noticia->titulo])
 
 <div class="blog-details-area section-gap-equal">
     <div class="container">

@@ -1,13 +1,3 @@
-@php
-    $routeKey = $route ?? null;
-    $config = $routeKey ? (config('breadcrumbs.routes.' . $routeKey) ?? []) : [];
-    $title = $title ?? ($config['title'] ?? '');
-    $parent = $parent ?? ($config['parent'] ?? null);
-    $breadcrumbParams = $routeParams ?? [];
-    $currentUrl = $routeKey
-        ? route($routeKey, $breadcrumbParams)
-        : ($url ?? '#');
-@endphp
 <div class="edu-breadcrumb-area list-noticia-bg">
     <div class="container">
         <div class="breadcrumb-inner">

@@ -1,6 +1,6 @@
 @extends('web.layouts.principal')
 @section('content')
-@include('web.partials.breadcrumb', ['title' => 'Dirección de Investigación', 'route' => 'direccion'])
+@include('web.partials.breadcrumb')
 
 <section class="privacy-policy-area">
     <div class="container">
@@ -233,14 +233,8 @@
                         <div class="inner">
                             <h4 class="widget-title">Categorias</h4>
                             <div class="content">
-                                <ul class="category-list lista-vist-sec">
-                                    <li><a href="{{ route('web.noticias') }}">Uprit Experts - Blog</a></li>
-                                            <li><a href="{{ route('direccion') }}">Dirección de Investigación</a></li>
-                                            <li><a href="{{ route('centro_investigacion') }}">Centro de Investigación</a></li>
-                                            <li><a href="#">Servicios para Empresas</a></li>
-                                            <li><a href="https://drive.google.com/drive/folders/136MRdt_fKaUNK7kLVfmbnlR863c7Ox8E" target="_blank">Reglamentos de Investigación</a></li>
-                                </ul>
-                            </div>
+                                @include('web.partials.section-nav')
+</div>
                         </div>
                     </div>
                     <!-- End Single Widget  -->

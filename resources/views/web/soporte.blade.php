@@ -1,6 +1,6 @@
 @extends('web.layouts.principal')
 @section('content')
-@include('web.partials.breadcrumb', ['title' => 'Recursos y Soporte de UPRIT Data', 'route' => 'soporte'])
+@include('web.partials.breadcrumb')
 
 <section class="privacy-policy-area">
     <div class="container">
@@ -126,20 +126,8 @@
                         <div class="inner">
                             <h4 class="widget-title">Categorias</h4>
                             <div class="content">
-                                <ul class="category-list lista-vist-sec">
-                                    <li><a href="{{ route('soporte') }}">Uprit Data: Soporte Técnico </a></li>
-                                    <li><a href="{{ route('salud') }}">Servicios Psicopedagógicos y Salud </a></li>
-                                    <li><a href="{{ route('futbol') }}">Espacios y Servicios Deportivos</a></li>
-                                    <li><a href="{{ route('talleres') }}">Talleres y Servicios Culturales</a></li>
-                                    <li><a href="{{ route('becas') }}">Becas y Ayudas Financieras</a></li>
-                                    <li><a href="{{ route('global') }}">Uprit Global/Internacional</a></li>
-                                    <li><a href="{{ route('honors') }}">Honors College</a></li>
-                                    <li><a href="{{ route('alumni') }}">Alumni - Red de Egresados</a></li>
-                                    <li><a href="{{ route('programa') }}">Programa VIVE Emprendedor</a></li>
-                                    <!-- <li><a href="#">Uprit Store</a></li> -->
-
-                                </ul>
-                            </div>
+                                @include('web.partials.section-nav')
+</div>
                         </div>
                     </div>
                     <div class="edu-blog-widget widget-latest-post">

@@ -1,7 +1,7 @@
 @extends('web.layouts.principal')
 @section('content')
 
-@include('web.partials.breadcrumb', ['title' => 'Noticias', 'route' => 'web.noticias'])
+@include('web.partials.breadcrumb')
 
 <section class="section-gap-equal">
     <div class="container">

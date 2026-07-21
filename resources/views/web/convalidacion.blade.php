@@ -1,6 +1,6 @@
 @extends('web.layouts.principal')
 @section('content')
-@include('web.partials.breadcrumb', ['title' => 'Convalidación', 'route' => 'convalidacion'])
+@include('web.partials.breadcrumb')
 
 <section class="privacy-policy-area">
     <div class="container">
@@ -864,21 +864,8 @@
                         <div class="inner">
                             <h4 class="widget-title">Categorias</h4>
                             <div class="content">
-                                <ul class="category-list lista-vist-sec">
-                                    <li><a href="{{ route('convalidacion') }}">Convalidaciones / Traslados</a></li>
-                                    <li><a href="{{ route('doble-grado') }}">Programas Doble Grado</a></li>
-                                    <li><a href="{{ route('beca18') }}">Beca18</a></li>
-                                    <li><a href="{{ route('intercambio-peru') }}">Tu intercambio en Perú</a></li>
-                                    <li><a href="{{ route('taller-titulacion') }}">Taller de Titulación</a></li>
-                                    <li><a href="">Vive Previamente Nuestras Carreras</a></li>
-                                    <li><a href="#">Prospecto de Admisión</a></li>
-                                    <li><a href="#">Resultados Admisión</a></li>
-                                    <li><a href="{{ route('asesores') }}">Asesores de Admisión</a></li>
-                                    <li><a href="#">Registra Amigo Referido</a></li>
-                                    <li><a href="#">Prematricúlate</a></li>
-
-                                </ul>
-                            </div>
+                                @include('web.partials.section-nav')
+</div>
                         </div>
                     </div>
                     <!-- End Single Widget  -->
