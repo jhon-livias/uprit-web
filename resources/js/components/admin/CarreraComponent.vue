@@ -202,7 +202,8 @@
                                                             <div class="col-12"><label>Brochure (PDF)</label>
                                                                 <input type="file" class="dropify" accept=".pdf"
                                                                     @change="brochure"
-                                                                    data-allowed-file-extensions="pdf" name="brochure">
+                                                                    data-allowed-file-extensions="pdf"
+                                                                    data-max-file-size="100M" name="brochure">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -327,7 +328,8 @@
                                                             <div class="col-12"><label>Brochure (PDF)</label>
                                                                 <input type="file" class="dropify dropify-edit-brochure"
                                                                     accept=".pdf" @change="brochure_edit"
-                                                                    data-allowed-file-extensions="pdf" name="brochure">
+                                                                    data-allowed-file-extensions="pdf"
+                                                                    data-max-file-size="100M" name="brochure">
                                                             </div>
                                                         </div>
                                                     </div>
