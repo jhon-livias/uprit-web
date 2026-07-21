@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\SliderController;
 use App\Http\Controllers\admin\TestimonioController;
 use App\Http\Controllers\admin\NoticiaController;
 use App\Http\Controllers\admin\ReclamoController;
+use App\Http\Controllers\admin\TransparenciaController;
 
 
 //web
@@ -92,6 +93,16 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::get('/listar_reclamos', [ReclamoController::class, 'index'])->name('reclamos.index');
     Route::get('/get_reclamos', [ReclamoController::class, 'getReclamos'])->name('reclamos.get');
     Route::post('/reclamos/delete/{id}', [ReclamoController::class, 'delete'])->name('reclamos.delete');
+
+    // TRANSPARENCIA
+    Route::get('/listar_transparencia', [TransparenciaController::class, 'index'])->name('transparencia.index');
+    Route::get('/get_transparencia', [TransparenciaController::class, 'getSecciones'])->name('transparencia.get');
+    Route::post('/transparencia/seccion/store', [TransparenciaController::class, 'storeSeccion'])->name('transparencia.seccion.store');
+    Route::post('/transparencia/seccion/edit', [TransparenciaController::class, 'updateSeccion'])->name('transparencia.seccion.edit');
+    Route::post('/transparencia/seccion/delete/{id}', [TransparenciaController::class, 'deleteSeccion'])->name('transparencia.seccion.delete');
+    Route::post('/transparencia/documento/store', [TransparenciaController::class, 'storeDocumento'])->name('transparencia.documento.store');
+    Route::post('/transparencia/documento/edit', [TransparenciaController::class, 'updateDocumento'])->name('transparencia.documento.edit');
+    Route::post('/transparencia/documento/delete/{id}', [TransparenciaController::class, 'deleteDocumento'])->name('transparencia.documento.delete');
 
 });
 
