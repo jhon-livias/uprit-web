@@ -9,24 +9,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('web/imagenes/favicon.png')}}">
-    <link rel="stylesheet" href="{{asset('web/assets/css/vendor/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('web/assets/css/vendor/icomoon.css')}}">
-    <link rel="stylesheet" href="{{asset('web/assets/css/vendor/remixicon.css')}}">
-    <link rel="stylesheet" href="{{asset('web/assets/css/vendor/animation.min.css')}}">
-    <link rel="stylesheet" href="{{asset('web/assets/css/vendor/swiper-bundle.min.css')}}">
+    <link rel="stylesheet" href="{{ static_asset('web/assets/css/vendor/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ static_asset('web/assets/css/vendor/icomoon.css') }}">
+    <link rel="stylesheet" href="{{ static_asset('web/assets/css/vendor/remixicon.css') }}">
+    <link rel="stylesheet" href="{{ static_asset('web/assets/css/vendor/animation.min.css') }}">
+    <link rel="stylesheet" href="{{ static_asset('web/assets/css/vendor/swiper-bundle.min.css') }}">
     @foreach ($webVendorAssets['css'] as $vendorCss)
-    <link rel="stylesheet" href="{{ asset($vendorCss) }}">
+    <link rel="stylesheet" href="{{ static_asset($vendorCss) }}">
     @endforeach
     @stack('web_vendor_css')
 
-    <link rel="stylesheet" href="{{asset('web/assets/css/app.css')}}">
-    <link rel="stylesheet" href="{{asset('web/assets/css/uprit-custom.css')}}">
+    <link rel="stylesheet" href="{{ static_asset('web/assets/css/app.css') }}">
+    <link rel="stylesheet" href="{{ static_asset('web/assets/css/uprit-custom.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preload" href="{{ asset('web/assets/js/uprit-mdi-icons.js') }}" as="script">
-    <script src="{{ asset('web/assets/js/uprit-mdi-icons.js') }}"></script>
+    <link rel="preload" href="{{ static_asset('web/assets/js/uprit-mdi-icons.js') }}" as="script">
+    <script src="{{ static_asset('web/assets/js/uprit-mdi-icons.js') }}"></script>
     <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
     <script>
         (function () {
@@ -111,26 +111,26 @@
         </svg>
     </div>
 
-    <script src="{{asset('web/assets/js/vendor/modernizr.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/jquery.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/bootstrap.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/sal.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/jquery.waypoints.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/backtotop.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/jQuery.rProgressbar.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/easypie.js')}}"></script>
+    <script src="{{ static_asset('web/assets/js/vendor/modernizr.min.js') }}"></script>
+    <script src="{{ static_asset('web/assets/js/vendor/jquery.min.js') }}"></script>
+    <script src="{{ static_asset('web/assets/js/vendor/bootstrap.min.js') }}"></script>
+    <script src="{{ static_asset('web/assets/js/vendor/sal.min.js') }}"></script>
+    <script src="{{ static_asset('web/assets/js/vendor/jquery.waypoints.js') }}"></script>
+    <script src="{{ static_asset('web/assets/js/vendor/backtotop.min.js') }}"></script>
+    <script src="{{ static_asset('web/assets/js/vendor/jQuery.rProgressbar.min.js') }}"></script>
+    <script src="{{ static_asset('web/assets/js/vendor/easypie.js') }}"></script>
     @foreach ($webVendorAssets['js'] as $vendorJs)
-    <script src="{{ asset($vendorJs) }}"></script>
+    <script src="{{ static_asset($vendorJs) }}"></script>
     @endforeach
     @stack('web_vendor_js')
-    <script src="{{asset('web/assets/js/vendor/swiper-bundle.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/smooth-scroll.min.js')}}"></script>
-    <script src="{{asset('web/assets/js/vendor/isInViewport.jquery.min.js')}}"></script>
+    <script src="{{ static_asset('web/assets/js/vendor/swiper-bundle.min.js') }}"></script>
+    <script src="{{ static_asset('web/assets/js/vendor/smooth-scroll.min.js') }}"></script>
+    <script src="{{ static_asset('web/assets/js/vendor/isInViewport.jquery.min.js') }}"></script>
     @if ($webVendorAssets['load_stubs'])
-    <script src="{{ asset('web/assets/js/uprit-vendor-stubs.js') }}"></script>
+    <script src="{{ static_asset('web/assets/js/uprit-vendor-stubs.js') }}"></script>
     @endif
     @yield('scripts')
-    <script src="{{asset('web/assets/js/app.js')}}"></script>
+    <script src="{{ static_asset('web/assets/js/app.js') }}"></script>
     @stack('after_app_scripts')
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
