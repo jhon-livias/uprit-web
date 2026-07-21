@@ -4,16 +4,27 @@ namespace App\Support;
 
 class SiteNavigation
 {
+    public static function routeConfig(?string $routeKey): array
+    {
+        if ($routeKey === null) {
+            return [];
+        }
+
+        $routes = config('breadcrumbs.routes', []);
+
+        return $routes[$routeKey] ?? [];
+    }
+
     public static function label(string $routeKey): string
     {
-        $route = config('breadcrumbs.routes.' . $routeKey, []);
+        $route = self::routeConfig($routeKey);
 
         return $route['menu_label'] ?? $route['title'] ?? $routeKey;
     }
 
     public static function title(string $routeKey): string
     {
-        $route = config('breadcrumbs.routes.' . $routeKey, []);
+        $route = self::routeConfig($routeKey);
 
         return $route['title'] ?? $route['menu_label'] ?? $routeKey;
     }
@@ -25,7 +36,7 @@ class SiteNavigation
     public static function breadcrumb(?string $routeKey = null, array $overrides = []): array
     {
         $routeKey = $routeKey ?? request()->route()?->getName();
-        $config = $routeKey ? (config('breadcrumbs.routes.' . $routeKey) ?? []) : [];
+        $config = self::routeConfig($routeKey);
         $routeParams = $overrides['routeParams'] ?? [];
 
         if (isset($overrides['url'])) {
@@ -71,7 +82,7 @@ class SiteNavigation
             if (isset($entry['route'])) {
                 $routeKey = $entry['route'];
                 $items[] = [
-                    'label' => self::label($routeKey),
+                    'label' => $entry['label'] ?? self::label($routeKey),
                     'url' => route($routeKey),
                     'external' => false,
                 ];
