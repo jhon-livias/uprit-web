@@ -145,5 +145,5 @@ Route::get('/centro_investigacion', [WebController::class, 'centro_investigacion
 
 Route::get('/contactenos', function () {
     return view('web.contactenos');
-});
+})->name('contactenos');
 

@@ -1,6 +1,6 @@
 @extends('web.layouts.principal')
 @section('content')
-@include('web.partials.breadcrumb', ['title' => 'Nuestras Autoridades', 'route' => 'autoridades'])
+@include('web.partials.breadcrumb')
 
 <section class="privacy-policy-area">
     <div class="container">
@@ -149,16 +149,8 @@
                         <div class="inner">
                             <h4 class="widget-title">Categorias</h4>
                             <div class="content">
-                                <ul class="category-list lista-vist-sec">
-                                    <li><a href="{{ route('porque') }}">¿Por qué Estudiar en la Uprit?</a></li>
-                                            <li><a href="{{ route('modelo-educativo') }}">Modelo Educativo: Método L4P</a></li>  
-                                            <li><a href="{{ route('autoridades') }}">Nuestras autoridades</a></li> 
-                                            <li><a href="{{ route('red-nexo') }}">Nuestra Red Nexo Uprit</a></li>
-                                            <li><a href="{{ route('a2iprograma') }}">A2i Programa Aceleración hacia la industria</a></li>  
-                                            <li><a href="{{ route('defensoria') }}">Defensoría Universitaria</a></li> 
-                                            <li><a href="{{ route('medioambiental') }}">Política Medioambiental (S.S.O.M.A)</a></li>
-                                </ul>
-                            </div>
+                                @include('web.partials.section-nav')
+</div>
                         </div>
                     </div>
                     <!-- End Single Widget  -->

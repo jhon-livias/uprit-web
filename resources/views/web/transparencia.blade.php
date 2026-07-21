@@ -1,6 +1,6 @@
 @extends('web.layouts.principal')
 @section('content')
-@include('web.partials.breadcrumb', ['title' => 'Transparencia', 'route' => 'transparencia'])
+@include('web.partials.breadcrumb')
 
 <section class="privacy-policy-area">
     <div class="container">

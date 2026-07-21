@@ -1,7 +1,7 @@
 @extends('web.layouts.principal')
 @section('content')
 
-@include('web.partials.breadcrumb', ['title' => 'Contáctenos', 'url' => url('/contactenos')])
+@include('web.partials.breadcrumb')
 
 <section class="contact-us-area">
     <div class="container">

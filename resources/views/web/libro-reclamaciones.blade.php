@@ -4,7 +4,7 @@
 
 @endsection
 @section('content')
-@include('web.partials.breadcrumb', ['title' => 'Libro de Reclamaciones', 'route' => 'libroreclamaciones'])
+@include('web.partials.breadcrumb')
 
 <form action="{{ route('reclamos.store') }}" method="POST" enctype="multipart/form-data">
 

@@ -1,6 +1,6 @@
 @extends('web.layouts.principal')
 @section('content')
-@include('web.partials.breadcrumb', ['title' => 'Programas Doble Grado', 'route' => 'posgrado-doble'])
+@include('web.partials.breadcrumb')
 
 <section class="privacy-policy-area">
     <div class="container">
@@ -339,15 +339,8 @@
                         <div class="inner">
                             <h4 class="widget-title">Categorias</h4>
                             <div class="content">
-                                <ul class="category-list lista-vist-sec">
-                                    <li><a href="{{ route('escuela-posgrado') }}">UGS Escuela de Posgrado</a></li>
-                                                    <li><a href="{{ route('posgrado-doble') }}">Programas Doble Grado</a></li>  
-                                                    <li><a href="{{ route('mision-academica') }}">Misiones Académicas Internacionales</a></li>
-                                                    <li><a href="{{ route('vive') }}">Vive nuestros Másteres y Doctorados</a></li>
-                                                    <li><a href="{{ route('asesores') }}">Asesores de Admisión</a></li>
-
-                                </ul>
-                            </div>
+                                @include('web.partials.section-nav')
+</div>
                         </div>
                     </div>
                     <!-- End Single Widget  -->
