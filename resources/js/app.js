@@ -9,6 +9,7 @@ import SliderComponent from "./components/admin/SliderComponent.vue";
 import SliderCarreraComponent from "./components/admin/SliderCarreraComponent.vue";
 import TestimonioComponent from "./components/admin/TestimonioComponent.vue";
 import NoticiaComponent from "./components/admin/NoticiaComponent.vue";
+import TransparenciaComponent from "./components/admin/TransparenciaComponent.vue";
 import PostulaModalComponent from "./components/web/PostulaModalComponent.vue";
 
 window.route = (name, params, absolute = false) =>
@@ -29,6 +30,7 @@ app.component("slider-component", SliderComponent);
 app.component("slider-carrera-component",SliderCarreraComponent);
 app.component("testimonio-component", TestimonioComponent);
 app.component("noticia-component", NoticiaComponent);
+app.component("transparencia-component", TransparenciaComponent);
 app.component("postula-modal-component", PostulaModalComponent);
 
 app.mixin({

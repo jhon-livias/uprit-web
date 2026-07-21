@@ -114,7 +114,9 @@ class WebController extends Controller
     public function transparencia()
     {
         $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
-        return view('web.transparencia', compact('ultimasnoticias'));
+        $secciones = \App\Models\TransparenciaSeccion::with('documentos')->orderBy('orden')->get();
+
+        return view('web.transparencia', compact('ultimasnoticias', 'secciones'));
     }
 
     public function talleres()
