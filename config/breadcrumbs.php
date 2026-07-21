@@ -33,6 +33,28 @@ return [
             ],
         ],
         'pregrado' => [
+            'routes' => [],
+        ],
+        'posgrado' => [
+            'routes' => [
+                'escuela-posgrado',
+                'posgrado-doble',
+                'mision-academica',
+                'vive',
+            ],
+        ],
+        'innovacion' => [
+            'items' => [
+                ['route' => 'direccion'],
+                ['route' => 'centro_investigacion'],
+                [
+                    'label' => 'Reglamentos de Investigación',
+                    'url' => 'https://drive.google.com/drive/folders/136MRdt_fKaUNK7kLVfmbnlR863c7Ox8E',
+                    'external' => true,
+                ],
+            ],
+        ],
+        'contactanos' => [
             'items' => [
                 ['route' => 'convalidacion'],
                 ['route' => 'doble-grado'],
@@ -45,28 +67,6 @@ return [
                 ['route' => 'asesores'],
                 ['label' => 'Registra Amigo Referido', 'url' => '#'],
                 ['label' => 'Prematricúlate', 'url' => '#'],
-            ],
-        ],
-        'posgrado' => [
-            'routes' => [
-                'escuela-posgrado',
-                'posgrado-doble',
-                'mision-academica',
-                'vive',
-                'asesores',
-            ],
-        ],
-        'innovacion' => [
-            'items' => [
-                ['route' => 'web.noticias'],
-                ['route' => 'direccion'],
-                ['route' => 'centro_investigacion'],
-                ['label' => 'Servicios para Empresas', 'url' => '#'],
-                [
-                    'label' => 'Reglamentos de Investigación',
-                    'url' => 'https://drive.google.com/drive/folders/136MRdt_fKaUNK7kLVfmbnlR863c7Ox8E',
-                    'external' => true,
-                ],
             ],
         ],
     ],
@@ -161,37 +161,39 @@ return [
             'parent' => ['label' => 'Conócenos'],
         ],
 
-        // Pregrado — Infórmate Más
+        // Contáctanos — Infórmate Más / Admisión
         'convalidacion' => [
             'title' => 'Convalidación',
             'menu_label' => 'Convalidaciones / Traslados',
-            'parent' => ['label' => 'Pregrado'],
+            'parent' => ['label' => 'Contáctanos'],
         ],
         'doble-grado' => [
             'title' => 'Programas Doble Grado',
             'menu_label' => 'Programas Doble Grado',
-            'parent' => ['label' => 'Pregrado'],
+            'parent' => ['label' => 'Contáctanos'],
         ],
         'beca18' => [
             'title' => 'Beca18',
             'menu_label' => 'Beca18',
-            'parent' => ['label' => 'Pregrado'],
+            'parent' => ['label' => 'Contáctanos'],
         ],
         'intercambio-peru' => [
             'title' => 'Tu intercambio en Perú',
             'menu_label' => 'Tu intercambio en Perú',
-            'parent' => ['label' => 'Pregrado'],
+            'parent' => ['label' => 'Contáctanos'],
         ],
         'taller-titulacion' => [
             'title' => 'Taller de Titulación',
             'menu_label' => 'Taller de Titulación',
-            'parent' => ['label' => 'Pregrado'],
+            'parent' => ['label' => 'Contáctanos'],
         ],
         'asesores' => [
             'title' => 'Asesores de Admisión',
             'menu_label' => 'Asesores de Admisión',
-            'parent' => ['label' => 'Pregrado'],
+            'parent' => ['label' => 'Contáctanos'],
         ],
+
+        // Pregrado — Infórmate Más (legacy keys removed; ver sección contactanos)
 
         // Posgrado — Infórmate Más
         'escuela-posgrado' => [
