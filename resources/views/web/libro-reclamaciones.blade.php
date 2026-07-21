@@ -4,21 +4,8 @@
 
 @endsection
 @section('content')
-<div class="edu-breadcrumb-area list-noticia-bg">
-    <div class="container">
-        <div class="breadcrumb-inner" style="margin-top:40px">
-            <div class="page-title">
-                <h1 class="title">Libro de Reclamaciones</h1>
-            </div>
-            <ul class="edu-breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('web.index')}}">Inicio</a></li>
-                <li class="separator"><i class="icon-angle-right"></i></li>
-                <li class="breadcrumb-item"><a href="{{route('libroreclamaciones')}}">Libro de Reclamaciones</a></li>
-            </ul>
-        </div>
-    </div>
+@include('web.partials.breadcrumb', ['title' => 'Libro de Reclamaciones', 'route' => 'libroreclamaciones'])
 
-</div>
 <form action="{{ route('reclamos.store') }}" method="POST" enctype="multipart/form-data">
 
     @csrf

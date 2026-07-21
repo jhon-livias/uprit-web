@@ -3295,7 +3295,7 @@ input[type="radio"]:checked~label::before {
 
 .edu-breadcrumb-area .edu-breadcrumb li.breadcrumb-item {
     color: var(--color-heading);
-    font-size: 16px;
+    font-size: 12px;
     font-weight: var(--p-medium)
 }
 

@@ -1,20 +1,7 @@
 @extends('web.layouts.principal')
 @section('content')
 
-<div class="edu-breadcrumb-area list-noticia-bg">
-    <div class="container">
-        <div class="breadcrumb-inner">
-            <div class="page-title">
-                <h1 class="title">Contáctenos</h1>
-            </div>
-            <ul class="edu-breadcrumb mas-bajo">
-                <li class="breadcrumb-item"><a href="{{ route('web.index') }}">Inicio</a></li>
-                <li class="separator"><i class="icon-angle-right"></i></li>
-                <li class="breadcrumb-item"><a href="{{ url('/contactenos') }}">Contáctenos</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+@include('web.partials.breadcrumb', ['title' => 'Contáctenos', 'url' => url('/contactenos')])
 
 <section class="contact-us-area">
     <div class="container">

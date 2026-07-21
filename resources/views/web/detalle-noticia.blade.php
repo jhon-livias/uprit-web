@@ -5,20 +5,11 @@
 <!--=====================================-->
 
 
-<div class="edu-breadcrumb-area list-noticia-bg">
-    <div class="container">
-        <div class="breadcrumb-inner">
-            <div class="page-title">
-                <h1 class="title">Detalle Noticia</h1>
-            </div>
-            <ul class="edu-breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('web.index')}}">Inicio</a></li>
-                <li class="separator"><i class="icon-angle-right"></i></li>
-                <li class="breadcrumb-item"><a href="{{route('web.detallenoticia',$noticia->id)}}">Detalle Noticia</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+@include('web.partials.breadcrumb', [
+    'route' => 'web.detallenoticia',
+    'routeParams' => [$noticia->id],
+    'title' => $noticia->titulo,
+])
 
 <div class="blog-details-area section-gap-equal">
     <div class="container">
