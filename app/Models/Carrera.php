@@ -25,6 +25,17 @@ class Carrera extends Model
     ];
 
 
+    public function setAdmisionAttribute(mixed $value): void
+    {
+        if ($value === null || $value === '' || $value === 'null' || $value === 'undefined') {
+            $this->attributes['admision'] = null;
+
+            return;
+        }
+
+        $this->attributes['admision'] = $value;
+    }
+
     public function categoria()
     {
         return $this->belongsTo(Categoria::class, 'categoria_id');

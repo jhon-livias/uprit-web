@@ -1140,7 +1140,7 @@ export default {
             formData.append('categoria_id', this.carrera.categoria_id);
             formData.append('nombre', this.carrera.nombre);
             formData.append('descripcion', this.carrera.descripcion);
-            formData.append('admision', this.carrera.admision);
+            this.appendIfPresent(formData, 'admision', this.carrera.admision);
             formData.append('duracion', this.carrera.duracion);
             formData.append('grado_obtenido', this.carrera.grado_obtenido);
             formData.append('titulacion', this.carrera.titulacion);
@@ -1223,7 +1223,7 @@ export default {
             formData.append('categoria_id', this.carrera.categoria_id);
             formData.append('nombre', this.carrera.nombre);
             formData.append('descripcion', this.carrera.descripcion);
-            formData.append('admision', this.carrera.admision);
+            this.appendIfPresent(formData, 'admision', this.carrera.admision);
             formData.append('duracion', this.carrera.duracion);
             formData.append('grado_obtenido', this.carrera.grado_obtenido);
             formData.append('titulacion', this.carrera.titulacion);
@@ -1286,6 +1286,12 @@ export default {
 
         appendFileIfSelected(formData, key, value) {
             if (value instanceof File) {
+                formData.append(key, value);
+            }
+        },
+
+        appendIfPresent(formData, key, value) {
+            if (value !== null && value !== undefined && value !== '' && value !== 'null') {
                 formData.append(key, value);
             }
         },
