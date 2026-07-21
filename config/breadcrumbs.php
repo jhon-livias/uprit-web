@@ -34,7 +34,7 @@ return [
             'parent' => ['label' => 'Servicios'],
         ],
         'global' => [
-            'title' => 'Uprit Global/Internacional',
+            'title' => 'Uprit Global - Internacional',
             'parent' => ['label' => 'Servicios'],
         ],
         'alumni' => [
