@@ -3,7 +3,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build",
+        "build": "php artisan ziggy:generate resources/js/ziggy.js && vite build",
         "dev": "vite"
     },
     "devDependencies": {
