@@ -70,7 +70,7 @@
                                     <li>
                                         <h6 class="menu-title" style="color:#91001E">Infórmate Más</h6>
                                         <ul class="submenu mega-sub-menu mega-sub-menu-01">
-                                            @include('web.partials.menu-nav-links', ['section' => 'pregrado', 'routesOnly' => true])
+                                            @include('web.partials.menu-nav-links', ['section' => 'contactanos'])
                                         </ul>
                                     </li>
 
@@ -96,7 +96,7 @@
                                     <li>
                                         <h6 class="menu-title" style="color:#91001E">Infórmate Más</h6>
                                         <ul class="submenu mega-sub-menu mega-sub-menu-01">
-                                            @include('web.partials.menu-nav-links', ['section' => 'pregrado', 'routesOnly' => true])
+                                            @include('web.partials.menu-nav-links', ['section' => 'contactanos'])
                                         </ul>
                                     </li>
                                 </ul>
@@ -195,6 +195,17 @@
 
                                 </ul>
                             </li>
+                            <li class="has-droupdown"><a href="#">Contáctanos</a>
+                                <ul class="mega-menu servicios">
+                                    <li>
+
+                                        <ul class="submenu mega-sub-menu mega-sub-menu-01">
+                                            @include('web.partials.menu-nav-links', ['section' => 'contactanos'])
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </li>
                             <li class="has-droupdown boton-li">
                                 <button type="button" class="edu-btn btn-secondary d-flex align-items-center gap-2" data-postula-trigger>
                                     <iconify-icon icon="mdi:pencil" style="font-size:20px"></iconify-icon>
@@ -258,7 +269,7 @@
                             <a href="#">Infórmate Más</a>
 
                             <ul class="submenu">
-                                @include('web.partials.menu-nav-links', ['section' => 'pregrado', 'routesOnly' => false])
+                                @include('web.partials.menu-nav-links', ['section' => 'contactanos'])
                             </ul>
                         </li>
 
@@ -291,12 +302,7 @@
                             <a href="#">Infórmate Más</a>
 
                             <ul class="submenu">
-                                @include('web.partials.menu-nav-links', ['section' => 'pregrado', 'routesOnly' => true])
-                                <li><a href="#">Vive Previamente Nuestras Carreras</a></li>
-                                <li><a href="#">Prospecto de Admisión</a></li>
-                                <li><a href="#">Resultados Admisión</a></li>
-                                <li><a href="#">Registra Amigo Referido</a></li>
-                                <li><a href="#">Prematricúlate</a></li>
+                                @include('web.partials.menu-nav-links', ['section' => 'contactanos'])
                                 <li><a href="#">Segunda Carrera profesional</a></li>
                             </ul>
                         </li>
@@ -343,8 +349,6 @@
 
                             <ul class="submenu">
                                 @include('web.partials.menu-nav-links', ['section' => 'posgrado'])
-                                <li><a href="#">Registra Amigo Referido</a></li>
-                                <li><a href="#">Prematricúlate</a></li>
                             </ul>
                         </li>
 
@@ -366,6 +370,11 @@
                         @include('web.partials.menu-nav-links', ['section' => 'conocenos'])
                         <li><a href="#">Convenios y Afiliaciones</a></li>
                         <li><a href="#">Acceso a la Información Pública</a></li>
+                    </ul>
+                </li>
+                <li class="has-droupdown"><a href="#">Contáctanos</a>
+                    <ul class="submenu">
+                        @include('web.partials.menu-nav-links', ['section' => 'contactanos'])
                     </ul>
                 </li>
                 <li><a href="{{ route('web.noticias') }}">Noticias</a></li>
