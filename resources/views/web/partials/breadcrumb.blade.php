@@ -26,8 +26,6 @@
                         @endif
                     </li>
                 @endif
-                <li class="separator"><i class="icon-angle-right"></i></li>
-                <li class="breadcrumb-item"><a href="{{ $currentUrl }}">{{ $title }}</a></li>
             </ul>
         </div>
     </div>

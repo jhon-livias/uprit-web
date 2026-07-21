@@ -1,6 +1,6 @@
 @extends('web.layouts.principal')
 @section('content')
-@include('web.partials.breadcrumb', ['title' => 'Uprit Global/Internacional', 'route' => 'global'])
+@include('web.partials.breadcrumb', ['title' => 'Uprit Global - Internacional', 'route' => 'global'])
 
 <section class="privacy-policy-area">
     <div class="container">
