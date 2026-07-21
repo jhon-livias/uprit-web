@@ -749,60 +749,89 @@
 
                             </div>
                             <div class="modal fade" id="modDocentesCarrera" tabindex="-1">
-
-                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-
-                                    <div class="modal-content">
-
+                                <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width:700px;">
+                                    <div class="modal-content" style="border-radius:10px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.2);">
                                         <form @submit.prevent="guardarDocentes">
 
-                                            <div class="modal-header">
+                                            <div class="modal-header" style="background:linear-gradient(135deg,#A3002B,#6b001c);padding:20px 24px;">
+                                                <div>
+                                                    <h5 class="modal-title mb-0" style="font-weight:700;letter-spacing:.3px;">
+                                                        <i class="fa fa-users mr-2"></i>Docentes de la carrera
+                                                    </h5>
+                                                    <small style="opacity:.85;font-size:12px;" v-if="carrera.nombre">{{ carrera.nombre }}</small>
+                                                </div>
+                                            </div>
 
-                                                <h4 class="modal-title">
-                                                    Nuestros Docentes
-                                                </h4>
+                                            <div class="modal-body" style="padding:24px;background:#f8f9fa;">
+
+                                                <div style="background:#fff;border-radius:8px;padding:20px;border:1px solid #e9ecef;margin-bottom:16px;">
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        <div style="background:#fff3f5;border-radius:8px;padding:8px 12px;flex:1;">
+                                                            <label class="mb-1" style="font-size:12px;font-weight:600;color:#6c757d;text-transform:uppercase;letter-spacing:.5px;">
+                                                                Buscar y asignar docentes
+                                                            </label>
+                                                            <select id="selectDocentesCarrera" class="form-control" multiple style="width:100%">
+                                                                <option v-for="docente in docentesDisponibles" :key="docente.id" :value="docente.id">
+                                                                    {{ docente.nombre }}{{ docente.correo ? ` — ${docente.correo}` : '' }}{{ docente.departamento ? ` · ${docente.departamento}` : '' }}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <span style="font-size:13px;color:#6c757d;">
+                                                            <i class="fa fa-info-circle mr-1"></i>
+                                                            Escribe para buscar por nombre, correo o departamento.
+                                                        </span>
+                                                        <span class="badge" :style="docentesSeleccionados.length ? 'background:#A3002B;color:#fff;font-size:12px;padding:5px 10px;border-radius:20px;' : 'background:#e9ecef;color:#6c757d;font-size:12px;padding:5px 10px;border-radius:20px;'">
+                                                            {{ docentesSeleccionados.length }} seleccionado{{ docentesSeleccionados.length !== 1 ? 's' : '' }}
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <div v-if="docentesSeleccionadosInfo.length" style="background:#fff;border-radius:8px;padding:16px 20px;border:1px solid #e9ecef;">
+                                                    <p class="mb-2" style="font-size:12px;font-weight:600;color:#6c757d;text-transform:uppercase;letter-spacing:.5px;">
+                                                        <i class="fa fa-check-circle mr-1" style="color:#A3002B;"></i>Docentes asignados
+                                                    </p>
+                                                    <div class="d-flex flex-wrap" style="gap:8px;">
+                                                        <div v-for="d in docentesSeleccionadosInfo" :key="d.id"
+                                                            class="d-flex align-items-center"
+                                                            style="background:#fff3f5;border:1px solid #f5c0c9;border-radius:20px;padding:5px 12px;gap:8px;">
+                                                            <div style="width:28px;height:28px;border-radius:50%;background:#A3002B;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">
+                                                                {{ d.nombre.charAt(0).toUpperCase() }}
+                                                            </div>
+                                                            <div style="line-height:1.2;">
+                                                                <div style="font-size:13px;font-weight:600;color:#20272f;white-space:nowrap;max-width:180px;overflow:hidden;text-overflow:ellipsis;">{{ d.nombre }}</div>
+                                                                <div v-if="d.departamento" style="font-size:11px;color:#6c757d;">{{ d.departamento }}</div>
+                                                            </div>
+                                                            <button type="button"
+                                                                @click="quitarDocente(d.id)"
+                                                                style="background:none;border:none;color:#A3002B;cursor:pointer;font-size:14px;padding:0;margin-left:2px;line-height:1;">
+                                                                &times;
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div v-else style="background:#fff;border-radius:8px;padding:20px;border:1px dashed #dee2e6;text-align:center;">
+                                                    <i class="fa fa-user-plus" style="font-size:28px;color:#dee2e6;display:block;margin-bottom:8px;"></i>
+                                                    <span style="font-size:13px;color:#adb5bd;">Aún no hay docentes asignados a esta carrera.</span>
+                                                </div>
 
                                             </div>
 
-                                            <div class="modal-body">
-
-                                                <p class="text-muted mb-3">
-                                                    Selecciona los docentes que dictan en esta carrera. Puedes
-                                                    gestionar el catálogo de docentes en el menú
-                                                    <strong>Docentes</strong>.
-                                                </p>
-
-                                                <label for="selectDocentesCarrera">
-                                                    Docentes asignados
-                                                </label>
-
-                                                <select id="selectDocentesCarrera" class="form-control" multiple>
-                                                    <option v-for="docente in docentesDisponibles" :key="docente.id"
-                                                        :value="docente.id">
-                                                        {{ docente.correo ? `${docente.nombre} - ${docente.correo}` : docente.nombre }}
-                                                    </option>
-                                                </select>
-
-                                            </div>
-
-                                            <div class="modal-footer">
-
-                                                <button type="submit" class="btn btn-primary">
-                                                    Guardar
+                                            <div class="modal-footer" style="background:#fff;border-top:1px solid #e9ecef;padding:16px 24px;">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="border-radius:6px;font-size:13px;">
+                                                    <i class="fa fa-times mr-1"></i>Cerrar
                                                 </button>
-
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                    Cerrar
+                                                <button type="submit" class="btn btn-primary" style="background:#A3002B;border-color:#A3002B;border-radius:6px;font-size:13px;min-width:110px;">
+                                                    <i class="fa fa-save mr-1"></i>Guardar
                                                 </button>
-
                                             </div>
 
                                         </form>
-
                                     </div>
-
                                 </div>
-
                             </div>
 
                         </div>
@@ -841,6 +870,13 @@ export default {
             docentesSeleccionados: []
 
         }
+    },
+    computed: {
+        docentesSeleccionadosInfo() {
+            if (!this.docentesSeleccionados.length || !this.docentesDisponibles.length) return [];
+            const ids = this.docentesSeleccionados.map(Number);
+            return this.docentesDisponibles.filter(d => ids.includes(d.id));
+        },
     },
     mounted() {
         this.getCarreras();
@@ -985,12 +1021,22 @@ export default {
             $('#modPerfilCarrera')
                 .one('hidden.bs.modal', () => {
                     $('#modDocentesCarrera').modal('show');
-                    this.$nextTick(() => {
-                        this.initSelectDocentes();
-                    });
                 })
                 .modal('hide');
 
+            $('#modDocentesCarrera').one('shown.bs.modal', () => {
+                this.$nextTick(() => {
+                    this.initSelectDocentes();
+                });
+            });
+
+        },
+        quitarDocente(id) {
+            this.docentesSeleccionados = this.docentesSeleccionados.filter(d => String(d) !== String(id));
+            const $select = $('#selectDocentesCarrera');
+            if ($select.hasClass('select2-hidden-accessible')) {
+                $select.val(this.docentesSeleccionados).trigger('change');
+            }
         },
         getDocentesCatalogo() {
             axios.get(route('docentes.get')).then((response) => {
@@ -1003,26 +1049,31 @@ export default {
             const $select = $('#selectDocentesCarrera');
 
             if ($select.hasClass('select2-hidden-accessible')) {
-                $select.off('change');
+                $select.off('change.docentes');
                 $select.select2('destroy');
             }
 
             $select.val(this.docentesSeleccionados);
 
             $select.select2({
-                placeholder: 'Buscar y seleccionar docentes',
+                placeholder: 'Escribe para buscar docente...',
                 allowClear: true,
                 width: '100%',
+                dropdownParent: $('#modDocentesCarrera'),
+                language: {
+                    noResults: () => 'No se encontraron docentes',
+                    searching: () => 'Buscando...',
+                },
             });
 
-            $select.on('change', () => {
+            $select.on('change.docentes', () => {
                 this.docentesSeleccionados = $select.val() || [];
             });
         },
         destroySelectDocentes() {
             const $select = $('#selectDocentesCarrera');
             if ($select.hasClass('select2-hidden-accessible')) {
-                $select.off('change');
+                $select.off('change.docentes');
                 $select.select2('destroy');
             }
         },

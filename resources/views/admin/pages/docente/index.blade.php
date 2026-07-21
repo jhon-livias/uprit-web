@@ -6,7 +6,7 @@ $subt = 'Docentes';
 @extends('admin.layouts._principal')
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('admin/assets/vendor/select2/select2.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css">
 @endsection
 
 @section('content')
