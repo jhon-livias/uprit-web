@@ -1,21 +1,7 @@
 @extends('web.layouts.principal')
 @section('content')
 
-<div class="edu-breadcrumb-area list-noticia-bg">
-    <div class="container">
-        <div class="breadcrumb-inner">
-            <div class="page-title">
-                <h1 class="title">Noticias</h1>
-            </div>
-            <ul class="edu-breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('web.index')}}">Inicio</a></li>
-                <li class="separator"><i class="icon-angle-right"></i></li>
-                <li class="breadcrumb-item"><a href="{{route('web.noticias')}}">Noticias</a></li>
-            </ul>
-        </div>
-    </div>
-    
-</div>
+@include('web.partials.breadcrumb', ['title' => 'Noticias', 'route' => 'web.noticias'])
 
 <section class="section-gap-equal">
     <div class="container">

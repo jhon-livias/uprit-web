@@ -1,20 +1,7 @@
 @extends('web.layouts.principal')
 @section('content')
-<div class="edu-breadcrumb-area list-noticia-bg">
-    <div class="container">
-        <div class="breadcrumb-inner" style="margin-top:40px">
-            <div class="page-title">
-                <h1 class="title">Más Información</h1>
-            </div>
-            <ul class="edu-breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('web.index')}}">Inicio</a></li>
-                <li class="separator"><i class="icon-angle-right"></i></li>
-                <li class="breadcrumb-item"><a href="{{route('asesores')}}">Asesores de Admisión</a></li>
-            </ul>
-        </div>
-    </div>
+@include('web.partials.breadcrumb', ['title' => 'Asesores de Admisión', 'route' => 'asesores'])
 
-</div>
 <section class="privacy-policy-area">
     <div class="container">
         <div class="row row--30">
