@@ -217,7 +217,7 @@ return [
 
         // Innovación
         'web.noticias' => [
-            'title' => 'Noticias',
+            'title' => 'Uprit Experts - Blog',
             'menu_label' => 'Uprit Experts - Blog',
             'parent' => ['label' => 'Innovación'],
         ],
@@ -232,7 +232,7 @@ return [
             'parent' => ['label' => 'Innovación'],
         ],
         'web.detallenoticia' => [
-            'parent' => ['label' => 'Noticias', 'route' => 'web.noticias'],
+            'parent' => ['label' => 'Uprit Experts - Blog', 'route' => 'web.noticias'],
         ],
 
         // Páginas de primer nivel
