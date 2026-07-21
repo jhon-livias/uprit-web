@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\NivelController;
 use App\Http\Controllers\admin\CategoriaController;
 use App\Http\Controllers\admin\CarreraController;
+use App\Http\Controllers\admin\DocenteController;
 use App\Http\Controllers\admin\SliderController;
 use App\Http\Controllers\admin\TestimonioController;
 use App\Http\Controllers\admin\NoticiaController;
@@ -55,6 +56,13 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::post('/carreras/malla/store', [CarreraController::class, 'storeMalla'])->name('carreras.malla.store');
     Route::post('/carreras/perfil/store', [CarreraController::class, 'storePerfilEgresado'])->name('carreras.perfil.store');
     Route::post('/carreras/docente/store', [CarreraController::class, 'storeDocente'])->name('carreras.docente.store');
+
+    // DOCENTE
+    Route::get('/listar_docentes', [DocenteController::class, 'index'])->name('docentes.index');
+    Route::get('/get_docentes', [DocenteController::class, 'getDocentes'])->name('docentes.get');
+    Route::post('/docentes/store', [DocenteController::class, 'store'])->name('docentes.store');
+    Route::post('/docentes/edit', [DocenteController::class, 'update'])->name('docentes.edit');
+    Route::post('/docentes/delete/{id}', [DocenteController::class, 'delete'])->name('docentes.delete');
 
 
     // SLIDER

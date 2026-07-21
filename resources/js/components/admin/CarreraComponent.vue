@@ -766,144 +766,22 @@
 
                                             <div class="modal-body">
 
-                                                <div v-for="(docente, index) in docentes"
-                                                    :key="docente.id || `docente-${index}`"
-                                                    class="border rounded p-3 mb-3">
+                                                <p class="text-muted mb-3">
+                                                    Selecciona los docentes que dictan en esta carrera. Puedes
+                                                    gestionar el catálogo de docentes en el menú
+                                                    <strong>Docentes</strong>.
+                                                </p>
 
-                                                    <div class="d-flex justify-content-between mb-3">
+                                                <label for="selectDocentesCarrera">
+                                                    Docentes asignados
+                                                </label>
 
-                                                        <strong>
-                                                            Docente
-                                                        </strong>
-
-                                                        <div>
-
-                                                            <button type="button" class="btn btn-info btn-sm esp-dere"
-                                                                @click="
-                                                                    docente.collapsed =
-                                                                    !docente.collapsed
-                                                                    ">
-
-                                                                <i class="fa" :class="docente.collapsed
-                                                                    ? 'fa-plus'
-                                                                    : 'fa-minus'
-                                                                    "></i>
-
-                                                            </button>
-
-                                                            <button type="button" class="btn btn-danger btn-sm" @click="
-                                                                eliminarDocente(index)
-                                                                ">
-
-                                                                <i class="fa fa-trash"></i>
-
-                                                            </button>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div v-show="!docente.collapsed">
-
-                                                        <input v-model="docente.nombre" class="form-control mb-2"
-                                                            placeholder="Nombre">
-
-                                                        <input v-model="docente.correo" class="form-control mb-2"
-                                                            placeholder="Correo">
-
-                                                        <input v-model="docente.departamento" class="form-control mb-2"
-                                                            placeholder="Departamento">
-
-                                                        <textarea v-model="docente.descripcion"
-                                                            class="form-control mb-2" rows="3"
-                                                            placeholder="Descripción"></textarea>
-
-                                                        <input v-model="docente.linkedin" class="form-control mb-2"
-                                                            placeholder="LinkedIn">
-
-                                                        <!-- TAGS -->
-
-                                                        <label>
-                                                            Etiquetas
-                                                        </label>
-
-
-
-                                                        <div class="input-group mb-3">
-
-                                                            <input type="text" class="form-control"
-                                                                placeholder="Etiqueta" @keyup.enter.prevent="
-                                                                    agregarTag(
-                                                                        docente,
-                                                                        $event
-                                                                    )
-                                                                    ">
-
-                                                            <div class="input-group-append">
-
-                                                                <button type="button" class="btn btn-success" @click="
-                                                                    agregarTag(
-                                                                        docente,
-                                                                        $event
-                                                                    )
-                                                                    ">
-                                                                    Agregar
-                                                                </button>
-
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="mt-3 mb-3">
-
-                                                            <span v-for="(tag, tagIndex) in docente.tags"
-                                                                :key="tagIndex" class="badge badge-primary mr-2">
-
-                                                                {{ tag }}
-
-                                                                <i class="fa fa-times ml-1" style="cursor:pointer"
-                                                                    @click="
-                                                                        docente.tags.splice(
-                                                                            tagIndex,
-                                                                            1
-                                                                        )
-                                                                        "></i>
-
-                                                            </span>
-
-                                                        </div>
-
-                                                        <!-- IMAGEN -->
-
-                                                        <div v-if="
-                                                            docente.imagen_actual
-                                                        " class="mb-2">
-
-                                                            <img :src="asset(
-                                                                docente.imagen_actual
-                                                            )
-                                                                " width="120" class="rounded">
-
-                                                        </div>
-
-                                                        <input type="file" class="form-control" accept=".jpg,.jpeg,.png"
-                                                            @change="
-                                                                cambiarImagen(
-                                                                    $event,
-                                                                    docente
-                                                                )
-                                                                ">
-
-                                                    </div>
-
-                                                </div>
-
-                                                <button type="button" class="btn btn-success" @click="agregarDocente">
-
-                                                    <i class="fa fa-plus"></i>
-
-                                                    Agregar
-
-                                                </button>
+                                                <select id="selectDocentesCarrera" class="form-control" multiple>
+                                                    <option v-for="docente in docentesDisponibles" :key="docente.id"
+                                                        :value="docente.id">
+                                                        {{ docente.correo ? `${docente.nombre} - ${docente.correo}` : docente.nombre }}
+                                                    </option>
+                                                </select>
 
                                             </div>
 
@@ -959,13 +837,15 @@ export default {
             nuevoCurso: '',
             tagifyCreate: null,
             tagifyEdit: null,
-            docentes: []
+            docentesDisponibles: [],
+            docentesSeleccionados: []
 
         }
     },
     mounted() {
         this.getCarreras();
         this.getCategorias();
+        this.getDocentesCatalogo();
         this._editorCreate = null;
         this._editorEdit = null;
     },
@@ -1098,42 +978,53 @@ export default {
 
         abrirDocentes() {
 
-            this.docentes =
-                this.carrera.docentes?.length
-                    ? this.carrera.docentes.map(d => ({
-                        id: d.id,
-                        nombre: d.nombre ?? '',
-                        tags: [...(d.tags ?? [])],
-                        correo: d.correo ?? '',
-                        departamento: d.departamento ?? '',
-                        descripcion: d.descripcion ?? '',
-                        linkedin: d.linkedin ?? '',
-                        imagen: null,
-                        imagen_actual: d.imagen ?? null,
-                        collapsed: true
-                    }))
-
-                    : [{
-                        nombre: '',
-                        tags: [],
-                        correo: '',
-                        departamento: '',
-                        descripcion: '',
-                        linkedin: '',
-                        imagen: null,
-                        imagen_actual: null,
-                        collapsed: false
-                    }];
+            this.docentesSeleccionados = this.carrera.docentes?.length
+                ? this.carrera.docentes.map((docente) => String(docente.id))
+                : [];
 
             $('#modPerfilCarrera')
                 .one('hidden.bs.modal', () => {
-
                     $('#modDocentesCarrera').modal('show');
-
+                    this.$nextTick(() => {
+                        this.initSelectDocentes();
+                    });
                 })
                 .modal('hide');
 
+        },
+        getDocentesCatalogo() {
+            axios.get(route('docentes.get')).then((response) => {
+                this.docentesDisponibles = response.data;
+            }).catch(() => {
+                toastr.error('No se pudo cargar el catálogo de docentes');
+            });
+        },
+        initSelectDocentes() {
+            const $select = $('#selectDocentesCarrera');
 
+            if ($select.hasClass('select2-hidden-accessible')) {
+                $select.off('change');
+                $select.select2('destroy');
+            }
+
+            $select.val(this.docentesSeleccionados);
+
+            $select.select2({
+                placeholder: 'Buscar y seleccionar docentes',
+                allowClear: true,
+                width: '100%',
+            });
+
+            $select.on('change', () => {
+                this.docentesSeleccionados = $select.val() || [];
+            });
+        },
+        destroySelectDocentes() {
+            const $select = $('#selectDocentesCarrera');
+            if ($select.hasClass('select2-hidden-accessible')) {
+                $select.off('change');
+                $select.select2('destroy');
+            }
         },
 
         storeCarrera() {
@@ -1551,51 +1442,6 @@ export default {
                 });
 
         },
-        agregarDocente() {
-
-            this.docentes.push({
-
-                nombre: '',
-                tags: [],
-                correo: '',
-                departamento: '',
-                descripcion: '',
-                linkedin: '',
-                imagen: null,
-                imagen_actual: null,
-                collapsed: false
-
-            });
-
-        },
-        eliminarDocente(index) {
-
-            this.docentes.splice(index, 1);
-
-        },
-        agregarTag(docente, event) {
-
-            const input =
-                event.target
-                    .closest('.input-group')
-                    .querySelector('input');
-
-            const valor =
-                input.value.trim();
-
-            if (!valor) return;
-
-            docente.tags.push(valor);
-
-            input.value = '';
-
-        },
-        cambiarImagen(event, docente) {
-
-            docente.imagen =
-                event.target.files[0];
-
-        },
         guardarDocentes() {
 
             let formData = new FormData();
@@ -1605,56 +1451,8 @@ export default {
                 this.carrera.id
             );
 
-            this.docentes.forEach((docente, index) => {
-
-                formData.append(
-                    'nombre[]',
-                    docente.nombre
-                );
-
-                formData.append(
-                    'correo[]',
-                    docente.correo
-                );
-
-                formData.append(
-                    'departamento[]',
-                    docente.departamento
-                );
-
-                formData.append(
-                    'descripcion[]',
-                    docente.descripcion
-                );
-
-                formData.append(
-                    'linkedin[]',
-                    docente.linkedin
-                );
-
-                formData.append(
-                    'etiquetas_tags[]',
-                    JSON.stringify(
-                        docente.tags.map(tag => ({
-                            value: tag
-                        }))
-                    )
-                );
-
-                formData.append(
-                    'imagen_actual[]',
-                    docente.imagen_actual ?? ''
-                );
-
-                if (docente.imagen) {
-
-                    formData.append(
-                        `imagen_${index}`,
-                        docente.imagen
-                    );
-
-                }
-
+            (this.docentesSeleccionados || []).forEach((docenteId) => {
+                formData.append('docente_ids[]', docenteId);
             });
 
             axios.post(
@@ -1671,7 +1469,7 @@ export default {
                     });
 
                     this.getCarreras();
-
+                    this.destroySelectDocentes();
                     $('#modDocentesCarrera').modal('hide');
 
                 });

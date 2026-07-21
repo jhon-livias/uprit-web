@@ -1,7 +1,8 @@
 <?php
-$dash = 'Carreras';
-$subt = 'Carreras';
+$dash = 'Docentes';
+$subt = 'Docentes';
 ?>
+
 @extends('admin.layouts._principal')
 
 @section('styles')
@@ -9,15 +10,15 @@ $subt = 'Carreras';
 @endsection
 
 @section('content')
-<carrera-component></carrera-component>
-
+<docente-component></docente-component>
 @endsection
+
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 <script>
-    const carreras = document.getElementById('carreras');
-    if (carreras) {
-        carreras.classList.toggle('active');
+    const docentes = document.getElementById('docentes');
+    if (docentes) {
+        docentes.classList.toggle('active');
     }
 </script>
 @endsection

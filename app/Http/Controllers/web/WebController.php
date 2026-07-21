@@ -82,7 +82,7 @@ class WebController extends Controller
 
     public function detallecarrera($id)
     {
-        $carrera = Carrera::findOrFail($id);
+        $carrera = Carrera::with('docentes')->findOrFail($id);
         $categoria = Categoria::findOrFail($carrera->categoria_id);
         return view('web.detalle-carrera', compact('carrera', 'categoria'));
     }
