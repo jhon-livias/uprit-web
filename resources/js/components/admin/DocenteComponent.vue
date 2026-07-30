@@ -138,8 +138,8 @@
                                                         <div class="col-12">
                                                             <label>Resumen para Dirección de Investigación</label>
                                                             <textarea v-model="docente.resumen_investigacion"
-                                                                class="form-control mb-3" rows="3"
-                                                                placeholder="Texto breve que aparece en la tarjeta del equipo directivo"></textarea>
+                                                                class="form-control mb-3 docente-descripcion-textarea"
+                                                                placeholder="Texto que aparece en la tarjeta del equipo directivo"></textarea>
                                                         </div>
                                                     </template>
                                                     <div class="col-12">
@@ -235,8 +235,8 @@
                                                         <div class="col-12">
                                                             <label>Resumen para Dirección de Investigación</label>
                                                             <textarea v-model="docente.resumen_investigacion"
-                                                                class="form-control mb-3" rows="3"
-                                                                placeholder="Texto breve que aparece en la tarjeta del equipo directivo"></textarea>
+                                                                class="form-control mb-3 docente-descripcion-textarea"
+                                                                placeholder="Texto que aparece en la tarjeta del equipo directivo"></textarea>
                                                         </div>
                                                     </template>
                                                     <div class="col-12">

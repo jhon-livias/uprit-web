@@ -35,7 +35,7 @@ class DocenteController extends Controller
             'imagen' => 'nullable|image|max:5120',
             'es_investigador' => 'nullable|boolean',
             'orden_investigacion' => 'nullable|integer|min:1|max:999',
-            'resumen_investigacion' => 'nullable|string|max:1000',
+            'resumen_investigacion' => 'nullable|string',
             'descripcion' => 'nullable|string',
         ]);
 
@@ -72,7 +72,7 @@ class DocenteController extends Controller
             'imagen' => 'nullable|image|max:5120',
             'es_investigador' => 'nullable|boolean',
             'orden_investigacion' => 'nullable|integer|min:1|max:999',
-            'resumen_investigacion' => 'nullable|string|max:1000',
+            'resumen_investigacion' => 'nullable|string',
             'descripcion' => 'nullable|string',
         ]);
 
