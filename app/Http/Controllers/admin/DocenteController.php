@@ -33,6 +33,9 @@ class DocenteController extends Controller
             'departamento' => 'nullable|string|max:250',
             'linkedin' => 'nullable|string|max:250',
             'imagen' => 'nullable|image|max:5120',
+            'es_investigador' => 'nullable|boolean',
+            'orden_investigacion' => 'nullable|integer|min:1|max:999',
+            'resumen_investigacion' => 'nullable|string|max:1000',
         ]);
 
         $docente = new Docente();
@@ -42,6 +45,9 @@ class DocenteController extends Controller
         $docente->descripcion = $request->descripcion;
         $docente->linkedin = $request->linkedin;
         $docente->tags = $this->decodeTags($request->etiquetas_tags);
+        $docente->es_investigador = $request->boolean('es_investigador');
+        $docente->orden_investigacion = $docente->es_investigador ? $request->orden_investigacion : null;
+        $docente->resumen_investigacion = $docente->es_investigador ? $request->resumen_investigacion : null;
 
         $imagen = $this->savePublicUpload($request, 'imagen');
         if ($imagen !== null) {
@@ -63,6 +69,9 @@ class DocenteController extends Controller
             'departamento' => 'nullable|string|max:250',
             'linkedin' => 'nullable|string|max:250',
             'imagen' => 'nullable|image|max:5120',
+            'es_investigador' => 'nullable|boolean',
+            'orden_investigacion' => 'nullable|integer|min:1|max:999',
+            'resumen_investigacion' => 'nullable|string|max:1000',
         ]);
 
         $docente = Docente::findOrFail($request->id);
@@ -72,6 +81,9 @@ class DocenteController extends Controller
         $docente->descripcion = $request->descripcion;
         $docente->linkedin = $request->linkedin;
         $docente->tags = $this->decodeTags($request->etiquetas_tags);
+        $docente->es_investigador = $request->boolean('es_investigador');
+        $docente->orden_investigacion = $docente->es_investigador ? $request->orden_investigacion : null;
+        $docente->resumen_investigacion = $docente->es_investigador ? $request->resumen_investigacion : null;
 
         $imagen = $this->savePublicUpload($request, 'imagen', $docente->imagen);
         if ($imagen !== null) {

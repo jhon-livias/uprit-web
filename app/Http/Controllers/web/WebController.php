@@ -13,6 +13,7 @@ use App\Models\NivelAcademico;
 use App\Models\CategoriaNoticia;
 use App\Models\SliderCarrera;
 use App\Models\Reclamo;
+use App\Models\Docente;
 
 
 class WebController extends Controller
@@ -227,8 +228,14 @@ class WebController extends Controller
     
     public function direccion()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();       
-        return view('web.direccion', compact('ultimasnoticias'));
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
+        $docentesInvestigadores = Docente::query()
+            ->where('es_investigador', true)
+            ->orderBy('orden_investigacion')
+            ->orderBy('nombre')
+            ->get();
+
+        return view('web.direccion', compact('ultimasnoticias', 'docentesInvestigadores'));
     }
 
     public function centro_investigacion()

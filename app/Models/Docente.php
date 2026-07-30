@@ -17,10 +17,14 @@ class Docente extends Model
         'descripcion',
         'linkedin',
         'imagen',
+        'es_investigador',
+        'orden_investigacion',
+        'resumen_investigacion',
     ];
 
     protected $casts = [
         'tags' => 'array',
+        'es_investigador' => 'boolean',
     ];
 
     public function carreras(): BelongsToMany
