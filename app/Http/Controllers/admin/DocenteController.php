@@ -36,6 +36,7 @@ class DocenteController extends Controller
             'es_investigador' => 'nullable|boolean',
             'orden_investigacion' => 'nullable|integer|min:1|max:999',
             'resumen_investigacion' => 'nullable|string|max:1000',
+            'descripcion' => 'nullable|string',
         ]);
 
         $docente = new Docente();
@@ -72,6 +73,7 @@ class DocenteController extends Controller
             'es_investigador' => 'nullable|boolean',
             'orden_investigacion' => 'nullable|integer|min:1|max:999',
             'resumen_investigacion' => 'nullable|string|max:1000',
+            'descripcion' => 'nullable|string',
         ]);
 
         $docente = Docente::findOrFail($request->id);

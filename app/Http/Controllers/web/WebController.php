@@ -238,6 +238,16 @@ class WebController extends Controller
         return view('web.direccion', compact('ultimasnoticias', 'docentesInvestigadores'));
     }
 
+    public function detalleDocenteInvestigacion(int $id)
+    {
+        $docente = Docente::query()
+            ->where('id', $id)
+            ->where('es_investigador', true)
+            ->firstOrFail();
+
+        return view('web.detalle-docente-investigacion', compact('docente'));
+    }
+
     public function centro_investigacion()
     {
         $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();       

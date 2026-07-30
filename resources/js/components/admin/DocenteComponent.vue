@@ -94,9 +94,9 @@
                                                             class="form-control mb-3">
                                                     </div>
                                                     <div class="col-12">
-                                                        <label>Descripción</label>
-                                                        <textarea v-model="docente.descripcion" class="form-control mb-3"
-                                                            rows="4"></textarea>
+                                                        <label>{{ docente.es_investigador ? 'Historial / biografía completa' : 'Descripción' }}</label>
+                                                        <textarea v-model="docente.descripcion" class="form-control mb-3 docente-descripcion-textarea"
+                                                            :placeholder="docente.es_investigador ? 'Texto completo que aparece en el perfil de Dirección de Investigación' : ''"></textarea>
                                                     </div>
                                                     <div class="col-12">
                                                         <label>Etiquetas</label>
@@ -191,9 +191,9 @@
                                                             class="form-control mb-3">
                                                     </div>
                                                     <div class="col-12">
-                                                        <label>Descripción</label>
-                                                        <textarea v-model="docente.descripcion" class="form-control mb-3"
-                                                            rows="4"></textarea>
+                                                        <label>{{ docente.es_investigador ? 'Historial / biografía completa' : 'Descripción' }}</label>
+                                                        <textarea v-model="docente.descripcion" class="form-control mb-3 docente-descripcion-textarea"
+                                                            :placeholder="docente.es_investigador ? 'Texto completo que aparece en el perfil de Dirección de Investigación' : ''"></textarea>
                                                     </div>
                                                     <div class="col-12">
                                                         <label>Etiquetas</label>
@@ -434,3 +434,10 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+.docente-descripcion-textarea {
+    min-height: 220px;
+    resize: vertical;
+}
+</style>

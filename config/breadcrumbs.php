@@ -228,6 +228,9 @@ return [
             'menu_label' => 'Dirección de Investigación',
             'parent' => ['label' => 'Innovación'],
         ],
+        'direccion.docente' => [
+            'parent' => ['label' => 'Dirección de Investigación', 'route' => 'direccion'],
+        ],
         'centro_investigacion' => [
             'title' => 'Centro de Investigación',
             'menu_label' => 'Centro de Investigación',

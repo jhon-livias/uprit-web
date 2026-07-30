@@ -132,6 +132,11 @@
                 @foreach($docente->tags ?? [] as $tag)
                 <span style="display:inline-block;border:1px solid #c4002f;color:#c4002f;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">{{ $tag }}</span>
                 @endforeach
+                <div style="margin-top:18px;">
+                    <a href="{{ route('direccion.docente', $docente->id) }}" class="btn-ver-perfil-docente">
+                        Ver Perfil →
+                    </a>
+                </div>
             </div>
             @endforeach
         </div>
