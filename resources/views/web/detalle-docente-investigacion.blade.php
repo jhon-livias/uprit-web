@@ -66,11 +66,8 @@
                 <div class="docente-investigador-perfil__historial">
                     <span class="docente-investigador-perfil__badge">Historial</span>
                     <div class="docente-investigador-perfil__bio">
-                        @php
-                            $historial = $docente->descripcion ?: $docente->resumen_investigacion;
-                        @endphp
-                        @if($historial)
-                            {!! nl2br(e($historial)) !!}
+                        @if($docente->resumen_investigacion)
+                            {!! nl2br(e($docente->resumen_investigacion)) !!}
                         @else
                             <p class="text-muted mb-0">Información de perfil en actualización.</p>
                         @endif
