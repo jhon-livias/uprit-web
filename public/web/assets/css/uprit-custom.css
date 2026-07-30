@@ -3292,3 +3292,182 @@ body.dark-mode .list-noticia-bg {
 
     font-size:14px;
 }
+
+/* ===== PERFIL DOCENTE INVESTIGADOR ===== */
+
+.docente-investigador-hero {
+    position: relative;
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    background:
+        linear-gradient(90deg, rgba(145, 0, 30, 0.92) 0%, rgba(145, 0, 30, 0.75) 45%, rgba(145, 0, 30, 0.35) 100%),
+        url('/web/assets/images/bg/bg-image-20.svg') center/cover no-repeat;
+    overflow: hidden;
+}
+
+.docente-investigador-hero__content {
+    max-width: 720px;
+    padding: 60px 0 80px;
+}
+
+.docente-investigador-hero__title {
+    color: #fff;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 16px;
+}
+
+.docente-investigador-hero__quote {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0;
+    max-width: 560px;
+}
+
+.docente-investigador-perfil {
+    position: relative;
+    padding: 0 0 70px;
+    margin-top: -70px;
+}
+
+.docente-investigador-perfil__foto-wrap {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.docente-investigador-perfil__foto {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.docente-investigador-perfil__card {
+    background: #f7f3ef;
+    border-radius: 18px;
+    padding: 28px 24px;
+    height: 100%;
+}
+
+.docente-investigador-perfil__nombre {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: #20272f;
+}
+
+.docente-investigador-perfil__tags {
+    margin-bottom: 22px;
+}
+
+.docente-investigador-perfil__tag {
+    display: inline-block;
+    border: 1px solid #c9c9c9;
+    color: #666;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    margin: 0 4px 6px 0;
+    background: #fff;
+}
+
+.docente-investigador-perfil__dato {
+    margin-bottom: 18px;
+}
+
+.docente-investigador-perfil__label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 6px;
+}
+
+.docente-investigador-perfil__valor {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    font-size: 15px;
+    text-decoration: none;
+    word-break: break-word;
+}
+
+.docente-investigador-perfil__valor:hover {
+    color: #91001e;
+}
+
+.docente-investigador-perfil__historial {
+    background: #fff;
+    border: 1px solid #ececec;
+    border-radius: 18px;
+    padding: 28px 30px;
+    min-height: 100%;
+}
+
+.docente-investigador-perfil__badge {
+    display: inline-block;
+    background: #91001e;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    padding: 5px 14px;
+    margin-bottom: 18px;
+}
+
+.docente-investigador-perfil__bio {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.85;
+    text-align: justify;
+}
+
+.docente-investigador-perfil__volver {
+    display: inline-block;
+    color: #91001e;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.docente-investigador-perfil__volver:hover {
+    color: #c4002f;
+    text-decoration: underline;
+}
+
+.btn-ver-perfil-docente {
+    display: inline-block;
+    background: #91001e;
+    color: #fff !important;
+    border-radius: 999px;
+    padding: 10px 26px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-ver-perfil-docente:hover {
+    background: #c4002f;
+    color: #fff !important;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 767px) {
+    .docente-investigador-hero__content {
+        padding: 40px 0 70px;
+    }
+
+    .docente-investigador-perfil {
+        margin-top: -50px;
+    }
+
+    .docente-investigador-perfil__historial {
+        margin-top: 24px;
+    }
+}
