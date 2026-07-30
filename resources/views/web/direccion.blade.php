@@ -18,11 +18,7 @@
                         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                             <div class="course-tab-content">
                                 <div class="course-overview">
-
-
-
                                     <div class="course-curriculam mb--90">
-
                                         <div class="accordion edu-accordion edu-accordion-sec" id="accordionExample" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                                             <div class="accordion-item">
                                                 <h3 class="accordion-header" id="headingOne">
@@ -68,163 +64,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
-                    <div class="text-block trext-center">
-                        <h3 class="title">Equipo Directivo de Investigación</h3>
-                        <p>Un grupo de profesionales con amplia experiencia académica y de gestión, comprometidos con brindar una educación de calidad, formar líderes y transformar el futuro de nuestros estudiantes.</p>
-                    </div>
-                    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:30px;margin-top:50px;">
-
-                        <!-- CARD -->
-                        <div style="width:260px;border:1px solid #e5e5e5;border-radius:18px;padding:30px 20px;text-align:center;background:#fff;transition:.3s;">
-                            <img src="{{asset('web/imagenes/do1.png')}}" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:20px;">
-                            <h5 style="font-weight:700;margin-bottom:10px;">Luigi Italo Villena Zapata</h5>
-                            <p style="font-size:14px;color:#666;line-height:1.6;margin-bottom:20px;">
-                                Doctor en Estadística Matemática por la Universidad Nacional del Santa (primer puesto de su promoción), Ingeniero Estadístico
-                            </p>
-
-                            <span style="display:inline-block;border:1px solid #c4002f;color:#c4002f;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">Docente</span>
-                            <span style="display:inline-block;border:1px solid #c4002f;color:#c4002f;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">Investigación</span>
-
-                            <!-- <br><br>
-
-                            <a href="#" style="display:inline-block;background:#c4002f;color:#fff;padding:10px 24px;border-radius:30px;text-decoration:none;font-size:14px;">
-                                Ver Perfil →
-                            </a> -->
-                        </div>
-
-                        <!-- Repite esta tarjeta 7 veces -->
-
-                        <div style="width:260px;border:1px solid #e5e5e5;border-radius:18px;padding:30px 20px;text-align:center;background:#fff;">
-                            <img src="{{asset('web/imagenes/do2.jpg')}}" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:20px;">
-                            <h5 style="font-weight:700;margin-bottom:10px;">Carlos Alza Collantes</h5>
-                            <p style="font-size:14px;color:#666;line-height:1.6;margin-bottom:20px;">
-                                Doctor en Educación. Maestro en Mediación y Arbitraje en la Práctica Comercial por la Universidad de Salamanca- España
-                            </p>
-
-                            <span style="display:inline-block;border:1px solid #c4002f;color:#c4002f;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">Docente</span>
-                            <span style="display:inline-block;border:1px solid #c4002f;color:#c4002f;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">Investigación</span>
-
-                            <!-- <br><br>
-
-                            <a href="#" style="display:inline-block;background:#c4002f;color:#fff;padding:10px 24px;border-radius:30px;text-decoration:none;font-size:14px;">
-                                Ver Perfil →
-                            </a> -->
-                        </div>
-
-                        <div style="width:260px;border:1px solid #e5e5e5;border-radius:18px;padding:30px 20px;text-align:center;background:#fff;">
-                            <img src="{{asset('web/imagenes/do3.jpg')}}" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:20px;">
-                            <h5 style="font-weight:700;margin-bottom:10px;">Charlen Máximo Calero Huamán</h5>
-                            <p style="font-size:14px;color:#666;line-height:1.6;margin-bottom:20px;">
-                                Docente universitario e investigador con sólida trayectoria en Ingeniería Industrial y Maestría en Ingeniería de Sistemas
-                            </p>
-
-                            <span style="display:inline-block;border:1px solid #c4002f;color:#c4002f;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">Docente</span>
-                            <span style="display:inline-block;border:1px solid #c4002f;color:#c4002f;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">Investigación</span>
-
-                            <!-- <br><br>
-
-                            <a href="#" style="display:inline-block;background:#c4002f;color:#fff;padding:10px 24px;border-radius:30px;text-decoration:none;font-size:14px;">
-                                Ver Perfil →
-                            </a> -->
-                        </div>
-
-                        <div style="width:260px;border:1px solid #e5e5e5;border-radius:18px;padding:30px 20px;text-align:center;background:#fff;">
-                            <img src="{{asset('web/imagenes/do4.png')}}" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:20px;">
-                            <h5 style="font-weight:700;margin-bottom:10px;">Renzo Jesus Maldonado Gomez</h5>
-                            <p style="font-size:14px;color:#666;line-height:1.6;margin-bottom:20px;">
-                                Doctor en Educación por la Universidad César Vallejo, Grado de Maestro: Derecho Civil Empresarial
-                            </p>
-
-                            <span style="display:inline-block;border:1px solid #c4002f;color:#c4002f;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">Docente</span>
-                            <span style="display:inline-block;border:1px solid #c4002f;color:#c4002f;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">Investigación</span>
-
-                            <!-- <br><br>
-
-                            <a href="#" style="display:inline-block;background:#c4002f;color:#fff;padding:10px 24px;border-radius:30px;text-decoration:none;font-size:14px;">
-                                Ver Perfil →
-                            </a> -->
-                        </div>
-
-                         <div style="width:260px;border:1px solid #e5e5e5;border-radius:18px;padding:30px 20px;text-align:center;background:#fff;">
-                            <img src="{{asset('web/imagenes/do5.png')}}" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:20px;">
-                            <h5 style="font-weight:700;margin-bottom:10px;">Mirtha Zulema Armas Chang</h5>
-                            <p style="font-size:14px;color:#666;line-height:1.6;margin-bottom:20px;">
-                                Licenciada en Administración, egresada de la Universidad Nacional de Trujillo
-                            </p>
-
-                            <span style="display:inline-block;border:1px solid #c4002f;color:#c4002f;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">Docente</span>
-                            <span style="display:inline-block;border:1px solid #c4002f;color:#c4002f;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">Investigación</span>
-
-                            <!-- <br><br>
-
-                            <a href="#" style="display:inline-block;background:#c4002f;color:#fff;padding:10px 24px;border-radius:30px;text-decoration:none;font-size:14px;">
-                                Ver Perfil →
-                            </a> -->
-                        </div>
-
-                         <div style="width:260px;border:1px solid #e5e5e5;border-radius:18px;padding:30px 20px;text-align:center;background:#fff;">
-                            <img src="{{asset('web/imagenes/do6.png')}}" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:20px;">
-                            <h5 style="font-weight:700;margin-bottom:10px;">Olenka Ana Catherine Espinoza Rodriguez</h5>
-                            <p style="font-size:14px;color:#666;line-height:1.6;margin-bottom:20px;">
-                               Economista, Doctora en Educación y Docente investigadora Renacyt. Con 11 años de experiencia en la administración pública.
-                            </p>
-
-                            <span style="display:inline-block;border:1px solid #c4002f;color:#c4002f;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">Docente</span>
-                            <span style="display:inline-block;border:1px solid #c4002f;color:#c4002f;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">Investigación</span>
-
-                            <!-- <br><br>
-
-                            <a href="#" style="display:inline-block;background:#c4002f;color:#fff;padding:10px 24px;border-radius:30px;text-decoration:none;font-size:14px;">
-                                Ver Perfil →
-                            </a> -->
-                        </div>
-
-                         <div style="width:260px;border:1px solid #e5e5e5;border-radius:18px;padding:30px 20px;text-align:center;background:#fff;">
-                            <img src="{{asset('web/imagenes/do7.jpg')}}" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:20px;">
-                            <h5 style="font-weight:700;margin-bottom:10px;">Marco Antonio Sevilla Gamarra</h5>
-                            <p style="font-size:14px;color:#666;line-height:1.6;margin-bottom:20px;">
-                                Post Doctor Universidad del Oriente-Cancún México, en Educación e Investigación, Doctor en Administración
-                            </p>
-
-                            <span style="display:inline-block;border:1px solid #c4002f;color:#c4002f;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">Docente</span>
-                            <span style="display:inline-block;border:1px solid #c4002f;color:#c4002f;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">Investigación</span>
-
-                            <!-- <br><br>
-
-                            <a href="#" style="display:inline-block;background:#c4002f;color:#fff;padding:10px 24px;border-radius:30px;text-decoration:none;font-size:14px;">
-                                Ver Perfil →
-                            </a> -->
-                        </div>
-
-                         <div style="width:260px;border:1px solid #e5e5e5;border-radius:18px;padding:30px 20px;text-align:center;background:#fff;">
-                            <img src="{{asset('web/imagenes/do8.png')}}" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:20px;">
-                            <h5 style="font-weight:700;margin-bottom:10px;">Jacqueline Roxana Romero Reyna</h5>
-                            <p style="font-size:14px;color:#666;line-height:1.6;margin-bottom:20px;">
-                                Doctora en Psicología por la Universidad César Vallejo. Investigadora RENACYT Nivel VI, reconocida por CONCYTEC
-                            </p>
-
-                            <span style="display:inline-block;border:1px solid #c4002f;color:#c4002f;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">Docente</span>
-                            <span style="display:inline-block;border:1px solid #c4002f;color:#c4002f;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">Investigación</span>
-
-                            <!-- <br><br>
-
-                            <a href="#" style="display:inline-block;background:#c4002f;color:#fff;padding:10px 24px;border-radius:30px;text-decoration:none;font-size:14px;">
-                                Ver Perfil →
-                            </a> -->
-                        </div>
-
-                       
-                    </div>
-
                 </div>
             </div>
             <div class="col-lg-4">
@@ -234,7 +79,7 @@
                             <h4 class="widget-title">Categorias</h4>
                             <div class="content">
                                 @include('web.partials.section-nav')
-</div>
+                            </div>
                         </div>
                     </div>
                     <!-- End Single Widget  -->
@@ -266,6 +111,32 @@
             </div>
         </div>
     </div>
+
+    <div class="container ">
+        <div class="text-block text-center">
+            <h3 class="title">Equipo Directivo de Investigación</h3>
+            <p style="padding-left: 58px; padding-right: 58px;">Un grupo de profesionales con amplia experiencia académica y de gestión, comprometidos con brindar una educación de calidad, formar líderes y transformar el futuro de nuestros estudiantes.</p>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:30px;margin-top:50px;">
+            @foreach($docentesInvestigadores as $docente)
+            <div style="width:260px;border:1px solid #e5e5e5;border-radius:18px;padding:30px 20px;text-align:center;background:#fff;transition:.3s;">
+                @if($docente->imagen)
+                <img src="{{ asset($docente->imagen) }}" alt="{{ $docente->nombre }}" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:20px;">
+                @endif
+                <h5 style="font-weight:700;margin-bottom:10px;">{{ $docente->nombre }}</h5>
+                @if($docente->resumen_investigacion)
+                <p style="font-size:14px;color:#666;line-height:1.6;margin-bottom:20px;max-height:80px;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;text-overflow:ellipsis;">
+                    {{ $docente->resumen_investigacion }}
+                </p>
+                @endif
+                @foreach($docente->tags ?? [] as $tag)
+                <span style="display:inline-block;border:1px solid #c4002f;color:#c4002f;border-radius:20px;padding:4px 12px;font-size:12px;margin:3px;">{{ $tag }}</span>
+                @endforeach
+            </div>
+            @endforeach
+        </div>
+    </div>
+
 </section>
 @include('web.layouts.marquesina')
 @endsection

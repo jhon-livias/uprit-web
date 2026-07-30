@@ -24,6 +24,7 @@
                                                     <th style="text-align: center">Correo</th>
                                                     <th style="text-align: center">Departamento</th>
                                                     <th style="text-align: center">Carreras</th>
+                                                    <th style="text-align: center">Investigador</th>
                                                     <th style="text-align: center">Imagen</th>
                                                     <th style="text-align: center">Acciones</th>
                                                 </tr>
@@ -35,6 +36,10 @@
                                                     <td style="text-align: center">{{ item.correo || '-' }}</td>
                                                     <td style="text-align: center">{{ item.departamento || '-' }}</td>
                                                     <td style="text-align: center">{{ item.carreras_count || 0 }}</td>
+                                                    <td style="text-align: center">
+                                                        <span v-if="item.es_investigador" class="badge badge-success">Sí</span>
+                                                        <span v-else class="text-muted">No</span>
+                                                    </td>
                                                     <td style="text-align: center; vertical-align: middle;">
                                                         <img v-if="item.imagen" :src="asset(item.imagen)" alt="Imagen"
                                                             width="80"
@@ -115,6 +120,29 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
+                                                        <div class="custom-control custom-checkbox mb-3">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="esInvestigadorNuevo" v-model="docente.es_investigador">
+                                                            <label class="custom-control-label" for="esInvestigadorNuevo">
+                                                                Mostrar en Dirección de Investigación
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <template v-if="docente.es_investigador">
+                                                        <div class="col-md-4">
+                                                            <label>Orden en investigación</label>
+                                                            <input type="number" min="1" max="999"
+                                                                v-model.number="docente.orden_investigacion"
+                                                                class="form-control mb-3">
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label>Resumen para Dirección de Investigación</label>
+                                                            <textarea v-model="docente.resumen_investigacion"
+                                                                class="form-control mb-3" rows="3"
+                                                                placeholder="Texto breve que aparece en la tarjeta del equipo directivo"></textarea>
+                                                        </div>
+                                                    </template>
+                                                    <div class="col-12">
                                                         <label>Imagen</label>
                                                         <input type="file" class="dropify" @change="onImagenChange"
                                                             accept=".jpg,.jpeg,.png"
@@ -189,6 +217,29 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
+                                                        <div class="custom-control custom-checkbox mb-3">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="esInvestigadorEditar" v-model="docente.es_investigador">
+                                                            <label class="custom-control-label" for="esInvestigadorEditar">
+                                                                Mostrar en Dirección de Investigación
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <template v-if="docente.es_investigador">
+                                                        <div class="col-md-4">
+                                                            <label>Orden en investigación</label>
+                                                            <input type="number" min="1" max="999"
+                                                                v-model.number="docente.orden_investigacion"
+                                                                class="form-control mb-3">
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label>Resumen para Dirección de Investigación</label>
+                                                            <textarea v-model="docente.resumen_investigacion"
+                                                                class="form-control mb-3" rows="3"
+                                                                placeholder="Texto breve que aparece en la tarjeta del equipo directivo"></textarea>
+                                                        </div>
+                                                    </template>
+                                                    <div class="col-12">
                                                         <label>Imagen</label>
                                                         <div v-if="docente.imagen_actual" class="mb-2">
                                                             <img :src="asset(docente.imagen_actual)" width="120"
@@ -242,6 +293,9 @@ export default {
                 tags: [],
                 imagen: null,
                 imagen_actual: null,
+                es_investigador: false,
+                orden_investigacion: null,
+                resumen_investigacion: '',
             };
         },
         initDropify(selector = '.dropify') {
@@ -269,6 +323,9 @@ export default {
                 tags: [...(item.tags ?? [])],
                 imagen: null,
                 imagen_actual: item.imagen ?? null,
+                es_investigador: !!item.es_investigador,
+                orden_investigacion: item.orden_investigacion ?? null,
+                resumen_investigacion: item.resumen_investigacion ?? '',
             };
             $('#modEditarDocente').modal('show');
             this.initDropify('.dropify-edit');
@@ -294,6 +351,11 @@ export default {
                 'etiquetas_tags',
                 JSON.stringify(this.docente.tags.map((tag) => ({ value: tag })))
             );
+            formData.append('es_investigador', this.docente.es_investigador ? '1' : '0');
+            if (this.docente.es_investigador) {
+                formData.append('orden_investigacion', this.docente.orden_investigacion ?? '');
+                formData.append('resumen_investigacion', this.docente.resumen_investigacion ?? '');
+            }
             if (this.docente.imagen) {
                 formData.append('imagen', this.docente.imagen);
             }
