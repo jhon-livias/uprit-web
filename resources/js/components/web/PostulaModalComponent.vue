@@ -81,24 +81,25 @@ const onIframeLoad = () => {
     isLoading.value = false;
 };
 
-let triggerElements = [];
+const onTriggerClick = (event) => {
+    const trigger = event.target.closest('[data-postula-trigger]');
 
-const bindTriggers = () => {
-    triggerElements = Array.from(document.querySelectorAll('[data-postula-trigger]'));
-    triggerElements.forEach((el) => el.addEventListener('click', open));
-};
+    if (!trigger) {
+        return;
+    }
 
-const unbindTriggers = () => {
-    triggerElements.forEach((el) => el.removeEventListener('click', open));
-    triggerElements = [];
+    event.preventDefault();
+    open();
 };
 
 onMounted(() => {
-    bindTriggers();
+    document.addEventListener('click', onTriggerClick);
+    window.openPostulaModal = open;
 });
 
 onUnmounted(() => {
-    unbindTriggers();
+    document.removeEventListener('click', onTriggerClick);
+    delete window.openPostulaModal;
     document.body.style.overflow = '';
 });
 </script>
