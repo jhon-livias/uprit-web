@@ -219,8 +219,8 @@
                     <ul class="header-action">
 
                         <li class="mobile-menu-bar d-block d-xl-none">
-                            <button class="hamberger-button">
-                                <i class="icon-54"></i>
+                            <button type="button" class="hamberger-button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-navigation">
+                                <iconify-icon icon="mdi:menu" aria-hidden="true"></iconify-icon>
                             </button>
                         </li>
                     </ul>
@@ -229,18 +229,18 @@
             </div>
         </div>
     </div>
-    <div class="popup-mobile-menu">
+    <div class="popup-mobile-menu" id="mobile-navigation" aria-hidden="true">
         <div class="inner">
             <div class="header-top">
                 <div class="logo">
                     <a href="{{route('web.index')}}">
-                        <img class="logo-light" src="{{asset('web/imagenes/logo_uprit_light.svg')}}" alt="Corporate Logo">
-                        <img class="logo-dark" src="{{asset('web/imagenes/logo_uprit_light.svg')}}" alt="Corporate Logo">
+                        <img class="logo-light" src="{{asset('web/imagenes/logo_uprit_light.svg')}}" alt="UPRIT">
+                        <img class="logo-dark" src="{{asset('web/imagenes/logo_uprit_light.svg')}}" alt="UPRIT">
                     </a>
                 </div>
                 <div class="close-menu">
-                    <button class="close-button">
-                        <i class="icon-73"></i>
+                    <button type="button" class="close-button" aria-label="Cerrar menú de navegación">
+                        <iconify-icon icon="mdi:close" aria-hidden="true"></iconify-icon>
                     </button>
                 </div>
             </div>
@@ -377,10 +377,23 @@
                         @include('web.partials.menu-nav-links', ['section' => 'contactanos'])
                     </ul>
                 </li>
+                <li class="has-droupdown">
+                    <a href="#">Nuestra Plataforma</a>
+                    <ul class="submenu">
+                        <li><a href="https://intranet.uprit.edu.pe/" target="_blank" rel="noopener">ERP</a></li>
+                        <li><a href="https://www.digitaliapublishing.com/" target="_blank" rel="noopener">Biblioteca Virtual</a></li>
+                        <li><a href="https://repositorio.uprit.edu.pe/" target="_blank" rel="noopener">Repositorio - ALICIA</a></li>
+                        <li><a href="https://moodle.uprit.edu.pe" target="_blank" rel="noopener">Aula Virtual</a></li>
+                    </ul>
+                </li>
                 <li><a href="{{ route('web.noticias') }}">Noticias</a></li>
                 <li><a href="{{route('transparencia')}}">Transparencia</a></li>
                 <li>
-                    <button type="button" class="edu-btn btn-secondary d-flex align-items-center gap-2" data-postula-trigger>
+                    <button 
+                        type="button" 
+                        class="edu-btn btn-secondary d-flex align-items-center gap-2" 
+                        data-postula-trigger
+                        style="color: white !important">
                         <iconify-icon icon="mdi:pencil" style="font-size:20px"></iconify-icon>
                         Postula Aquí
                     </button>

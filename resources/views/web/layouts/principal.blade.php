@@ -131,6 +131,7 @@
     @endif
     @yield('scripts')
     <script src="{{ static_asset('web/assets/js/app.js') }}"></script>
+    <script src="{{ static_asset('web/assets/js/mobile-menu.js') }}"></script>
     @stack('after_app_scripts')
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 

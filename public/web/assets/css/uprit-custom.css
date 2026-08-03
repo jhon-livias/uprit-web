@@ -3471,3 +3471,120 @@ body.dark-mode .list-noticia-bg {
         margin-top: 24px;
     }
 }
+
+/* Menú móvil responsive */
+body.mobile-menu-open {
+    overflow: hidden;
+}
+
+.header-action .mobile-menu-bar .hamberger-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    color: #fff !important;
+    background: rgba(145, 0, 30, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.header-action .mobile-menu-bar .hamberger-button iconify-icon {
+    font-size: 26px;
+}
+
+.header-action .mobile-menu-bar .hamberger-button:hover,
+.header-action .mobile-menu-bar .hamberger-button:focus-visible {
+    background: #91001e;
+    color: #fff !important;
+    transform: scale(1.04);
+    outline: none;
+}
+
+.header-mainmenu.sticky-active .header-action .mobile-menu-bar .hamberger-button {
+    background: rgba(145, 0, 30, 0.85);
+}
+
+.popup-mobile-menu .inner {
+    width: min(340px, 88vw);
+    background: #fff;
+}
+
+.popup-mobile-menu .inner .header-top {
+    background: #91001e;
+    border-bottom: none;
+    padding: 18px 20px;
+}
+
+.popup-mobile-menu .inner .header-top .close-menu .close-button {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.popup-mobile-menu .inner .header-top .close-menu .close-button:hover {
+    background: #fff;
+    color: #91001e;
+}
+
+.popup-mobile-menu .inner .header-top .close-menu .close-button iconify-icon {
+    font-size: 22px;
+}
+
+.popup-mobile-menu .mainmenu {
+    padding: 8px 0 24px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+
+.popup-mobile-menu .mainmenu li a,
+.popup-mobile-menu .mainmenu li button {
+    color: #1a1a1a !important;
+    padding: 12px 20px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.popup-mobile-menu .mainmenu li+li {
+    border-top: 1px solid rgba(145, 0, 30, 0.12);
+}
+
+.popup-mobile-menu .mainmenu .has-droupdown > a {
+    color: #91001e !important;
+}
+
+.popup-mobile-menu .mainmenu .has-droupdown > a::after {
+    color: #91001e;
+    padding-right: 20px !important;
+}
+
+.popup-mobile-menu .mainmenu .has-droupdown .submenu li a {
+    color: #444 !important;
+    font-weight: 500;
+    padding-left: 8px;
+}
+
+.popup-mobile-menu .mainmenu .has-droupdown > a.open {
+    background: rgba(145, 0, 30, 0.06);
+}
+
+.popup-mobile-menu .mainmenu > li:last-child {
+    padding: 16px 20px 0;
+    border-top: none;
+}
+
+.popup-mobile-menu .mainmenu > li:last-child .edu-btn {
+    width: 100%;
+    justify-content: center;
+    pointer-events: auto;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+
+@media (min-width: 1200px) {
+    .popup-mobile-menu {
+        display: none !important;
+    }
+}
