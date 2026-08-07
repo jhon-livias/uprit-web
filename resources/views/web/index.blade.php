@@ -115,7 +115,7 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="about-edu" role="tabpanel">
-                            <p>Brindar programas educativos de alto impacto que respondan a los desafíos reales de nuestra sociedad y promuevan el desarrollo personal y profesional.</p>
+                            <p>La Universidad Privada de Trujillo brinda una formación profesional integral y humanista de excelencia, generando conocimiento científico y tecnológico que contribuye al desarrollo armónico y sostenible de la sociedad, abordando los problemas, retos y desafíos sociales, económicos, culturales, y ambientales que la aquejan con un alto espíritu de responsabilidad social y ética.</p>
 
                         </div>
                         <div class="tab-pane fade" id="about-mission" role="tabpanel">
@@ -123,7 +123,7 @@
 
                         </div>
                         <div class="tab-pane fade" id="about-vision" role="tabpanel">
-                            <p>Compromiso, transparencia, excelencia académica y orientación al estudiante en todo lo que hacemos.</p>
+                            <p>Al 2027 nuestra universidad está integrada al mundo, reconocida por su aporte significativo al desarrollo humano, al responder a las demandas, retos y desafíos del entorno, favoreciendo con ello la competitividad y la sostenibilidad a través de la excelencia de sus egresados y la investigación e innovación actuando con un alto sentido de responsabilidad social y ética.</p>
 
                         </div>
                     </div>
