@@ -224,6 +224,52 @@
         }
 
         document.querySelectorAll('.mega-tabs-wrapper').forEach(initMegaTabs);
+
+        function placeViewportMegaMenu(item) {
+            const link = item.querySelector(':scope > a');
+            if (!link) {
+                return;
+            }
+
+            const rect = link.getBoundingClientRect();
+            item.style.setProperty('--mega-menu-top', Math.round(rect.bottom) + 'px');
+        }
+
+        function initViewportMegaMenus() {
+            const items = document.querySelectorAll('.mega-pregrado, .mega-posgrado');
+            if (!items.length) {
+                return;
+            }
+
+            const desktopQuery = window.matchMedia('(min-width: 1200px)');
+
+            items.forEach(function (item) {
+                item.addEventListener('mouseenter', function () {
+                    if (!desktopQuery.matches) {
+                        return;
+                    }
+                    placeViewportMegaMenu(item);
+                    item.classList.add('is-mega-open');
+                });
+
+                item.addEventListener('mouseleave', function () {
+                    item.classList.remove('is-mega-open');
+                });
+            });
+
+            function repositionOpenMenus() {
+                if (!desktopQuery.matches) {
+                    return;
+                }
+
+                document.querySelectorAll('.mega-pregrado.is-mega-open, .mega-posgrado.is-mega-open').forEach(placeViewportMegaMenu);
+            }
+
+            window.addEventListener('resize', repositionOpenMenus);
+            window.addEventListener('scroll', repositionOpenMenus, { passive: true });
+        }
+
+        initViewportMegaMenus();
     </script>
     <script>
         const accordions = document.querySelectorAll('.footer-accordion');
