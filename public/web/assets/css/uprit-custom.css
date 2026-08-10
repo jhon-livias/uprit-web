@@ -648,50 +648,18 @@
     max-width: 520px;
 }
 
-.mega-posgrado {
-    position: relative;
-}
-
-.mega-posgrado-wrapper {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: min(1500px, calc(100vw - 40px));
-    max-width: 1500px;
-    background: #fff;
-
-    display: flex;
-
-    border-radius: 10px;
-    overflow: hidden;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transition: .3s;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, .08);
-}
-
-/* mostrar */
-.mega-posgrado:hover .mega-posgrado-wrapper {
-    opacity: 1;
-    visibility: visible;
-}
-
+.mega-posgrado,
 .mega-pregrado {
     position: relative;
 }
 
+.mega-posgrado-wrapper,
 .mega-pregrado-wrapper {
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
 
-    width: min(1300px, calc(100vw - 40px));
-    max-width: 1300px;
     background: #fff;
 
     display: flex;
@@ -701,14 +669,58 @@
 
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 
-    transition: .3s;
+    transition: opacity .3s, visibility .3s;
     box-shadow: 0 10px 40px rgba(0, 0, 0, .08);
+    z-index: 1001;
 }
 
-.mega-pregrado:hover .mega-pregrado-wrapper {
-    opacity: 1;
-    visibility: visible;
+.mega-posgrado-wrapper {
+    width: min(1500px, calc(100vw - 40px));
+    max-width: 1500px;
+}
+
+.mega-pregrado-wrapper {
+    width: min(1300px, calc(100vw - 40px));
+    max-width: 1300px;
+}
+
+@media (min-width: 1200px) {
+
+    .edu-header .header-navbar,
+    .edu-header .header-mainnav,
+    .edu-header .mainmenu-nav,
+    .edu-header .mainmenu-nav .mainmenu,
+    .edu-header .mainmenu-nav .mainmenu>li.mega-pregrado,
+    .edu-header .mainmenu-nav .mainmenu>li.mega-posgrado,
+    .header-mainmenu .container,
+    .header-mainmenu .header-nuevo-der {
+        overflow: visible;
+    }
+
+    .mega-pregrado:hover .mega-pregrado-wrapper,
+    .mega-posgrado:hover .mega-posgrado-wrapper,
+    .mega-pregrado.is-mega-open .mega-pregrado-wrapper,
+    .mega-posgrado.is-mega-open .mega-posgrado-wrapper {
+        position: fixed;
+        left: 50%;
+        top: var(--mega-menu-top, 140px);
+        transform: translateX(-50%);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+}
+
+/* mostrar */
+@media (max-width: 1199px) {
+    .mega-posgrado:hover .mega-posgrado-wrapper,
+    .mega-pregrado:hover .mega-pregrado-wrapper {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
 }
 
 .cat-btn-hint {

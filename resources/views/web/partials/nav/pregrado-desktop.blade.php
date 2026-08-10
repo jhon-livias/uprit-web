@@ -30,11 +30,6 @@
             <div class="mega-box" id="pregrado-puede" role="tabpanel">
                 @include('web.partials.nav.pregrado-facultades', ['categorias' => $pregradoPuedeCategorias])
             </div>
-            <div class="mega-pregrado-footer">
-                <a href="{{ route('contactenos') }}" class="mega-pregrado-cta">
-                    ¿Dudas de admisión o becas? Ver Contáctanos →
-                </a>
-            </div>
         </div>
     </div>
 </li>
