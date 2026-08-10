@@ -71,14 +71,8 @@
 
                                                     <td style="text-align: center" class="text-nowrap col-acciones">
                                                         <a href="javascript:;" @click="showEdit(item)"
-                                                            class="btn btn-info esp-dere" title="Editar">
+                                                            class="btn btn-info esp-dere" title="Editar página completa">
                                                             <i class="fa fa-edit"></i>
-                                                        </a>
-
-
-                                                        <a href="javascript:;" @click="showDet(item)"
-                                                            class="btn btn-warning esp-dere" title="Detalle">
-                                                            <i class="fa fa-eye"></i>
                                                         </a>
 
                                                         <a href="javascript:;" @click="eliminar(item.id)"
@@ -189,7 +183,17 @@
                                                     </div>
                                                     <div class="col-md-10 mr-auto ml-auto">
                                                         <div class="form-group row">
-                                                            <div class="col-12"><label>Imagen</label>
+                                                            <div class="col-12"><label>Imagen banner (hero)</label>
+                                                                <input type="file" class="dropify" @change="imagen_banner"
+                                                                    accept=".jpg,.jpeg,.png,.webp"
+                                                                    data-allowed-file-extensions="jpg jpeg png webp"
+                                                                    name="imagen_banner">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-10 mr-auto ml-auto">
+                                                        <div class="form-group row">
+                                                            <div class="col-12"><label>Imagen sidebar</label>
                                                                 <input type="file" class="dropify" @change="imagen"
                                                                     accept=".jpg,.jpeg,.png"
                                                                     data-allowed-file-extensions="jpg jpeg png"
@@ -219,617 +223,267 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal fade" id="modEditarCarrera" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal fade" id="modEditarCarreraCompleta" tabindex="-1" role="dialog">
+                                <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable" role="document" style="max-width:960px;">
                                     <div class="modal-content">
-                                        <form v-on:submit.prevent="updateCarrera()" enctype="multipart/form-data">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">
+                                                Editar página de carrera
+                                                <small class="text-muted d-block" v-if="carrera.nombre">{{ carrera.nombre }}</small>
+                                            </h4>
+                                            <button type="button" data-dismiss="modal" class="close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul class="nav nav-tabs mb-3">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" :class="{ active: tabActiva === 'general' }" href="javascript:;" @click="cambiarTab('general')">Información general</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" :class="{ active: tabActiva === 'descripcion' }" href="javascript:;" @click="cambiarTab('descripcion')">Descripción</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" :class="{ active: tabActiva === 'malla' }" href="javascript:;" @click="cambiarTab('malla')">Malla curricular</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" :class="{ active: tabActiva === 'perfil' }" href="javascript:;" @click="cambiarTab('perfil')">Perfil de egresado</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" :class="{ active: tabActiva === 'docentes' }" href="javascript:;" @click="cambiarTab('docentes')">Docentes</a>
+                                                </li>
+                                            </ul>
 
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Editar Carrera</h4>
-                                                <button type="button" data-dismiss="modal" aria-label="Close"
-                                                    class="close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col-md-5  ml-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Categoría<span
-                                                                        style="color: red;">
-                                                                        *</span></label>
-                                                                <select v-model="carrera.categoria_id" required
-                                                                    class="form-control">
+                                            <!-- Tab: Información general -->
+                                            <div v-show="tabActiva === 'general'">
+                                                <form @submit.prevent="updateCarrera">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Categoría <span style="color:red">*</span></label>
+                                                                <select v-model="carrera.categoria_id" required class="form-control">
                                                                     <option value="">Seleccionar Categoría</option>
-
-                                                                    <option v-for="categoria in categorias"
-                                                                        :key="categoria.id" :value="categoria.id">
+                                                                    <option v-for="categoria in categorias" :key="categoria.id" :value="categoria.id">
                                                                         {{ categoria.nivel_academico.nombre }}
-                                                                        {{ categoria.padre ? ' - ' +
-                                                                            categoria.padre.nombre : '' }}
+                                                                        {{ categoria.padre ? ' - ' + categoria.padre.nombre : '' }}
                                                                         - {{ categoria.nombre }}
                                                                     </option>
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="col-md-5 mr-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Nombre<span style="color: red;">
-                                                                        *</span></label>
-                                                                <input type="text" v-model="carrera.nombre" required
-                                                                    class="form-control">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Nombre <span style="color:red">*</span></label>
+                                                                <input type="text" v-model="carrera.nombre" required class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label>Descripción corta (hero) <span style="color:red">*</span></label>
+                                                                <textarea v-model="carrera.descripcion" required class="form-control" rows="3"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Admisión</label>
+                                                                <input type="date" v-model="carrera.admision" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Duración</label>
+                                                                <input type="text" v-model="carrera.duracion" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Grado obtenido</label>
+                                                                <textarea v-model="carrera.grado_obtenido" class="form-control"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Titulación</label>
+                                                                <textarea v-model="carrera.titulacion" class="form-control"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label>Modalidades</label>
+                                                                <textarea v-model="carrera.modalidades" class="form-control"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Imagen banner (hero)</label>
+                                                                <input type="file" class="dropify dropify-edit-banner" @change="imagen_banner_edit" accept=".jpg,.jpeg,.png,.webp" data-allowed-file-extensions="jpg jpeg png webp" name="imagen_banner">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Imagen sidebar</label>
+                                                                <input type="file" class="dropify dropify-edit-imagen" @change="imagen_edit" accept=".jpg,.jpeg,.png" data-allowed-file-extensions="jpg jpeg png" name="imagen">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label>Brochure (PDF)</label>
+                                                                <input type="file" class="dropify dropify-edit-brochure" accept=".pdf" @change="brochure_edit" data-allowed-file-extensions="pdf" data-max-file-size="100M" name="brochure">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-10 mr-auto ml-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Descripción<span
-                                                                        style="color: red;">
-                                                                        *</span></label>
-                                                                <textarea v-model="carrera.descripcion" required
-                                                                    class="form-control" rows="3"></textarea>
-                                                            </div>
-                                                        </div>
+                                                    <div class="text-right">
+                                                        <button type="submit" class="btn btn-primary">Guardar información general</button>
                                                     </div>
-                                                    <div class="col-md-5 ml-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Adminsión</label>
-                                                                <input type="date" v-model="carrera.admision"
-                                                                    class="form-control">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-5 mr-auto ">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Duración</label>
-                                                                <input type="text" v-model="carrera.duracion"
-                                                                    class="form-control">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-5  ml-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Grado Obtenido</label>
-                                                                <textarea v-model="carrera.grado_obtenido" id=""
-                                                                    class="form-control"></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-5 mr-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Titulación</label>
-                                                                <textarea v-model="carrera.titulacion"
-                                                                    class="form-control" id=""></textarea>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-10 mr-auto ml-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Modalidades</label>
-                                                                <textarea v-model="carrera.modalidades" id=""
-                                                                    class="form-control"></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-10 mr-auto ml-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Imagen</label>
-                                                                <input type="file" class="dropify dropify-edit-imagen"
-                                                                    @change="imagen_edit" accept=".jpg,.jpeg,.png"
-                                                                    data-allowed-file-extensions="jpg jpeg png"
-                                                                    name="imagen">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-10 mr-auto ml-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Brochure (PDF)</label>
-                                                                <input type="file" class="dropify dropify-edit-brochure"
-                                                                    accept=".pdf" @change="brochure_edit"
-                                                                    data-allowed-file-extensions="pdf"
-                                                                    data-max-file-size="100M" name="brochure">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn btn-primary">Guardar</button>
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Cerrar</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="modal fade" id="modDetalleCarrera" tabindex="-1">
-
-                                <div class="modal-dialog modal-dialog-centered modal-lg">
-
-                                    <div class="modal-content">
-
-                                        <form @submit.prevent="guardarDetalle">
-
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">
-                                                    Descripción
-                                                </h4>
-
-                                                <button type="button" class="close" data-dismiss="modal">
-                                                </button>
+                                                </form>
                                             </div>
 
-                                            <div class="modal-body">
-
-                                                <div class="row">
-
-                                                    <div class="col-md-10 mx-auto">
-
-                                                        <label>
-                                                            Descripción
-                                                        </label>
-
-                                                        <textarea v-model="detalle.descripcion" class="form-control"
-                                                            rows="4">
-                                                        </textarea>
-
+                                            <!-- Tab: Descripción -->
+                                            <div v-show="tabActiva === 'descripcion'">
+                                                <form @submit.prevent="guardarDetalle">
+                                                    <div class="form-group">
+                                                        <label>Descripción extendida</label>
+                                                        <textarea v-model="detalle.descripcion" class="form-control" rows="4"></textarea>
                                                     </div>
-
-                                                </div>
-
-                                                <hr>
-
-                                                <div class="row">
-
-                                                    <div class="col-md-10 mx-auto">
-
-                                                        <label>
-                                                            Oportunidades
-                                                        </label>
-
+                                                    <hr>
+                                                    <div class="form-group">
+                                                        <label>Oportunidades en el mercado</label>
                                                         <div class="input-group">
-
-                                                            <input type="text" class="form-control"
-                                                                v-model="nuevaOportunidad"
-                                                                @keyup.enter.prevent="agregarOportunidad">
-
+                                                            <input type="text" class="form-control" v-model="nuevaOportunidad" @keyup.enter.prevent="agregarOportunidad">
                                                             <div class="input-group-append">
-
-                                                                <button type="button" class="btn btn-success"
-                                                                    @click="agregarOportunidad">
-
-                                                                    Agregar
-                                                                </button>
-
+                                                                <button type="button" class="btn btn-success" @click="agregarOportunidad">Agregar</button>
                                                             </div>
-
                                                         </div>
-
                                                         <div class="mt-3">
-
-                                                            <span v-for="(item, index) in detalle.oportunidades"
-                                                                :key="index" class="badge badge-primary mr-2">
-
+                                                            <span v-for="(item, index) in detalle.oportunidades" :key="index" class="badge badge-primary mr-2">
                                                                 {{ item }}
-
-                                                                <i class="fa fa-times ml-1" style="cursor:pointer"
-                                                                    @click="eliminarOportunidad(index)">
-                                                                </i>
-
+                                                                <i class="fa fa-times ml-1" style="cursor:pointer" @click="eliminarOportunidad(index)"></i>
                                                             </span>
-
                                                         </div>
-
                                                     </div>
-
-                                                </div>
-
-                                                <hr>
-
-                                                <div class="row">
-
-                                                    <div class="col-md-10 mx-auto">
-
-                                                        <div v-for="(faq, index) in detalle.preguntas" :key="index"
-                                                            class="faq-item border rounded p-3 mb-3">
-
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-center mb-3">
-
-                                                                <strong>
-                                                                    Pregunta / Respuesta
-                                                                </strong>
-
+                                                    <hr>
+                                                    <div class="form-group">
+                                                        <label>Preguntas frecuentes</label>
+                                                        <div v-for="(faq, index) in detalle.preguntas" :key="index" class="border rounded p-3 mb-3">
+                                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                                <strong>Pregunta / Respuesta</strong>
                                                                 <div>
-
-                                                                    <button type="button"
-                                                                        class="btn btn-info btn-sm esp-dere"
-                                                                        @click="faq.collapsed = !faq.collapsed">
-
-                                                                        <i class="fa" :class="faq.collapsed
-                                                                            ? 'fa-plus'
-                                                                            : 'fa-minus'"></i>
-
+                                                                    <button type="button" class="btn btn-info btn-sm esp-dere" @click="faq.collapsed = !faq.collapsed">
+                                                                        <i class="fa" :class="faq.collapsed ? 'fa-plus' : 'fa-minus'"></i>
                                                                     </button>
-
-                                                                    <button type="button" class="btn btn-danger btn-sm"
-                                                                        @click="eliminarFaq(index)">
+                                                                    <button type="button" class="btn btn-danger btn-sm" @click="eliminarFaq(index)">
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
-
                                                                 </div>
-
                                                             </div>
-
                                                             <div v-show="!faq.collapsed">
-
                                                                 <div class="form-group">
-
-                                                                    <input v-model="faq.pregunta" class="form-control"
-                                                                        placeholder="Pregunta">
-
+                                                                    <input v-model="faq.pregunta" class="form-control" placeholder="Pregunta">
                                                                 </div>
-
                                                                 <div class="form-group">
-
-                                                                    <textarea v-model="faq.respuesta"
-                                                                        class="form-control" rows="3"
-                                                                        placeholder="Respuesta"></textarea>
-
+                                                                    <textarea v-model="faq.respuesta" class="form-control" rows="3" placeholder="Respuesta"></textarea>
                                                                 </div>
-
                                                             </div>
-
                                                         </div>
-
-                                                        <button type="button" class="btn btn-success"
-                                                            @click="agregarFaq">
-
-                                                            <i class="fa fa-plus"></i>
-                                                            Agregar Pregunta
-
+                                                        <button type="button" class="btn btn-success" @click="agregarFaq">
+                                                            <i class="fa fa-plus"></i> Agregar pregunta
                                                         </button>
-
                                                     </div>
-
-                                                </div>
-
+                                                    <div class="text-right mt-3">
+                                                        <button type="submit" class="btn btn-primary">Guardar descripción</button>
+                                                    </div>
+                                                </form>
                                             </div>
 
-                                            <div class="modal-footer">
-
-                                                <button type="submit" class="btn btn-primary">
-                                                    Guardar
-                                                </button>
-                                                <a href="javascript:;" @click="abrirMalla"
-                                                    class="btn btn-secondary btn-next-modal">
-                                                    Siguiente
-                                                </a>
-
-                                            </div>
-
-                                        </form>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="modal fade" id="modMallaCarrera" tabindex="-1">
-
-                                <div class="modal-dialog modal-dialog-centered modal-lg">
-
-                                    <div class="modal-content">
-
-                                        <form @submit.prevent="guardarMalla">
-
-                                            <div class="modal-header">
-
-                                                <h4 class="modal-title">
-                                                    Malla Curricular
-                                                </h4>
-
-                                                <button type="button" class="close" data-dismiss="modal"></button>
-
-                                            </div>
-
-                                            <div class="modal-body">
-
-                                                <div class="row">
-
-                                                    <div class="col-md-10 mx-auto">
-
-                                                        <div v-for="(item, index) in malla" :key="index"
-                                                            class="border rounded p-3 mb-3">
-
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-center mb-3">
-
-                                                                <strong>
-                                                                    Ciclo
-                                                                </strong>
-
-                                                                <div>
-
-                                                                    <button type="button"
-                                                                        class="btn btn-info btn-sm esp-dere" @click="
-                                                                            item.collapsed =
-                                                                            !item.collapsed
-                                                                            ">
-
-                                                                        <i class="fa" :class="item.collapsed
-                                                                            ? 'fa-plus'
-                                                                            : 'fa-minus'
-                                                                            "></i>
-
-                                                                    </button>
-
-                                                                    <button type="button" class="btn btn-danger btn-sm"
-                                                                        @click="
-                                                                            eliminarMalla(index)
-                                                                            ">
-
-                                                                        <i class="fa fa-trash"></i>
-
-                                                                    </button>
-
-                                                                </div>
-
+                                            <!-- Tab: Malla curricular -->
+                                            <div v-show="tabActiva === 'malla'">
+                                                <form @submit.prevent="guardarMalla">
+                                                    <div v-for="(item, index) in malla" :key="index" class="border rounded p-3 mb-3">
+                                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                                            <strong>Ciclo</strong>
+                                                            <div>
+                                                                <button type="button" class="btn btn-info btn-sm esp-dere" @click="item.collapsed = !item.collapsed">
+                                                                    <i class="fa" :class="item.collapsed ? 'fa-plus' : 'fa-minus'"></i>
+                                                                </button>
+                                                                <button type="button" class="btn btn-danger btn-sm" @click="eliminarMalla(index)">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
                                                             </div>
-
-                                                            <div v-show="!item.collapsed">
-
-                                                                <div class="form-group">
-
-                                                                    <input v-model="item.ciclo" type="text"
-                                                                        class="form-control" placeholder="Ciclo">
-
-                                                                </div>
-
-                                                                <div class="form-group">
-
-                                                                    <textarea v-model="item.descripcion" rows="3"
-                                                                        class="form-control"
-                                                                        placeholder="Descripción"></textarea>
-
-                                                                </div>
-
-                                                                <!-- CURSOS -->
-
-                                                                <div class="form-group">
-
-                                                                    <label>
-                                                                        Cursos
-                                                                    </label>
-
-
-
-                                                                    <div class="input-group">
-
-                                                                        <input type="text" class="form-control"
-                                                                            placeholder="Agregar curso"
-                                                                            @keyup.enter.prevent="
-                                                                                agregarCurso(
-                                                                                    item,
-                                                                                    $event
-                                                                                )
-                                                                                ">
-
-                                                                        <div class="input-group-append">
-
-                                                                            <button type="button"
-                                                                                class="btn btn-success" @click="
-                                                                                    agregarCurso(
-                                                                                        item,
-                                                                                        $event
-                                                                                    )
-                                                                                    ">
-
-                                                                                Agregar
-
-                                                                            </button>
-
-                                                                        </div>
-
+                                                        </div>
+                                                        <div v-show="!item.collapsed">
+                                                            <div class="form-group">
+                                                                <input v-model="item.ciclo" type="text" class="form-control" placeholder="Ciclo">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <textarea v-model="item.descripcion" rows="3" class="form-control" placeholder="Descripción"></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Cursos</label>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control" placeholder="Agregar curso" @keyup.enter.prevent="agregarCurso(item, $event)">
+                                                                    <div class="input-group-append">
+                                                                        <button type="button" class="btn btn-success" @click="agregarCurso(item, $event)">Agregar</button>
                                                                     </div>
-                                                                    <div class="mt-3">
-
-                                                                        <span v-for="(curso, cursoIndex) in item.cursos"
-                                                                            :key="cursoIndex"
-                                                                            class="badge badge-primary mr-2">
-
-                                                                            {{ curso }}
-
-                                                                            <i class="fa fa-times ml-1"
-                                                                                style="cursor:pointer"
-                                                                                @click="item.cursos.splice(cursoIndex, 1)"></i>
-
-                                                                        </span>
-
-                                                                    </div>
-
                                                                 </div>
-
+                                                                <div class="mt-3">
+                                                                    <span v-for="(curso, cursoIndex) in item.cursos" :key="cursoIndex" class="badge badge-primary mr-2">
+                                                                        {{ curso }}
+                                                                        <i class="fa fa-times ml-1" style="cursor:pointer" @click="item.cursos.splice(cursoIndex, 1)"></i>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-
-                                                        </div>
-
-                                                        <button type="button" class="btn btn-success"
-                                                            @click="agregarMalla">
-
-                                                            <i class="fa fa-plus"></i>
-
-                                                            Agregar
-
-                                                        </button>
-
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="modal-footer">
-
-                                                <button type="submit" class="btn btn-primary">
-                                                    Guardar
-                                                </button>
-
-                                                <button type="button" class="btn btn-secondary" @click="abrirPerfil">
-                                                    Siguiente
-                                                </button>
-
-                                            </div>
-
-                                        </form>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="modal fade" id="modPerfilCarrera" tabindex="-1">
-
-                                <div class="modal-dialog modal-dialog-centered modal-lg">
-
-                                    <div class="modal-content">
-
-                                        <form @submit.prevent="guardarPerfil">
-
-                                            <div class="modal-header">
-
-                                                <h4 class="modal-title">
-                                                    Perfil de Egresado
-                                                </h4>
-
-                                                <button type="button" class="close" data-dismiss="modal"></button>
-
-                                            </div>
-
-                                            <div class="modal-body">
-
-                                                <div class="row">
-
-                                                    <div class="col-md-10 mx-auto">
-
-                                                        <label>
-                                                            Descripción
-                                                        </label>
-
-                                                        <textarea v-model="perfil.descripcion" class="form-control"
-                                                            rows="10" required></textarea>
-
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="modal-footer">
-
-                                                <button type="submit" class="btn btn-primary">
-                                                    Guardar
-                                                </button>
-
-                                                <button type="button" class="btn btn-secondary" @click="abrirDocentes">
-                                                    Siguiente
-                                                </button>
-
-                                            </div>
-
-                                        </form>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="modal fade" id="modDocentesCarrera" tabindex="-1">
-                                <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width:700px;">
-                                    <div class="modal-content" style="border-radius:10px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.2);">
-                                        <form @submit.prevent="guardarDocentes">
-
-                                            <div class="modal-header" style="background:linear-gradient(135deg,#A3002B,#6b001c);padding:20px 24px;">
-                                                <div>
-                                                    <h5 class="modal-title mb-0" style="font-weight:700;letter-spacing:.3px;">
-                                                        <i class="fa fa-users mr-2"></i>Docentes de la carrera
-                                                    </h5>
-                                                    <small style="opacity:.85;font-size:12px;" v-if="carrera.nombre">{{ carrera.nombre }}</small>
-                                                </div>
-                                            </div>
-
-                                            <div class="modal-body" style="padding:24px;background:#f8f9fa;">
-
-                                                <div style="background:#fff;border-radius:8px;padding:20px;border:1px solid #e9ecef;margin-bottom:16px;">
-                                                    <div class="d-flex align-items-center mb-3">
-                                                        <div style="background:#fff3f5;border-radius:8px;padding:8px 12px;flex:1;">
-                                                            <label class="mb-1" style="font-size:12px;font-weight:600;color:#6c757d;text-transform:uppercase;letter-spacing:.5px;">
-                                                                Buscar y asignar docentes
-                                                            </label>
-                                                            <select id="selectDocentesCarrera" class="form-control" multiple style="width:100%">
-                                                                <option v-for="docente in docentesDisponibles" :key="docente.id" :value="docente.id">
-                                                                    {{ docente.nombre }}{{ docente.correo ? ` — ${docente.correo}` : '' }}{{ docente.departamento ? ` · ${docente.departamento}` : '' }}
-                                                                </option>
-                                                            </select>
                                                         </div>
                                                     </div>
-
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <span style="font-size:13px;color:#6c757d;">
-                                                            <i class="fa fa-info-circle mr-1"></i>
-                                                            Escribe para buscar por nombre, correo o departamento.
-                                                        </span>
-                                                        <span class="badge" :style="docentesSeleccionados.length ? 'background:#A3002B;color:#fff;font-size:12px;padding:5px 10px;border-radius:20px;' : 'background:#e9ecef;color:#6c757d;font-size:12px;padding:5px 10px;border-radius:20px;'">
-                                                            {{ docentesSeleccionados.length }} seleccionado{{ docentesSeleccionados.length !== 1 ? 's' : '' }}
-                                                        </span>
+                                                    <button type="button" class="btn btn-success" @click="agregarMalla">
+                                                        <i class="fa fa-plus"></i> Agregar ciclo
+                                                    </button>
+                                                    <div class="text-right mt-3">
+                                                        <button type="submit" class="btn btn-primary">Guardar malla curricular</button>
                                                     </div>
-                                                </div>
+                                                </form>
+                                            </div>
 
-                                                <div v-if="docentesSeleccionadosInfo.length" style="background:#fff;border-radius:8px;padding:16px 20px;border:1px solid #e9ecef;">
-                                                    <p class="mb-2" style="font-size:12px;font-weight:600;color:#6c757d;text-transform:uppercase;letter-spacing:.5px;">
-                                                        <i class="fa fa-check-circle mr-1" style="color:#A3002B;"></i>Docentes asignados
-                                                    </p>
-                                                    <div class="d-flex flex-wrap" style="gap:8px;">
-                                                        <div v-for="d in docentesSeleccionadosInfo" :key="d.id"
-                                                            class="d-flex align-items-center"
-                                                            style="background:#fff3f5;border:1px solid #f5c0c9;border-radius:20px;padding:5px 12px;gap:8px;">
-                                                            <div style="width:28px;height:28px;border-radius:50%;background:#A3002B;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">
-                                                                {{ d.nombre.charAt(0).toUpperCase() }}
-                                                            </div>
-                                                            <div style="line-height:1.2;">
-                                                                <div style="font-size:13px;font-weight:600;color:#20272f;white-space:nowrap;max-width:180px;overflow:hidden;text-overflow:ellipsis;">{{ d.nombre }}</div>
-                                                                <div v-if="d.departamento" style="font-size:11px;color:#6c757d;">{{ d.departamento }}</div>
-                                                            </div>
-                                                            <button type="button"
-                                                                @click="quitarDocente(d.id)"
-                                                                style="background:none;border:none;color:#A3002B;cursor:pointer;font-size:14px;padding:0;margin-left:2px;line-height:1;">
-                                                                &times;
-                                                            </button>
+                                            <!-- Tab: Perfil de egresado -->
+                                            <div v-show="tabActiva === 'perfil'">
+                                                <form @submit.prevent="guardarPerfil">
+                                                    <div class="form-group">
+                                                        <label>Descripción del perfil de egresado</label>
+                                                        <textarea v-model="perfil.descripcion" class="form-control" rows="10" required></textarea>
+                                                    </div>
+                                                    <div class="text-right">
+                                                        <button type="submit" class="btn btn-primary">Guardar perfil de egresado</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                            <!-- Tab: Docentes -->
+                                            <div v-show="tabActiva === 'docentes'">
+                                                <form @submit.prevent="guardarDocentes">
+                                                    <div class="form-group">
+                                                        <label>Buscar y asignar docentes</label>
+                                                        <select id="selectDocentesCarrera" class="form-control" multiple style="width:100%">
+                                                            <option v-for="docente in docentesDisponibles" :key="docente.id" :value="docente.id">
+                                                                {{ docente.nombre }}{{ docente.correo ? ` — ${docente.correo}` : '' }}{{ docente.departamento ? ` · ${docente.departamento}` : '' }}
+                                                            </option>
+                                                        </select>
+                                                        <small class="text-muted">Los datos del docente (foto, bio, etc.) se editan en <strong>Docentes</strong>.</small>
+                                                    </div>
+                                                    <div v-if="docentesSeleccionadosInfo.length" class="mt-3">
+                                                        <p class="mb-2"><strong>Docentes asignados:</strong></p>
+                                                        <div class="d-flex flex-wrap" style="gap:8px;">
+                                                            <span v-for="d in docentesSeleccionadosInfo" :key="d.id" class="badge badge-light border p-2">
+                                                                {{ d.nombre }}
+                                                                <i class="fa fa-times ml-1" style="cursor:pointer" @click="quitarDocente(d.id)"></i>
+                                                            </span>
                                                         </div>
                                                     </div>
-                                                </div>
-
-                                                <div v-else style="background:#fff;border-radius:8px;padding:20px;border:1px dashed #dee2e6;text-align:center;">
-                                                    <i class="fa fa-user-plus" style="font-size:28px;color:#dee2e6;display:block;margin-bottom:8px;"></i>
-                                                    <span style="font-size:13px;color:#adb5bd;">Aún no hay docentes asignados a esta carrera.</span>
-                                                </div>
-
+                                                    <div class="text-right mt-3">
+                                                        <button type="submit" class="btn btn-primary">Guardar docentes</button>
+                                                    </div>
+                                                </form>
                                             </div>
-
-                                            <div class="modal-footer" style="background:#fff;border-top:1px solid #e9ecef;padding:16px 24px;">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="border-radius:6px;font-size:13px;">
-                                                    <i class="fa fa-times mr-1"></i>Cerrar
-                                                </button>
-                                                <button type="submit" class="btn btn-primary" style="background:#A3002B;border-color:#A3002B;border-radius:6px;font-size:13px;min-width:110px;">
-                                                    <i class="fa fa-save mr-1"></i>Guardar
-                                                </button>
-                                            </div>
-
-                                        </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -867,7 +521,8 @@ export default {
             tagifyCreate: null,
             tagifyEdit: null,
             docentesDisponibles: [],
-            docentesSeleccionados: []
+            docentesSeleccionados: [],
+            tabActiva: 'general',
 
         }
     },
@@ -899,8 +554,63 @@ export default {
                 modalidades: '',
                 brochure: null,
                 imagen: null,
+                imagen_banner: null,
             };
 
+        },
+        cargarDatosCompletos(item) {
+            this.carrera = { ...item };
+
+            this.detalle = {
+                descripcion: item.detalle_descripcion?.descripcion ?? '',
+                oportunidades: item.detalle_descripcion?.oportunidades ?? [],
+                preguntas: item.preguntas?.map(p => ({
+                    pregunta: p.pregunta ?? '',
+                    respuesta: p.respuesta ?? '',
+                    collapsed: true
+                })) ?? []
+            };
+
+            this.malla = item.malla?.length
+                ? item.malla.map(m => ({
+                    ciclo: m.ciclo ?? '',
+                    descripcion: m.descripcion === 'null' ? '' : m.descripcion ?? '',
+                    cursos: m.cursos ?? [],
+                    collapsed: true
+                }))
+                : [{
+                    ciclo: '',
+                    descripcion: '',
+                    cursos: [],
+                    collapsed: false
+                }];
+
+            this.perfil = {
+                descripcion: item.perfil_egresado?.descripcion ?? ''
+            };
+
+            this.docentesSeleccionados = item.docentes?.length
+                ? item.docentes.map(d => String(d.id))
+                : [];
+        },
+        initDropifyEdit(item) {
+            this.$nextTick(() => {
+                this.initDropifyField('.dropify-edit-imagen', item.imagen
+                    ? this.asset('brochures_imagenes/' + item.imagen) : '');
+                this.initDropifyField('.dropify-edit-banner', item.imagen_banner
+                    ? this.asset('brochures_imagenes/' + item.imagen_banner) : '');
+                this.initDropifyField('.dropify-edit-brochure', item.brochure
+                    ? this.asset('brochures_carreras/' + item.brochure) : '');
+            });
+        },
+        initDropifyField(selector, defaultFile) {
+            const $el = $(selector);
+            if (!$el.length) return;
+            if ($el.data('dropify')) {
+                $el.data('dropify').destroy();
+                $el.removeData('dropify');
+            }
+            $el.dropify({ defaultFile });
         },
         formatFecha(fecha) {
             if (!fecha) return '-';
@@ -941,95 +651,23 @@ export default {
 
         },
 
-        showDet(item) {
-
-            this.carrera = { ...item };
-
-            this.detalle = {
-                descripcion:
-                    item.detalle_descripcion?.descripcion ?? '',
-
-                oportunidades:
-                    item.detalle_descripcion?.oportunidades ?? [],
-
-                preguntas:
-                    item.preguntas?.map(p => ({
-                        pregunta: p.pregunta ?? '',
-                        respuesta: p.respuesta ?? '',
-                        collapsed: true
-                    })) ?? []
-            };
-
-            $("#modDetalleCarrera").modal('show');
-        },
-
-        abrirMalla() {
-            this.malla =
-                this.carrera.malla?.length
-
-                    ? this.carrera.malla.map(item => ({
-                        ciclo: item.ciclo ?? '',
-                        descripcion:
-                            item.descripcion === 'null'
-                                ? ''
-                                : item.descripcion ?? '',
-                        cursos: item.cursos ?? [],
-                        collapsed: true
-                    }))
-
-                    : [{
-                        ciclo: '',
-                        descripcion: '',
-                        cursos: [],
-                        collapsed: false
-                    }];
-
-            $('#modDetalleCarrera')
-                .one('hidden.bs.modal', () => {
-
-                    $('#modMallaCarrera').modal('show');
-
-                })
-                .modal('hide');
-
-
-        },
-
-        abrirPerfil() {
-
-            this.perfil = {
-                descripcion:
-                    this.carrera.perfil_egresado?.descripcion ?? ''
-            };
-
-            $('#modMallaCarrera')
-                .one('hidden.bs.modal', () => {
-
-                    $('#modPerfilCarrera').modal('show');
-
-                })
-                .modal('hide');
-
-        },
-
-        abrirDocentes() {
-
-            this.docentesSeleccionados = this.carrera.docentes?.length
-                ? this.carrera.docentes.map((docente) => String(docente.id))
-                : [];
-
-            $('#modPerfilCarrera')
-                .one('hidden.bs.modal', () => {
-                    $('#modDocentesCarrera').modal('show');
-                })
-                .modal('hide');
-
-            $('#modDocentesCarrera').one('shown.bs.modal', () => {
-                this.$nextTick(() => {
-                    this.initSelectDocentes();
+        showEdit(item, tab = 'general') {
+            this.cargarDatosCompletos(item);
+            this.tabActiva = tab;
+            this.initDropifyEdit(item);
+            $('#modEditarCarreraCompleta').modal('show');
+            if (tab === 'docentes') {
+                $('#modEditarCarreraCompleta').one('shown.bs.modal', () => {
+                    this.$nextTick(() => this.initSelectDocentes());
                 });
-            });
+            }
+        },
 
+        cambiarTab(tab) {
+            this.tabActiva = tab;
+            if (tab === 'docentes') {
+                this.$nextTick(() => this.initSelectDocentes());
+            }
         },
         quitarDocente(id) {
             this.docentesSeleccionados = this.docentesSeleccionados.filter(d => String(d) !== String(id));
@@ -1059,7 +697,7 @@ export default {
                 placeholder: 'Escribe para buscar docente...',
                 allowClear: true,
                 width: '100%',
-                dropdownParent: $('#modDocentesCarrera'),
+                dropdownParent: $('#modEditarCarreraCompleta'),
                 language: {
                     noResults: () => 'No se encontraron docentes',
                     searching: () => 'Buscando...',
@@ -1091,6 +729,7 @@ export default {
             formData.append('modalidades', this.carrera.modalidades);
             this.appendFileIfSelected(formData, 'brochure', this.carrera.brochure);
             this.appendFileIfSelected(formData, 'imagen', this.carrera.imagen);
+            this.appendFileIfSelected(formData, 'imagen_banner', this.carrera.imagen_banner);
             axios.post(route('carreras.store'), formData).then((response) => {
                 if (response.data) {
                     Swal.fire({
@@ -1111,57 +750,7 @@ export default {
             });
         },
 
-        showEdit(item) {
-            this.carrera = { ...item };
-            this.$nextTick(() => {
-
-                let drImagen = $('.dropify-edit-imagen').dropify({
-                    defaultFile: item.imagen
-                        ? this.asset('brochures_imagenes/' + item.imagen)
-                        : ''
-                });
-
-                drImagen = drImagen.data('dropify');
-
-                drImagen.resetPreview();
-                drImagen.clearElement();
-
-                drImagen.settings.defaultFile =
-                    item.imagen
-                        ? this.asset('brochures_imagenes/' + item.imagen)
-                        : '';
-
-                drImagen.destroy();
-                drImagen.init();
-
-
-                let drBrochure = $('.dropify-edit-brochure').dropify({
-                    defaultFile: item.brochure
-                        ? this.asset('brochures_carreras/' + item.brochure)
-                        : ''
-                });
-
-                drBrochure = drBrochure.data('dropify');
-
-                drBrochure.resetPreview();
-                drBrochure.clearElement();
-
-                drBrochure.settings.defaultFile =
-                    item.brochure
-                        ? this.asset('brochures_carreras/' + item.brochure)
-                        : '';
-
-                drBrochure.destroy();
-                drBrochure.init();
-
-            });
-            $("#modEditarCarrera").modal('show');
-
-        },
-
         updateCarrera() {
-
-
             let formData = new FormData();
             formData.append('id', this.carrera.id);
             formData.append('categoria_id', this.carrera.categoria_id);
@@ -1174,19 +763,16 @@ export default {
             formData.append('modalidades', this.carrera.modalidades);
             this.appendFileIfSelected(formData, 'brochure', this.carrera.brochure);
             this.appendFileIfSelected(formData, 'imagen', this.carrera.imagen);
+            this.appendFileIfSelected(formData, 'imagen_banner', this.carrera.imagen_banner);
             axios.post(route('carreras.edit'), formData).then((response) => {
                 if (response.data) {
                     Swal.fire({
                         icon: 'success',
-                        title: 'CARRERA EDITADA',
+                        title: 'INFORMACIÓN GUARDADA',
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    this.destroyDatatable();
                     this.getCarreras();
-                    this.initDatatable();
-                    $("#modEditarCarrera").modal('hide');
-                    this.resetForm();
                 } else {
                     toastr.error('No se actualizo la Carrera');
                 }
@@ -1251,6 +837,20 @@ export default {
             const file = event.target.files?.[0];
             if (file) {
                 this.carrera.imagen = file;
+            }
+        },
+
+        imagen_banner(event) {
+            const file = event.target.files?.[0];
+            if (file) {
+                this.carrera.imagen_banner = file;
+            }
+        },
+
+        imagen_banner_edit(event) {
+            const file = event.target.files?.[0];
+            if (file) {
+                this.carrera.imagen_banner = file;
             }
         },
 
@@ -1521,7 +1121,6 @@ export default {
 
                     this.getCarreras();
                     this.destroySelectDocentes();
-                    $('#modDocentesCarrera').modal('hide');
 
                 });
 
