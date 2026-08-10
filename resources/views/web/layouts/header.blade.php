@@ -11,24 +11,21 @@
                 </div>
                 <div class="header-top-right">
                     <ul class="header-info sup-derecha">
-                        <li class="raya"><a href="{{route('web.noticias')}}" class="hov-sup">Noticias</a></li>
-                        <li class="raya"><a href="{{route('transparencia')}}" class="hov-sup">Transparencia</a></li>
-                        <li class="submenu-platform menu-plataforma ">
-                            <a href="#" class="hov-sup">
-                                Nuestra Plataforma
-                            </a>
-
-                            <ul class="platform-dropdown">
-                                <li style="padding-bottom: 0px;"><a href="https://intranet.uprit.edu.pe/" target="_blank">ERP</a></li>
-                                <li style="padding-bottom: 0px; padding-top: 5px;"><a href="https://www.digitaliapublishing.com/" target="_blank" rel="noopener">Biblioteca Virtual</a></li>
-                                <li style="padding-bottom: 0px; padding-top: 5px;"><a href="https://repositorio.uprit.edu.pe/" target="_blank">Repositorio - ALICIA</a></li>
-                                <!-- <li style="padding-bottom: 0px; padding-top: 5px;"><a href="#">Bolsa de Trabajo</a></li> -->
-                                <!-- <li style="padding-bottom: 0px; padding-top: 5px;"><a href="#">Correo Institucional</a></li> -->
-                                <li style=" padding-top: 0px;"><a href="https://moodle.uprit.edu.pe" target="_blank">Aula Virtual</a></li>
-
-                        </li>
-                    </ul>
-                    </li>
+                        @if(\App\Support\SiteNavigation::hasDbNav())
+                            @include('web.partials.nav.topbar-desktop')
+                        @else
+                            <li class="raya"><a href="{{ route('web.noticias') }}" class="hov-sup">Noticias</a></li>
+                            <li class="raya"><a href="{{ route('transparencia') }}" class="hov-sup">Transparencia</a></li>
+                            <li class="submenu-platform menu-plataforma">
+                                <a href="#" class="hov-sup">Nuestra Plataforma</a>
+                                <ul class="platform-dropdown">
+                                    <li style="padding-bottom: 0px;"><a href="https://intranet.uprit.edu.pe/" target="_blank" rel="noopener">ERP</a></li>
+                                    <li style="padding-bottom: 0px; padding-top: 5px;"><a href="https://www.digitaliapublishing.com/" target="_blank" rel="noopener">Biblioteca Virtual</a></li>
+                                    <li style="padding-bottom: 0px; padding-top: 5px;"><a href="https://repositorio.uprit.edu.pe/" target="_blank" rel="noopener">Repositorio - ALICIA</a></li>
+                                    <li style="padding-top: 0px;"><a href="https://moodle.uprit.edu.pe" target="_blank" rel="noopener">Aula Virtual</a></li>
+                                </ul>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -40,184 +37,26 @@
             <div class="header-navbar mar-cab">
                 <div class="header-brand">
                     <div class="logo">
-                        <a href="{{route('web.index')}}">
-                            <img class="logo-light" src="{{asset('web/imagenes/logo_uprit_light.svg')}}" alt="Corporate Logo">
-                            <img class="logo-dark" src="{{asset('web/imagenes/logo_uprit_light.svg')}}" alt="Corporate Logo">
-
+                        <a href="{{ route('web.index') }}">
+                            <img class="logo-light" src="{{ asset('web/imagenes/logo_uprit_light.svg') }}" alt="Corporate Logo">
+                            <img class="logo-dark" src="{{ asset('web/imagenes/logo_uprit_light.svg') }}" alt="Corporate Logo">
                         </a>
                     </div>
                 </div>
                 <div class="header-mainnav">
                     <nav class="mainmenu-nav">
                         <ul class="mainmenu">
-                            <li class="has-droupdown"><a href="#">Pregrado</a>
-                                <ul class="mega-menu mega-menu-one">
-                                    @foreach($pregradoCategorias as $categoria)
-                                    <li>
-                                        <h6 class="menu-title" style="color:#91001E">{{ $categoria->nombre }}</h6>
-                                        <ul class="submenu mega-sub-menu mega-sub-menu-01">
-                                            @foreach($categoria->carreras as $carrera)
-                                            <li><a href="{{route('web.detallecarrera', $carrera->id)}}">{{ $carrera->nombre }}</a></li>
-                                            @endforeach
-                                            @foreach($categoria->hijos as $hijo)
-                                                @foreach($hijo->carreras as $carrera)
-                                                <li><a href="{{route('web.detallecarrera', $carrera->id)}}">{{ $carrera->nombre }}</a></li>
-                                                @endforeach
-                                            @endforeach
-                                        </ul>
-                                    </li>
-                                    @endforeach
-                                    <li>
-                                        <h6 class="menu-title" style="color:#91001E">Infórmate Más</h6>
-                                        <ul class="submenu mega-sub-menu mega-sub-menu-01">
-                                            @include('web.partials.menu-nav-links', ['section' => 'contactanos'])
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </li>
-                            <li class="has-droupdown"><a href="#">Pregrado Puede</a>
-                                <ul class="mega-menu pre-puede">
-                                    @foreach($pregradoPuedeCategorias as $categoria)
-                                    <li>
-                                        <h6 class="menu-title" style="color:#91001E">{{ $categoria->nombre }}</h6>
-                                        <ul class="submenu mega-sub-menu mega-sub-menu-01">
-                                            @foreach($categoria->carreras as $carrera)
-                                            <li><a href="{{route('web.detallecarrera', $carrera->id)}}">{{ $carrera->nombre }}</a></li>
-                                            @endforeach
-                                            @foreach($categoria->hijos as $hijo)
-                                                @foreach($hijo->carreras as $carrera)
-                                                <li><a href="{{route('web.detallecarrera', $carrera->id)}}">{{ $carrera->nombre }}</a></li>
-                                                @endforeach
-                                            @endforeach
-                                        </ul>
-                                    </li>
-                                    @endforeach
-                                    <li>
-                                        <h6 class="menu-title" style="color:#91001E">Infórmate Más</h6>
-                                        <ul class="submenu mega-sub-menu mega-sub-menu-01">
-                                            @include('web.partials.menu-nav-links', ['section' => 'contactanos'])
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="has-droupdown mega-posgrado">
-                                <a href="#">Posgrado</a>
-
-                                <div class="mega-posgrado-wrapper">
-
-                                    <div class="mega-categorias">
-                                        @foreach($posgradoCategorias as $index => $categoria)
-
-                                        <button class="cat-btn {{ $index == 0 ? 'active' : '' }}"
-                                            data-target="cat-{{ $categoria->id }}">
-                                            {{ $categoria->nombre }}
-                                        </button>
-
-                                        @endforeach
-
-                                        <button class="cat-btn"
-                                            data-target="informes">
-                                            Infórmate Más
-                                        </button>
-
-                                    </div>
-
-                                    <div class="mega-contenido">
-                                        @foreach($posgradoCategorias as $index => $categoria)
-                                        <div class="mega-box {{ $index == 0 ? 'active' : '' }}" id="cat-{{ $categoria->id }}">
-                                            @foreach($categoria->hijos as $hijo)
-                                            <div class="mega-col">
-                                                <h6 class="menu-title">{{ $hijo->nombre }}</h6>
-
-                                                <ul class="content-lista">
-                                                    @foreach($hijo->carreras as $carrera)
-                                                    <li>
-                                                        <a href="{{route('web.detallecarrera', $carrera->id)}}">
-                                                            {{ $carrera->nombre }}
-                                                        </a>
-                                                    </li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                            @endforeach
-
-                                        </div>
-                                        @endforeach
-
-                                        <div class="mega-box" id="informes">
-
-                                            <div class="mega-col">
-
-                                                <ul class="content-lista">
-                                                    @include('web.partials.menu-nav-links', ['section' => 'posgrado'])
-                                                </ul>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                            <li class="has-droupdown"><a href="#">Innovación</a>
-                                <ul class="mega-menu servicios">
-                                    <li>
-
-                                        <ul class="submenu mega-sub-menu mega-sub-menu-01">
-                                            @include('web.partials.menu-nav-links', ['section' => 'innovacion', 'routesOnly' => false])
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </li>
-                            <li class="has-droupdown"><a href="#">Servicios</a>
-                                <ul class="mega-menu servicios">
-                                    <li>
-
-                                        <ul class="submenu mega-sub-menu mega-sub-menu-01">
-                                            @include('web.partials.menu-nav-links', ['section' => 'servicios'])
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </li>
-                            <li class="has-droupdown"><a href="#">Conócenos</a>
-                                <ul class="mega-menu conocenos">
-                                    <li>
-
-                                        <ul class="submenu mega-sub-menu mega-sub-menu-01">
-                                            @include('web.partials.menu-nav-links', ['section' => 'conocenos'])
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </li>
-                            <li class="has-droupdown"><a href="#">Contáctanos</a>
-                                <ul class="mega-menu servicios">
-                                    <li>
-
-                                        <ul class="submenu mega-sub-menu mega-sub-menu-01">
-                                            @include('web.partials.menu-nav-links', ['section' => 'contactanos'])
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </li>
-                            <li class="has-droupdown boton-li">
-                                <button type="button" class="edu-btn btn-secondary d-flex align-items-center gap-2" data-postula-trigger>
-                                    <iconify-icon icon="mdi:pencil" style="font-size:20px"></iconify-icon>
-                                    Postula Aquí
-                                </button>
-                            </li>
+                            @if(\App\Support\SiteNavigation::hasDbNav())
+                                @include('web.partials.nav.main-desktop')
+                            @else
+                                {{-- Fallback legacy hasta ejecutar nav:import-legacy --}}
+                                @include('web.partials.nav.legacy-desktop')
+                            @endif
                         </ul>
                     </nav>
                 </div>
                 <div class="header-right">
                     <ul class="header-action">
-
                         <li class="mobile-menu-bar d-block d-xl-none">
                             <button type="button" class="hamberger-button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-navigation">
                                 <iconify-icon icon="mdi:menu" aria-hidden="true"></iconify-icon>
@@ -225,7 +64,6 @@
                         </li>
                     </ul>
                 </div>
-
             </div>
         </div>
     </div>
@@ -233,9 +71,9 @@
         <div class="inner">
             <div class="header-top">
                 <div class="logo">
-                    <a href="{{route('web.index')}}">
-                        <img class="logo-light" src="{{asset('web/imagenes/logo_uprit_light.svg')}}" alt="UPRIT">
-                        <img class="logo-dark" src="{{asset('web/imagenes/logo_uprit_light.svg')}}" alt="UPRIT">
+                    <a href="{{ route('web.index') }}">
+                        <img class="logo-light" src="{{ asset('web/imagenes/logo_uprit_light.svg') }}" alt="UPRIT">
+                        <img class="logo-dark" src="{{ asset('web/imagenes/logo_uprit_light.svg') }}" alt="UPRIT">
                     </a>
                 </div>
                 <div class="close-menu">
@@ -245,161 +83,13 @@
                 </div>
             </div>
             <ul class="mainmenu">
-                <li class="has-droupdown"><a href="#">Pregrado</a>
-                    <ul class="submenu">
-
-                        @foreach($pregradoCategorias as $categoria)
-                        <li class="has-droupdown">
-                            <a href="#">{{ $categoria->nombre }}</a>
-
-                            <ul class="submenu">
-                                @foreach($categoria->carreras as $carrera)
-                                <li><a href="{{route('web.detallecarrera', $carrera->id)}}">{{ $carrera->nombre }}</a></li>
-                                @endforeach
-                                @foreach($categoria->hijos as $hijo)
-                                    @foreach($hijo->carreras as $carrera)
-                                    <li><a href="{{route('web.detallecarrera', $carrera->id)}}">{{ $carrera->nombre }}</a></li>
-                                    @endforeach
-                                @endforeach
-                            </ul>
-                        </li>
-                        @endforeach
-
-                        <li class="has-droupdown">
-                            <a href="#">Infórmate Más</a>
-
-                            <ul class="submenu">
-                                @include('web.partials.menu-nav-links', ['section' => 'contactanos'])
-                            </ul>
-                        </li>
-
-
-                    </ul>
-
-                </li>
-                <li class="has-droupdown">
-                    <a href="#">Pregrado Puede</a>
-                    <ul class="submenu">
-
-                        @foreach($pregradoPuedeCategorias as $categoria)
-                        <li class="has-droupdown">
-                            <a href="#">{{ $categoria->nombre }}</a>
-
-                            <ul class="submenu">
-                                @foreach($categoria->carreras as $carrera)
-                                <li><a href="{{route('web.detallecarrera', $carrera->id)}}">{{ $carrera->nombre }}</a></li>
-                                @endforeach
-                                @foreach($categoria->hijos as $hijo)
-                                    @foreach($hijo->carreras as $carrera)
-                                    <li><a href="{{route('web.detallecarrera', $carrera->id)}}">{{ $carrera->nombre }}</a></li>
-                                    @endforeach
-                                @endforeach
-                            </ul>
-                        </li>
-                        @endforeach
-
-                        <li class="has-droupdown">
-                            <a href="#">Infórmate Más</a>
-
-                            <ul class="submenu">
-                                @include('web.partials.menu-nav-links', ['section' => 'contactanos'])
-                                <li><a href="#">Segunda Carrera profesional</a></li>
-                            </ul>
-                        </li>
-
-
-                    </ul>
-
-                </li>
-
-                <li class="has-droupdown">
-                    <a href="#">Posgrado</a>
-
-                    <ul class="submenu">
-
-                        @foreach($posgradoCategorias as $index => $categoria)
-                        <li class="has-droupdown">
-
-                            <a href="#">{{$categoria->nombre}}</a>
-
-                            <ul class="submenu">
-                                @foreach($categoria->hijos as $hijo)
-                                <li class="has-droupdown">
-                                    <a href="#">{{ $hijo->nombre }}</a>
-
-                                    <ul class="submenu">
-                                        @foreach($hijo->carreras as $carrera)
-                                        <li>
-                                            <a href="{{route('web.detallecarrera', $carrera->id)}}">
-                                                {{ $carrera->nombre }}
-                                            </a>
-                                        </li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                                @endforeach
-
-                            </ul>
-                        </li>
-                        @endforeach
-
-                        <!-- INFORMES -->
-                        <li class="has-droupdown">
-                            <a href="#">Infórmate Más</a>
-
-                            <ul class="submenu">
-                                @include('web.partials.menu-nav-links', ['section' => 'posgrado'])
-                            </ul>
-                        </li>
-
-                    </ul>
-                </li>
-
-                <li class="has-droupdown"><a href="#">Innovación</a>
-                    <ul class="submenu">
-                        @include('web.partials.menu-nav-links', ['section' => 'innovacion', 'routesOnly' => false])
-                    </ul>
-                </li>
-                <li class="has-droupdown"><a href="#">Servicios</a>
-                    <ul class="submenu">
-                        @include('web.partials.menu-nav-links', ['section' => 'servicios'])
-                    </ul>
-                </li>
-                <li class="has-droupdown"><a href="#">Conócenos</a>
-                    <ul class="submenu">
-                        @include('web.partials.menu-nav-links', ['section' => 'conocenos'])
-                        <li><a href="#">Convenios y Afiliaciones</a></li>
-                        <li><a href="#">Acceso a la Información Pública</a></li>
-                    </ul>
-                </li>
-                <li class="has-droupdown"><a href="#">Contáctanos</a>
-                    <ul class="submenu">
-                        @include('web.partials.menu-nav-links', ['section' => 'contactanos'])
-                    </ul>
-                </li>
-                <li class="has-droupdown">
-                    <a href="#">Nuestra Plataforma</a>
-                    <ul class="submenu">
-                        <li><a href="https://intranet.uprit.edu.pe/" target="_blank" rel="noopener">ERP</a></li>
-                        <li><a href="https://www.digitaliapublishing.com/" target="_blank" rel="noopener">Biblioteca Virtual</a></li>
-                        <li><a href="https://repositorio.uprit.edu.pe/" target="_blank" rel="noopener">Repositorio - ALICIA</a></li>
-                        <li><a href="https://moodle.uprit.edu.pe" target="_blank" rel="noopener">Aula Virtual</a></li>
-                    </ul>
-                </li>
-                <li><a href="{{ route('web.noticias') }}">Noticias</a></li>
-                <li><a href="{{route('transparencia')}}">Transparencia</a></li>
-                <li>
-                    <button 
-                        type="button" 
-                        class="edu-btn btn-secondary d-flex align-items-center gap-2" 
-                        data-postula-trigger
-                        style="color: white !important">
-                        <iconify-icon icon="mdi:pencil" style="font-size:20px"></iconify-icon>
-                        Postula Aquí
-                    </button>
-                </li>
+                @if(\App\Support\SiteNavigation::hasDbNav())
+                    @include('web.partials.nav.main-mobile')
+                    @include('web.partials.nav.topbar-mobile')
+                @else
+                    @include('web.partials.nav.legacy-mobile')
+                @endif
             </ul>
         </div>
     </div>
-
 </header>
