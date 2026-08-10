@@ -43,6 +43,10 @@
                             <a href="{{ route('transparencia.index') }}"><i class="fa fa-folder-open-o"></i>
                                 <span>Transparencia</span></a>
                         </li>
+                        <li id="menus">
+                            <a href="{{ route('menu.index') }}"><i class="fa fa-bars"></i>
+                                <span>Menú Web</span></a>
+                        </li>
                         <li id="niveles">
                             <a href="{{ route('niveles.index') }}"><i class="icon-graduation"></i>
                                 <span>Niveles Académicos</span></a>

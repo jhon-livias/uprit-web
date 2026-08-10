@@ -189,29 +189,41 @@
         });
     </script>
     <script>
-        const buttons = document.querySelectorAll('.cat-btn');
+        function initMegaTabs(wrapper) {
+            const buttons = wrapper.querySelectorAll('.cat-btn');
 
-        buttons.forEach(btn => {
-
-            btn.addEventListener('mouseenter', () => {
-
-                document
-                    .querySelectorAll('.cat-btn')
-                    .forEach(b => b.classList.remove('active'));
-
-                document
-                    .querySelectorAll('.mega-box')
-                    .forEach(box => box.classList.remove('active'));
+            function activateTab(btn) {
+                wrapper.querySelectorAll('.cat-btn').forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                wrapper.querySelectorAll('.mega-box').forEach(box => box.classList.remove('active'));
 
                 btn.classList.add('active');
+                btn.setAttribute('aria-selected', 'true');
 
-                document
-                    .getElementById(btn.dataset.target)
-                    .classList.add('active');
+                const target = wrapper.querySelector('#' + btn.dataset.target);
+                if (target) {
+                    target.classList.add('active');
+                }
+            }
 
+            buttons.forEach(btn => {
+                btn.addEventListener('mouseenter', () => activateTab(btn));
+                btn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    activateTab(btn);
+                });
+                btn.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        activateTab(btn);
+                    }
+                });
             });
+        }
 
-        });
+        document.querySelectorAll('.mega-tabs-wrapper').forEach(initMegaTabs);
     </script>
     <script>
         const accordions = document.querySelectorAll('.footer-accordion');

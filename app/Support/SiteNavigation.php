@@ -2,6 +2,10 @@
 
 namespace App\Support;
 
+use App\Models\NavGroup;
+use App\Services\NavMenuService;
+use App\Services\WebNavigationCache;
+
 class SiteNavigation
 {
     public static function routeConfig(?string $routeKey): array
@@ -73,8 +77,16 @@ class SiteNavigation
         return null;
     }
 
-    public static function sectionItems(string $section, bool $routesOnly = false): array
+    public static function sectionItems(string $section, bool $routesOnly = false, string $context = NavMenuService::CONTEXT_DESKTOP): array
     {
+        if (self::hasDbNav()) {
+            $items = NavMenuService::linksForGroupKey($section, $context, $routesOnly);
+
+            if ($items !== []) {
+                return $items;
+            }
+        }
+
         $sectionConfig = config('breadcrumbs.sections.' . $section, []);
         $items = [];
 
@@ -94,14 +106,38 @@ class SiteNavigation
                 continue;
             }
 
+            $url = $entry['url'] ?? '#';
+
+            if ($url === '' || $url === '#') {
+                continue;
+            }
+
             $items[] = [
                 'label' => $entry['label'],
-                'url' => $entry['url'] ?? '#',
+                'url' => $url,
                 'external' => (bool) ($entry['external'] ?? false),
             ];
         }
 
         return $items;
+    }
+
+    public static function hasDbNav(): bool
+    {
+        try {
+            return WebNavigationCache::navGroups()->isNotEmpty();
+        } catch (\Throwable) {
+            return false;
+        }
+    }
+
+    public static function navGroup(string $key): ?NavGroup
+    {
+        if (!self::hasDbNav()) {
+            return null;
+        }
+
+        return WebNavigationCache::navGroups()->firstWhere('key', $key);
     }
 
     private static function sectionEntries(array $section): array

@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\TestimonioController;
 use App\Http\Controllers\admin\NoticiaController;
 use App\Http\Controllers\admin\ReclamoController;
 use App\Http\Controllers\admin\TransparenciaController;
+use App\Http\Controllers\admin\MenuController;
 
 
 //web
@@ -111,6 +112,15 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::post('/transparencia/documento/store', [TransparenciaController::class, 'storeDocumento'])->name('transparencia.documento.store');
     Route::post('/transparencia/documento/edit', [TransparenciaController::class, 'updateDocumento'])->name('transparencia.documento.edit');
     Route::post('/transparencia/documento/delete/{id}', [TransparenciaController::class, 'deleteDocumento'])->name('transparencia.documento.delete');
+
+    // MENÚ WEB
+    Route::get('/listar_menu', [MenuController::class, 'index'])->name('menu.index');
+    Route::get('/get_menu', [MenuController::class, 'getGroups'])->name('menu.get');
+    Route::get('/get_menu_routes', [MenuController::class, 'getRouteNames'])->name('menu.routes');
+    Route::post('/menu/group/edit', [MenuController::class, 'updateGroup'])->name('menu.group.edit');
+    Route::post('/menu/link/store', [MenuController::class, 'storeLink'])->name('menu.link.store');
+    Route::post('/menu/link/edit', [MenuController::class, 'updateLink'])->name('menu.link.edit');
+    Route::post('/menu/link/delete/{id}', [MenuController::class, 'deleteLink'])->name('menu.link.delete');
 
 });
 

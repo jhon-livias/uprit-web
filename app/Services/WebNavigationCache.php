@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Categoria;
 use App\Models\Carrera;
+use App\Models\NavGroup;
 use App\Models\NivelAcademico;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
@@ -24,6 +25,8 @@ class WebNavigationCache
 
     public const KEY_CHATBOT_POSGRADO = 'web.nav.chatbot.posgrado';
 
+    public const KEY_NAV_GROUPS = 'web.nav.groups';
+
     /** @var list<string> */
     private const ALL_KEYS = [
         self::KEY_NIVEL_ACADEMICO,
@@ -33,6 +36,7 @@ class WebNavigationCache
         self::KEY_CHATBOT_PREGRADO,
         self::KEY_CHATBOT_PREGRADO_PUEDE,
         self::KEY_CHATBOT_POSGRADO,
+        self::KEY_NAV_GROUPS,
     ];
 
     public static function ttl(): int
@@ -60,7 +64,34 @@ class WebNavigationCache
             'chatbotPregradoCategorias' => self::chatbotPregrado(),
             'chatbotPregradoPuedeCategorias' => self::chatbotPregradoPuede(),
             'chatbotPosgradoCategorias' => self::chatbotPosgrado(),
+            'navGroups' => self::navGroups(),
+            'navTopbarGroups' => self::navTopbarGroups(),
         ];
+    }
+
+    public static function navGroups(): Collection
+    {
+        try {
+            return self::rememberCollection(
+                self::KEY_NAV_GROUPS,
+                fn () => NavGroup::query()
+                    ->with(['links' => fn ($q) => $q->orderBy('orden')])
+                    ->orderBy('orden')
+                    ->get()
+            );
+        } catch (\Throwable) {
+            return collect();
+        }
+    }
+
+    public static function navTopbarGroups(): Collection
+    {
+        return self::navGroups()->where('show_in_topbar', true)->values();
+    }
+
+    public static function navMainGroups(): Collection
+    {
+        return self::navGroups()->where('show_in_main_nav', true)->values();
     }
 
     private static function rememberCollection(string $key, callable $callback): Collection
