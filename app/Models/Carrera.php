@@ -20,7 +20,8 @@ class Carrera extends Model
         'titulacion',
         'modalidades',
         'brochure',
-        'imagen'
+        'imagen',
+        'imagen_banner',
 
     ];
 

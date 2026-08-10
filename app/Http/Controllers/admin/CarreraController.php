@@ -55,6 +55,10 @@ class CarreraController extends Controller
         if ($imagen !== null) {
             $carrera->imagen = $imagen;
         }
+        $imagenBanner = $this->savePublicUpload($request, 'imagen_banner', 'brochures_imagenes', 'banner');
+        if ($imagenBanner !== null) {
+            $carrera->imagen_banner = $imagenBanner;
+        }
         $carrera->save();
         WebNavigationCache::forget();
         return response()->json(true);
@@ -81,6 +85,10 @@ class CarreraController extends Controller
         $imagen = $this->savePublicUpload($request, 'imagen', 'brochures_imagenes', 'imagen', $carrera->imagen);
         if ($imagen !== null) {
             $carrera->imagen = $imagen;
+        }
+        $imagenBanner = $this->savePublicUpload($request, 'imagen_banner', 'brochures_imagenes', 'banner', $carrera->imagen_banner);
+        if ($imagenBanner !== null) {
+            $carrera->imagen_banner = $imagenBanner;
         }
 
         $carrera->save();

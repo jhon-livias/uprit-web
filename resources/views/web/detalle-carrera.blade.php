@@ -6,9 +6,15 @@
         <div class="swiper-wrapper">
 
             <div class="swiper-slide slider-principal">
+                @if($carrera->imagen_banner)
+                <img src="{{ asset('brochures_imagenes/' . $carrera->imagen_banner) }}"
+                    class=""
+                    alt="image" style="width: 100%; height: 100%; object-fit: cover;" />
+                @else
                 <img src="{{asset('web/imagenes/slider/slider03.webp')}}"
                     class=""
                     alt="image" style="width: 100%; height: 100%; object-fit: cover;" />
+                @endif
 
                 <div class="thumbnail-bg-content detalle-bg-content">
                     <div class="container edublink-animated-shape">
