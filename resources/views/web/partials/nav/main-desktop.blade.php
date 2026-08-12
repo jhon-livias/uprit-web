@@ -13,7 +13,11 @@
             @include('web.partials.nav.academic-desktop', ['navGroup' => $navGroup])
         @endif
     @elseif($navGroup->tipo === 'section')
-        @include('web.partials.nav.section-desktop', ['navGroup' => $navGroup])
+        @if($navGroup->key === 'servicios')
+            @include('web.partials.nav.servicios-desktop', ['navGroup' => $navGroup])
+        @else
+            @include('web.partials.nav.section-desktop', ['navGroup' => $navGroup])
+        @endif
     @elseif($navGroup->tipo === 'button')
         @include('web.partials.nav.postula-desktop', ['navGroup' => $navGroup])
     @endif

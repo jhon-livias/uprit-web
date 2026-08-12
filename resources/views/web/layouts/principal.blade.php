@@ -236,7 +236,7 @@
         }
 
         function initViewportMegaMenus() {
-            const items = document.querySelectorAll('.mega-pregrado, .mega-posgrado');
+            const items = document.querySelectorAll('.mega-pregrado, .mega-posgrado, .mega-servicios');
             if (!items.length) {
                 return;
             }
@@ -262,7 +262,7 @@
                     return;
                 }
 
-                document.querySelectorAll('.mega-pregrado.is-mega-open, .mega-posgrado.is-mega-open').forEach(placeViewportMegaMenu);
+                document.querySelectorAll('.mega-pregrado.is-mega-open, .mega-posgrado.is-mega-open, .mega-servicios.is-mega-open').forEach(placeViewportMegaMenu);
             }
 
             window.addEventListener('resize', repositionOpenMenus);

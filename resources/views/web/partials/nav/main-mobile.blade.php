@@ -10,7 +10,11 @@
             @include('web.partials.nav.academic-mobile', ['navGroup' => $navGroup])
         @endif
     @elseif($navGroup->tipo === 'section')
-        @include('web.partials.nav.section-mobile', ['navGroup' => $navGroup])
+        @if($navGroup->key === 'servicios')
+            @include('web.partials.nav.servicios-mobile', ['navGroup' => $navGroup])
+        @else
+            @include('web.partials.nav.section-mobile', ['navGroup' => $navGroup])
+        @endif
     @elseif($navGroup->tipo === 'button')
     <li>
         <button type="button" class="edu-btn btn-secondary d-flex align-items-center gap-2" data-postula-trigger style="color: white !important">

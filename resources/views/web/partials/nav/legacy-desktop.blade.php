@@ -42,15 +42,7 @@
         </li>
     </ul>
 </li>
-<li class="has-droupdown"><a href="#">Servicios</a>
-    <ul class="mega-menu servicios">
-        <li>
-            <ul class="submenu mega-sub-menu mega-sub-menu-01">
-                @include('web.partials.menu-nav-links', ['section' => 'servicios'])
-            </ul>
-        </li>
-    </ul>
-</li>
+@include('web.partials.nav.servicios-desktop', ['navGroup' => (object) ['label' => 'Servicios']])
 <li class="has-droupdown"><a href="#">Conócenos</a>
     <ul class="mega-menu conocenos">
         <li>

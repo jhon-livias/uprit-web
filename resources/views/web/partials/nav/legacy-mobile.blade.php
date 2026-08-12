@@ -32,11 +32,7 @@
         @include('web.partials.menu-nav-links', ['section' => 'innovacion', 'routesOnly' => false, 'context' => 'mobile'])
     </ul>
 </li>
-<li class="has-droupdown"><a href="#">Servicios</a>
-    <ul class="submenu">
-        @include('web.partials.menu-nav-links', ['section' => 'servicios', 'context' => 'mobile'])
-    </ul>
-</li>
+@include('web.partials.nav.servicios-mobile', ['navGroup' => (object) ['label' => 'Servicios']])
 <li class="has-droupdown"><a href="#">Conócenos</a>
     <ul class="submenu">
         @include('web.partials.menu-nav-links', ['section' => 'conocenos', 'context' => 'mobile'])

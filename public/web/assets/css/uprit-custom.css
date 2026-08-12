@@ -649,12 +649,14 @@
 }
 
 .mega-posgrado,
-.mega-pregrado {
+.mega-pregrado,
+.mega-servicios {
     position: relative;
 }
 
 .mega-posgrado-wrapper,
-.mega-pregrado-wrapper {
+.mega-pregrado-wrapper,
+.mega-servicios-wrapper {
     position: absolute;
     top: 100%;
     left: 50%;
@@ -686,6 +688,11 @@
     max-width: 1300px;
 }
 
+.mega-servicios-wrapper {
+    width: min(1100px, calc(100vw - 40px));
+    max-width: 1100px;
+}
+
 @media (min-width: 1200px) {
 
     .edu-header .header-navbar,
@@ -694,6 +701,7 @@
     .edu-header .mainmenu-nav .mainmenu,
     .edu-header .mainmenu-nav .mainmenu>li.mega-pregrado,
     .edu-header .mainmenu-nav .mainmenu>li.mega-posgrado,
+    .edu-header .mainmenu-nav .mainmenu>li.mega-servicios,
     .header-mainmenu .container,
     .header-mainmenu .header-nuevo-der {
         overflow: visible;
@@ -701,8 +709,10 @@
 
     .mega-pregrado:hover .mega-pregrado-wrapper,
     .mega-posgrado:hover .mega-posgrado-wrapper,
+    .mega-servicios:hover .mega-servicios-wrapper,
     .mega-pregrado.is-mega-open .mega-pregrado-wrapper,
-    .mega-posgrado.is-mega-open .mega-posgrado-wrapper {
+    .mega-posgrado.is-mega-open .mega-posgrado-wrapper,
+    .mega-servicios.is-mega-open .mega-servicios-wrapper {
         position: fixed;
         left: 50%;
         top: var(--mega-menu-top, 140px);
@@ -716,7 +726,8 @@
 /* mostrar */
 @media (max-width: 1199px) {
     .mega-posgrado:hover .mega-posgrado-wrapper,
-    .mega-pregrado:hover .mega-pregrado-wrapper {
+    .mega-pregrado:hover .mega-pregrado-wrapper,
+    .mega-servicios:hover .mega-servicios-wrapper {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
@@ -2521,6 +2532,24 @@ body.dark-mode .list-noticia-bg {
     border-right: 1px solid var(--color-border);
 }
 
+.mega-servicios .mega-col:not(:last-child) {
+    border-right: 1px solid var(--color-border);
+}
+
+.mega-servicios .mega-box-list {
+    display: none;
+    grid-template-columns: 1fr;
+}
+
+.mega-servicios .mega-box-list.active {
+    display: block;
+}
+
+.mega-servicios .mega-box-list .mega-col-list {
+    border-right: none;
+    padding-right: 0;
+}
+
 .mega-posgrado .mega-col:nth-child(4n) {
     border-right: none;
 }
@@ -3702,6 +3731,10 @@ body.mobile-menu-open {
 
     .mega-pregrado-wrapper {
         width: min(1100px, calc(100vw - 24px));
+    }
+
+    .mega-servicios-wrapper {
+        width: min(1000px, calc(100vw - 24px));
     }
 
     .mega-categorias {
