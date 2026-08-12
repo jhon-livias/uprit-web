@@ -1,4 +1,7 @@
 @extends('web.layouts.principal')
+
+@section('body_class', 'page-servicios-salud')
+
 @section('content')
 @include('web.partials.servicios-salud.hero')
 @include('web.partials.servicios-salud.services')

@@ -40,7 +40,7 @@
     @yield('styles')
 </head>
 
-<body class="sticky-header">
+<body class="sticky-header @yield('body_class')">
 
 
     <div id="edublink-preloader">
