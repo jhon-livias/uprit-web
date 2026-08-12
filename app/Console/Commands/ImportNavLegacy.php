@@ -51,7 +51,12 @@ class ImportNavLegacy extends Command
             ['key' => 'pregrado_puede', 'label' => 'Pregrado Puede', 'tipo' => 'academic', 'academic_nivel' => 'Pregrado Puede', 'informes_key' => null, 'css_class' => 'pre-puede', 'show_in_main_nav' => false, 'visible' => true, 'orden' => 20],
             ['key' => 'posgrado', 'label' => 'Posgrado', 'tipo' => 'academic', 'academic_nivel' => 'Posgrado', 'informes_key' => 'posgrado', 'css_class' => 'mega-posgrado', 'show_in_main_nav' => true, 'orden' => 30],
             ['key' => 'innovacion', 'label' => 'Innovación', 'tipo' => 'section', 'css_class' => 'servicios', 'show_in_main_nav' => true, 'orden' => 40, 'meta' => ['routes_only' => false]],
-            ['key' => 'servicios', 'label' => 'Servicios', 'tipo' => 'section', 'css_class' => 'servicios', 'show_in_main_nav' => true, 'orden' => 50],
+            ['key' => 'servicios', 'label' => 'Servicios', 'tipo' => 'section', 'css_class' => 'mega-servicios', 'show_in_main_nav' => true, 'orden' => 50, 'meta' => [
+                'tab_labels' => [
+                    'bienestar' => 'Bienestar universitario y RSU',
+                    'otros' => 'Otros servicios',
+                ],
+            ]],
             ['key' => 'conocenos', 'label' => 'Conócenos', 'tipo' => 'section', 'css_class' => 'conocenos', 'show_in_main_nav' => true, 'orden' => 60],
             ['key' => 'contactanos', 'label' => 'Contáctanos', 'tipo' => 'section', 'css_class' => 'servicios', 'show_in_main_nav' => true, 'orden' => 70],
             ['key' => 'postula', 'label' => 'Postula Aquí', 'tipo' => 'button', 'show_in_main_nav' => true, 'orden' => 80],

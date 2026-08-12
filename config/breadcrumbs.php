@@ -20,6 +20,32 @@ return [
                 'alumni',
                 'programa',
             ],
+            'tabs' => [
+                'bienestar' => [
+                    'label' => 'Bienestar universitario y RSU',
+                    'column_title' => 'Bienestar Universitario y RSU',
+                    'items' => [
+                        ['label' => 'Servicio Psicopedagógico', 'route' => 'salud'],
+                        ['label' => 'Programa de Alimentación Saludable', 'route' => 'salud'],
+                        ['label' => 'Servicios de Salud', 'route' => 'salud'],
+                        ['label' => 'Servicios Deportivos y PRODAC', 'route' => 'futbol'],
+                        ['label' => 'Programa de Actividades Artísticas y culturales', 'route' => 'talleres'],
+                        ['label' => 'Servicios Sociales y Ayudas', 'route' => 'becas'],
+                        ['label' => 'Responsabilidad social Universitaria', 'route' => 'becas'],
+                    ],
+                ],
+                'otros' => [
+                    'label' => 'Otros servicios',
+                    'stacked' => true,
+                    'routes' => [
+                        'soporte',
+                        'honors',
+                        'alumni',
+                        'programa',
+                        'global',
+                    ],
+                ],
+            ],
         ],
         'conocenos' => [
             'routes' => [
