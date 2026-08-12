@@ -54,7 +54,7 @@
 
 <section class="bienestar-areas-section">
     <div class="container">
-        <div class="row g-4 g-xl-5">
+        <div class="row g-4 g-xl-5 align-items-start">
             <aside class="col-lg-4 col-xl-3">
                 <div class="bienestar-director-card">
                     <h2 class="bienestar-director-card__heading">Nuestra Directora</h2>
@@ -103,9 +103,9 @@
                     </article>
                     @endforeach
                 </div>
-
-                @include('web.partials.bienestar-rsu-campaign-banner')
             </div>
         </div>
+
+        @include('web.partials.bienestar-rsu-campaign-banner')
     </div>
 </section>
