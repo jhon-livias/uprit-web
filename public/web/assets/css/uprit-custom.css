@@ -4145,6 +4145,16 @@ body.mobile-menu-open {
 
 /* ===== Servicios de Salud ===== */
 
+body.page-servicios-salud .header-top-bar {
+    background: transparent !important;
+    box-shadow: none;
+}
+
+body.page-servicios-salud .header-mainmenu:not(.sticky-active) {
+    background: transparent !important;
+    box-shadow: none;
+}
+
 .salud-banner {
     position: relative;
     overflow: visible;
@@ -4153,12 +4163,30 @@ body.mobile-menu-open {
     padding-bottom: 40px;
 }
 
+.salud-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 132px;
+    background: linear-gradient(
+        120deg,
+        #1a0006 0%,
+        #520012 30%,
+        #91001E 65%,
+        #ff4b6e 100%
+    );
+    z-index: 0;
+}
+
 .salud-banner__media {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     width: min(52%, 760px);
+    z-index: 1;
 }
 
 .salud-banner__photo {
@@ -4171,7 +4199,7 @@ body.mobile-menu-open {
 
 .salud-banner__container {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .salud-banner__inner {
@@ -4742,6 +4770,10 @@ body.mobile-menu-open {
         display: flex;
         flex-direction: column;
         padding-top: 120px;
+    }
+
+    .salud-banner::before {
+        height: 120px;
     }
 
     .salud-banner__media {
