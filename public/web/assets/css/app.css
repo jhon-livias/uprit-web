@@ -32795,15 +32795,7 @@ blockquote {
     }
 }
 
-blockquote:after {
-    content: "\e94a";
-    font-family: var(--font-icomoon);
-    font-size: 35px;
-    color: var(--color-primary);
-    position: absolute;
-    top: 30px;
-    left: 40px
-}
+
 
 @media only screen and (max-width:767px) {
     blockquote:after {
