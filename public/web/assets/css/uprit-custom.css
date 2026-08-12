@@ -4145,6 +4145,16 @@ body.mobile-menu-open {
 
 /* ===== Servicios de Salud ===== */
 
+body.page-servicios-salud .edu-header {
+    background: linear-gradient(
+        120deg,
+        #1a0006 0%,
+        #520012 30%,
+        #91001E 65%,
+        #ff4b6e 100%
+    ) !important;
+}
+
 body.page-servicios-salud .header-top-bar {
     background: transparent !important;
     box-shadow: none;
@@ -4157,54 +4167,44 @@ body.page-servicios-salud .header-mainmenu:not(.sticky-active) {
 
 .salud-banner {
     position: relative;
-    overflow: visible;
+    overflow: hidden;
     background: #f5f5f5;
     padding-top: 132px;
     padding-bottom: 40px;
 }
 
-.salud-banner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 132px;
-    background: linear-gradient(
-        120deg,
-        #1a0006 0%,
-        #520012 30%,
-        #91001E 65%,
-        #ff4b6e 100%
-    );
-    z-index: 0;
+.salud-banner__container {
+    position: relative;
+}
+
+.salud-banner__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0;
+    align-items: stretch;
+    min-height: 320px;
+}
+
+.salud-banner__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 560px;
+    padding: 28px 32px 72px 0;
 }
 
 .salud-banner__media {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: min(52%, 760px);
-    z-index: 1;
+    overflow: hidden;
+    min-height: 320px;
 }
 
 .salud-banner__photo {
     display: block;
     width: 100%;
     height: 100%;
+    min-height: 320px;
     object-fit: cover;
     object-position: center;
-}
-
-.salud-banner__container {
-    position: relative;
-    z-index: 2;
-}
-
-.salud-banner__inner {
-    max-width: 560px;
-    padding: 28px 0 72px;
 }
 
 .salud-banner__breadcrumb {
@@ -4767,29 +4767,25 @@ body.page-servicios-salud .header-mainmenu:not(.sticky-active) {
 
 @media (max-width: 991px) {
     .salud-banner {
-        display: flex;
-        flex-direction: column;
         padding-top: 120px;
     }
 
-    .salud-banner::before {
-        height: 120px;
+    .salud-banner__layout {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .salud-banner__content {
+        max-width: none;
+        padding: 24px 0 20px;
     }
 
     .salud-banner__media {
-        order: 2;
-        position: relative;
-        width: 100%;
-        height: 260px;
+        min-height: 260px;
     }
 
-    .salud-banner__container {
-        order: 1;
-    }
-
-    .salud-banner__inner {
-        max-width: none;
-        padding: 24px 0 20px;
+    .salud-banner__photo {
+        min-height: 260px;
     }
 
     .salud-banner__quick-links {
