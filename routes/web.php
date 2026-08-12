@@ -134,6 +134,7 @@ Route::get('/detalle-carrera/{id}', [WebController::class, 'detallecarrera'])
     ->name('web.detallecarrera')
     ->whereNumber('id');
 Route::get('/soporte', [WebController::class, 'soporte'])->name('soporte');
+Route::get('/bienestar-universitario-rsu', [WebController::class, 'bienestarRsu'])->name('bienestar-rsu');
 Route::get('/salud', [WebController::class, 'salud'])->name('salud');
 Route::get('/futbol', [WebController::class, 'futbol'])->name('futbol');
 Route::get('/libro-reclamaciones', [WebController::class, 'libroreclamaciones'])->name('libroreclamaciones');
