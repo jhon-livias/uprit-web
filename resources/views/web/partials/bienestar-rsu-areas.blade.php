@@ -17,7 +17,7 @@
         [
             'title' => 'Servicios de Salud',
             'description' => 'Atención médica y cuidado preventivo para tu salud integral.',
-            'url' => route('salud'),
+            'url' => route('servicios-de-salud'),
             'icon' => 'mdi:stethoscope',
             'tone' => 'maroon',
         ],

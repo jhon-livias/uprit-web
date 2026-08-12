@@ -29,7 +29,7 @@ return [
                     'items' => [
                         ['label' => 'Servicio Psicopedagógico', 'route' => 'salud'],
                         ['label' => 'Programa de Alimentación Saludable', 'route' => 'salud'],
-                        ['label' => 'Servicios de Salud', 'route' => 'salud'],
+                        ['label' => 'Servicios de Salud', 'route' => 'servicios-de-salud'],
                         ['label' => 'Servicios Deportivos y PRODAC', 'route' => 'futbol'],
                         ['label' => 'Programa de Actividades Artísticas y culturales', 'route' => 'talleres'],
                         ['label' => 'Servicios Sociales y Ayudas', 'route' => 'becas'],
@@ -120,6 +120,11 @@ return [
             'title' => 'Servicios Psicopedagógicos y Salud',
             'menu_label' => 'Servicios Psicopedagógicos y Salud',
             'parent' => ['label' => 'Servicios'],
+        ],
+        'servicios-de-salud' => [
+            'title' => 'Servicios de Salud',
+            'menu_label' => 'Servicios de Salud',
+            'parent' => ['label' => 'RSU', 'route' => 'bienestar-rsu'],
         ],
         'futbol' => [
             'title' => 'Espacios y Servicios Deportivos',
