@@ -1,27 +1,87 @@
-<section class="salud-hero">
-    <div class="container">
-        <div class="salud-hero__grid">
-            <div class="salud-hero__content">
-                <h1 class="salud-hero__title">Servicios de Salud</h1>
-                <p class="salud-hero__lead">
-                    Cuidamos de tu bienestar para que alcances tu mejor versión.
-                </p>
-                <p class="salud-hero__text">
-                    En UPRIT promovemos el bienestar físico y mental con servicios de salud accesibles, profesionales y de calidad.
-                </p>
-                <a href="#nuestros-servicios" class="salud-hero__btn">
-                    Conoce más sobre nuestros servicios
-                    <span aria-hidden="true">→</span>
-                </a>
-            </div>
-            <div class="salud-hero__media">
-                <img
-                    src="{{ asset('web/imagenes/bienestar/salud/hero.jpg') }}"
-                    alt="Atención médica en el Tópico UPRIT"
-                    class="salud-hero__photo"
-                    loading="eager"
-                    decoding="async">
-            </div>
+@php
+    $breadcrumb = \App\Support\SiteNavigation::breadcrumb('servicios-de-salud');
+
+    $quickLinks = [
+        [
+            'icon' => 'mdi:account-heart-outline',
+            'title' => 'Orientación en salud',
+            'subtitle' => 'Consejería y educación',
+            'anchor' => '#nuestros-servicios',
+        ],
+        [
+            'icon' => 'mdi:heart-pulse',
+            'title' => 'Promoción y prevención',
+            'subtitle' => 'Charlas, talleres y campañas',
+            'anchor' => '#nuestros-servicios',
+        ],
+        [
+            'icon' => 'mdi:medical-bag',
+            'title' => 'Primeros auxilios',
+            'subtitle' => 'Atención inmediata',
+            'anchor' => '#nuestros-servicios',
+        ],
+        [
+            'icon' => 'mdi:calendar-month-outline',
+            'title' => 'Agenda informativa',
+            'subtitle' => 'Charlas y actividades',
+            'anchor' => '#actividades',
+        ],
+    ];
+@endphp
+
+<section class="salud-banner">
+    <div class="salud-banner__media" aria-hidden="true">
+        <img
+            src="{{ asset('web/imagenes/bienestar/salud/hero.jpg') }}"
+            alt=""
+            class="salud-banner__photo"
+            loading="eager"
+            decoding="async">
+    </div>
+
+    <div class="container salud-banner__container">
+        <div class="salud-banner__inner">
+            <nav class="salud-banner__breadcrumb" aria-label="Breadcrumb">
+                <a href="{{ route('web.index') }}">Inicio</a>
+                <span class="salud-banner__breadcrumb-sep" aria-hidden="true">&rsaquo;</span>
+                @if(!empty($breadcrumb['parent']))
+                    @if(!empty($breadcrumb['parent']['route']))
+                    <a href="{{ route($breadcrumb['parent']['route'], $breadcrumb['parent']['params'] ?? []) }}">
+                        {{ $breadcrumb['parent']['label'] }}
+                    </a>
+                    @else
+                    <span>{{ $breadcrumb['parent']['label'] }}</span>
+                    @endif
+                    <span class="salud-banner__breadcrumb-sep" aria-hidden="true">&rsaquo;</span>
+                @endif
+                <span class="salud-banner__breadcrumb-current" aria-current="page">{{ $breadcrumb['title'] }}</span>
+            </nav>
+
+            <h1 class="salud-banner__title">Servicios de Salud</h1>
+            <p class="salud-banner__lead">
+                Cuidamos de tu bienestar para que alcances tu mejor versión.
+            </p>
+            <p class="salud-banner__text">
+                En UPRIT promovemos tu bienestar físico y mental con servicios de salud accesibles, profesionales y de calidad.
+            </p>
+            <a href="#nuestros-servicios" class="salud-banner__btn">
+                Conoce más sobre nuestros servicios
+                <span aria-hidden="true">→</span>
+            </a>
+        </div>
+
+        <div class="salud-banner__quick-links">
+            @foreach($quickLinks as $link)
+            <a href="{{ $link['anchor'] }}" class="salud-quick-link">
+                <span class="salud-quick-link__icon" aria-hidden="true">
+                    <iconify-icon icon="{{ $link['icon'] }}"></iconify-icon>
+                </span>
+                <span class="salud-quick-link__text">
+                    <strong>{{ $link['title'] }}</strong>
+                    <span>{{ $link['subtitle'] }}</span>
+                </span>
+            </a>
+            @endforeach
         </div>
     </div>
 </section>
