@@ -336,6 +336,117 @@
     color: #fff !important;
 }
 
+.bienestar-hero {
+    position: relative;
+    overflow: hidden;
+    background-color: #6b0015;
+    background-image: var(--bienestar-hero-bg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bienestar-hero--fill {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    min-height: 100dvh;
+    padding-top: 132px;
+}
+
+.bienestar-hero--fill > .container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.bienestar-hero--fill .bienestar-hero__inner {
+    flex: 1;
+    min-height: 280px;
+}
+
+.bienestar-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(107, 0, 21, 0.94) 0%,
+        rgba(145, 0, 30, 0.9) 55%,
+        rgba(107, 0, 21, 0.88) 100%
+    );
+}
+
+.bienestar-hero__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+    min-height: 280px;
+    padding: 56px 0;
+}
+
+.bienestar-hero__content {
+    max-width: 760px;
+}
+
+.bienestar-hero__title {
+    margin: 0 0 18px;
+    color: #fff;
+    font-size: clamp(1.75rem, 2.4vw, 2.35rem);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.bienestar-hero__subtitle {
+    margin: 0;
+    max-width: 620px;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    line-height: 1.55;
+}
+
+.bienestar-hero__icon {
+    flex: 0 0 auto;
+    width: min(180px, 28vw);
+}
+
+.bienestar-hero__icon svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 991px) {
+    .bienestar-hero--fill {
+        padding-top: 120px;
+    }
+
+    .bienestar-hero__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 28px;
+        padding: 40px 0;
+    }
+
+    .bienestar-hero__icon {
+        width: 120px;
+        align-self: flex-end;
+    }
+}
+
+@media (max-width: 575px) {
+    .bienestar-hero__inner {
+        min-height: auto;
+        padding: 32px 0;
+    }
+
+    .bienestar-hero__icon {
+        align-self: center;
+    }
+}
+
 .list-noticia-img img {
     width: 300px !important;
 }
@@ -848,6 +959,15 @@
     margin-bottom: 20px;
     font-weight: 700;
     font-size: 15px;
+}
+
+.mega-col h6 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.mega-col h6 a:hover {
+    text-decoration: underline;
 }
 
 .mega-col ul {

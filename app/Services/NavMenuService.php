@@ -152,7 +152,7 @@ class NavMenuService
 
     /**
      * @param  NavGroup|object|null  $group
-     * @return array<int, array{key: string, label: string, column_title: ?string, stacked: bool}>
+     * @return array<int, array{key: string, label: string, column_title: ?string, column_url: ?string, stacked: bool}>
      */
     public static function serviciosTabDefinitions(object|null $group = null): array
     {
@@ -161,10 +161,14 @@ class NavMenuService
         $definitions = [];
 
         foreach ($tabs as $key => $tab) {
+            $columnRoute = $tab['column_route'] ?? null;
+            $columnUrl = $columnRoute && Route::has($columnRoute) ? route($columnRoute) : null;
+
             $definitions[] = [
                 'key' => $key,
                 'label' => $metaLabels[$key] ?? $tab['label'] ?? $key,
                 'column_title' => $tab['column_title'] ?? null,
+                'column_url' => $columnUrl,
                 'stacked' => (bool) ($tab['stacked'] ?? false),
             ];
         }

@@ -10,6 +10,7 @@ return [
     'sections' => [
         'servicios' => [
             'routes' => [
+                'bienestar-rsu',
                 'soporte',
                 'salud',
                 'futbol',
@@ -24,6 +25,7 @@ return [
                 'bienestar' => [
                     'label' => 'Bienestar universitario y RSU',
                     'column_title' => 'Bienestar Universitario y RSU',
+                    'column_route' => 'bienestar-rsu',
                     'items' => [
                         ['label' => 'Servicio Psicopedagógico', 'route' => 'salud'],
                         ['label' => 'Programa de Alimentación Saludable', 'route' => 'salud'],
@@ -104,6 +106,11 @@ return [
     */
     'routes' => [
         // Servicios
+        'bienestar-rsu' => [
+            'title' => 'Bienestar Universitario y RSU',
+            'menu_label' => 'Bienestar Universitario y RSU',
+            'parent' => ['label' => 'Servicios'],
+        ],
         'soporte' => [
             'title' => 'Recursos y Soporte de UPRIT Data',
             'menu_label' => 'Uprit Data: Soporte Técnico',

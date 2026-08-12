@@ -34,7 +34,13 @@
                 @else
                     <div class="mega-col">
                         @if($tab['column_title'])
-                        <h6 class="menu-title">{{ $tab['column_title'] }}</h6>
+                        <h6 class="menu-title">
+                            @if(!empty($tab['column_url']))
+                            <a href="{{ $tab['column_url'] }}">{{ $tab['column_title'] }}</a>
+                            @else
+                            {{ $tab['column_title'] }}
+                            @endif
+                        </h6>
                         @endif
                         <ul class="content-lista">
                             @foreach($items as $item)
