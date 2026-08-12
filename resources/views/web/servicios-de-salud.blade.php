@@ -1,9 +1,6 @@
 @extends('web.layouts.principal')
 @section('content')
-@include('web.partials.breadcrumb')
-
 @include('web.partials.servicios-salud.hero')
-@include('web.partials.servicios-salud.quick-links')
 @include('web.partials.servicios-salud.services')
 @include('web.partials.servicios-salud.topics')
 @include('web.partials.servicios-salud.team')
