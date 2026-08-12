@@ -105,6 +105,11 @@ class WebController extends Controller
         return view('web.salud', compact('ultimasnoticias'));
     }
 
+    public function serviciosDeSalud()
+    {
+        return view('web.servicios-de-salud');
+    }
+
     public function futbol()
     {
         $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
