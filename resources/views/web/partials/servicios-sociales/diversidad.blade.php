@@ -3,25 +3,25 @@
         [
             'icon' => 'mdi:earth',
             'title' => 'Cultural',
-            'text' => 'Valoramos las distintas identidades, tradiciones y formas de ver el mundo.',
+            'text' => 'Valoramos y respetamos las diferentes culturas y tradiciones.',
             'tone' => 'red',
         ],
         [
             'icon' => 'mdi:gender-male-female',
             'title' => 'Sexual',
-            'text' => 'Promovemos el respeto a la identidad y orientación de cada persona.',
+            'text' => 'Promovemos el respeto a la diversidad sexual y de género.',
             'tone' => 'orange',
         ],
         [
-            'icon' => 'mdi:forum-outline',
+            'icon' => 'mdi:translate',
             'title' => 'Lingüística',
-            'text' => 'Reconocemos la riqueza de lenguas y formas de comunicación.',
+            'text' => 'Fomentamos la inclusión de diferentes idiomas y formas de comunicación.',
             'tone' => 'green',
         ],
         [
             'icon' => 'mdi:wheelchair',
             'title' => 'Funcional',
-            'text' => 'Garantizamos accesibilidad y condiciones equitativas de participación.',
+            'text' => 'Garantizamos la inclusión activa de personas con discapacidad y capacidades diversas.',
             'tone' => 'blue',
         ],
     ];
@@ -31,25 +31,21 @@
     <div class="container">
         <div class="sociales-diversidad__grid">
             <div class="sociales-diversidad__copy">
-                <header class="sociales-heading sociales-heading--left">
-                    <h2 class="sociales-heading__title">Diversidad e Inclusión</h2>
-                </header>
+                <h2 class="sociales-diversidad__title">Diversidad e Inclusión</h2>
                 <p class="sociales-diversidad__lead">
-                    Trabajamos para que la universidad sea un espacio seguro, respetuoso y accesible, donde cada estudiante pueda desarrollarse sin barreras.
+                    Valoramos nuestras diferencias y construimos juntos una universidad más humana, equitativa y accesible.
                 </p>
-                <a href="#contacto-sociales" class="sociales-btn sociales-btn--outline">Conoce nuestros pilares</a>
+                <a href="#diversidad-pilares" class="sociales-diversidad__btn">Conoce nuestros pilares</a>
             </div>
 
-            <div class="sociales-pillars">
+            <div class="sociales-pillars" id="diversidad-pilares">
                 @foreach($pillars as $pillar)
                 <article class="sociales-pillar">
                     <span class="sociales-pillar__icon sociales-pillar__icon--{{ $pillar['tone'] }}" aria-hidden="true">
                         <iconify-icon icon="{{ $pillar['icon'] }}"></iconify-icon>
                     </span>
-                    <div>
-                        <h3 class="sociales-pillar__title">{{ $pillar['title'] }}</h3>
-                        <p class="sociales-pillar__text">{{ $pillar['text'] }}</p>
-                    </div>
+                    <h3 class="sociales-pillar__title sociales-pillar__title--{{ $pillar['tone'] }}">{{ $pillar['title'] }}</h3>
+                    <p class="sociales-pillar__text">{{ $pillar['text'] }}</p>
                 </article>
                 @endforeach
             </div>
