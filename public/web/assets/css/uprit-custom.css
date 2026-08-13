@@ -7828,15 +7828,18 @@ body.page-servicios-sociales .header-mainmenu:not(.sticky-active) {
 
 .sociales-diversidad {
     padding: 48px 0;
-    overflow: hidden;
     background: #f4f4f4;
 }
 
 .sociales-diversidad__grid {
     display: grid;
-    grid-template-columns: minmax(220px, 0.34fr) minmax(0, 1.66fr);
+    grid-template-columns: minmax(375px, 0.34fr) minmax(0, 1.66fr);
     gap: 28px;
     align-items: center;
+    background-color: #fdf2f2;
+    padding-left: 16px;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
 }
 
 .sociales-diversidad__title {
@@ -7878,9 +7881,11 @@ body.page-servicios-sociales .header-mainmenu:not(.sticky-active) {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 12px 18px;
-    padding: 36px 32px 36px 40px;
-    margin-right: calc(50% - 50vw);
-    border-radius: 88px 0 0 88px;
+    min-width: 0;
+    padding: 36px 28px;
+    border-radius: 72px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
     background: #fff;
 }
 
@@ -8124,7 +8129,6 @@ body.page-servicios-sociales .header-mainmenu:not(.sticky-active) {
 
     .sociales-pillars {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        margin-right: 0;
         border-radius: 28px;
         padding: 28px 20px;
     }
