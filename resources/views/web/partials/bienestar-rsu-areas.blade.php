@@ -38,7 +38,7 @@
         [
             'title' => 'Servicios sociales y programa de atención a la diversidad',
             'description' => 'Promovemos la inclusión, equidad y apoyo social dentro de la comunidad universitaria.',
-            'url' => route('becas'),
+            'url' => route('servicios-sociales'),
             'icon' => 'mdi:account-group-outline',
             'tone' => 'maroon',
         ],

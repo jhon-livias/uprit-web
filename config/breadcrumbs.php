@@ -15,6 +15,7 @@ return [
                 'salud',
                 'servicios-deportivos',
                 'actividades-artisticas',
+                'servicios-sociales',
                 'talleres',
                 'becas',
                 'honors',
@@ -33,7 +34,7 @@ return [
                         ['label' => 'Servicios de Salud', 'route' => 'servicios-de-salud'],
                         ['label' => 'Servicios Deportivos y Programas Deportivos de Alta Competencia', 'route' => 'servicios-deportivos'],
                         ['label' => 'Programa de Actividades Artísticas y culturales', 'route' => 'actividades-artisticas'],
-                        ['label' => 'Servicios Sociales y Ayudas', 'route' => 'becas'],
+                        ['label' => 'Servicios Sociales y Ayudas', 'route' => 'servicios-sociales'],
                         ['label' => 'Responsabilidad social Universitaria', 'route' => 'becas'],
                     ],
                 ],
@@ -140,6 +141,11 @@ return [
         'actividades-artisticas' => [
             'title' => 'Programa de Actividades Artísticas y Culturales',
             'menu_label' => 'Programa de Actividades Artísticas y culturales',
+            'parent' => ['label' => 'RSU', 'route' => 'bienestar-rsu'],
+        ],
+        'servicios-sociales' => [
+            'title' => 'Servicios Sociales y Ayudas',
+            'menu_label' => 'Servicios Sociales y Ayudas',
             'parent' => ['label' => 'RSU', 'route' => 'bienestar-rsu'],
         ],
         'futbol' => [
