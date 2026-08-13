@@ -127,9 +127,16 @@ class WebController extends Controller
 
     public function serviciosSociales()
     {
-        $noticias = Noticia::orderBy('fecha', 'desc')->take(2)->get();
+        $noticias = Noticia::orderBy('fecha', 'desc')->take(8)->get();
 
         return view('web.servicios-sociales', compact('noticias'));
+    }
+
+    public function responsabilidadSocial()
+    {
+        $noticias = Noticia::orderBy('fecha', 'desc')->take(3)->get();
+
+        return view('web.responsabilidad-social', compact('noticias'));
     }
 
     public function futbol()
