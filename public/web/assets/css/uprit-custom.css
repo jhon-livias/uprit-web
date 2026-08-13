@@ -4862,30 +4862,39 @@ body.page-servicio-psicopedagogico .header-mainmenu:not(.sticky-active) {
 }
 
 .psico-hero {
-    padding: 132px 0 56px;
-    background: #91001E;
+    padding: 132px 0 0;
+    background: #4A0E1C;
 }
 
 .psico-hero__grid {
     display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-    gap: 40px;
-    align-items: center;
+    grid-template-columns: minmax(240px, 0.38fr) minmax(0, 1fr);
+    gap: 36px;
+    align-items: stretch;
+    min-height: 320px;
+    padding: 20px 0;
 }
 
 .psico-hero__media {
     position: relative;
     overflow: hidden;
-    border-radius: 4px;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+    min-height: 280px;
 }
 
 .psico-hero__photo {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 5;
+    height: 100%;
+    min-height: 280px;
     object-fit: cover;
     object-position: center top;
+}
+
+.psico-hero__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px 0 8px 8px;
 }
 
 .psico-hero__badge {
@@ -4893,14 +4902,15 @@ body.page-servicio-psicopedagogico .header-mainmenu:not(.sticky-active) {
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 14px 18px;
-    background: #1f6f6f;
+    padding: 10px 14px;
+    background: #2C6E69;
     color: #fff;
+    text-align: center;
 }
 
 .psico-hero__badge strong {
     display: block;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     line-height: 1.35;
 }
@@ -4909,53 +4919,59 @@ body.page-servicio-psicopedagogico .header-mainmenu:not(.sticky-active) {
     display: block;
     margin-top: 2px;
     font-size: 12px;
-    opacity: 0.92;
+    font-weight: 400;
+    opacity: 0.95;
 }
 
 .psico-hero__title {
-    margin: 0 0 14px;
+    margin: 0 0 12px;
     color: #fff;
-    font-size: clamp(24px, 2.6vw, 32px);
+    font-size: clamp(22px, 2.4vw, 30px);
     font-weight: 700;
     line-height: 1.2;
     text-transform: uppercase;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
 }
 
 .psico-hero__lead {
-    margin: 0 0 16px;
+    margin: 0 0 14px;
     color: #fff;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 500;
     line-height: 1.45;
 }
 
 .psico-hero__text {
-    margin: 0 0 12px;
+    margin: 0 0 10px;
+    max-width: 560px;
     color: rgba(255, 255, 255, 0.92);
     font-size: 13px;
+    font-weight: 400;
     line-height: 1.65;
 }
 
 .psico-hero__btn {
     display: inline-flex;
     align-items: center;
+    align-self: flex-start;
     gap: 8px;
-    margin-top: 10px;
-    padding: 12px 22px;
-    border: 1.5px solid #fff;
-    border-radius: 8px;
-    background: transparent;
+    margin-top: 12px;
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    background: #751A2D;
     color: #fff !important;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
     text-decoration: none;
-    transition: background .2s, color .2s;
+    transition: background .2s;
 }
 
 .psico-hero__btn:hover {
-    background: #fff;
-    color: #91001E !important;
+    background: #8a2238;
+    color: #fff !important;
 }
 
 .psico-section-heading {
@@ -5502,7 +5518,20 @@ body.page-servicio-psicopedagogico .header-mainmenu:not(.sticky-active) {
         padding-top: 120px;
     }
 
-    .psico-hero__grid,
+    .psico-hero__grid {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .psico-hero__media,
+    .psico-hero__photo {
+        min-height: 260px;
+    }
+
+    .psico-hero__content {
+        padding: 24px 0 32px;
+    }
+
     .psico-participate__grid,
     .psico-team-testimonials__grid {
         grid-template-columns: 1fr;
