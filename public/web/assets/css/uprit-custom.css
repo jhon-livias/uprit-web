@@ -4988,7 +4988,7 @@ body.page-servicio-psicopedagogico .header-mainmenu:not(.sticky-active) {
     display: inline-block;
     margin: 0;
     padding-bottom: 12px;
-    color: #91001E;
+    color: #6b1221;
     font-size: clamp(20px, 2.2vw, 26px);
     font-weight: 700;
     text-transform: uppercase;
@@ -5003,7 +5003,7 @@ body.page-servicio-psicopedagogico .header-mainmenu:not(.sticky-active) {
     width: 56px;
     height: 3px;
     border-radius: 999px;
-    background: #91001E;
+    background: #6b1221;
     transform: translateX(-50%);
 }
 
@@ -5017,27 +5017,57 @@ body.page-servicio-psicopedagogico .header-mainmenu:not(.sticky-active) {
     background: #fff;
 }
 
-.psico-workshops__track {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(220px, 1fr);
-    gap: 18px;
-    overflow-x: auto;
-    padding-bottom: 8px;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
+.psico-workshops__carousel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.psico-workshops-swiper {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.psico-workshops-swiper .swiper-slide {
+    height: auto;
+}
+
+.psico-workshops__nav {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid #e6e6e6;
+    border-radius: 50%;
+    background: #fff;
+    color: #b0b0b0;
+    font-size: 22px;
+    cursor: pointer;
+    transition: background .2s, color .2s;
+}
+
+.psico-workshops__nav:hover {
+    background: #6b1221;
+    color: #fff;
+}
+
+.psico-workshops__nav.swiper-button-disabled {
+    opacity: 0.35;
+    cursor: default;
 }
 
 .psico-workshop-card {
-    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
-    min-height: 100%;
+    height: 100%;
     border: 1px solid #ececec;
     border-radius: 12px;
     overflow: hidden;
     background: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .psico-workshop-card__media {
@@ -5054,49 +5084,62 @@ body.page-servicio-psicopedagogico .header-mainmenu:not(.sticky-active) {
 
 .psico-workshop-card__play {
     position: absolute;
-    top: 50%;
+    top: 46%;
     left: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
-    padding: 0;
-    border: none;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.92);
-    color: #91001E;
-    font-size: 24px;
+    background: rgba(255, 255, 255, 0.94);
+    color: #333;
+    font-size: 22px;
     transform: translate(-50%, -50%);
-    cursor: pointer;
+    pointer-events: none;
 }
 
-.psico-workshop-card__progress {
+.psico-workshop-card__bar {
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
-    height: 4px;
-    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    background: rgba(20, 20, 20, 0.72);
+    color: #fff;
+    font-size: 12px;
 }
 
-.psico-workshop-card__progress span {
+.psico-workshop-card__bar-track {
+    flex: 1;
+    height: 3px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.psico-workshop-card__bar-track span {
     display: block;
-    width: 35%;
+    width: 38%;
     height: 100%;
-    background: #91001E;
+    background: #fff;
 }
 
 .psico-workshop-card__body {
     display: flex;
     flex: 1;
     flex-direction: column;
-    padding: 16px;
+    align-items: center;
+    padding: 14px 12px 16px;
+    text-align: center;
 }
 
 .psico-workshop-card__title {
     margin: 0 0 8px;
-    color: #91001E;
+    color: #6b1221;
     font-size: 13px;
     font-weight: 700;
     line-height: 1.35;
@@ -5105,19 +5148,18 @@ body.page-servicio-psicopedagogico .header-mainmenu:not(.sticky-active) {
 .psico-workshop-card__description {
     flex: 1;
     margin: 0 0 14px;
-    color: #666;
+    color: #555;
     font-size: 12px;
-    line-height: 1.55;
+    line-height: 1.5;
 }
 
 .psico-workshop-card__btn {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    align-self: flex-start;
-    padding: 8px 14px;
+    padding: 7px 14px;
     border-radius: 6px;
-    background: #1f6f6f;
+    background: #005F56;
     color: #fff !important;
     font-size: 12px;
     font-weight: 600;
@@ -5126,7 +5168,7 @@ body.page-servicio-psicopedagogico .header-mainmenu:not(.sticky-active) {
 }
 
 .psico-workshop-card__btn:hover {
-    background: #185858;
+    background: #004840;
     color: #fff !important;
 }
 
@@ -5144,18 +5186,30 @@ body.page-servicio-psicopedagogico .header-mainmenu:not(.sticky-active) {
     border-radius: 8px;
     font-size: 13px;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
     text-decoration: none;
     transition: background .2s, color .2s, border-color .2s;
 }
 
+.psico-btn--solid {
+    background: #6b1221;
+    color: #fff !important;
+}
+
+.psico-btn--solid:hover {
+    background: #4A0E1C;
+    color: #fff !important;
+}
+
 .psico-btn--outline-light {
-    border: 1.5px solid #91001E;
+    border: 1.5px solid #6b1221;
     background: #fff;
-    color: #91001E !important;
+    color: #6b1221 !important;
 }
 
 .psico-btn--outline-light:hover {
-    background: #91001E;
+    background: #6b1221;
     color: #fff !important;
 }
 
@@ -5403,6 +5457,7 @@ body.page-servicio-psicopedagogico .header-mainmenu:not(.sticky-active) {
 .psico-card__whatsapp {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     padding: 14px 20px;
     background: #fff;
@@ -5415,7 +5470,7 @@ body.page-servicio-psicopedagogico .header-mainmenu:not(.sticky-active) {
 
 .psico-card__whatsapp iconify-icon {
     color: #25D366;
-    font-size: 18px;
+    font-size: 32px;
 }
 
 .psico-card__whatsapp:hover {
