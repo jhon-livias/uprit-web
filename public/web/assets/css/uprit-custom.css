@@ -7252,57 +7252,49 @@ body.page-servicios-sociales .header-mainmenu:not(.sticky-active) {
 
 .sociales-hero {
     position: relative;
+    z-index: 2;
     overflow: visible;
-    padding: 148px 0 72px;
-    background: #f6f3f3;
-}
-
-.sociales-hero__bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-}
-
-.sociales-hero__bg img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    opacity: 0.18;
-    filter: grayscale(0.15);
+    padding: 132px 0 0;
+    background: #fff;
 }
 
 .sociales-hero__grid {
-    position: relative;
-    z-index: 1;
     display: grid;
     grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
-    gap: 40px;
-    align-items: center;
+    gap: 24px;
+    align-items: stretch;
+    min-height: 380px;
+}
+
+.sociales-hero__copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 560px;
+    padding: 28px 12px 72px 0;
 }
 
 .sociales-hero__title {
-    margin: 0 0 10px;
+    margin: 0 0 12px;
     color: #6b1221;
-    font-size: clamp(28px, 3.4vw, 42px);
+    font-size: clamp(28px, 3.4vw, 40px);
     font-weight: 800;
     line-height: 1.12;
 }
 
 .sociales-hero__kicker {
-    margin: 0 0 14px;
-    color: #6b1221;
+    margin: 0 0 12px;
+    color: #333;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .sociales-hero__lead {
-    margin: 0 0 24px;
+    margin: 0 0 26px;
     max-width: 520px;
-    color: #444;
+    color: #555;
     font-size: 14px;
-    line-height: 1.6;
+    line-height: 1.65;
 }
 
 .sociales-hero__actions {
@@ -7315,8 +7307,8 @@ body.page-servicios-sociales .header-mainmenu:not(.sticky-active) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 12px 20px;
+    gap: 10px;
+    padding: 10px 18px 10px 10px;
     border-radius: 8px;
     font-size: 13px;
     font-weight: 700;
@@ -7324,9 +7316,24 @@ body.page-servicios-sociales .header-mainmenu:not(.sticky-active) {
     transition: background .2s, color .2s, border-color .2s;
 }
 
+.sociales-btn__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
 .sociales-btn--solid {
     background: #6b1221;
     color: #fff !important;
+}
+
+.sociales-btn--solid .sociales-btn__icon {
+    background: rgba(255, 255, 255, 0.16);
+    color: #fff;
 }
 
 .sociales-btn--solid:hover {
@@ -7338,6 +7345,11 @@ body.page-servicios-sociales .header-mainmenu:not(.sticky-active) {
     border: 1.5px solid #6b1221;
     background: #fff;
     color: #6b1221 !important;
+}
+
+.sociales-btn--outline .sociales-btn__icon {
+    background: #6b1221;
+    color: #fff;
 }
 
 .sociales-btn--outline:hover {
@@ -7357,47 +7369,58 @@ body.page-servicios-sociales .header-mainmenu:not(.sticky-active) {
 
 .sociales-hero__media {
     position: relative;
+    min-height: 360px;
+    margin-right: calc(50% - 50vw);
+    overflow: visible;
 }
 
 .sociales-hero__photo {
     display: block;
     width: 100%;
-    max-height: 360px;
+    height: 100%;
+    min-height: 360px;
     object-fit: cover;
-    object-position: center top;
-    border-radius: 18px;
+    object-position: center;
 }
 
 .sociales-hero-card {
     position: absolute;
-    right: 12px;
-    bottom: -22px;
+    right: 28px;
+    bottom: -34px;
+    z-index: 4;
     display: flex;
     align-items: center;
     gap: 12px;
-    min-width: 240px;
-    padding: 10px 14px 10px 10px;
-    border-radius: 14px;
+    min-width: 280px;
+    padding: 10px 12px 10px 10px;
+    border-radius: 12px;
     background: #fff;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
 }
 
 .sociales-hero-card__photo {
-    width: 52px;
-    height: 52px;
+    width: 54px;
+    height: 54px;
     object-fit: cover;
     border-radius: 50%;
 }
 
-.sociales-hero-card__name {
+.sociales-hero-card__label {
     margin: 0;
+    color: #666;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.sociales-hero-card__name {
+    margin: 1px 0 0;
     color: #222;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 800;
 }
 
 .sociales-hero-card__role {
-    margin: 2px 0 0;
+    margin: 1px 0 0;
     color: #777;
     font-size: 11px;
 }
@@ -7409,51 +7432,53 @@ body.page-servicios-sociales .header-mainmenu:not(.sticky-active) {
     width: 28px;
     height: 28px;
     margin-left: auto;
-    border-radius: 50%;
+    border-radius: 4px;
     background: #6b1221;
     color: #fff;
     font-size: 16px;
 }
 
 .sociales-values {
-    padding: 28px 0;
+    position: relative;
+    z-index: 1;
+    padding: 36px 0 32px;
     background: #6b1221;
 }
 
 .sociales-values__grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 18px;
+    gap: 0;
 }
 
 .sociales-value {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 14px;
+    padding: 4px 22px;
     color: #fff;
 }
 
 .sociales-value:not(:last-child) {
-    padding-right: 12px;
-    border-right: 1px solid rgba(255, 255, 255, 0.22);
+    border-right: 1px solid rgba(255, 255, 255, 0.55);
 }
 
 .sociales-value__icon {
     flex: 0 0 auto;
-    font-size: 28px;
+    font-size: 34px;
     line-height: 1;
 }
 
 .sociales-value__title {
-    margin: 0 0 4px;
+    margin: 0 0 6px;
     color: #fff;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
 }
 
 .sociales-value__text {
     margin: 0;
-    color: rgba(255, 255, 255, 0.88);
+    color: rgba(255, 255, 255, 0.92);
     font-size: 12px;
     line-height: 1.45;
 }
@@ -7894,18 +7919,29 @@ body.page-servicios-sociales .header-mainmenu:not(.sticky-active) {
         grid-template-columns: 1fr;
     }
 
+    .sociales-hero__copy {
+        padding: 24px 0 28px;
+    }
+
+    .sociales-hero__media {
+        min-height: 280px;
+        margin-right: 0;
+    }
+
+    .sociales-value {
+        padding: 14px 0;
+    }
+
     .sociales-value:not(:last-child) {
-        padding-right: 0;
-        padding-bottom: 12px;
         border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.45);
     }
 
     .sociales-hero-card {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        margin-top: 16px;
+        right: 16px;
+        bottom: -28px;
+        min-width: 0;
+        width: calc(100% - 32px);
     }
 
     .sociales-contact__content {

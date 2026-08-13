@@ -3,22 +3,22 @@
         [
             'icon' => 'mdi:account-group-outline',
             'title' => 'Inclusión',
-            'text' => 'Un entorno respetuoso donde todas las personas pertenecen.',
+            'text' => 'Fomentamos un entorno respetuoso y accesible para todos.',
         ],
         [
             'icon' => 'mdi:scale-balance',
             'title' => 'Equidad',
-            'text' => 'Oportunidades justas para avanzar según cada realidad.',
+            'text' => 'Brindamos oportunidades justas para el desarrollo de cada estudiante.',
         ],
         [
             'icon' => 'mdi:school-outline',
             'title' => 'Oportunidades',
-            'text' => 'Acompañamos el talento para que alcance sus metas.',
+            'text' => 'Apoyamos el talento y esfuerzo para que alcancen sus metas.',
         ],
         [
             'icon' => 'mdi:hand-heart-outline',
-            'title' => 'Compromiso social',
-            'text' => 'Formamos profesionales comprometidos con su entorno.',
+            'title' => 'Compromiso Social',
+            'text' => 'Formamos profesionales comprometidos con la sociedad.',
         ],
     ];
 @endphp
