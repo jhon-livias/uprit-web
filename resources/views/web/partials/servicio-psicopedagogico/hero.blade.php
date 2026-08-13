@@ -27,7 +27,7 @@
                 </p>
                 <a href="#consejeria" class="psico-hero__btn">
                     ¡Solicita tu asesoría ahora!
-                    <span aria-hidden="true">→</span>
+                    <span aria-hidden="true">&gt;</span>
                 </a>
             </div>
         </div>
