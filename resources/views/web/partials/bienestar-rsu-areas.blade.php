@@ -31,7 +31,7 @@
         [
             'title' => 'Programa de actividades artísticas y culturales',
             'description' => 'Impulsamos el talento y la creatividad a través del arte y la cultura.',
-            'url' => route('talleres'),
+            'url' => route('actividades-artisticas'),
             'icon' => 'mdi:drama-masks',
             'tone' => 'orange',
         ],
