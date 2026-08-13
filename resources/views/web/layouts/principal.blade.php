@@ -129,6 +129,7 @@
     @if ($webVendorAssets['load_stubs'])
     <script src="{{ static_asset('web/assets/js/uprit-vendor-stubs.js') }}"></script>
     @endif
+    @stack('scripts')
     @yield('scripts')
     <script src="{{ static_asset('web/assets/js/app.js') }}"></script>
     <script src="{{ static_asset('web/assets/js/mobile-menu.js') }}"></script>
