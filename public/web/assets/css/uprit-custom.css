@@ -8073,6 +8073,16 @@ body.page-servicios-sociales .header-mainmenu:not(.sticky-active) {
     .sociales-bottom__grid,
     .sociales-values__grid {
         grid-template-columns: 1fr;
+       
+    }
+
+    .sociales-diversidad__grid {
+        padding-left: 0;
+        padding: 24px 0 0 0;
+    }
+
+    .sociales-diversidad__copy {
+        padding: 16px 16px 0 16px;
     }
 
     .sociales-hero__copy {
