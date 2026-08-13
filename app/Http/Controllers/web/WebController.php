@@ -125,6 +125,13 @@ class WebController extends Controller
         return view('web.actividades-artisticas');
     }
 
+    public function serviciosSociales()
+    {
+        $noticias = Noticia::orderBy('fecha', 'desc')->take(2)->get();
+
+        return view('web.servicios-sociales', compact('noticias'));
+    }
+
     public function futbol()
     {
         $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();

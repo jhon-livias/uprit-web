@@ -7231,3 +7231,706 @@ body.page-servicio-psicopedagogico .header-mainmenu:not(.sticky-active) {
         margin: 0 auto;
     }
 }
+
+/* ===== Servicios sociales y ayudas ===== */
+
+body.page-servicios-sociales .edu-header {
+    background: linear-gradient(
+        120deg,
+        #1a0006 0%,
+        #520012 30%,
+        #91001E 65%,
+        #ff4b6e 100%
+    ) !important;
+}
+
+body.page-servicios-sociales .header-top-bar,
+body.page-servicios-sociales .header-mainmenu:not(.sticky-active) {
+    background: transparent !important;
+    box-shadow: none;
+}
+
+.sociales-hero {
+    position: relative;
+    overflow: visible;
+    padding: 148px 0 72px;
+    background: #f6f3f3;
+}
+
+.sociales-hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.sociales-hero__bg img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.18;
+    filter: grayscale(0.15);
+}
+
+.sociales-hero__grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+    gap: 40px;
+    align-items: center;
+}
+
+.sociales-hero__title {
+    margin: 0 0 10px;
+    color: #6b1221;
+    font-size: clamp(28px, 3.4vw, 42px);
+    font-weight: 800;
+    line-height: 1.12;
+}
+
+.sociales-hero__kicker {
+    margin: 0 0 14px;
+    color: #6b1221;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.sociales-hero__lead {
+    margin: 0 0 24px;
+    max-width: 520px;
+    color: #444;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.sociales-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.sociales-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background .2s, color .2s, border-color .2s;
+}
+
+.sociales-btn--solid {
+    background: #6b1221;
+    color: #fff !important;
+}
+
+.sociales-btn--solid:hover {
+    background: #4A0E1C;
+    color: #fff !important;
+}
+
+.sociales-btn--outline {
+    border: 1.5px solid #6b1221;
+    background: #fff;
+    color: #6b1221 !important;
+}
+
+.sociales-btn--outline:hover {
+    background: #6b1221;
+    color: #fff !important;
+}
+
+.sociales-btn--light {
+    background: #fff;
+    color: #6b1221 !important;
+}
+
+.sociales-btn--light:hover {
+    background: #f8f2f2;
+    color: #6b1221 !important;
+}
+
+.sociales-hero__media {
+    position: relative;
+}
+
+.sociales-hero__photo {
+    display: block;
+    width: 100%;
+    max-height: 360px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 18px;
+}
+
+.sociales-hero-card {
+    position: absolute;
+    right: 12px;
+    bottom: -22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 240px;
+    padding: 10px 14px 10px 10px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+
+.sociales-hero-card__photo {
+    width: 52px;
+    height: 52px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.sociales-hero-card__name {
+    margin: 0;
+    color: #222;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.sociales-hero-card__role {
+    margin: 2px 0 0;
+    color: #777;
+    font-size: 11px;
+}
+
+.sociales-hero-card__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin-left: auto;
+    border-radius: 50%;
+    background: #6b1221;
+    color: #fff;
+    font-size: 16px;
+}
+
+.sociales-values {
+    padding: 28px 0;
+    background: #6b1221;
+}
+
+.sociales-values__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.sociales-value {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: #fff;
+}
+
+.sociales-value:not(:last-child) {
+    padding-right: 12px;
+    border-right: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.sociales-value__icon {
+    flex: 0 0 auto;
+    font-size: 28px;
+    line-height: 1;
+}
+
+.sociales-value__title {
+    margin: 0 0 4px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.sociales-value__text {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.sociales-heading {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.sociales-heading--left {
+    text-align: left;
+}
+
+.sociales-heading__title {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding-bottom: 10px;
+    color: #6b1221;
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 700;
+}
+
+.sociales-heading__title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 48px;
+    height: 3px;
+    border-radius: 999px;
+    background: #6b1221;
+    transform: translateX(-50%);
+}
+
+.sociales-heading--left .sociales-heading__title::after {
+    left: 0;
+    transform: none;
+}
+
+.sociales-proceso {
+    padding: 56px 0 48px;
+    background: #fff;
+}
+
+.sociales-steps {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    gap: 10px;
+    margin: 0 0 32px;
+    padding: 0;
+    list-style: none;
+}
+
+.sociales-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.sociales-step__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    margin-bottom: 8px;
+    border-radius: 50%;
+    background: #6b1221;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.sociales-step__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 8px;
+    border: 1.5px solid #6b1221;
+    border-radius: 50%;
+    color: #6b1221;
+    font-size: 22px;
+}
+
+.sociales-step__title {
+    margin: 0 0 4px;
+    color: #333;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.sociales-step__date {
+    color: #888;
+    font-size: 10px;
+    line-height: 1.35;
+}
+
+.sociales-proceso__cta {
+    display: flex;
+    justify-content: center;
+}
+
+.sociales-info {
+    padding: 24px 0 56px;
+    background: #f7f5f5;
+}
+
+.sociales-info__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px;
+}
+
+.sociales-panel {
+    padding: 28px 24px 24px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+}
+
+.sociales-docs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px 12px;
+    margin-bottom: 22px;
+}
+
+.sociales-doc {
+    text-align: center;
+}
+
+.sociales-doc__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 8px;
+    color: #6b1221;
+    font-size: 30px;
+}
+
+.sociales-doc__label {
+    margin: 0;
+    color: #444;
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+.sociales-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    border: 1.5px solid #6b1221;
+    border-radius: 10px;
+    background: #fdf8f8;
+}
+
+.sociales-alert__icon {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #6b1221;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.sociales-alert__title {
+    margin: 0 0 4px;
+    color: #6b1221;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.sociales-alert p {
+    margin: 0;
+    color: #555;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.sociales-becas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sociales-beca {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px;
+    border: 1px solid #f0eaea;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.sociales-beca__icon {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #6b1221;
+    color: #fff;
+    font-size: 22px;
+}
+
+.sociales-beca__title {
+    margin: 0 0 4px;
+    color: #222;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.sociales-beca__text {
+    margin: 0;
+    color: #666;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.sociales-diversidad {
+    padding: 56px 0;
+    background: #fff;
+}
+
+.sociales-diversidad__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 36px;
+    align-items: center;
+}
+
+.sociales-diversidad__lead {
+    margin: 0 0 22px;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.sociales-pillars {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 20px;
+}
+
+.sociales-pillar {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.sociales-pillar__icon {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 26px;
+}
+
+.sociales-pillar__icon--red { background: #c0392b; }
+.sociales-pillar__icon--orange { background: #e07a2f; }
+.sociales-pillar__icon--green { background: #2d8a4e; }
+.sociales-pillar__icon--blue { background: #2c6aa8; }
+
+.sociales-pillar__title {
+    margin: 0 0 4px;
+    color: #222;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.sociales-pillar__text {
+    margin: 0;
+    color: #666;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.sociales-bottom {
+    padding: 24px 0 56px;
+    background: #f7f5f5;
+}
+
+.sociales-bottom__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr);
+    gap: 24px;
+    align-items: stretch;
+}
+
+.sociales-news-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.sociales-news-card__date {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    min-height: 54px;
+    border-radius: 8px;
+    background: #6b1221;
+    color: #fff;
+    line-height: 1.1;
+}
+
+.sociales-news-card__date strong {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.sociales-news-card__date small {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.sociales-news-card__title {
+    margin: 0 0 8px;
+    color: #222;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.sociales-news-card__link {
+    color: #6b1221 !important;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.sociales-contact {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    min-height: 220px;
+    padding: 28px 24px;
+    border-radius: 16px;
+    background: #6b1221;
+    color: #fff;
+}
+
+.sociales-contact__content {
+    position: relative;
+    z-index: 1;
+    max-width: 68%;
+}
+
+.sociales-contact__title {
+    margin: 0 0 16px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.sociales-contact__list {
+    margin: 0 0 18px;
+    padding: 0;
+    list-style: none;
+}
+
+.sociales-contact__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.sociales-contact__list a {
+    color: #fff !important;
+    text-decoration: none;
+}
+
+.sociales-contact__list iconify-icon {
+    flex: 0 0 auto;
+    margin-top: 1px;
+    font-size: 18px;
+}
+
+.sociales-contact__photo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 42%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    mask-image: linear-gradient(90deg, transparent, #000 28%);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 28%);
+}
+
+@media (max-width: 1199px) {
+    .sociales-steps {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        row-gap: 20px;
+    }
+}
+
+@media (max-width: 991px) {
+    .sociales-hero__grid,
+    .sociales-info__grid,
+    .sociales-diversidad__grid,
+    .sociales-bottom__grid,
+    .sociales-values__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sociales-value:not(:last-child) {
+        padding-right: 0;
+        padding-bottom: 12px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .sociales-hero-card {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin-top: 16px;
+    }
+
+    .sociales-contact__content {
+        max-width: none;
+        padding-right: 36%;
+    }
+}
+
+@media (max-width: 575px) {
+    .sociales-steps,
+    .sociales-docs,
+    .sociales-pillars {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sociales-hero__actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .sociales-contact__content {
+        padding-right: 0;
+    }
+
+    .sociales-contact__photo {
+        display: none;
+    }
+}
