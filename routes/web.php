@@ -142,6 +142,7 @@ Route::get('/servicios-deportivos-y-programas-deportivos-de-alta-competencia', [
 Route::redirect('/servicios-deportivos-prodac', '/servicios-deportivos-y-programas-deportivos-de-alta-competencia', 301);
 Route::get('/programa-de-actividades-artisticas-y-culturales', [WebController::class, 'actividadesArtisticas'])->name('actividades-artisticas');
 Route::get('/servicios-sociales-y-ayudas', [WebController::class, 'serviciosSociales'])->name('servicios-sociales');
+Route::get('/responsabilidad-social-universitaria', [WebController::class, 'responsabilidadSocial'])->name('responsabilidad-social');
 Route::get('/futbol', [WebController::class, 'futbol'])->name('futbol');
 Route::get('/libro-reclamaciones', [WebController::class, 'libroreclamaciones'])->name('libroreclamaciones');
 Route::get('/transparencia', [WebController::class, 'transparencia'])->name('transparencia');

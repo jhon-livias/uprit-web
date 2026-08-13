@@ -45,7 +45,7 @@
         [
             'title' => 'Responsabilidad Social Universitaria',
             'description' => 'Desarrollamos proyectos con impacto social y compromiso comunitario.',
-            'url' => route('becas'),
+            'url' => route('responsabilidad-social'),
             'icon' => 'mdi:hand-heart-outline',
             'tone' => 'orange',
         ],
