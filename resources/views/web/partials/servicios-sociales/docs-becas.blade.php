@@ -1,41 +1,41 @@
 @php
     $documents = [
-        ['icon' => 'mdi:file-document-outline', 'label' => 'Solicitud de beca'],
-        ['icon' => 'mdi:clipboard-text-outline', 'label' => 'Ficha socioeconómica'],
-        ['icon' => 'mdi:file-sign', 'label' => 'Declaración jurada'],
-        ['icon' => 'mdi:card-account-details-outline', 'label' => 'DNI (copia)'],
-        ['icon' => 'mdi:map-outline', 'label' => 'Croquis de vivienda'],
-        ['icon' => 'mdi:receipt', 'label' => 'Recibos de servicios'],
-        ['icon' => 'mdi:school-outline', 'label' => 'Constancia de estudios'],
-        ['icon' => 'mdi:notebook-outline', 'label' => 'Boletas de notas'],
-        ['icon' => 'mdi:cash', 'label' => 'Certificado de ingresos'],
+        ['icon' => 'mdi:file-document-edit-outline', 'label' => 'Solicitud de pedido'],
+        ['icon' => 'mdi:clipboard-account-outline', 'label' => 'Ficha socio-económica'],
+        ['icon' => 'mdi:file-check-outline', 'label' => 'Declaración Jurada'],
+        ['icon' => 'mdi:card-account-details-outline', 'label' => 'Copia del DNI'],
+        ['icon' => 'mdi:home-map-marker', 'label' => 'Croquis y foto de la vivienda'],
+        ['icon' => 'mdi:water-outline', 'label' => 'Recibo de agua o luz'],
+        ['icon' => 'mdi:file-certificate-outline', 'label' => 'Constancia de no adeudo'],
+        ['icon' => 'mdi:file-document-outline', 'label' => 'Boleta de Matrícula'],
+        ['icon' => 'mdi:notebook-outline', 'label' => 'Boleta de Notas'],
     ];
 
     $scholarships = [
         [
-            'icon' => 'mdi:trophy-outline',
+            'icon' => 'mdi:medal-outline',
             'title' => 'Excelencia Académica',
-            'text' => 'Reconoce el alto rendimiento y el mérito académico sostenido.',
+            'text' => 'Primer puesto de cada carrera (mínimo 18 créditos aprobados).',
         ],
         [
             'icon' => 'mdi:run',
             'title' => 'Deportiva',
-            'text' => 'Para estudiantes que representan a la UPRIT en competencias.',
+            'text' => 'Para selecciones universitarias (cobertura parcial del 50%, total del 100% o especial con beneficios extra).',
         ],
         [
-            'icon' => 'mdi:heart-outline',
-            'title' => 'Orfandad',
-            'text' => 'Apoyo económico a estudiantes en situación de orfandad.',
+            'icon' => 'mdi:hand-heart-outline',
+            'title' => 'Orfandad (Ley 23585)',
+            'text' => 'Por fallecimiento, inhabilitación o sentencia del tutor económico, acreditando falta de recursos.',
         ],
         [
-            'icon' => 'mdi:home-heart',
-            'title' => 'Socioeconómica',
-            'text' => 'Ayuda para continuar estudios ante dificultades económicas.',
+            'icon' => 'mdi:account-group-outline',
+            'title' => 'Socioeconómica (50% a 100%)',
+            'text' => 'Para alumnos con buen rendimiento y situación económica desfavorable.',
         ],
         [
             'icon' => 'mdi:handshake-outline',
             'title' => 'Especiales por Convenio',
-            'text' => 'Becas derivadas de alianzas institucionales y convenios.',
+            'text' => 'Financiadas por instituciones externas bajo sus propias reglas.',
         ],
     ];
 @endphp
@@ -44,8 +44,11 @@
     <div class="container">
         <div class="sociales-info__grid">
             <article class="sociales-panel">
-                <header class="sociales-heading sociales-heading--left">
-                    <h2 class="sociales-heading__title">Documentación a Presentar</h2>
+                <header class="sociales-panel__header">
+                    <h2 class="sociales-panel__title">Documentación a Presentar</h2>
+                    <p class="sociales-panel__lead">
+                        El estudiante solicitante deberá adjuntar los siguientes documentos:
+                    </p>
                 </header>
 
                 <div class="sociales-docs">
@@ -63,14 +66,14 @@
                     <span class="sociales-alert__icon" aria-hidden="true">!</span>
                     <div>
                         <h3 class="sociales-alert__title">¡Importante!</h3>
-                        <p>Los documentos deben ser legibles, vigentes y presentarse completos. Las copias ilegibles o vencidas no serán admitidas.</p>
+                        <p>Adjuntar todos los documentos de manera legible y vigente, según el reglamento de becas UPRIT.</p>
                     </div>
                 </aside>
             </article>
 
-            <article class="sociales-panel">
-                <header class="sociales-heading sociales-heading--left">
-                    <h2 class="sociales-heading__title">Tipos de Becas UPRIT</h2>
+            <article class="sociales-panel" id="tipos-becas">
+                <header class="sociales-panel__header">
+                    <h2 class="sociales-panel__title">Tipos de Becas UPRIT</h2>
                 </header>
 
                 <div class="sociales-becas">
