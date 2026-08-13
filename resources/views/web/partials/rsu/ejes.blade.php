@@ -3,35 +3,33 @@
         [
             'image' => 'eje-1.jpg',
             'title' => 'Formación con impacto',
-            'text' => 'Integramos la responsabilidad social en la formación para que cada estudiante genere valor en su entorno.',
+            'text' => 'Promovemos una educación con valores y compromiso social en nuestra comunidad universitaria.',
         ],
         [
             'image' => 'eje-2.jpg',
             'title' => 'Vinculación con la comunidad',
-            'text' => 'Trabajamos junto a organizaciones y vecinos en iniciativas que responden a necesidades reales.',
+            'text' => 'Desarrollamos proyectos y programas que generan bienestar social y desarrollo local.',
         ],
         [
             'image' => 'eje-3.jpg',
             'title' => 'Gestión ambiental responsable',
-            'text' => 'Promovemos prácticas sostenibles en el campus y campañas de cuidado del medio ambiente.',
+            'text' => 'Promovemos el cuidado del medio ambiente y la cultura de sostenibilidad.',
         ],
         [
             'image' => 'eje-4.webp',
             'title' => 'Investigación e innovación social',
-            'text' => 'Impulsamos proyectos que conectan el conocimiento académico con soluciones de impacto social.',
+            'text' => 'Fomentamos la investigación aplicada para aportar soluciones a problemas sociales.',
         ],
     ];
 @endphp
 
 <section class="rsu-ejes" id="ejes">
     <div class="container">
-        <header class="rsu-heading">
-            <h2 class="rsu-heading__title">Nuestros ejes de acción</h2>
-        </header>
+        <h2 class="rsu-ejes__title">Nuestros ejes de acción</h2>
 
         <div class="rsu-ejes__grid">
             @foreach($ejes as $eje)
-            <article class="rsu-card">
+            <article class="rsu-card rsu-eje-card">
                 <img
                     src="{{ asset('web/imagenes/bienestar/rsu/' . $eje['image']) }}"
                     alt="{{ $eje['title'] }}"
