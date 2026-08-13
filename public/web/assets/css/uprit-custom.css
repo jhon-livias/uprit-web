@@ -8463,28 +8463,50 @@ body.page-servicios-sociales .header-mainmenu:not(.sticky-active) {
 }
 
 .rsu-about {
-    padding: 56px 0;
+    padding: 88px 0 96px;
     background: #fff;
 }
 
 .rsu-about__grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-    gap: 40px;
+    grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+    gap: 80px;
     align-items: center;
+}
+
+.rsu-about__title {
+    position: relative;
+    display: inline-block;
+    margin: 0 0 28px;
+    padding-bottom: 12px;
+    color: #111;
+    font-size: clamp(28px, 3vw, 36px);
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.rsu-about__title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 72px;
+    height: 4px;
+    background: #6b1221;
 }
 
 .rsu-about__copy p {
     margin: 0;
-    color: #555;
-    font-size: 15px;
-    line-height: 1.65;
+    max-width: 420px;
+    color: #111;
+    font-size: 16px;
+    line-height: 1.75;
 }
 
 .rsu-stats {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
+    gap: 32px 48px;
 }
 
 .rsu-stat {
@@ -8495,28 +8517,30 @@ body.page-servicios-sociales .header-mainmenu:not(.sticky-active) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 56px;
-    height: 56px;
-    margin-bottom: 10px;
+    width: 72px;
+    height: 72px;
+    margin-bottom: 18px;
     border-radius: 50%;
     background: #6b1221;
     color: #fff;
-    font-size: 26px;
+    font-size: 32px;
 }
 
 .rsu-stat__value {
     display: block;
-    color: #6b1221;
-    font-size: 28px;
+    color: #111;
+    font-size: 36px;
     font-weight: 800;
     line-height: 1.1;
 }
 
 .rsu-stat__label {
     display: block;
-    margin-top: 4px;
-    color: #666;
-    font-size: 12px;
+    margin-top: 8px;
+    color: #111;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.35;
 }
 
 .rsu-ejes {
@@ -8713,9 +8737,20 @@ body.page-servicios-sociales .header-mainmenu:not(.sticky-active) {
     .rsu-about__grid,
     .rsu-proyectos__grid,
     .rsu-ejes__grid,
-    .rsu-news__grid,
-    .rsu-stats {
+    .rsu-news__grid {
         grid-template-columns: 1fr;
+    }
+
+    .rsu-about {
+        padding: 64px 0 72px;
+    }
+
+    .rsu-about__grid {
+        gap: 48px;
+    }
+
+    .rsu-about__copy p {
+        max-width: none;
     }
 
     .rsu-hero-card {
@@ -8733,5 +8768,20 @@ body.page-servicios-sociales .header-mainmenu:not(.sticky-active) {
     .rsu-hero {
         padding: 132px 0 40px;
         min-height: 0;
+    }
+
+    .rsu-stats {
+        gap: 16px;
+    }
+
+    .rsu-stat__icon {
+        width: 56px;
+        height: 56px;
+        font-size: 26px;
+        margin-bottom: 12px;
+    }
+
+    .rsu-stat__value {
+        font-size: 26px;
     }
 }
