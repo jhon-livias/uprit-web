@@ -115,6 +115,11 @@ class WebController extends Controller
         return view('web.servicio-psicopedagogico');
     }
 
+    public function serviciosDeportivos()
+    {
+        return view('web.servicios-deportivos');
+    }
+
     public function futbol()
     {
         $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();

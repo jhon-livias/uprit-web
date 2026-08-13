@@ -138,6 +138,8 @@ Route::get('/bienestar-universitario-rsu', [WebController::class, 'bienestarRsu'
 Route::get('/salud', [WebController::class, 'salud'])->name('salud');
 Route::get('/servicios-de-salud', [WebController::class, 'serviciosDeSalud'])->name('servicios-de-salud');
 Route::get('/servicio-psicopedagogico', [WebController::class, 'servicioPsicopedagogico'])->name('servicio-psicopedagogico');
+Route::get('/servicios-deportivos-y-programas-deportivos-de-alta-competencia', [WebController::class, 'serviciosDeportivos'])->name('servicios-deportivos');
+Route::redirect('/servicios-deportivos-prodac', '/servicios-deportivos-y-programas-deportivos-de-alta-competencia', 301);
 Route::get('/futbol', [WebController::class, 'futbol'])->name('futbol');
 Route::get('/libro-reclamaciones', [WebController::class, 'libroreclamaciones'])->name('libroreclamaciones');
 Route::get('/transparencia', [WebController::class, 'transparencia'])->name('transparencia');
