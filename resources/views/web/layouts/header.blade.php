@@ -14,6 +14,7 @@
                         @if(\App\Support\SiteNavigation::hasDbNav())
                             @include('web.partials.nav.topbar-desktop')
                         @else
+                            <li class="raya"><a href="https://idiomas.uprit.edu.pe" class="hov-sup" target="_blank" rel="noopener">Idiomas</a></li>
                             <li class="raya"><a href="{{ route('web.noticias') }}" class="hov-sup">Noticias</a></li>
                             <li class="raya"><a href="{{ route('transparencia') }}" class="hov-sup">Transparencia</a></li>
                             <li class="submenu-platform menu-plataforma">

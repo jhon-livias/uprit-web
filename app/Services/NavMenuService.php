@@ -137,7 +137,24 @@ class NavMenuService
             return route($routeName);
         }
 
+        $url = $group->meta['url'] ?? null;
+
+        if (is_string($url) && $url !== '') {
+            return $url;
+        }
+
         return null;
+    }
+
+    public static function topbarIsExternal(NavGroup $group): bool
+    {
+        if (($group->meta['external'] ?? false) === true) {
+            return true;
+        }
+
+        $link = self::visibleLinksQuery($group->id, self::CONTEXT_DESKTOP)->first();
+
+        return $link ? (bool) $link->external : false;
     }
 
     public static function routesOnlyForGroup(NavGroup $group): bool

@@ -60,6 +60,7 @@ class ImportNavLegacy extends Command
             ['key' => 'conocenos', 'label' => 'Conócenos', 'tipo' => 'section', 'css_class' => 'conocenos', 'show_in_main_nav' => true, 'orden' => 60],
             ['key' => 'contactanos', 'label' => 'Contáctanos', 'tipo' => 'section', 'css_class' => 'servicios', 'show_in_main_nav' => true, 'orden' => 70],
             ['key' => 'postula', 'label' => 'Postula Aquí', 'tipo' => 'button', 'show_in_main_nav' => true, 'orden' => 80],
+            ['key' => 'idiomas', 'label' => 'Idiomas', 'tipo' => 'topbar', 'show_in_main_nav' => false, 'show_in_topbar' => true, 'orden' => 5, 'meta' => ['url' => 'https://idiomas.uprit.edu.pe', 'external' => true]],
             ['key' => 'noticias', 'label' => 'Noticias', 'tipo' => 'topbar', 'show_in_topbar' => true, 'orden' => 10, 'meta' => ['route_name' => 'web.noticias']],
             ['key' => 'transparencia', 'label' => 'Transparencia', 'tipo' => 'topbar', 'show_in_topbar' => true, 'orden' => 20, 'meta' => ['route_name' => 'transparencia']],
             ['key' => 'plataforma', 'label' => 'Nuestra Plataforma', 'tipo' => 'platform', 'show_in_topbar' => true, 'orden' => 30],
