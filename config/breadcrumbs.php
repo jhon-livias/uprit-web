@@ -27,7 +27,7 @@ return [
                     'column_title' => 'Bienestar Universitario y RSU',
                     'column_route' => 'bienestar-rsu',
                     'items' => [
-                        ['label' => 'Servicio Psicopedagógico', 'route' => 'salud'],
+                        ['label' => 'Servicio Psicopedagógico', 'route' => 'servicio-psicopedagogico'],
                         ['label' => 'Programa de Alimentación Saludable', 'route' => 'salud'],
                         ['label' => 'Servicios de Salud', 'route' => 'servicios-de-salud'],
                         ['label' => 'Servicios Deportivos y PRODAC', 'route' => 'futbol'],
@@ -124,6 +124,11 @@ return [
         'servicios-de-salud' => [
             'title' => 'Servicios de Salud',
             'menu_label' => 'Servicios de Salud',
+            'parent' => ['label' => 'RSU', 'route' => 'bienestar-rsu'],
+        ],
+        'servicio-psicopedagogico' => [
+            'title' => 'Servicio Psicopedagógico',
+            'menu_label' => 'Servicio Psicopedagógico',
             'parent' => ['label' => 'RSU', 'route' => 'bienestar-rsu'],
         ],
         'futbol' => [

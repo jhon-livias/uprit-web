@@ -3,7 +3,7 @@
         [
             'title' => 'Servicio Psicopedagógico',
             'description' => 'Orientación psicológica para fortalecer tu bienestar emocional y académico.',
-            'url' => route('salud'),
+            'url' => route('servicio-psicopedagogico'),
             'icon' => 'mdi:brain',
             'tone' => 'maroon',
         ],
