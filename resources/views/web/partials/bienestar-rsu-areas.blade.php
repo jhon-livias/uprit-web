@@ -22,9 +22,9 @@
             'tone' => 'maroon',
         ],
         [
-            'title' => 'Servicios deportivos y PRODAC',
-            'description' => 'Fomentamos la práctica deportiva y la actividad física de alto rendimiento.',
-            'url' => route('futbol'),
+            'title' => 'Servicios Deportivos y Programas Deportivos de Alta Competencia',
+            'description' => 'Fomentamos la práctica deportiva y los programas de alta competencia para tu desarrollo integral.',
+            'url' => route('servicios-deportivos'),
             'icon' => 'mdi:run',
             'tone' => 'orange',
         ],

@@ -13,7 +13,7 @@ return [
                 'bienestar-rsu',
                 'soporte',
                 'salud',
-                'futbol',
+                'servicios-deportivos',
                 'talleres',
                 'becas',
                 'honors',
@@ -30,7 +30,7 @@ return [
                         ['label' => 'Servicio Psicopedagógico', 'route' => 'servicio-psicopedagogico'],
                         ['label' => 'Programa de Alimentación Saludable', 'route' => 'salud'],
                         ['label' => 'Servicios de Salud', 'route' => 'servicios-de-salud'],
-                        ['label' => 'Servicios Deportivos y PRODAC', 'route' => 'futbol'],
+                        ['label' => 'Servicios Deportivos y Programas Deportivos de Alta Competencia', 'route' => 'servicios-deportivos'],
                         ['label' => 'Programa de Actividades Artísticas y culturales', 'route' => 'talleres'],
                         ['label' => 'Servicios Sociales y Ayudas', 'route' => 'becas'],
                         ['label' => 'Responsabilidad social Universitaria', 'route' => 'becas'],
@@ -129,6 +129,11 @@ return [
         'servicio-psicopedagogico' => [
             'title' => 'Servicio Psicopedagógico',
             'menu_label' => 'Servicio Psicopedagógico',
+            'parent' => ['label' => 'RSU', 'route' => 'bienestar-rsu'],
+        ],
+        'servicios-deportivos' => [
+            'title' => 'Servicios Deportivos y Programas Deportivos de Alta Competencia',
+            'menu_label' => 'Servicios Deportivos y Programas Deportivos de Alta Competencia',
             'parent' => ['label' => 'RSU', 'route' => 'bienestar-rsu'],
         ],
         'futbol' => [
