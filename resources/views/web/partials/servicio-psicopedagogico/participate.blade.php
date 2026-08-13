@@ -37,106 +37,110 @@
 <section class="psico-mid">
     <div class="container">
         <div class="psico-mid__grid">
-            <article class="psico-card psico-card--why">
-                <header class="psico-card__title">
-                    <h2>¿Por qué participar?</h2>
-                </header>
-                <div class="psico-benefits">
-                    @foreach($benefits as $benefit)
-                    <article class="psico-benefit">
-                        <span class="psico-benefit__icon" aria-hidden="true">
-                            <iconify-icon icon="{{ $benefit['icon'] }}"></iconify-icon>
-                        </span>
-                        <p class="psico-benefit__label">{{ $benefit['label'] }}</p>
-                    </article>
-                    @endforeach
-                </div>
-            </article>
-
-            <article class="psico-card psico-card--calendar">
-                <header class="psico-card__banner">
-                    <iconify-icon icon="mdi:calendar-month-outline" aria-hidden="true"></iconify-icon>
-                    <h3>Calendario de Actividades</h3>
-                </header>
-                <div class="psico-card__body">
-                    <ul class="psico-event-list">
-                        @foreach($events as $event)
-                        <li class="psico-event-list__item">
-                            <span class="psico-event-list__date">
-                                <strong>{{ $event['day'] }}</strong>
-                                <small>{{ $event['month'] }}</small>
+            <div class="psico-mid__col psico-mid__col--main">
+                <article class="psico-card psico-card--why">
+                    <header class="psico-card__title">
+                        <h2>¿Por qué participar?</h2>
+                    </header>
+                    <div class="psico-benefits">
+                        @foreach($benefits as $benefit)
+                        <article class="psico-benefit">
+                            <span class="psico-benefit__icon" aria-hidden="true">
+                                <iconify-icon icon="{{ $benefit['icon'] }}"></iconify-icon>
                             </span>
-                            <span class="psico-event-list__title">{{ $event['title'] }}</span>
-                        </li>
-                        @endforeach
-                    </ul>
-                    <a href="{{ route('web.noticias') }}" class="psico-card__btn">
-                        Ver calendario completo
-                        <span aria-hidden="true">&gt;</span>
-                    </a>
-                </div>
-            </article>
-
-            <article class="psico-card psico-card--community">
-                <header class="psico-card__title">
-                    <h2>Nuestra Comunidad</h2>
-                </header>
-
-                <div class="psico-community__tabs" role="tablist" aria-label="Comunidad">
-                    @foreach($communityTabs as $key => $tab)
-                    <button
-                        type="button"
-                        class="psico-community-tab{{ $loop->first ? ' is-active' : '' }}"
-                        role="tab"
-                        aria-selected="{{ $loop->first ? 'true' : 'false' }}"
-                        aria-controls="psico-community-panel-{{ $key }}"
-                        id="psico-community-tab-{{ $key }}"
-                        data-psico-tab="{{ $key }}">
-                        {{ $tab['label'] }}
-                    </button>
-                    @endforeach
-                </div>
-
-                @foreach($communityTabs as $key => $tab)
-                <div
-                    class="psico-community-panel{{ $loop->first ? ' is-active' : '' }}"
-                    role="tabpanel"
-                    id="psico-community-panel-{{ $key }}"
-                    aria-labelledby="psico-community-tab-{{ $key }}"
-                    data-psico-panel="{{ $key }}"
-                    @unless($loop->first) hidden @endunless>
-                    <div class="psico-community-grid">
-                        @foreach($tab['images'] as $image)
-                        <img
-                            src="{{ asset('web/imagenes/bienestar/psicopedagogico/' . $image) }}"
-                            alt="{{ $tab['caption'] }}"
-                            class="psico-community-grid__photo"
-                            loading="lazy"
-                            decoding="async">
+                            <p class="psico-benefit__label">{{ $benefit['label'] }}</p>
+                        </article>
                         @endforeach
                     </div>
-                    <p class="psico-community-grid__caption">{{ $tab['caption'] }}</p>
-                </div>
-                @endforeach
-            </article>
+                </article>
 
-            <article class="psico-card psico-card--counseling" id="consejeria">
-                <header class="psico-card__banner">
-                    <iconify-icon icon="mdi:clipboard-text-outline" aria-hidden="true"></iconify-icon>
-                    <h3>Consejería Abierta</h3>
-                </header>
-                <div class="psico-card__body psico-card__body--counseling">
-                    <p class="psico-card__subtitle">Atención presencial y virtual para ti.</p>
-                    <a href="{{ route('contactenos') }}" class="psico-card__btn">
-                        Regístrate aquí
-                        <span aria-hidden="true">&gt;</span>
-                    </a>
-                    <a href="https://wa.me/51933248429" class="psico-card__whatsapp" target="_blank" rel="noopener">
-                        <iconify-icon icon="mdi:whatsapp" aria-hidden="true"></iconify-icon>
-                        ¿Dudas? Escríbenos por WhatsApp
-                    </a>
-                </div>
-            </article>
+                <article class="psico-card psico-card--community">
+                    <header class="psico-card__title">
+                        <h2>Nuestra Comunidad</h2>
+                    </header>
+
+                    <div class="psico-community__tabs" role="tablist" aria-label="Comunidad">
+                        @foreach($communityTabs as $key => $tab)
+                        <button
+                            type="button"
+                            class="psico-community-tab{{ $loop->first ? ' is-active' : '' }}"
+                            role="tab"
+                            aria-selected="{{ $loop->first ? 'true' : 'false' }}"
+                            aria-controls="psico-community-panel-{{ $key }}"
+                            id="psico-community-tab-{{ $key }}"
+                            data-psico-tab="{{ $key }}">
+                            {{ $tab['label'] }}
+                        </button>
+                        @endforeach
+                    </div>
+
+                    @foreach($communityTabs as $key => $tab)
+                    <div
+                        class="psico-community-panel{{ $loop->first ? ' is-active' : '' }}"
+                        role="tabpanel"
+                        id="psico-community-panel-{{ $key }}"
+                        aria-labelledby="psico-community-tab-{{ $key }}"
+                        data-psico-panel="{{ $key }}"
+                        @unless($loop->first) hidden @endunless>
+                        <div class="psico-community-grid">
+                            @foreach($tab['images'] as $image)
+                            <img
+                                src="{{ asset('web/imagenes/bienestar/psicopedagogico/' . $image) }}"
+                                alt="{{ $tab['caption'] }}"
+                                class="psico-community-grid__photo"
+                                loading="lazy"
+                                decoding="async">
+                            @endforeach
+                        </div>
+                        <p class="psico-community-grid__caption">{{ $tab['caption'] }}</p>
+                    </div>
+                    @endforeach
+                </article>
+            </div>
+
+            <div class="psico-mid__col psico-mid__col--side">
+                <article class="psico-card psico-card--calendar">
+                    <header class="psico-card__banner">
+                        <iconify-icon icon="mdi:calendar-month-outline" aria-hidden="true"></iconify-icon>
+                        <h3>Calendario de Actividades</h3>
+                    </header>
+                    <div class="psico-card__body">
+                        <ul class="psico-event-list">
+                            @foreach($events as $event)
+                            <li class="psico-event-list__item">
+                                <span class="psico-event-list__date">
+                                    <strong>{{ $event['day'] }}</strong>
+                                    <small>{{ $event['month'] }}</small>
+                                </span>
+                                <span class="psico-event-list__title">{{ $event['title'] }}</span>
+                            </li>
+                            @endforeach
+                        </ul>
+                        <a href="{{ route('web.noticias') }}" class="psico-card__btn">
+                            Ver calendario completo
+                            <span aria-hidden="true">&gt;</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="psico-card psico-card--counseling" id="consejeria">
+                    <header class="psico-card__banner">
+                        <iconify-icon icon="mdi:clipboard-text-outline" aria-hidden="true"></iconify-icon>
+                        <h3>Consejería Abierta</h3>
+                    </header>
+                    <div class="psico-card__body psico-card__body--counseling">
+                        <p class="psico-card__subtitle">Atención presencial y virtual para ti.</p>
+                        <a href="{{ route('contactenos') }}" class="psico-card__btn">
+                            Regístrate aquí
+                            <span aria-hidden="true">&gt;</span>
+                        </a>
+                        <a href="https://wa.me/51933248429" class="psico-card__whatsapp" target="_blank" rel="noopener">
+                            <iconify-icon icon="mdi:whatsapp" aria-hidden="true"></iconify-icon>
+                            ¿Dudas? Escríbenos por WhatsApp
+                        </a>
+                    </div>
+                </article>
+            </div>
         </div>
     </div>
 </section>
