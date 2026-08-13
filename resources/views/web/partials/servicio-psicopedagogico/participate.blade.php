@@ -9,10 +9,10 @@
 
     $events = [
         ['day' => '12', 'month' => 'MAY', 'title' => 'Charla sobre Hábitos de Estudio'],
-        ['day' => '19', 'month' => 'MAY', 'title' => 'Taller de manejo del estrés'],
-        ['day' => '26', 'month' => 'MAY', 'title' => 'Orientación vocacional grupal'],
-        ['day' => '02', 'month' => 'JUN', 'title' => 'Técnicas de concentración'],
-        ['day' => '09', 'month' => 'JUN', 'title' => 'Habilidades sociales universitarias'],
+        ['day' => '19', 'month' => 'MAY', 'title' => 'Taller de Orientación Vocacional'],
+        ['day' => '26', 'month' => 'MAY', 'title' => 'Sesión de Manejo del Estrés'],
+        ['day' => '02', 'month' => 'JUN', 'title' => 'Taller de Técnicas de Memorización'],
+        ['day' => '09', 'month' => 'JUN', 'title' => 'Foro sobre Salud Mental Universitaria'],
     ];
 
     $communityTabs = [
@@ -124,21 +124,23 @@
                 </article>
 
                 <article class="psico-card psico-card--counseling" id="consejeria">
-                    <header class="psico-card__banner">
-                        <iconify-icon icon="mdi:clipboard-text-outline" aria-hidden="true"></iconify-icon>
-                        <h3>Consejería Abierta</h3>
-                    </header>
-                    <div class="psico-card__body psico-card__body--counseling">
-                        <p class="psico-card__subtitle">Atención presencial y virtual para ti.</p>
+                    <div class="psico-counseling__main">
+                        <header class="psico-counseling__head">
+                            <iconify-icon icon="mdi:calendar-month-outline" aria-hidden="true"></iconify-icon>
+                            <div>
+                                <h3>Consejería Abierta</h3>
+                                <p>Atención presencial y virtual para ti.</p>
+                            </div>
+                        </header>
                         <a href="{{ route('contactenos') }}" class="psico-card__btn">
                             Regístrate aquí
                             <span aria-hidden="true">&gt;</span>
                         </a>
-                        <a href="https://wa.me/51933248429" class="psico-card__whatsapp" target="_blank" rel="noopener">
-                            <iconify-icon icon="mdi:whatsapp" aria-hidden="true"></iconify-icon>
-                            ¿Dudas? Escríbenos por WhatsApp
-                        </a>
                     </div>
+                    <a href="https://wa.me/51933248429" class="psico-card__whatsapp" target="_blank" rel="noopener">
+                        <iconify-icon icon="mdi:whatsapp" aria-hidden="true"></iconify-icon>
+                        <span>¿Dudas? Escríbenos<br>por WhatsApp</span>
+                    </a>
                 </article>
             </div>
         </div>
