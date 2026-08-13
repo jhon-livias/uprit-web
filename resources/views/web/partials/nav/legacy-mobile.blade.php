@@ -52,6 +52,7 @@
         <li><a href="https://moodle.uprit.edu.pe" target="_blank" rel="noopener">Aula Virtual</a></li>
     </ul>
 </li>
+<li><a href="https://idiomas.uprit.edu.pe" target="_blank" rel="noopener">Idiomas</a></li>
 <li><a href="{{ route('web.noticias') }}">Noticias</a></li>
 <li><a href="{{ route('transparencia') }}">Transparencia</a></li>
 <li>
