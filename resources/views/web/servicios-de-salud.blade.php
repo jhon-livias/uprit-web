@@ -15,4 +15,6 @@
         @include('web.partials.bienestar-rsu-campaign-banner')
     </div>
 </section>
+
+@include('web.partials.rsu.page-footer')
 @endsection
