@@ -17,6 +17,8 @@ class WebNavigationCache
 
     public const KEY_MENU_PREGRADO_PUEDE = 'web.nav.menu.pregrado_puede';
 
+    public const KEY_MENU_SEGUNDA_ESPECIALIDAD = 'web.nav.menu.segunda_especialidad';
+
     public const KEY_MENU_POSGRADO = 'web.nav.menu.posgrado';
 
     public const KEY_CHATBOT_PREGRADO = 'web.nav.chatbot.pregrado';
@@ -32,6 +34,7 @@ class WebNavigationCache
         self::KEY_NIVEL_ACADEMICO,
         self::KEY_MENU_PREGRADO,
         self::KEY_MENU_PREGRADO_PUEDE,
+        self::KEY_MENU_SEGUNDA_ESPECIALIDAD,
         self::KEY_MENU_POSGRADO,
         self::KEY_CHATBOT_PREGRADO,
         self::KEY_CHATBOT_PREGRADO_PUEDE,
@@ -60,6 +63,7 @@ class WebNavigationCache
             'nivelAcademico' => self::nivelAcademico(),
             'pregradoCategorias' => self::menuPregrado(),
             'pregradoPuedeCategorias' => self::menuPregradoPuede(),
+            'segundaEspecialidadCategorias' => self::menuSegundaEspecialidad(),
             'posgradoCategorias' => self::menuPosgrado(),
             'chatbotPregradoCategorias' => self::chatbotPregrado(),
             'chatbotPregradoPuedeCategorias' => self::chatbotPregradoPuede(),
@@ -135,6 +139,14 @@ class WebNavigationCache
         );
     }
 
+    public static function menuSegundaEspecialidad(): Collection
+    {
+        return self::rememberCollection(
+            self::KEY_MENU_SEGUNDA_ESPECIALIDAD,
+            fn () => self::querySegundaEspecialidadMenu()
+        );
+    }
+
     public static function menuPosgrado(): Collection
     {
         return self::rememberCollection(
@@ -195,6 +207,25 @@ class WebNavigationCache
             ])
             ->orderBy('nombre')
             ->get();
+    }
+
+    private static function querySegundaEspecialidadMenu(): Collection
+    {
+        $carreraColumns = ['id', 'categoria_id', 'nombre'];
+        $categoriaColumns = ['id', 'nombre', 'nivel_academico_id', 'padre_id'];
+
+        $root = Categoria::query()
+            ->select($categoriaColumns)
+            ->where('nombre', 'Segunda Especialidad')
+            ->whereHas('nivelAcademico', fn ($q) => $q->where('nombre', 'Pregrado'))
+            ->with([
+                'carreras' => fn ($q) => $q->select($carreraColumns)->orderBy('nombre'),
+                'hijos' => fn ($q) => $q->select($categoriaColumns)->orderBy('nombre'),
+                'hijos.carreras' => fn ($q) => $q->select($carreraColumns)->orderBy('nombre'),
+            ])
+            ->first();
+
+        return $root ? collect([$root]) : collect();
     }
 
     /**
