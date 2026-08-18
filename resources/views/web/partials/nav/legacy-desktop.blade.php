@@ -6,7 +6,7 @@
             @foreach($posgradoCategorias as $index => $categoria)
             <button type="button" class="cat-btn {{ $index == 0 ? 'active' : '' }}" data-target="cat-{{ $categoria->id }}" role="tab" aria-selected="{{ $index == 0 ? 'true' : 'false' }}">{{ $categoria->nombre }}</button>
             @endforeach
-            <button type="button" class="cat-btn" data-target="informes" role="tab" aria-selected="false">Infórmate Más</button>
+            <button type="button" class="cat-btn" data-target="informes" role="tab" aria-selected="false">Presentación</button>
         </div>
         <div class="mega-contenido">
             @foreach($posgradoCategorias as $index => $categoria)

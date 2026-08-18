@@ -50,7 +50,7 @@ class ImportNavLegacy extends Command
                 'tab_segunda_label' => 'Segunda Especialidad',
             ]],
             ['key' => 'pregrado_puede', 'label' => 'Pregrado Puede', 'tipo' => 'academic', 'academic_nivel' => 'Pregrado Puede', 'informes_key' => null, 'css_class' => 'pre-puede', 'show_in_main_nav' => false, 'visible' => true, 'orden' => 20],
-            ['key' => 'posgrado', 'label' => 'Posgrado', 'tipo' => 'academic', 'academic_nivel' => 'Posgrado', 'informes_key' => 'posgrado', 'css_class' => 'mega-posgrado', 'show_in_main_nav' => true, 'orden' => 30],
+            ['key' => 'posgrado', 'label' => 'Posgrado', 'tipo' => 'academic', 'academic_nivel' => 'Posgrado', 'informes_key' => 'posgrado', 'css_class' => 'mega-posgrado', 'show_in_main_nav' => true, 'orden' => 30, 'meta' => ['informes_label' => 'Presentación']],
             ['key' => 'innovacion', 'label' => 'Investigación', 'tipo' => 'section', 'css_class' => 'servicios', 'show_in_main_nav' => true, 'orden' => 40, 'meta' => ['routes_only' => false]],
             ['key' => 'servicios', 'label' => 'Servicios', 'tipo' => 'section', 'css_class' => 'mega-servicios', 'show_in_main_nav' => true, 'orden' => 50, 'meta' => [
                 'tab_labels' => [

@@ -9,14 +9,11 @@
                 <div class="privacy-policy">
                     <div class="text-block text-center">
                         <h3 style="margin-bottom:20px;font-weight: 700;font-size:30px">
-                            Sesiones Informativas: Grados y Másteres
+                            Sesiones Informativas
                         </h3>
 
                         <p style="margin-bottom:30px;">
-                            Conoce tu futuro en UGS Escuela de Posgrado.
-                        </p>
-                        <p style="margin-bottom:30px;">
-                            Te invitamos a nuestras sesiones interactivas donde, además de obtener información detallada sobre los grados y másteres de tu interés, vivirás la experiencia de aprendizaje en UGS y conocerás a futuros compañeros y profesores.
+                            Te invitamos a nuestras sesiones informativas donde podrás obtener información detallada sobre los Programas de Maestría y Doctorado de tu interés.
                         </p>
                     </div>
 
@@ -36,26 +33,10 @@
                                             <div class="accordion-item">
                                                 <h3 class="accordion-header" id="headingOne">
                                                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                        Jornadas de Puertas Abiertas
+                                                        Sesiones Informativas
                                                     </button>
                                                 </h3>
                                                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <div class="course-lesson">
-                                                            <p>
-                                                                Un solo día dedicado a mostrarte nuestros ambientes y a explicarte todas las características y ventajas de todos nuestros programas de posgrado.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item">
-                                                <h2 class="accordion-header" id="headingTwo">
-                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                        Sesiones Informativas
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
                                                         <div class="course-lesson">
                                                             <p>Sesiones virtuales y/o presenciales centradas en un programa de posgrado específico, donde se profundiza en sus características y ventajas.</p>

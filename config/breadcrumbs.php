@@ -69,9 +69,7 @@ return [
         'posgrado' => [
             'routes' => [
                 'escuela-posgrado',
-                'posgrado-doble',
-                'mision-academica',
-                'vive',
+                'escuela-posgrado-mision-vision',
             ],
         ],
         'innovacion' => [
@@ -267,8 +265,13 @@ return [
 
         // Posgrado — Infórmate Más
         'escuela-posgrado' => [
-            'title' => 'UGS Escuela de Posgrado',
-            'menu_label' => 'UGS Escuela de Posgrado',
+            'title' => 'Presentación General de la Escuela de Posgrado',
+            'menu_label' => 'Presentación General de la Escuela de Posgrado',
+            'parent' => ['label' => 'Posgrado'],
+        ],
+        'escuela-posgrado-mision-vision' => [
+            'title' => 'Misión / Visión',
+            'menu_label' => 'Misión / Visión',
             'parent' => ['label' => 'Posgrado'],
         ],
         'posgrado-doble' => [

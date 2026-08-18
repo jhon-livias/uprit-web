@@ -177,6 +177,7 @@ Route::get('/taller-titulacion', [WebController::class, 'tallertitulacion'])->na
 Route::get('/asesores', [WebController::class, 'asesores'])->name('asesores');
 
 Route::get('/escuela-posgrado', [WebController::class, 'escuelaposgrado'])->name('escuela-posgrado');
+Route::get('/escuela-posgrado-mision-vision', [WebController::class, 'escuelaposgradomisionvision'])->name('escuela-posgrado-mision-vision');
 Route::get('/posgrado-doble', [WebController::class, 'posgradodoble'])->name('posgrado-doble');
 Route::get('/mision-academica', [WebController::class, 'misionacademica'])->name('mision-academica');
 Route::get('/vive', [WebController::class, 'vive'])->name('vive');
