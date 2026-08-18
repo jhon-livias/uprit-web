@@ -27,7 +27,7 @@
         </li>
     </ul>
 </li>
-<li class="has-droupdown"><a href="#">Innovación</a>
+<li class="has-droupdown"><a href="#">Investigación</a>
     <ul class="submenu">
         @include('web.partials.menu-nav-links', ['section' => 'innovacion', 'routesOnly' => false, 'context' => 'mobile'])
     </ul>

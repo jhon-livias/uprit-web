@@ -3997,6 +3997,158 @@ body.dark-mode .list-noticia-bg {
     }
 }
 
+/* Dirección de Investigación — ejes, tablas y columna */
+.direccion-investigacion__intro,
+.direccion-investigacion-accordion .accordion-body > p {
+    color: #555;
+    line-height: 1.75;
+}
+
+.direccion-investigacion__subtitulo {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 24px 0 16px;
+    color: #222;
+}
+
+.direccion-investigacion-table-wrap {
+    margin: 16px 0 24px;
+}
+
+.direccion-investigacion-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.direccion-investigacion-table th,
+.direccion-investigacion-table td {
+    border: 1px solid #e5e5e5;
+    padding: 12px 14px;
+    vertical-align: top;
+    text-align: left;
+}
+
+.direccion-investigacion-table th {
+    background: #f8f8f8;
+    font-weight: 700;
+    color: #222;
+}
+
+.direccion-investigacion-table tbody tr:nth-child(even) {
+    background: #fcfcfc;
+}
+
+.direccion-investigacion-repositorio {
+    margin-top: 8px;
+}
+
+.direccion-investigacion-convenios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.direccion-investigacion-convenio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 120px;
+    text-decoration: none;
+    color: #333;
+}
+
+.direccion-investigacion-convenio img {
+    max-height: 56px;
+    max-width: 140px;
+    object-fit: contain;
+}
+
+.direccion-columna-widget__intro {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.direccion-columna-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.direccion-columna-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ececec;
+}
+
+.direccion-columna-item:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.direccion-columna-item__author {
+    flex: 0 0 92px;
+    text-align: center;
+}
+
+.direccion-columna-item__foto {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 8px;
+}
+
+.direccion-columna-item__nombre {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0;
+    color: #222;
+}
+
+.direccion-columna-item__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.direccion-columna-item__titulo {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 0 0 10px;
+    color: #222;
+}
+
+.direccion-columna-item__link {
+    font-size: 13px;
+    font-weight: 600;
+    color: #91001e;
+    text-decoration: none;
+}
+
+.direccion-columna-item__link:hover {
+    color: #c4002f;
+    text-decoration: underline;
+}
+
+@media (max-width: 575px) {
+    .direccion-columna-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .direccion-columna-item__content {
+        width: 100%;
+    }
+}
+
 /* Menú móvil responsive */
 body.mobile-menu-open {
     overflow: hidden;
@@ -9078,3 +9230,46 @@ a.rsu-news__all span {
         padding: 18px 16px 18px 22px;
     }
 }
+
+.investigacion-pagina__subtitulo,
+.investigacion-vinculacion__subtitulo {
+    font-size: 18px;
+    font-weight: 600;
+    color: #91001E;
+    margin: 20px 0 10px;
+}
+
+.investigacion-vinculacion__lead {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.investigacion-pagina__cta {
+    background: #f8f8f8;
+    padding: 24px;
+    border-radius: 8px;
+}
+
+.investigacion-pagina__documento,
+.investigacion-pagina__telefono {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #91001E;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.investigacion-pagina__documento:hover,
+.investigacion-pagina__telefono:hover {
+    text-decoration: underline;
+}
+
+.investigacion-vinculacion ul {
+    padding-left: 1.25rem;
+}
+
+.investigacion-vinculacion__contacto {
+    margin-top: 24px;
+}
+

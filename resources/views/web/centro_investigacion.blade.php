@@ -8,74 +8,10 @@
             <div class="col-lg-8">
                 <div class="privacy-policy">
                     <div class="text-block text-center">
-                        <h3 class="title">Soluciones innovadoras para el mundo real</h3>
-                        <p>En UPRIT, nos centramos en la investigación aplicada. Unimos talento y disciplinas para generar conocimiento útil y soluciones con impacto real.</p>
+                        <h3 class="title">{{ config('centro_investigacion.hero.titulo') }}</h3>
+                        <p>{{ config('centro_investigacion.hero.descripcion') }}</p>
                     </div>
-                    <div class="text-block">
-                        <h3 class="title">Nuestros principios de investigación</h3>
-                    </div>
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
-                            <div class="course-tab-content">
-                                <div class="course-overview">
-
-
-
-                                    <div class="course-curriculam mb--90">
-
-                                        <div class="accordion edu-accordion edu-accordion-sec" id="accordionExample" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                                            <div class="accordion-item">
-                                                <h3 class="accordion-header" id="headingOne">
-                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                        Integración de Saberes
-                                                    </button>
-                                                </h3>
-                                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <div class="course-lesson">
-                                                            <p>
-                                                               Integramos distintas disciplinas para abordar desafíos desde una mirada integral e innovadora.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item">
-                                                <h2 class="accordion-header" id="headingTwo">
-                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                        AImpacto Real
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <div class="course-lesson">
-                                                            <p>Impulsamos proyectos de investigación aplicada que generan conocimiento útil y soluciones con impacto real.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item">
-                                                <h2 class="accordion-header" id="headingThree">
-                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                        Mejora Continua
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <div class="course-lesson">
-                                                            <p>Promovemos procesos de mejora continua, explorando nuevas tecnologías y metodologías para ofrecer respuestas creativas y efectivas.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
+                    @include('web.partials.centro-investigacion.principios-accordion')
                     <div class="text-block text-center">
                         <h3 class="title">Centros e Institutos de Investigación</h3>
                         <p>Nuestros centros realizan investigación, capacitación, consultoría y brindan servicios especializados a empresas, gobiernos y organizaciones.</p>

@@ -94,7 +94,7 @@
                                 <li><a href="{{ route('web.noticias') }}" class="gris-footer">Uprit Experts - Blog</a></li>
                                 <li><a href="{{ route('direccion') }}" class="gris-footer">Dirección de Investigación</a></li>
                                 <li><a href="{{ route('centro_investigacion') }}" class="gris-footer">Centro de Investigación</a></li>
-                                <li><a href="#" class="gris-footer">Servicios para Empresas</a></li>
+                                <li><a href="{{ route('vinculacion_empresas') }}" class="gris-footer">Vinculación con empresas</a></li>
                                 <li><a href="https://drive.google.com/drive/folders/136MRdt_fKaUNK7kLVfmbnlR863c7Ox8E" target="_blank" rel="noopener noreferrer" class="gris-footer">Reglamentos de Investigación</a></li>
                             </ul>
                         </div>
