@@ -72,4 +72,24 @@ class Carrera extends Model
             'carrera_id'
         );
     }
+
+    public function brochurePath(): ?string
+    {
+        if (empty($this->brochure)) {
+            return null;
+        }
+
+        $path = public_path('brochures_carreras/' . $this->brochure);
+
+        return is_file($path) ? $path : null;
+    }
+
+    public function brochureUrl(): ?string
+    {
+        if ($this->brochurePath() === null) {
+            return null;
+        }
+
+        return asset('brochures_carreras/' . $this->brochure);
+    }
 }
