@@ -13,8 +13,8 @@ class CarreraDescripcion extends Model
         'id',
         'carrera_id',
         'descripcion',
-        'oportunidades'
-
+        'titulo_oportunidades',
+        'oportunidades',
     ];
 
     protected $casts = [
