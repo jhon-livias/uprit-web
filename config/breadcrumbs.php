@@ -78,6 +78,10 @@ return [
             'items' => [
                 ['route' => 'direccion'],
                 ['route' => 'centro_investigacion'],
+                ['route' => 'revista_cientifica'],
+                ['route' => 'vinculacion_empresas'],
+                ['route' => 'repositorio_publicaciones'],
+                ['route' => 'denuncias_etica_investigacion'],
                 [
                     'label' => 'Reglamentos de Investigación',
                     'url' => 'https://drive.google.com/drive/folders/136MRdt_fKaUNK7kLVfmbnlR863c7Ox8E',
@@ -283,16 +287,16 @@ return [
             'parent' => ['label' => 'Posgrado'],
         ],
 
-        // Innovación
+        // Investigación
         'web.noticias' => [
             'title' => 'Uprit Experts - Blog',
             'menu_label' => 'Uprit Experts - Blog',
-            'parent' => ['label' => 'Innovación'],
+            'parent' => ['label' => 'Investigación'],
         ],
         'direccion' => [
             'title' => 'Dirección de Investigación',
             'menu_label' => 'Dirección de Investigación',
-            'parent' => ['label' => 'Innovación'],
+            'parent' => ['label' => 'Investigación'],
         ],
         'direccion.docente' => [
             'parent' => ['label' => 'Dirección de Investigación', 'route' => 'direccion'],
@@ -300,7 +304,27 @@ return [
         'centro_investigacion' => [
             'title' => 'Centro de Investigación',
             'menu_label' => 'Centro de Investigación',
-            'parent' => ['label' => 'Innovación'],
+            'parent' => ['label' => 'Investigación'],
+        ],
+        'revista_cientifica' => [
+            'title' => 'Revista Científica UPRIT',
+            'menu_label' => 'Revista Científica UPRIT',
+            'parent' => ['label' => 'Investigación'],
+        ],
+        'vinculacion_empresas' => [
+            'title' => 'Vinculación con empresas',
+            'menu_label' => 'Vinculación con empresas',
+            'parent' => ['label' => 'Investigación'],
+        ],
+        'repositorio_publicaciones' => [
+            'title' => 'Repositorio de publicaciones',
+            'menu_label' => 'Repositorio de publicaciones',
+            'parent' => ['label' => 'Investigación'],
+        ],
+        'denuncias_etica_investigacion' => [
+            'title' => 'Denuncias éticas en la investigación',
+            'menu_label' => 'Denuncias éticas en la investigación',
+            'parent' => ['label' => 'Investigación'],
         ],
         'web.detallenoticia' => [
             'parent' => ['label' => 'Uprit Experts - Blog', 'route' => 'web.noticias'],

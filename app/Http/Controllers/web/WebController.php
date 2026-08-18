@@ -267,14 +267,32 @@ class WebController extends Controller
     
     public function direccion()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         $docentesInvestigadores = Docente::query()
-            ->where('es_investigador', true)
-            ->orderBy('orden_investigacion')
-            ->orderBy('nombre')
+            ->investigadoresOrdenados()
             ->get();
 
-        return view('web.direccion', compact('ultimasnoticias', 'docentesInvestigadores'));
+        $columnaInvestigador = collect(config('direccion_investigacion.columna.articulos', []))
+            ->map(function (array $articulo) {
+                $docente = Docente::query()
+                    ->where('es_investigador', true)
+                    ->where('nombre', $articulo['docente_nombre'])
+                    ->first();
+
+                if (!$docente) {
+                    return null;
+                }
+
+                return [
+                    'titulo' => $articulo['titulo'],
+                    'url' => $articulo['url'] ?? route('web.noticias'),
+                    'imagen' => $docente->imagen,
+                    'nombre_con_titulo' => $docente->nombre_con_titulo,
+                ];
+            })
+            ->filter()
+            ->values();
+
+        return view('web.direccion', compact('docentesInvestigadores', 'columnaInvestigador'));
     }
 
     public function detalleDocenteInvestigacion(int $id)
@@ -291,6 +309,26 @@ class WebController extends Controller
     {
         $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();       
         return view('web.centro_investigacion', compact('ultimasnoticias'));
+    }
+
+    public function revistaCientifica()
+    {
+        return view('web.investigacion.revista_cientifica');
+    }
+
+    public function vinculacionEmpresas()
+    {
+        return view('web.investigacion.vinculacion_empresas');
+    }
+
+    public function repositorioPublicaciones()
+    {
+        return view('web.investigacion.repositorio_publicaciones');
+    }
+
+    public function denunciasEticaInvestigacion()
+    {
+        return view('web.investigacion.denuncias_etica_investigacion');
     }
 
     public function autoridades()

@@ -4,7 +4,7 @@
 <div class="docente-investigador-hero">
     <div class="container">
         <div class="docente-investigador-hero__content">
-            <h1 class="docente-investigador-hero__title">Detalles de {{ $docente->nombre }}</h1>
+            <h1 class="docente-investigador-hero__title">Detalles de {{ $docente->nombre_con_titulo }}</h1>
             <p class="docente-investigador-hero__quote">
                 La raíz de la educación es amarga, pero su fruto es dulce. — Aristóteles
             </p>
@@ -16,14 +16,14 @@
     <div class="container">
         @if($docente->imagen)
         <div class="docente-investigador-perfil__foto-wrap">
-            <img src="{{ asset($docente->imagen) }}" alt="{{ $docente->nombre }}" class="docente-investigador-perfil__foto">
+            <img src="{{ asset($docente->imagen) }}" alt="{{ $docente->nombre_con_titulo }}" class="docente-investigador-perfil__foto">
         </div>
         @endif
 
         <div class="row justify-content-center">
             <div class="col-lg-4 col-md-5">
                 <div class="docente-investigador-perfil__card">
-                    <h2 class="docente-investigador-perfil__nombre">{{ $docente->nombre }}</h2>
+                    <h2 class="docente-investigador-perfil__nombre">{{ $docente->nombre_con_titulo }}</h2>
 
                     @if(!empty($docente->tags))
                     <div class="docente-investigador-perfil__tags">

@@ -195,6 +195,10 @@ Route::get('/direccion/docente/{id}', [WebController::class, 'detalleDocenteInve
     ->name('direccion.docente')
     ->whereNumber('id');
 Route::get('/centro_investigacion', [WebController::class, 'centro_investigacion'])->name('centro_investigacion');
+Route::get('/revista_cientifica', [WebController::class, 'revistaCientifica'])->name('revista_cientifica');
+Route::get('/vinculacion_empresas', [WebController::class, 'vinculacionEmpresas'])->name('vinculacion_empresas');
+Route::get('/repositorio_publicaciones', [WebController::class, 'repositorioPublicaciones'])->name('repositorio_publicaciones');
+Route::get('/denuncias_etica_investigacion', [WebController::class, 'denunciasEticaInvestigacion'])->name('denuncias_etica_investigacion');
 
 
 Route::get('/contactenos', function () {
