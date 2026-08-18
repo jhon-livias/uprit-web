@@ -133,4 +133,41 @@ return [
             ],
         ],
     ],
+
+    'eventos_noticias' => [
+        'titulo' => 'Eventos y Noticias',
+        'intro' => 'Espacio destinado a difundir actividades, eventos y novedades relacionadas con la investigación, innovación y producción científica de la UPRIT. Aquí concentraremos capacitaciones, seminarios, congresos, convocatorias y otras iniciativas de interés inmediato para docentes, estudiantes, investigadores y visitantes.',
+        'items' => [
+            [
+                'categoria' => 'Capacitación',
+                'titulo' => 'Taller de metodología de investigación científica',
+                'descripcion' => 'Jornada formativa orientada a docentes y estudiantes sobre diseño metodológico, formulación de preguntas de investigación y elaboración de propuestas.',
+                'fecha' => '2026-08-20',
+                'modalidad' => 'Presencial',
+                'lugar' => 'Campus UPRIT — Aula magna',
+                'imagen' => 'web/imagenes/slider/slider01.webp',
+                'url' => null,
+            ],
+            [
+                'categoria' => 'Seminario',
+                'titulo' => 'Divulgación de resultados de proyectos I+D+i 2025',
+                'descripcion' => 'Presentación de avances y productos científicos desarrollados por equipos de investigación de la Dirección de Investigación.',
+                'fecha' => '2026-09-12',
+                'modalidad' => 'Híbrido',
+                'lugar' => 'Campus UPRIT / transmisión virtual',
+                'imagen' => 'web/imagenes/slider/slider02.webp',
+                'url' => null,
+            ],
+            [
+                'categoria' => 'Convocatoria',
+                'titulo' => 'Convocatoria interna de proyectos de investigación 2026',
+                'descripcion' => 'Apertura de postulaciones para proyectos vinculados con las líneas estratégicas de investigación institucional.',
+                'fecha' => '2026-10-01',
+                'modalidad' => 'Virtual',
+                'lugar' => 'Plataforma institucional UPRIT',
+                'imagen' => 'web/imagenes/about/about-04.webp',
+                'url' => null,
+            ],
+        ],
+    ],
 ];
