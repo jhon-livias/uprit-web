@@ -534,9 +534,11 @@
                                                 Modalidades:
                                             </span>
 
-                                            <span class="texto modalidad-item">
-                                                {{$carrera->modalidades}}
+                                            @foreach(modalidades_oficiales($carrera->modalidades) as $modalidad)
+                                            <span class="texto modalidad-item d-block">
+                                                {{ $modalidad }}
                                             </span>
+                                            @endforeach
 
 
 

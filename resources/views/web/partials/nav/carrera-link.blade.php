@@ -1,10 +1,7 @@
 @php
-    $modalidad = null;
-    if (!empty($carrera->modalidades)) {
-        $linea = trim(preg_split('/\R/', $carrera->modalidades)[0] ?? '');
-        $modalidad = str_contains($linea, ':')
-            ? trim(explode(':', $linea, 2)[1])
-            : $linea;
+    $modalidad = modalidades_oficiales($carrera->modalidades)[0] ?? null;
+    if ($modalidad !== null && str_contains($modalidad, ':')) {
+        $modalidad = trim(explode(':', $modalidad, 2)[1]);
     }
 @endphp
 <a href="{{ route('web.detallecarrera', $carrera->id) }}">

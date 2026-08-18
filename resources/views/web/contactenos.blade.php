@@ -61,7 +61,7 @@
 
                                 <label>
                                     <input type="radio" name="modalidad">
-                                    Virtual
+                                    A Distancia
                                 </label>
 
                                 <label>
