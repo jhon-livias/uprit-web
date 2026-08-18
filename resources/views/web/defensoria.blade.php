@@ -56,7 +56,7 @@
                         <h3 class="title">Canales de Atención</h3>
                         <ul>
                             <li>
-                                Oficina Presencial: Manzana Z′ Lote Resultante 1A, Urbanización Semirústica El Bosque, Campus Universitario de UPRIT, 3er piso (costado de oficina de la Dirección de Investigación).
+                                Oficina Presencial: Av. Industrial Km. 04, Mz. Z′ Lote Resultante 1A, Urb. Semirústica El Bosque (Espalda de Sedalib), Campus Universitario UPRIT, 3er piso (costado Dirección de Investigación), Trujillo - La Libertad, Perú.
                             </li>
                         </ul>
                     </div>
@@ -918,7 +918,7 @@
 
                                 <div class="accordion-body">
                                     <div class="course-lesson">
-                                        <p>Puedes acercarte a la oficina de Defensoría Universitaria en la 3er piso (costado de oficina de la Dirección de Investigación); Manzana Z′ Lote Resultante 1A, Urbanización Semirústica El Bosque, Campus Universitario de UPRIT.</p>
+                                        <p>Puedes acercarte a la oficina de Defensoría Universitaria en el 3er piso (costado Dirección de Investigación): Av. Industrial Km. 04, Mz. Z′ Lote Resultante 1A, Urb. Semirústica El Bosque (Espalda de Sedalib), Campus Universitario UPRIT, Trujillo - La Libertad, Perú.</p>
                                     </div>
                                 </div>
 

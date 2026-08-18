@@ -79,7 +79,7 @@
                         <span style="margin-bottom: 0px; font-weight: bold;" class="gris-footer">Central telefónica:</span>
                         <span style="display:block; margin-bottom:20px;" class="gris-footer">+51933248429</span>
                         <span style="margin-bottom: 0px; font-weight: bold;" class="gris-footer">Ubícanos en:</span> <br>
-                        <span style="display:block; margin-bottom: 20px;" class="gris-footer">Mz Z' Lote 1, Urb.Semirústica El Bosque (Esq.Av.Carr.Industrial a Laredo y Av.Villareal) Trujillo, Perú</span>
+                        <span style="display:block; margin-bottom: 20px;" class="gris-footer">Av. Industrial Km. 04, Mz. Z′ Lote Resultante 1A, Urb. Semirústica El Bosque (Espalda de Sedalib), Trujillo - La Libertad, Perú</span>
                         </span>
                         <span style="margin-bottom: 0px; font-weight: bold;" class="gris-footer">RUC: </span>
                         <span class="gris-footer">20482309381</span>

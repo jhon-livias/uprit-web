@@ -14,8 +14,8 @@
                             <h5 class="title">Dirección</h5>
                             <p>Nos encontramos aquí, para ayudarte con cualquier duda o consulta. <br>
 
-                                Av. Industrial km. 4 - Semirústica El Bosque
-                                Trujillo - La Libertad</p>
+                                Av. Industrial Km. 04, Mz. Z′ Lote Resultante 1A, Urb. Semirústica El Bosque (Espalda de Sedalib)
+                                Trujillo - La Libertad, Perú</p>
                         </li>
                         <li>
                             <h5 class="title">Email</h5>
