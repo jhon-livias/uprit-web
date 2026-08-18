@@ -52,8 +52,8 @@
                                 <div class="col-lg-9 mb-3">
                                     <label>Domicilio Fiscal</label>
                                     <input type="text" class="form-control"
-                                        value="Av. Industrial km. 4 - Semirústica El Bosque" disabled>
-                                    <input type="hidden" value="Av. Industrial km. 4 - Semirústica El Bosque" name="domicilio_fiscal">
+                                        value="Av. Industrial Km. 04, Urb. Semirústica El Bosque (Espalda de Sedalib), Trujillo - La Libertad, Perú" disabled>
+                                    <input type="hidden" value="Av. Industrial Km. 04, Urb. Semirústica El Bosque (Espalda de Sedalib), Trujillo - La Libertad, Perú" name="domicilio_fiscal">
                                 </div>
 
                                 <div class="col-lg-3 mb-3">
