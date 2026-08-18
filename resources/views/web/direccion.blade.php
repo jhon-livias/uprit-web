@@ -8,8 +8,8 @@
             <div class="col-lg-8">
                 <div class="privacy-policy">
                     <div class="text-block text-center">
-                        <h3 class="title">Ciencia e Innovación para un Futuro Sostenible</h3>
-                        <p>En la UPRIT promovemos una cultura de investigación, innovación y emprendimiento científico que integra a estudiantes, docentes y aliados estratégicos para desarrollar proyectos multidisciplinarios, generar nuevo conocimiento y contribuir al desarrollo sostenible de la región y del país.</p>
+                        <h3 class="title">{{ config('direccion_investigacion.hero.titulo') }}</h3>
+                        <p>{{ config('direccion_investigacion.hero.descripcion') }}</p>
                     </div>
                     <div class="text-block">
                         @include('web.partials.direccion-investigacion.ejes-accordion')
@@ -46,6 +46,9 @@
                 <img src="{{ asset($docente->imagen) }}" alt="{{ $docente->nombre_con_titulo }}" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:20px;">
                 @endif
                 <h5 style="font-weight:700;margin-bottom:10px;">{{ $docente->nombre_con_titulo }}</h5>
+                @if($docente->rol_investigacion_label)
+                <p style="font-size:13px;font-weight:600;color:#91001E;margin-bottom:12px;">{{ $docente->rol_investigacion_label }}</p>
+                @endif
                 @if($docente->resumen_investigacion)
                 <p style="font-size:14px;color:#666;line-height:1.6;margin-bottom:20px;max-height:80px;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;text-overflow:ellipsis;">
                     {{ $docente->resumen_investigacion }}

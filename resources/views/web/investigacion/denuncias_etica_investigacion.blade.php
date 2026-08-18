@@ -20,22 +20,7 @@
                             <p>{{ $paragraph }}</p>
                         @endforeach
                     </div>
-                    <div class="text-block">
-                        <h3 class="title">{{ $page['codigo_etica']['titulo'] }}</h3>
-                        <p>{{ $page['codigo_etica']['descripcion'] }}</p>
-                        <a href="{{ $page['codigo_etica']['documento_url'] }}" class="investigacion-pagina__documento" target="_blank" rel="noopener noreferrer">
-                            {{ $page['codigo_etica']['documento_label'] }}
-                        </a>
-                    </div>
-                    <div class="text-block">
-                        <h3 class="title">{{ $page['contacto']['titulo'] }}</h3>
-                        <p>{{ $page['contacto']['descripcion'] }}</p>
-                        <p>
-                            <a href="tel:{{ $page['contacto']['telefono'] }}" class="investigacion-pagina__telefono">
-                                {{ $page['contacto']['telefono_display'] }}
-                            </a>
-                        </p>
-                    </div>
+                    @include('web.partials.investigacion.codigo-etica-contacto')
                 </div>
             </div>
             <div class="col-lg-4">

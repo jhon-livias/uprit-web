@@ -302,8 +302,8 @@ return [
             'parent' => ['label' => 'Dirección de Investigación', 'route' => 'direccion'],
         ],
         'centro_investigacion' => [
-            'title' => 'Centro de Investigación',
-            'menu_label' => 'Centro de Investigación',
+            'title' => 'Centros de Investigación',
+            'menu_label' => 'Centros de Investigación',
             'parent' => ['label' => 'Investigación'],
         ],
         'revista_cientifica' => [

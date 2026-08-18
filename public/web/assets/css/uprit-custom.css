@@ -9273,3 +9273,59 @@ a.rsu-news__all span {
     margin-top: 24px;
 }
 
+.investigacion-etica__codigo,
+.investigacion-etica__contacto {
+    margin-top: 8px;
+}
+
+.investigacion-etica__btn {
+    margin-top: 8px;
+}
+
+.investigacion-etica__contacto-card {
+    background: #f8f8f8;
+    border-left: 4px solid #91001E;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-top: 16px;
+}
+
+.investigacion-etica__contacto-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.investigacion-etica__contacto-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.investigacion-etica__contacto-link {
+    color: #91001E;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.investigacion-etica__contacto-link:hover {
+    text-decoration: underline;
+}
+
+.investigacion-etica__contacto-whatsapp {
+    display: inline-block;
+    background: #25D366;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.investigacion-etica__contacto-whatsapp:hover {
+    color: #fff;
+    opacity: 0.9;
+}
+
