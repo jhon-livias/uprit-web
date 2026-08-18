@@ -324,7 +324,9 @@ class WebNavigationCache
             'duracion' => $carrera->duracion,
             'grado_obtenido' => $carrera->grado_obtenido,
             'titulacion' => $carrera->titulacion,
-            'modalidades' => $carrera->modalidades,
+            'modalidades' => ($oficiales = modalidades_oficiales($carrera->modalidades))
+                ? implode(', ', $oficiales)
+                : $carrera->modalidades,
             'docentes' => [],
             'malla' => [],
             'preguntas' => [],

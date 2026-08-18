@@ -488,7 +488,7 @@
             <span class="shape-line rojo-claro"><i class="icon-19"></i></span>
             <p class="letra-blanca">Despeja tus dudas y conoce a fondo por qué somos la opción líder en formación profesional. Información precisa para tu próxima gran decisión. </p>
         </div>
-        UPRIT ofrece bolsa de trabajo o pasantías        <div class="row g-5 row--45">
+        <div class="row g-5 row--45">
             <div class="col-lg-6">
                 <div class="edu-faq-content" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                     <div class="faq-accordion" id="faq-accordion">
@@ -513,7 +513,7 @@
                                 </h5>
                                 <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
                                     <div class="accordion-body">
-                                        <p class="letra-blanca">Ofrecemos programas presenciales, semipresenciales y virtuales, adaptados a las necesidades de los estudiantes y las exigencias del entorno actual.</p>
+                                        <p class="letra-blanca">Ofrecemos programas en modalidad Presencial, Semipresencial y A Distancia, adaptados a las necesidades de los estudiantes y las exigencias del entorno actual.</p>
                                     </div>
                                 </div>
                             </div>
