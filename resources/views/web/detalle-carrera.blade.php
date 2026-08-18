@@ -543,7 +543,8 @@
                                         </div>
 
                                     </div>
-                                    <a href="{{ asset('brochures_carreras/' . $carrera->brochure) }}" class="edu-btn btn-secondary detalle-button d-flex align-items-center justify-content-center gap-2">
+                                    @if($carrera->brochureUrl())
+                                    <a href="{{ $carrera->brochureUrl() }}" target="_blank" rel="noopener noreferrer" class="edu-btn btn-secondary detalle-button d-flex align-items-center justify-content-center gap-2">
 
                                         <iconify-icon icon="mdi:book-open-page-variant"
                                             style="font-size:20px; margin-right:6px;">
@@ -551,6 +552,7 @@
 
                                         <span>Brochure</span>
                                     </a>
+                                    @endif
 
                                 </div>
 
