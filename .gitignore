@@ -25,3 +25,6 @@ Homestead.yaml
 Thumbs.db
 *.pem
 /vendor
+
+# Scripts locales de deploy/SSH (no versionar)
+/vps/
