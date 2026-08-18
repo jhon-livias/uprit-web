@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\NoticiaController;
 use App\Http\Controllers\admin\ReclamoController;
 use App\Http\Controllers\admin\TransparenciaController;
 use App\Http\Controllers\admin\MenuController;
+use App\Http\Controllers\admin\ObservacionController;
 
 
 //web
@@ -112,6 +113,19 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::post('/transparencia/documento/store', [TransparenciaController::class, 'storeDocumento'])->name('transparencia.documento.store');
     Route::post('/transparencia/documento/edit', [TransparenciaController::class, 'updateDocumento'])->name('transparencia.documento.edit');
     Route::post('/transparencia/documento/delete/{id}', [TransparenciaController::class, 'deleteDocumento'])->name('transparencia.documento.delete');
+
+    // OBSERVACIONES
+    Route::get('/observaciones', [ObservacionController::class, 'index'])->name('observaciones.index');
+    Route::get('/get_observaciones', [ObservacionController::class, 'getObservaciones'])->name('observaciones.get');
+    Route::get('/get_observaciones_meta', [ObservacionController::class, 'getMeta'])->name('observaciones.meta');
+    Route::post('/observaciones/store', [ObservacionController::class, 'store'])->name('observaciones.store');
+    Route::post('/observaciones/edit', [ObservacionController::class, 'update'])->name('observaciones.edit');
+    Route::post('/observaciones/estado', [ObservacionController::class, 'updateEstado'])->name('observaciones.estado');
+    Route::get('/observaciones/{id}/comentarios', [ObservacionController::class, 'getComentarios'])->name('observaciones.comentarios.get');
+    Route::post('/observaciones/comentarios/store', [ObservacionController::class, 'storeComentario'])->name('observaciones.comentarios.store');
+    Route::post('/observaciones/comentarios/delete/{id}', [ObservacionController::class, 'deleteComentario'])->name('observaciones.comentarios.delete');
+    Route::post('/observaciones/delete/{id}', [ObservacionController::class, 'delete'])->name('observaciones.delete');
+    Route::post('/observaciones/reimport', [ObservacionController::class, 'reimport'])->name('observaciones.reimport');
 
     // MENÚ WEB
     Route::get('/listar_menu', [MenuController::class, 'index'])->name('menu.index');
