@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'hero' => [
+        'titulo' => 'Ciencia e Innovación para un Futuro Sostenible',
+        'descripcion' => 'En la UPRIT promovemos una cultura de investigación, innovación y emprendimiento científico que integra a estudiantes, docentes y aliados estratégicos para desarrollar proyectos multidisciplinarios, generar nuevo conocimiento y contribuir al desarrollo sostenible de la región y del país.',
+    ],
+
     'repositorio_url' => 'https://repositorio.uprit.edu.pe/',
 
     'ejes' => [

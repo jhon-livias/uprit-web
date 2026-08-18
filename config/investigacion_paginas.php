@@ -149,17 +149,5 @@ return [
         'intro' => [
             'La UPRIT promueve una cultura de integridad científica y el cumplimiento de los principios éticos en todas las actividades de investigación. Este espacio facilita el acceso al marco normativo aplicable y a un medio de contacto directo con la Dirección de Investigación para consultas o denuncias relacionadas con la ética en investigación.',
         ],
-        'codigo_etica' => [
-            'titulo' => 'Código de Ética en Investigación',
-            'descripcion' => 'Consulte el Reglamento de Investigación Científica de la UPRIT, documento que establece los lineamientos, deberes y principios éticos que rigen la actividad investigativa institucional.',
-            'documento_label' => 'Reglamento de Investigación Científica (PDF)',
-            'documento_url' => 'https://cdn.uprit.edu.pe/documents/1758832151987-investigacion-cientifica.pdf',
-        ],
-        'contacto' => [
-            'titulo' => 'Contacto',
-            'descripcion' => 'Para orientación o comunicación relacionada con aspectos éticos de la investigación, comuníquese con la Dirección de Investigación a través del número corporativo institucional:',
-            'telefono' => '+51933248429',
-            'telefono_display' => '+51 933 248 529',
-        ],
     ],
 ];

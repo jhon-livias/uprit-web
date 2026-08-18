@@ -43,6 +43,16 @@ class Docente extends Model
         return $titulo !== '' ? "{$titulo} {$nombre}" : $nombre;
     }
 
+    public function getRolInvestigacionLabelAttribute(): ?string
+    {
+        return match ($this->rol_investigacion) {
+            'director' => 'Director de Investigación',
+            'coordinadora' => 'Coordinadora de Control de Proyectos',
+            'docente' => 'Docente Investigador',
+            default => null,
+        };
+    }
+
     public function scopeInvestigadoresOrdenados($query)
     {
         return $query
