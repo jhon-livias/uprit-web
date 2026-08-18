@@ -39,6 +39,10 @@
                             <a href="{{ route('reclamos.index') }}"><i class="fa fa-file-text-o"></i>
                                 <span>Reclamos</span></a>
                         </li>
+                        <li id="observaciones">
+                            <a href="{{ route('observaciones.index') }}"><i class="fa fa-columns"></i>
+                                <span>Observaciones</span></a>
+                        </li>
                         <li id="transparencia">
                             <a href="{{ route('transparencia.index') }}"><i class="fa fa-folder-open-o"></i>
                                 <span>Transparencia</span></a>
