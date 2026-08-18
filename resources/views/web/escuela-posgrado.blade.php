@@ -200,7 +200,7 @@
                             </div>
 
                             <h4 style="margin-top:25px;font-weight:700;color:#111827;">
-                                Dr. Miguel Sibina
+                                Mtra. Milagros Rivas Mendoza
                             </h4>
 
                             <p style="color:#6b7280;margin-top:15px;">
@@ -266,11 +266,11 @@
                             </div>
 
                             <h4 style="margin-top:25px;font-weight:700;color:#111827;">
-                                Mg. Milagros Rivas
+                                Dr. Miguel Sibina
                             </h4>
 
                             <p style="color:#6b7280;margin-top:15px;">
-                                Directora de Programas de Educación
+                                Director de Programas de Educación
                             </p>
 
 

@@ -234,6 +234,13 @@ class WebController extends Controller
         return view('web.escuela-posgrado', compact('ultimasnoticias'));
     }
 
+    public function escuelaposgradomisionvision()
+    {
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
+
+        return view('web.escuela-posgrado-mision-vision', compact('ultimasnoticias'));
+    }
+
     public function posgradodoble()
     {
         $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();   

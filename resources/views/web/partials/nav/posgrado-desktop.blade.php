@@ -1,5 +1,7 @@
 @php
+    use App\Services\NavMenuService;
     $categorias = $posgradoCategorias;
+    $presentacionLabel = NavMenuService::informesLabel($navGroup);
 @endphp
 <li class="has-droupdown mega-posgrado">
     <a href="#">{{ $navGroup->label }}</a>
@@ -16,7 +18,7 @@
             @endforeach
             @if($navGroup->informes_key)
             <button type="button" class="cat-btn" data-target="informes" role="tab" aria-selected="false" aria-controls="informes">
-                Infórmate Más
+                {{ $presentacionLabel }}
             </button>
             @endif
         </div>

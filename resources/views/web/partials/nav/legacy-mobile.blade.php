@@ -20,7 +20,7 @@
         </li>
         @endforeach
         <li class="has-droupdown">
-            <a href="#">Infórmate Más</a>
+            <a href="#">Presentación</a>
             <ul class="submenu">
                 @include('web.partials.menu-nav-links', ['section' => 'posgrado', 'context' => 'mobile'])
             </ul>

@@ -1,5 +1,7 @@
 @php
+    use App\Services\NavMenuService;
     $categorias = $posgradoCategorias;
+    $presentacionLabel = NavMenuService::informesLabel($navGroup);
 @endphp
 <li class="has-droupdown">
     <a href="#">{{ $navGroup->label }}</a>
@@ -25,7 +27,7 @@
         @endforeach
         @if($navGroup->informes_key)
         <li class="has-droupdown">
-            <a href="#">Infórmate Más</a>
+            <a href="#">{{ $presentacionLabel }}</a>
             <ul class="submenu">
                 @include('web.partials.menu-nav-links', ['section' => $navGroup->informes_key, 'context' => 'mobile'])
             </ul>
