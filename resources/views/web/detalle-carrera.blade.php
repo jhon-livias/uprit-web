@@ -101,7 +101,7 @@
 
                                     @endphp
                                     <div class="border-box">
-                                        <h5 class="title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">Oportunidades en el mercado</h5>
+                                        <h5 class="title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">{{ $carrera->detalle_descripcion?->titulo_oportunidades ?: 'Oportunidades en el mercado' }}</h5>
                                         <div class="row g-5">
                                             <div class="col-lg-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                                                 <ul class="tag-descripcion">
