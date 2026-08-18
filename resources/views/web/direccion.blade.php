@@ -34,6 +34,8 @@
         </div>
     </div>
 
+    @include('web.partials.direccion-investigacion.eventos-noticias')
+
     <div class="container ">
         <div class="text-block text-center">
             <h3 class="title">Equipo Directivo de Investigación</h3>

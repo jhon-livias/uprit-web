@@ -4149,6 +4149,139 @@ body.dark-mode .list-noticia-bg {
     }
 }
 
+.direccion-eventos-noticias {
+    padding: 56px 0 24px;
+    background: #f9f9f9;
+    margin-top: 24px;
+}
+
+.direccion-eventos-noticias__header {
+    margin-bottom: 40px;
+}
+
+.direccion-eventos-noticias__intro {
+    max-width: 860px;
+    margin: 16px auto 0;
+    color: #555;
+    line-height: 1.75;
+}
+
+.direccion-eventos-noticias__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.direccion-eventos-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 100%;
+}
+
+.direccion-eventos-card__media {
+    position: relative;
+}
+
+.direccion-eventos-card__image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.direccion-eventos-card__categoria {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #91001e;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border-radius: 999px;
+}
+
+.direccion-eventos-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 22px 20px 24px;
+}
+
+.direccion-eventos-card__titulo {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.45;
+    margin: 0 0 12px;
+    color: #222;
+}
+
+.direccion-eventos-card__descripcion {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #666;
+    margin: 0 0 16px;
+}
+
+.direccion-eventos-card__meta {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.direccion-eventos-card__meta li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    color: #444;
+    line-height: 1.5;
+}
+
+.direccion-eventos-card__meta iconify-icon {
+    flex: 0 0 18px;
+    margin-top: 2px;
+    color: #91001e;
+}
+
+.direccion-eventos-card__link {
+    margin-top: auto;
+    font-size: 14px;
+    font-weight: 700;
+    color: #91001e;
+    text-decoration: none;
+}
+
+.direccion-eventos-card__link:hover {
+    color: #c4002f;
+    text-decoration: underline;
+}
+
+@media (max-width: 991px) {
+    .direccion-eventos-noticias__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767px) {
+    .direccion-eventos-noticias {
+        padding-top: 40px;
+    }
+
+    .direccion-eventos-noticias__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Menú móvil responsive */
 body.mobile-menu-open {
     overflow: hidden;
