@@ -21,9 +21,12 @@
     </div>
 
     <div class="cultura-hero__copy">
-        <h1 class="cultura-hero__title">Talleres deportivos y artísticos</h1>
+        <h1 class="cultura-hero__title">Programa de Actividades Artísticas y Culturales</h1>
         <p class="cultura-hero__lead">
             Descubre tu talento, fortalece tu cuerpo y mente y forma parte de nuestra comunidad UPRIT.
+        </p>
+        <p class="cultura-hero__lead">
+            {{ config('bienestar.cultura.responsable') }} — {{ config('bienestar.cultura.cargo') }}
         </p>
         <a href="#inscripciones" class="cultura-hero__cta">
             ¡Inscríbete ahora!

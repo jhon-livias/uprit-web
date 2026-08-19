@@ -1,13 +1,16 @@
+@php
+    $deportes = config('bienestar.deportes');
+@endphp
+
 <section class="deportes-banner">
     <div class="deportes-banner__stage">
         <div class="deportes-banner__copy">
             <h1 class="deportes-banner__title">
-                <span>Bienestar</span>
-                <span>Universitario</span>
-                <span>y RSU</span>
+                <span>{{ $deportes['titulo'][0] }}</span>
+                <span>{{ $deportes['titulo'][1] }}</span>
             </h1>
             <p class="deportes-banner__text">
-                Formamos personas íntegras, comprometidas con su bienestar, su entorno y el desarrollo sostenible.
+                {{ $deportes['subtitulo'] }}
             </p>
         </div>
 

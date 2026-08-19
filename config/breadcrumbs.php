@@ -35,7 +35,7 @@ return [
                         ['label' => 'Servicios de Salud', 'route' => 'servicios-de-salud'],
                         ['label' => 'Servicios Deportivos y Programas Deportivos de Alta Competencia', 'route' => 'servicios-deportivos'],
                         ['label' => 'Programa de Actividades Artísticas y culturales', 'route' => 'actividades-artisticas'],
-                        ['label' => 'Servicios Sociales y Ayudas', 'route' => 'servicios-sociales'],
+                        ['label' => 'Servicios sociales y programa de atención a la diversidad', 'route' => 'servicios-sociales'],
                         ['label' => 'Responsabilidad social Universitaria', 'route' => 'responsabilidad-social'],
                     ],
                 ],
@@ -147,8 +147,8 @@ return [
             'parent' => ['label' => 'RSU', 'route' => 'bienestar-rsu'],
         ],
         'servicios-sociales' => [
-            'title' => 'Servicios Sociales y Ayudas',
-            'menu_label' => 'Servicios Sociales y Ayudas',
+            'title' => 'Servicio Social y Programa de Atención a la Diversidad',
+            'menu_label' => 'Servicios sociales y programa de atención a la diversidad',
             'parent' => ['label' => 'RSU', 'route' => 'bienestar-rsu'],
         ],
         'responsabilidad-social' => [

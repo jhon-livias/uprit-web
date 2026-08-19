@@ -1,39 +1,6 @@
 @php
-    $talleres = [
-        [
-            'title' => 'Vóley',
-            'icon' => 'mdi:volleyball',
-            'image' => 'web/imagenes/bienestar/deportes/volley.webp',
-            'description' => 'Trabajo en equipo, coordinación y diversión en cada partido.',
-            'benefits' => [
-                ['icon' => 'mdi:account-group-outline', 'text' => 'Mejora tu condición física'],
-                ['icon' => 'mdi:handshake-outline', 'text' => 'Desarrolla trabajo en equipo'],
-                ['icon' => 'mdi:run', 'text' => 'Fortalece la coordinación y reflejos'],
-            ],
-        ],
-        [
-            'title' => 'Básquet',
-            'icon' => 'mdi:basketball',
-            'image' => 'web/imagenes/bienestar/deportes/basket.webp',
-            'description' => 'Agilidad, estrategia y pasión en cada jugada.',
-            'benefits' => [
-                ['icon' => 'mdi:heart-pulse', 'text' => 'Mejora la resistencia y agilidad'],
-                ['icon' => 'mdi:brain', 'text' => 'Desarrolla concentración y disciplina'],
-                ['icon' => 'mdi:trophy-outline', 'text' => 'Fomenta el liderazgo'],
-            ],
-        ],
-        [
-            'title' => 'Ajedrez',
-            'icon' => 'mdi:chess-knight',
-            'image' => 'web/imagenes/bienestar/deportes/chess.jpg',
-            'description' => 'Piensa, analiza y toma decisiones estratégicas.',
-            'benefits' => [
-                ['icon' => 'mdi:brain', 'text' => 'Mejora la concentración y memoria'],
-                ['icon' => 'mdi:target', 'text' => 'Desarrolla pensamiento lógico'],
-                ['icon' => 'mdi:lightbulb-on-outline', 'text' => 'Potencia la creatividad y estrategia'],
-            ],
-        ],
-    ];
+    $talleres = config('bienestar.deportes.talleres');
+    $inscripcionUrl = config('bienestar.google_form_inscripcion');
 @endphp
 
 <section class="deportes-talleres">
@@ -64,6 +31,12 @@
                 </div>
                 <div class="deportes-taller-card__body">
                     <p class="deportes-taller-card__desc">{{ $taller['description'] }}</p>
+                    <p class="cultura-taller-card__meta">
+                        <strong>Docente:</strong> {{ $taller['teacher'] }}
+                    </p>
+                    <p class="cultura-taller-card__meta">
+                        <strong>Horario:</strong> {{ $taller['schedule'] }}
+                    </p>
                     <p class="deportes-taller-card__benefits-title">Beneficios</p>
                     <ul class="deportes-taller-card__benefits">
                         @foreach($taller['benefits'] as $benefit)
@@ -75,8 +48,8 @@
                         </li>
                         @endforeach
                     </ul>
-                    <a href="{{ route('contactenos') }}" class="deportes-taller-card__btn">
-                        Más información
+                    <a href="{{ $inscripcionUrl }}" class="deportes-taller-card__btn" target="_blank" rel="noopener">
+                        Inscríbete aquí
                         <span aria-hidden="true">&gt;</span>
                     </a>
                 </div>

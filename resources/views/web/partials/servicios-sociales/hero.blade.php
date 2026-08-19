@@ -11,7 +11,7 @@
         <div class="container sociales-hero__container">
             <div class="sociales-hero__copy">
                 <h1 class="sociales-hero__title">Servicio Social y Programa de Atención a la Diversidad.</h1>
-                <p class="sociales-hero__kicker">Responsable de Becas y Diversidad</p>
+                <p class="sociales-hero__kicker">{{ config('bienestar.sociales.cargo') }}</p>
                 <p class="sociales-hero__lead">
                     Promovemos oportunidades, inclusión y desarrollo integral para una comunidad universitaria diversa y comprometida con la construcción de un futuro mejor.
                 </p>
@@ -34,12 +34,12 @@
             <article class="sociales-hero-card">
                 <img
                     src="{{ asset('web/imagenes/bienestar/sociales/responsable.jpg') }}"
-                    alt="Eduardo Ariza"
+                    alt="{{ config('bienestar.sociales.responsable') }}"
                     class="sociales-hero-card__photo">
                 <div class="sociales-hero-card__text">
                     <p class="sociales-hero-card__label">Responsable:</p>
-                    <p class="sociales-hero-card__name">Eduardo Ariza</p>
-                    <p class="sociales-hero-card__role">Responsable de Becas y Diversidad</p>
+                    <p class="sociales-hero-card__name">{{ config('bienestar.sociales.responsable') }}</p>
+                    <p class="sociales-hero-card__role">{{ config('bienestar.sociales.cargo') }}</p>
                 </div>
                 <span class="sociales-hero-card__icon" aria-hidden="true">
                     <iconify-icon icon="mdi:badge-account-horizontal-outline"></iconify-icon>

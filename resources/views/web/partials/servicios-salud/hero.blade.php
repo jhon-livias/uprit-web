@@ -26,6 +26,12 @@
             'subtitle' => 'Charlas y actividades',
             'anchor' => '#actividades',
         ],
+        [
+            'icon' => 'mdi:shield-check-outline',
+            'title' => 'Seguros de salud',
+            'subtitle' => 'Información y requisitos',
+            'anchor' => route('salud') . '#seguro-de-salud',
+        ],
     ];
 @endphp
 
@@ -54,7 +60,7 @@
                     Cuidamos de tu bienestar para que alcances tu mejor versión.
                 </p>
                 <p class="salud-banner__text">
-                    En UPRIT promovemos tu bienestar físico y mental con servicios de salud accesibles, profesionales y de calidad.
+                    {{ config('bienestar.salud.intro') }}
                 </p>
                 <a href="#nuestros-servicios" class="salud-banner__btn">
                     Conoce más sobre nuestros servicios

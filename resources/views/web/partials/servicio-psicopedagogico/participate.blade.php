@@ -105,6 +105,9 @@
                         <h3>Calendario de Actividades</h3>
                     </header>
                     <div class="psico-card__body">
+                        <p class="psico-event-list__title">
+                            {{ config('bienestar.psicopedagogico.leyenda_horarios') }}
+                        </p>
                         <ul class="psico-event-list">
                             @foreach($events as $event)
                             <li class="psico-event-list__item">
@@ -128,16 +131,20 @@
                         <header class="psico-counseling__head">
                             <iconify-icon icon="mdi:calendar-month-outline" aria-hidden="true"></iconify-icon>
                             <div>
-                                <h3>Consejería Abierta</h3>
-                                <p>Atención presencial y virtual para ti.</p>
+                                <h3>Solicita tu atención</h3>
+                                <p>Elige el tipo de acompañamiento que necesitas.</p>
                             </div>
                         </header>
                         <a href="{{ route('contactenos') }}" class="psico-card__btn">
-                            Regístrate aquí
+                            Consejería
+                            <span aria-hidden="true">&gt;</span>
+                        </a>
+                        <a href="{{ route('contactenos') }}" class="psico-card__btn">
+                            Orientación vocacional
                             <span aria-hidden="true">&gt;</span>
                         </a>
                     </div>
-                    <a href="https://wa.me/51933248429" class="psico-card__whatsapp" target="_blank" rel="noopener">
+                    <a href="{{ config('bienestar.whatsapp_url') }}" class="psico-card__whatsapp" target="_blank" rel="noopener">
                         <iconify-icon icon="mdi:whatsapp" aria-hidden="true"></iconify-icon>
                         <span>¿Dudas? Escríbenos<br>por WhatsApp</span>
                     </a>
