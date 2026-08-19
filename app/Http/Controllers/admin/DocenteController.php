@@ -18,6 +18,7 @@ class DocenteController extends Controller
     public function getDocentes()
     {
         $docentes = Docente::query()
+            ->with(['carreras.categoria.nivelAcademico'])
             ->withCount('carreras')
             ->orderBy('nombre')
             ->get();
@@ -37,6 +38,8 @@ class DocenteController extends Controller
             'orden_investigacion' => 'nullable|integer|min:1|max:999',
             'resumen_investigacion' => 'nullable|string',
             'descripcion' => 'nullable|string',
+            'carrera_ids' => 'nullable|array',
+            'carrera_ids.*' => 'integer|exists:carreras,id',
         ]);
 
         $docente = new Docente();
@@ -56,6 +59,7 @@ class DocenteController extends Controller
         }
 
         $docente->save();
+        $this->syncCarreras($docente, $request);
         WebNavigationCache::forget();
 
         return response()->json(true);
@@ -74,6 +78,8 @@ class DocenteController extends Controller
             'orden_investigacion' => 'nullable|integer|min:1|max:999',
             'resumen_investigacion' => 'nullable|string',
             'descripcion' => 'nullable|string',
+            'carrera_ids' => 'nullable|array',
+            'carrera_ids.*' => 'integer|exists:carreras,id',
         ]);
 
         $docente = Docente::findOrFail($request->id);
@@ -93,6 +99,7 @@ class DocenteController extends Controller
         }
 
         $docente->save();
+        $this->syncCarreras($docente, $request);
         WebNavigationCache::forget();
 
         return response()->json(true);
@@ -113,6 +120,18 @@ class DocenteController extends Controller
         WebNavigationCache::forget();
 
         return response()->json(true);
+    }
+
+    private function syncCarreras(Docente $docente, Request $request): void
+    {
+        $carreraIds = collect($request->carrera_ids ?? [])
+            ->filter(fn ($id) => $id !== null && $id !== '')
+            ->map(fn ($id) => (int) $id)
+            ->unique()
+            ->values()
+            ->all();
+
+        $docente->carreras()->sync($carreraIds);
     }
 
     private function decodeTags(?string $rawTags): array
