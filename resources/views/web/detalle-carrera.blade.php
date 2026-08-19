@@ -6,8 +6,8 @@
         <div class="swiper-wrapper">
 
             <div class="swiper-slide slider-principal">
-                @if($carrera->imagen_banner)
-                <img src="{{ asset('brochures_imagenes/' . $carrera->imagen_banner) }}"
+                @if($carrera->effective_imagen_banner)
+                <img src="{{ $carrera->imagenBannerUrl() }}"
                     class=""
                     alt="image" style="width: 100%; height: 100%; object-fit: cover;" />
                 @else
@@ -450,8 +450,8 @@
                         <div class="inner">
 
                             <div class="thumbnail">
-                                @if(isset($carrera->imagen))
-                                <img src="{{ asset('brochures_imagenes/' . $carrera->imagen) }}"
+                                @if($carrera->effective_imagen)
+                                <img src="{{ $carrera->imagenUrl() }}"
                                     alt="Carrera">
                                 @else
                                 <img src="{{asset('web/imagenes/carrera/carrera01.webp')}}"

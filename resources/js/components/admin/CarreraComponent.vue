@@ -46,8 +46,8 @@
 
                                                     </td>
                                                     <td style="text-align: center; vertical-align: middle;">
-                                                        <img v-if="item.imagen"
-                                                            :src="asset('brochures_imagenes/' + item.imagen)"
+                                                        <img v-if="item.effective_imagen"
+                                                            :src="asset('brochures_imagenes/' + item.effective_imagen)"
                                                             alt="Imagen" width="80"
                                                             style="border-radius: 8px; object-fit: cover; border: 1px solid #ddd;">
 
@@ -57,8 +57,8 @@
                                                     </td>
 
                                                     <td style="text-align: center">
-                                                        <a v-if="item.brochure"
-                                                            :href="asset('brochures_carreras/' + item.brochure)"
+                                                        <a v-if="item.effective_brochure"
+                                                            :href="asset('brochures_carreras/' + item.effective_brochure)"
                                                             target="_blank" class="btn btn-warning"
                                                             title="Ver Brochure">
                                                             <i class="fa fa-file-pdf-o"></i>
@@ -311,6 +311,12 @@
                                                                 <textarea v-model="carrera.modalidades" class="form-control"></textarea>
                                                             </div>
                                                         </div>
+                                                        <div v-if="esPregradoPuede(carrera)" class="col-12">
+                                                            <div class="alert alert-info py-2 mb-0">
+                                                                Las imágenes y el brochure se comparten con la misma carrera de <strong>Pregrado</strong>.
+                                                                Sube los archivos solo en la carrera regular; aquí se mostrarán automáticamente.
+                                                            </div>
+                                                        </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label>Imagen banner (hero)</label>
@@ -541,6 +547,12 @@ export default {
         this._editorEdit = null;
     },
     methods: {
+        esPregradoPuede(carrera) {
+            const nivelId = carrera?.categoria?.nivel_academico_id
+                ?? carrera?.categoria?.nivel_academico?.id;
+
+            return Number(nivelId) === 4;
+        },
         resetForm() {
             this.carrera = {
                 id: null,
@@ -595,12 +607,12 @@ export default {
         },
         initDropifyEdit(item) {
             this.$nextTick(() => {
-                this.initDropifyField('.dropify-edit-imagen', item.imagen
-                    ? this.asset('brochures_imagenes/' + item.imagen) : '');
-                this.initDropifyField('.dropify-edit-banner', item.imagen_banner
-                    ? this.asset('brochures_imagenes/' + item.imagen_banner) : '');
-                this.initDropifyField('.dropify-edit-brochure', item.brochure
-                    ? this.asset('brochures_carreras/' + item.brochure) : '');
+                this.initDropifyField('.dropify-edit-imagen', item.effective_imagen
+                    ? this.asset('brochures_imagenes/' + item.effective_imagen) : '');
+                this.initDropifyField('.dropify-edit-banner', item.effective_imagen_banner
+                    ? this.asset('brochures_imagenes/' + item.effective_imagen_banner) : '');
+                this.initDropifyField('.dropify-edit-brochure', item.effective_brochure
+                    ? this.asset('brochures_carreras/' + item.effective_brochure) : '');
             });
         },
         initDropifyField(selector, defaultFile) {

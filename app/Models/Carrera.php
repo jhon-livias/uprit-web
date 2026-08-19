@@ -6,8 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Carrera extends Model
 {
-    //
+    public const NIVEL_PREGRADO = 3;
+
+    public const NIVEL_PREGRADO_PUEDE = 4;
+
     protected $table = 'carreras';
+
+    protected $appends = [
+        'effective_brochure',
+        'effective_imagen',
+        'effective_imagen_banner',
+        'media_heredado_de_pregrado',
+    ];
 
     protected $fillable = [
         'id',
@@ -73,23 +83,104 @@ class Carrera extends Model
         );
     }
 
-    public function brochurePath(): ?string
+    public function isPregradoPuede(): bool
     {
-        if (empty($this->brochure)) {
+        $this->loadMissing('categoria');
+
+        return (int) ($this->categoria?->nivel_academico_id) === self::NIVEL_PREGRADO_PUEDE;
+    }
+
+    public function carreraPregradoEquivalente(): ?self
+    {
+        if (! $this->isPregradoPuede() || empty($this->categoria?->nombre)) {
             return null;
         }
 
-        $path = public_path('brochures_carreras/' . $this->brochure);
+        return static::query()
+            ->where('nombre', $this->nombre)
+            ->whereHas('categoria', function ($query) {
+                $query->where('nombre', $this->categoria->nombre)
+                    ->where('nivel_academico_id', self::NIVEL_PREGRADO);
+            })
+            ->first();
+    }
+
+    public function getEffectiveBrochureAttribute(): ?string
+    {
+        return $this->resolveMediaField('brochure');
+    }
+
+    public function getEffectiveImagenAttribute(): ?string
+    {
+        return $this->resolveMediaField('imagen');
+    }
+
+    public function getEffectiveImagenBannerAttribute(): ?string
+    {
+        return $this->resolveMediaField('imagen_banner');
+    }
+
+    public function getMediaHeredadoDePregradoAttribute(): bool
+    {
+        if (! $this->isPregradoPuede()) {
+            return false;
+        }
+
+        return empty($this->brochure) || empty($this->imagen) || empty($this->imagen_banner);
+    }
+
+    public function brochurePath(): ?string
+    {
+        $brochure = $this->effective_brochure;
+
+        if (empty($brochure)) {
+            return null;
+        }
+
+        $path = public_path('brochures_carreras/' . $brochure);
 
         return is_file($path) ? $path : null;
     }
 
     public function brochureUrl(): ?string
     {
-        if (empty($this->brochure)) {
+        $brochure = $this->effective_brochure;
+
+        if (empty($brochure)) {
             return null;
         }
 
-        return asset('brochures_carreras/' . $this->brochure);
+        return asset('brochures_carreras/' . $brochure);
+    }
+
+    public function imagenUrl(): ?string
+    {
+        $imagen = $this->effective_imagen;
+
+        if (empty($imagen)) {
+            return null;
+        }
+
+        return asset('brochures_imagenes/' . $imagen);
+    }
+
+    public function imagenBannerUrl(): ?string
+    {
+        $imagenBanner = $this->effective_imagen_banner;
+
+        if (empty($imagenBanner)) {
+            return null;
+        }
+
+        return asset('brochures_imagenes/' . $imagenBanner);
+    }
+
+    private function resolveMediaField(string $field): ?string
+    {
+        if (! empty($this->{$field})) {
+            return $this->{$field};
+        }
+
+        return $this->carreraPregradoEquivalente()?->{$field};
     }
 }
