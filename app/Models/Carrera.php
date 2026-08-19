@@ -16,7 +16,7 @@ class Carrera extends Model
         'effective_brochure',
         'effective_imagen',
         'effective_imagen_banner',
-        'media_heredado_de_pregrado',
+        'media_heredado_de_pregrado_puede',
     ];
 
     protected $fillable = [
@@ -83,6 +83,13 @@ class Carrera extends Model
         );
     }
 
+    public function isPregrado(): bool
+    {
+        $this->loadMissing('categoria');
+
+        return (int) ($this->categoria?->nivel_academico_id) === self::NIVEL_PREGRADO;
+    }
+
     public function isPregradoPuede(): bool
     {
         $this->loadMissing('categoria');
@@ -90,9 +97,9 @@ class Carrera extends Model
         return (int) ($this->categoria?->nivel_academico_id) === self::NIVEL_PREGRADO_PUEDE;
     }
 
-    public function carreraPregradoEquivalente(): ?self
+    public function carreraPregradoPuedeEquivalente(): ?self
     {
-        if (! $this->isPregradoPuede() || empty($this->categoria?->nombre)) {
+        if (! $this->isPregrado() || empty($this->categoria?->nombre)) {
             return null;
         }
 
@@ -100,7 +107,7 @@ class Carrera extends Model
             ->where('nombre', $this->nombre)
             ->whereHas('categoria', function ($query) {
                 $query->where('nombre', $this->categoria->nombre)
-                    ->where('nivel_academico_id', self::NIVEL_PREGRADO);
+                    ->where('nivel_academico_id', self::NIVEL_PREGRADO_PUEDE);
             })
             ->first();
     }
@@ -117,16 +124,16 @@ class Carrera extends Model
 
     public function getEffectiveImagenBannerAttribute(): ?string
     {
-        return $this->resolveMediaField('imagen_banner');
+        return $this->imagen_banner ?: null;
     }
 
-    public function getMediaHeredadoDePregradoAttribute(): bool
+    public function getMediaHeredadoDePregradoPuedeAttribute(): bool
     {
-        if (! $this->isPregradoPuede()) {
+        if (! $this->isPregrado()) {
             return false;
         }
 
-        return empty($this->brochure) || empty($this->imagen) || empty($this->imagen_banner);
+        return empty($this->brochure) || empty($this->imagen);
     }
 
     public function brochurePath(): ?string
@@ -181,6 +188,10 @@ class Carrera extends Model
             return $this->{$field};
         }
 
-        return $this->carreraPregradoEquivalente()?->{$field};
+        if (! in_array($field, ['imagen', 'brochure'], true) || ! $this->isPregrado()) {
+            return null;
+        }
+
+        return $this->carreraPregradoPuedeEquivalente()?->{$field};
     }
 }
