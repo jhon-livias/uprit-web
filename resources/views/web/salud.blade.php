@@ -90,7 +90,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="text-block">
+                    <div class="text-block" id="seguro-de-salud">
                         <h3 class="title">Seguro de Salud</h3>
                         <ul>
                             <li>De acuerdo a la Ley, la UPRIT exige que todos los estudiantes de pregrado y posgrado en programas presenciales mantengan una cobertura de seguro médico (ya sea estatal como SIS o ESSALUD, o de un proveedor particular) y presenten un comprobante cada semestre.</li>

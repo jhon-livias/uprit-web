@@ -89,6 +89,25 @@
                         </a>
                     </div>
                 </article>
+
+                <article class="cultura-card cultura-card--why">
+                    <header class="cultura-card__title">
+                        <h2>Preguntas frecuentes</h2>
+                    </header>
+                    <div class="cultura-benefits">
+                        @foreach(config('bienestar.cultura.faq') as $item)
+                        <article class="cultura-benefit">
+                            <span class="cultura-benefit__icon" aria-hidden="true">
+                                <iconify-icon icon="mdi:help-circle-outline"></iconify-icon>
+                            </span>
+                            <p class="cultura-benefit__label">
+                                <strong>{{ $item['pregunta'] }}</strong><br>
+                                {{ $item['respuesta'] }}
+                            </p>
+                        </article>
+                        @endforeach
+                    </div>
+                </article>
             </div>
 
             <div class="cultura-mid__col cultura-mid__col--side">
@@ -123,12 +142,12 @@
                     </header>
                     <div class="cultura-card__body cultura-card__body--signup">
                         <p class="cultura-signup__lead">Únete a nuestros talleres y vive una experiencia única.</p>
-                        <a href="{{ route('contactenos') }}" class="cultura-card__btn">
+                        <a href="{{ config('bienestar.google_form_inscripcion') }}" class="cultura-card__btn" target="_blank" rel="noopener">
                             Regístrate aquí
                             <span aria-hidden="true">&gt;</span>
                         </a>
                     </div>
-                    <a href="https://wa.me/51933248429" class="cultura-card__whatsapp" target="_blank" rel="noopener">
+                    <a href="{{ config('bienestar.whatsapp_url') }}" class="cultura-card__whatsapp" target="_blank" rel="noopener">
                         <iconify-icon icon="mdi:whatsapp" aria-hidden="true"></iconify-icon>
                         <span>¿Dudas? Escríbenos<br>por WhatsApp</span>
                     </a>

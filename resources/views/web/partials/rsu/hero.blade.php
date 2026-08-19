@@ -10,7 +10,7 @@
         <div class="rsu-hero__copy">
             <h1 class="rsu-hero__title">Responsabilidad Social Universitaria</h1>
             <p class="rsu-hero__lead">
-                Comprometidos con el desarrollo sostenible y el bienestar de nuestra comunidad.
+                {{ config('bienestar.rsu.encabezado') }}
             </p>
             <a href="#sobre-rsu" class="rsu-btn rsu-btn--solid">
                 Conoce más sobre RSU
@@ -21,11 +21,14 @@
         <article class="rsu-hero-card">
             <img
                 src="{{ asset('web/imagenes/bienestar/rsu/responsable.jpg') }}"
-                alt="Yanzurio Plasencia"
+                alt="{{ config('bienestar.rsu.responsable') }}"
                 class="rsu-hero-card__photo">
             <p class="rsu-hero-card__label">Responsable de RSU</p>
-            <p class="rsu-hero-card__name">Yanzurio Plasencia</p>
-            <p class="rsu-hero-card__role">Gobierno de Responsabilidad Social Universitaria</p>
+            <p class="rsu-hero-card__name">{{ config('bienestar.rsu.responsable') }}</p>
+            <p class="rsu-hero-card__role">{{ config('bienestar.rsu.cargo') }}</p>
+            <p class="rsu-hero-card__role">
+                <a href="tel:{{ config('bienestar.rsu.telefono') }}">{{ config('bienestar.rsu.telefono') }}</a>
+            </p>
             <a href="{{ route('contactenos') }}" class="rsu-btn rsu-btn--solid rsu-btn--sm">
                 Conoce más sobre él
                 <iconify-icon icon="mdi:file-document-outline" aria-hidden="true"></iconify-icon>

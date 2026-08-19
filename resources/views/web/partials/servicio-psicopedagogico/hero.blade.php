@@ -25,6 +25,12 @@
                 <p class="psico-hero__text">
                     Nuestro equipo te acompaña en el desarrollo de estrategias que potencien tu rendimiento académico y tu crecimiento personal.
                 </p>
+                <p class="psico-hero__text">
+                    Contáctanos en
+                    <a href="mailto:{{ config('bienestar.email') }}">{{ config('bienestar.email') }}</a>
+                    o por WhatsApp al
+                    <a href="{{ config('bienestar.whatsapp_url') }}" target="_blank" rel="noopener">+51 933 248 429</a>.
+                </p>
                 <a href="#consejeria" class="psico-hero__btn">
                     ¡Solicita tu asesoría ahora!
                     <span aria-hidden="true">&gt;</span>
