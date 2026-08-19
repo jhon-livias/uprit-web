@@ -311,10 +311,10 @@
                                                                 <textarea v-model="carrera.modalidades" class="form-control"></textarea>
                                                             </div>
                                                         </div>
-                                                        <div v-if="esPregradoPuede(carrera)" class="col-12">
+                                                        <div v-if="esPregrado(carrera)" class="col-12">
                                                             <div class="alert alert-info py-2 mb-0">
-                                                                Las imágenes y el brochure se comparten con la misma carrera de <strong>Pregrado</strong>.
-                                                                Sube los archivos solo en la carrera regular; aquí se mostrarán automáticamente.
+                                                                La imagen sidebar y el brochure se comparten con la misma carrera de <strong>Pregrado Puede</strong>.
+                                                                Sube los archivos solo en Pregrado Puede; aquí se mostrarán automáticamente.
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
@@ -547,11 +547,11 @@ export default {
         this._editorEdit = null;
     },
     methods: {
-        esPregradoPuede(carrera) {
+        esPregrado(carrera) {
             const nivelId = carrera?.categoria?.nivel_academico_id
                 ?? carrera?.categoria?.nivel_academico?.id;
 
-            return Number(nivelId) === 4;
+            return Number(nivelId) === 3;
         },
         resetForm() {
             this.carrera = {
@@ -609,8 +609,8 @@ export default {
             this.$nextTick(() => {
                 this.initDropifyField('.dropify-edit-imagen', item.effective_imagen
                     ? this.asset('brochures_imagenes/' + item.effective_imagen) : '');
-                this.initDropifyField('.dropify-edit-banner', item.effective_imagen_banner
-                    ? this.asset('brochures_imagenes/' + item.effective_imagen_banner) : '');
+                this.initDropifyField('.dropify-edit-banner', item.imagen_banner
+                    ? this.asset('brochures_imagenes/' + item.imagen_banner) : '');
                 this.initDropifyField('.dropify-edit-brochure', item.effective_brochure
                     ? this.asset('brochures_carreras/' + item.effective_brochure) : '');
             });
