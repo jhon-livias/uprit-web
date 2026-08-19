@@ -20,8 +20,8 @@
         </h3>
         <div id="direccionColaboracion" class="accordion-collapse collapse show" aria-labelledby="direccionColaboracionHeading" data-bs-parent="#direccionInvestigacionAccordion">
             <div class="accordion-body">
-                <p>{{ $colaboracion['descripcion'] }}</p>
-                <p class="mb-3"><strong>{{ $colaboracion['intro'] }}</strong></p>
+                <p class="direccion-investigacion__lead">{{ $colaboracion['descripcion'] }}</p>
+                <p class="direccion-investigacion__lead"><strong>{{ $colaboracion['intro'] }}</strong></p>
                 @if (!empty($colaboracion['convenios']))
                     <div class="direccion-investigacion-convenios">
                         @foreach ($colaboracion['convenios'] as $convenio)
@@ -48,8 +48,8 @@
         </h3>
         <div id="direccionProduccion" class="accordion-collapse collapse" aria-labelledby="direccionProduccionHeading" data-bs-parent="#direccionInvestigacionAccordion">
             <div class="accordion-body">
-                <p>{{ $produccion['intro'] }}</p>
-                <p>{{ $produccion['descripcion'] }}</p>
+                <p class="direccion-investigacion__lead">{{ $produccion['intro'] }}</p>
+                <p class="direccion-investigacion__lead">{{ $produccion['descripcion'] }}</p>
                 <h4 class="direccion-investigacion__subtitulo">{{ $produccion['proyectos_titulo'] }}</h4>
                 @include('web.partials.direccion-investigacion.proyectos-table', [
                     'proyectos' => $produccion['proyectos'],
@@ -72,8 +72,8 @@
         </h3>
         <div id="direccionRsu" class="accordion-collapse collapse" aria-labelledby="direccionRsuHeading" data-bs-parent="#direccionInvestigacionAccordion">
             <div class="accordion-body">
-                <p>{{ $rsu['intro'] }}</p>
-                <p>{{ $rsu['descripcion'] }}</p>
+                <p class="direccion-investigacion__lead">{{ $rsu['intro'] }}</p>
+                <p class="direccion-investigacion__lead">{{ $rsu['descripcion'] }}</p>
                 @include('web.partials.direccion-investigacion.proyectos-table', [
                     'proyectos' => $rsu['proyectos'],
                     'columns' => ['titulo', 'investigador_principal', 'coautores', 'linea', 'aliado', 'producto'],
