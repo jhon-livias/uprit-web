@@ -86,7 +86,7 @@ class Carrera extends Model
 
     public function brochureUrl(): ?string
     {
-        if ($this->brochurePath() === null) {
+        if (empty($this->brochure)) {
             return null;
         }
 
