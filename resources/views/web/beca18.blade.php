@@ -9,7 +9,7 @@
                 <div class="privacy-policy">
                     <div class="text-block">
                         <h3 style="margin-bottom:20px;font-weight:700;font-size:30px;">
-                            ¿Que es Beca18?
+                            ¿Qué es Beca18?
                         </h3>
                         <ul>
                             <li>Es un programa del Estado dirigido a escolares y egresados de 5to de secundaria con alto rendimiento académico, quienes podrán acceder a becas integrales para estudiar una carrera en las mejores universidades e instituciones del país.*

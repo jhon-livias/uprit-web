@@ -6,7 +6,7 @@
             @foreach($sliders as $slider)
             <div class="swiper-slide slider-principal slider-con-video">
                 @if($slider->video)
-                <video class="slider-video" muted loop playsinline @if($loop->first) autoplay preload="auto" @else preload="none" @endif>
+                <video class="slider-video" muted loop playsinline poster="{{ asset('web/imagenes/slider/slider01.webp') }}" @if($loop->first) autoplay preload="auto" @else preload="none" @endif>
                     @if($loop->first)
                     <source src="{{ asset('slider_principal_videos/' . $slider->video) }}" type="video/mp4">
                     @else
