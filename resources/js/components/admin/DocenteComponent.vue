@@ -143,6 +143,23 @@
                                                         </div>
                                                     </template>
                                                     <div class="col-12">
+                                                        <label>Carreras asignadas</label>
+                                                        <select id="selectCarrerasDocenteNuevo" class="form-control" multiple style="width:100%">
+                                                            <option v-for="carrera in carrerasDisponibles" :key="carrera.id" :value="carrera.id">
+                                                                {{ labelCarrera(carrera) }}
+                                                            </option>
+                                                        </select>
+                                                        <small class="text-muted">El docente aparecerá en la sección <strong>Nuestros Docentes</strong> de cada carrera seleccionada.</small>
+                                                    </div>
+                                                    <div v-if="carrerasSeleccionadasInfo.length" class="col-12">
+                                                        <div class="d-flex flex-wrap" style="gap:8px;">
+                                                            <span v-for="c in carrerasSeleccionadasInfo" :key="c.id" class="badge badge-light border p-2">
+                                                                {{ c.nombre }}
+                                                                <i class="fa fa-times ml-1" style="cursor:pointer" @click="quitarCarrera(c.id, 'nuevo')"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
                                                         <label>Imagen</label>
                                                         <input type="file" class="dropify" @change="onImagenChange"
                                                             accept=".jpg,.jpeg,.png"
@@ -240,6 +257,23 @@
                                                         </div>
                                                     </template>
                                                     <div class="col-12">
+                                                        <label>Carreras asignadas</label>
+                                                        <select id="selectCarrerasDocenteEditar" class="form-control" multiple style="width:100%">
+                                                            <option v-for="carrera in carrerasDisponibles" :key="carrera.id" :value="carrera.id">
+                                                                {{ labelCarrera(carrera) }}
+                                                            </option>
+                                                        </select>
+                                                        <small class="text-muted">El docente aparecerá en la sección <strong>Nuestros Docentes</strong> de cada carrera seleccionada.</small>
+                                                    </div>
+                                                    <div v-if="carrerasSeleccionadasInfo.length" class="col-12">
+                                                        <div class="d-flex flex-wrap" style="gap:8px;">
+                                                            <span v-for="c in carrerasSeleccionadasInfo" :key="c.id" class="badge badge-light border p-2">
+                                                                {{ c.nombre }}
+                                                                <i class="fa fa-times ml-1" style="cursor:pointer" @click="quitarCarrera(c.id, 'editar')"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
                                                         <label>Imagen</label>
                                                         <div v-if="docente.imagen_actual" class="mb-2">
                                                             <img :src="asset(docente.imagen_actual)" width="120"
@@ -276,10 +310,20 @@ export default {
         return {
             docentes: [],
             docente: {},
+            carrerasDisponibles: [],
+            carrerasSeleccionadas: [],
         };
+    },
+    computed: {
+        carrerasSeleccionadasInfo() {
+            if (!this.carrerasSeleccionadas.length || !this.carrerasDisponibles.length) return [];
+            const ids = this.carrerasSeleccionadas.map(Number);
+            return this.carrerasDisponibles.filter(c => ids.includes(c.id));
+        },
     },
     mounted() {
         this.getDocentes();
+        this.getCarrerasCatalogo();
     },
     methods: {
         resetForm() {
@@ -297,6 +341,62 @@ export default {
                 orden_investigacion: null,
                 resumen_investigacion: '',
             };
+            this.carrerasSeleccionadas = [];
+        },
+        labelCarrera(carrera) {
+            const nivel = carrera.categoria?.nivel_academico?.nombre ?? '';
+            const facultad = carrera.categoria?.nombre ?? '';
+            return `${nivel} — ${facultad} — ${carrera.nombre}`;
+        },
+        getCarrerasCatalogo() {
+            axios.get(route('carreras.get')).then((response) => {
+                this.carrerasDisponibles = response.data;
+            }).catch(() => {
+                toastr.error('No se pudo cargar el catálogo de carreras');
+            });
+        },
+        initSelectCarreras(context) {
+            const selectId = context === 'editar' ? '#selectCarrerasDocenteEditar' : '#selectCarrerasDocenteNuevo';
+            const modalId = context === 'editar' ? '#modEditarDocente' : '#mdlNuevoDocente';
+            const $select = $(selectId);
+
+            if ($select.hasClass('select2-hidden-accessible')) {
+                $select.off('change.carreras');
+                $select.select2('destroy');
+            }
+
+            $select.val(this.carrerasSeleccionadas);
+
+            $select.select2({
+                placeholder: 'Buscar carrera...',
+                allowClear: true,
+                width: '100%',
+                dropdownParent: $(modalId),
+                language: {
+                    noResults: () => 'No se encontraron carreras',
+                    searching: () => 'Buscando...',
+                },
+            });
+
+            $select.on('change.carreras', () => {
+                this.carrerasSeleccionadas = $select.val() || [];
+            });
+        },
+        destroySelectCarreras(context) {
+            const selectId = context === 'editar' ? '#selectCarrerasDocenteEditar' : '#selectCarrerasDocenteNuevo';
+            const $select = $(selectId);
+            if ($select.hasClass('select2-hidden-accessible')) {
+                $select.off('change.carreras');
+                $select.select2('destroy');
+            }
+        },
+        quitarCarrera(id, context) {
+            this.carrerasSeleccionadas = this.carrerasSeleccionadas.filter(c => String(c) !== String(id));
+            const selectId = context === 'editar' ? '#selectCarrerasDocenteEditar' : '#selectCarrerasDocenteNuevo';
+            const $select = $(selectId);
+            if ($select.hasClass('select2-hidden-accessible')) {
+                $select.val(this.carrerasSeleccionadas).trigger('change');
+            }
         },
         initDropify(selector = '.dropify') {
             this.$nextTick(() => {
@@ -316,6 +416,9 @@ export default {
             this.resetForm();
             $('#mdlNuevoDocente').modal('show');
             this.initDropify('.dropify');
+            $('#mdlNuevoDocente').one('shown.bs.modal', () => {
+                this.$nextTick(() => this.initSelectCarreras('nuevo'));
+            });
         },
         showEdit(item) {
             this.docente = {
@@ -327,8 +430,14 @@ export default {
                 orden_investigacion: item.orden_investigacion ?? null,
                 resumen_investigacion: item.resumen_investigacion ?? '',
             };
+            this.carrerasSeleccionadas = item.carreras?.length
+                ? item.carreras.map(c => String(c.id))
+                : [];
             $('#modEditarDocente').modal('show');
             this.initDropify('.dropify-edit');
+            $('#modEditarDocente').one('shown.bs.modal', () => {
+                this.$nextTick(() => this.initSelectCarreras('editar'));
+            });
         },
         onImagenChange(event) {
             this.docente.imagen = event.target.files[0] ?? null;
@@ -359,6 +468,9 @@ export default {
             if (this.docente.imagen) {
                 formData.append('imagen', this.docente.imagen);
             }
+            (this.carrerasSeleccionadas || []).forEach((carreraId) => {
+                formData.append('carrera_ids[]', carreraId);
+            });
             return formData;
         },
         storeDocente() {
@@ -372,6 +484,7 @@ export default {
                     });
                     this.getDocentes();
                     $('#mdlNuevoDocente').modal('hide');
+                    this.destroySelectCarreras('nuevo');
                     this.resetForm();
                 } else {
                     toastr.warning('No se pudo registrar el docente');
@@ -393,6 +506,7 @@ export default {
                     });
                     this.getDocentes();
                     $('#modEditarDocente').modal('hide');
+                    this.destroySelectCarreras('editar');
                     this.resetForm();
                 } else {
                     toastr.error('No se actualizó el docente');
