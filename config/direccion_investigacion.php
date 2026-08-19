@@ -6,7 +6,7 @@ return [
         'descripcion' => 'En la UPRIT promovemos una cultura de investigación, innovación y emprendimiento científico que integra a estudiantes, docentes y aliados estratégicos para desarrollar proyectos multidisciplinarios, generar nuevo conocimiento y contribuir al desarrollo sostenible de la región y del país.',
     ],
 
-    'repositorio_url' => 'https://repositorio.uprit.edu.pe/',
+    'repositorio_url' => 'https://repositorio.uprit.edu.pe/handle/UPRIT/208',
 
     'ejes' => [
         'titulo' => 'Ejes Estratégicos de la Investigación',

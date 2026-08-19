@@ -34,7 +34,7 @@
                                         </p>
 
                                         <div class="fecha-examen">
-                                            Exámen de Admisión: {{ \Carbon\Carbon::parse($carrera->admision)->locale('es')->translatedFormat('j \d\e F \d\e Y') }}
+                                            Examen de Admisión: {{ \Carbon\Carbon::parse($carrera->admision)->locale('es')->translatedFormat('j \d\e F \d\e Y') }}
                                         </div>
 
                                         </div>
@@ -318,7 +318,7 @@
 
                                                 <div class="thumbnail">
 
-                                                    <img src="{{ $docente->imagen ? asset($docente->imagen) : asset('web/imagenes/docente.jpeg') }}"
+                                                    <img src="{{ $docente->imagen ? asset($docente->imagen) : asset('web/assets/images/svg-icons/instructor.svg') }}"
                                                         alt="{{ $docente->nombre }}" style="height:192px;">
 
                                                 </div>

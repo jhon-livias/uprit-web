@@ -678,7 +678,7 @@
                                                         aria-expanded="false"
                                                         aria-controls="collapseExperienciaCinco">
 
-                                                        5. Exámen de Convalidación:
+                                                        5. Examen de Convalidación:
 
                                                     </button>
 
