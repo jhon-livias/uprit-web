@@ -459,10 +459,15 @@
                                                                         <button type="button" class="btn btn-success" @click="agregarCurso(item, $event)">Agregar</button>
                                                                     </div>
                                                                 </div>
-                                                                <div class="mt-3">
-                                                                    <span v-for="(curso, cursoIndex) in item.cursos" :key="cursoIndex" class="badge badge-primary mr-2">
-                                                                        {{ curso }}
-                                                                        <i class="fa fa-times ml-1" style="cursor:pointer" @click="item.cursos.splice(cursoIndex, 1)"></i>
+                                                                <div class="mt-3 d-flex flex-wrap" style="gap: 8px;">
+                                                                    <span v-for="(curso, cursoIndex) in item.cursos" :key="cursoIndex" class="badge badge-primary d-inline-flex align-items-center px-2 py-1">
+                                                                        <input
+                                                                            type="text"
+                                                                            v-model="item.cursos[cursoIndex]"
+                                                                            style="border:none;background:transparent;color:#fff;min-width:80px;padding:0;font-size:12px;font-weight:600;"
+                                                                            @keydown.enter.prevent
+                                                                        >
+                                                                        <i class="fa fa-times ml-2" style="cursor:pointer" @click="item.cursos.splice(cursoIndex, 1)"></i>
                                                                     </span>
                                                                 </div>
                                                             </div>
