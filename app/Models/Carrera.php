@@ -29,10 +29,15 @@ class Carrera extends Model
         'grado_obtenido',
         'titulacion',
         'modalidades',
+        'visible_in_nav',
         'brochure',
         'imagen',
         'imagen_banner',
 
+    ];
+
+    protected $casts = [
+        'visible_in_nav' => 'boolean',
     ];
 
 

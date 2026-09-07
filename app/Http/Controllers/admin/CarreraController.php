@@ -44,6 +44,7 @@ class CarreraController extends Controller
         $carrera->grado_obtenido = $request->grado_obtenido;
         $carrera->titulacion = $request->titulacion;
         $carrera->modalidades = $request->modalidades;
+        $carrera->visible_in_nav = $request->boolean('visible_in_nav', true);
         $request->validate([
             'brochure' => 'nullable|file|mimes:pdf|max:' . self::BROCHURE_MAX_KB,
         ]);
@@ -75,6 +76,7 @@ class CarreraController extends Controller
         $carrera->grado_obtenido = $request->grado_obtenido;
         $carrera->titulacion = $request->titulacion;
         $carrera->modalidades = $request->modalidades;
+        $carrera->visible_in_nav = $request->boolean('visible_in_nav', true);
         $request->validate([
             'brochure' => 'nullable|file|mimes:pdf|max:' . self::BROCHURE_MAX_KB,
         ]);

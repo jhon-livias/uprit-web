@@ -29,6 +29,7 @@
                                                     <th style="text-align: center">Adminsión</th>
                                                     <th style="text-align: center">Imagen</th>
                                                     <th style="text-align: center">Brochure</th>
+                                                    <th style="text-align: center">Menú header</th>
                                                     <th style="text-align: center">Acciones</th>
                                                 </tr>
                                             </thead>
@@ -67,6 +68,11 @@
                                                         <span v-else class="text-muted">
                                                             No disponible
                                                         </span>
+                                                    </td>
+
+                                                    <td style="text-align: center">
+                                                        <span v-if="item.visible_in_nav !== false" class="badge badge-success">Visible</span>
+                                                        <span v-else class="badge badge-secondary">Oculta</span>
                                                     </td>
 
                                                     <td style="text-align: center" class="text-nowrap col-acciones">
@@ -178,6 +184,19 @@
                                                             <div class="col-12"><label>Modalidades</label>
                                                                 <textarea v-model="carrera.modalidades" id=""
                                                                     class="form-control"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-10 mr-auto ml-auto">
+                                                        <div class="form-group row">
+                                                            <div class="col-12">
+                                                                <div class="custom-control custom-checkbox">
+                                                                    <input type="checkbox" class="custom-control-input" id="visibleInNavCreate" v-model="carrera.visible_in_nav">
+                                                                    <label class="custom-control-label" for="visibleInNavCreate">
+                                                                        Mostrar en menú del header
+                                                                    </label>
+                                                                </div>
+                                                                <small class="text-muted">Si se desactiva, la carrera no aparecerá en la navegación principal del sitio web.</small>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -309,6 +328,17 @@
                                                             <div class="form-group">
                                                                 <label>Modalidades</label>
                                                                 <textarea v-model="carrera.modalidades" class="form-control"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group mb-0">
+                                                                <div class="custom-control custom-checkbox">
+                                                                    <input type="checkbox" class="custom-control-input" id="visibleInNavEdit" v-model="carrera.visible_in_nav">
+                                                                    <label class="custom-control-label" for="visibleInNavEdit">
+                                                                        Mostrar en menú del header
+                                                                    </label>
+                                                                </div>
+                                                                <small class="text-muted">Si se desactiva, la carrera no aparecerá en la navegación principal del sitio web.</small>
                                                             </div>
                                                         </div>
                                                         <div v-if="esPregrado(carrera)" class="col-12">
@@ -564,6 +594,7 @@ export default {
                 grado_obtenido: '',
                 titulacion: '',
                 modalidades: '',
+                visible_in_nav: true,
                 brochure: null,
                 imagen: null,
                 imagen_banner: null,
@@ -571,7 +602,10 @@ export default {
 
         },
         cargarDatosCompletos(item) {
-            this.carrera = { ...item };
+            this.carrera = {
+                ...item,
+                visible_in_nav: item.visible_in_nav !== false,
+            };
 
             this.detalle = {
                 descripcion: item.detalle_descripcion?.descripcion ?? '',
@@ -739,6 +773,7 @@ export default {
             formData.append('grado_obtenido', this.carrera.grado_obtenido);
             formData.append('titulacion', this.carrera.titulacion);
             formData.append('modalidades', this.carrera.modalidades);
+            formData.append('visible_in_nav', this.carrera.visible_in_nav ? '1' : '0');
             this.appendFileIfSelected(formData, 'brochure', this.carrera.brochure);
             this.appendFileIfSelected(formData, 'imagen', this.carrera.imagen);
             this.appendFileIfSelected(formData, 'imagen_banner', this.carrera.imagen_banner);
@@ -773,6 +808,7 @@ export default {
             formData.append('grado_obtenido', this.carrera.grado_obtenido);
             formData.append('titulacion', this.carrera.titulacion);
             formData.append('modalidades', this.carrera.modalidades);
+            formData.append('visible_in_nav', this.carrera.visible_in_nav ? '1' : '0');
             this.appendFileIfSelected(formData, 'brochure', this.carrera.brochure);
             this.appendFileIfSelected(formData, 'imagen', this.carrera.imagen);
             this.appendFileIfSelected(formData, 'imagen_banner', this.carrera.imagen_banner);

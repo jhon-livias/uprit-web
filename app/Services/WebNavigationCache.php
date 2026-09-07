@@ -8,6 +8,7 @@ use App\Models\NavGroup;
 use App\Models\NivelAcademico;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Schema;
 
 class WebNavigationCache
 {
@@ -181,8 +182,8 @@ class WebNavigationCache
 
     private static function queryMenuByNivel(string $nivelNombre, bool $withHijos): Collection
     {
-        $carreraColumns = ['id', 'categoria_id', 'nombre'];
         $categoriaColumns = ['id', 'nombre', 'nivel_academico_id', 'padre_id'];
+        $visibleInNav = self::visibleInNavCarrerasRelation();
 
         $query = Categoria::query()
             ->select($categoriaColumns)
@@ -193,7 +194,7 @@ class WebNavigationCache
             return $query
                 ->with([
                     'hijos' => fn ($q) => $q->select($categoriaColumns)->orderBy('nombre'),
-                    'hijos.carreras' => fn ($q) => $q->select($carreraColumns)->orderBy('nombre'),
+                    'hijos.carreras' => $visibleInNav,
                 ])
                 ->orderBy('nombre')
                 ->get();
@@ -201,9 +202,9 @@ class WebNavigationCache
 
         return $query
             ->with([
-                'carreras' => fn ($q) => $q->select($carreraColumns)->orderBy('nombre'),
+                'carreras' => $visibleInNav,
                 'hijos' => fn ($q) => $q->select($categoriaColumns)->orderBy('nombre'),
-                'hijos.carreras' => fn ($q) => $q->select($carreraColumns)->orderBy('nombre'),
+                'hijos.carreras' => $visibleInNav,
             ])
             ->orderBy('nombre')
             ->get();
@@ -211,17 +212,17 @@ class WebNavigationCache
 
     private static function querySegundaEspecialidadMenu(): Collection
     {
-        $carreraColumns = ['id', 'categoria_id', 'nombre'];
         $categoriaColumns = ['id', 'nombre', 'nivel_academico_id', 'padre_id'];
+        $visibleInNav = self::visibleInNavCarrerasRelation();
 
         $root = Categoria::query()
             ->select($categoriaColumns)
             ->where('nombre', 'Segunda Especialidad')
             ->whereHas('nivelAcademico', fn ($q) => $q->where('nombre', 'Pregrado'))
             ->with([
-                'carreras' => fn ($q) => $q->select($carreraColumns)->orderBy('nombre'),
+                'carreras' => $visibleInNav,
                 'hijos' => fn ($q) => $q->select($categoriaColumns)->orderBy('nombre'),
-                'hijos.carreras' => fn ($q) => $q->select($carreraColumns)->orderBy('nombre'),
+                'hijos.carreras' => $visibleInNav,
             ])
             ->first();
 
@@ -379,5 +380,18 @@ class WebNavigationCache
         }
 
         return $payload;
+    }
+
+    private static function visibleInNavCarrerasRelation(): \Closure
+    {
+        return function ($query): void {
+            $query->select(['id', 'categoria_id', 'nombre']);
+
+            if (Schema::hasColumn('carreras', 'visible_in_nav')) {
+                $query->where('visible_in_nav', true);
+            }
+
+            $query->orderBy('nombre');
+        };
     }
 }
