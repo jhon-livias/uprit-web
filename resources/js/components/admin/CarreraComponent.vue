@@ -460,14 +460,26 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="mt-3 d-flex flex-wrap" style="gap: 8px;">
-                                                                    <span v-for="(curso, cursoIndex) in item.cursos" :key="cursoIndex" class="badge badge-primary d-inline-flex align-items-center px-2 py-1">
+                                                                    <span
+                                                                        v-for="(curso, cursoIndex) in item.cursos"
+                                                                        :key="cursoIndex"
+                                                                        class="curso-chip d-inline-flex align-items-center"
+                                                                    >
                                                                         <input
                                                                             type="text"
                                                                             v-model="item.cursos[cursoIndex]"
-                                                                            style="border:none;background:transparent;color:#fff;min-width:80px;padding:0;font-size:12px;font-weight:600;"
+                                                                            class="curso-chip-input"
+                                                                            :style="{ width: Math.max(curso.length + 2, 14) + 'ch' }"
                                                                             @keydown.enter.prevent
                                                                         >
-                                                                        <i class="fa fa-times ml-2" style="cursor:pointer" @click="item.cursos.splice(cursoIndex, 1)"></i>
+                                                                        <button
+                                                                            type="button"
+                                                                            class="curso-chip-remove"
+                                                                            aria-label="Eliminar curso"
+                                                                            @click="item.cursos.splice(cursoIndex, 1)"
+                                                                        >
+                                                                            <i class="fa fa-times"></i>
+                                                                        </button>
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -1181,3 +1193,44 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.curso-chip {
+    background: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 999px;
+    padding: 4px 8px 4px 12px;
+    max-width: 100%;
+}
+
+.curso-chip-input {
+    border: none;
+    background: transparent;
+    color: #20272f;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    padding: 0;
+    min-width: 120px;
+    max-width: 100%;
+}
+
+.curso-chip-input:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 1px #A3002B;
+    border-radius: 4px;
+}
+
+.curso-chip-remove {
+    border: none;
+    background: transparent;
+    color: #6c757d;
+    padding: 0 0 0 8px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.curso-chip-remove:hover {
+    color: #A3002B;
+}
+</style>
