@@ -41,18 +41,25 @@ app.component("postula-modal-component", PostulaModalComponent);
 
 app.mixin({
     methods: {
-        initDatatable() {
-            this.$nextTick(() => {
-                $(".js-basic-example").DataTable({
-                    destroy: true,
-                });
-            });
-        },
-
         destroyDatatable() {
             if ($.fn.DataTable.isDataTable(".js-basic-example")) {
-                $(".js-basic-example").DataTable().destroy();
+                const table = $(".js-basic-example").DataTable();
+                this._datatableSearch = table.search();
+                table.destroy();
             }
+        },
+
+        initDatatable() {
+            this.$nextTick(() => {
+                const table = $(".js-basic-example").DataTable({
+                    destroy: true,
+                });
+
+                const searchTerm = this._datatableSearch;
+                if (searchTerm) {
+                    table.search(searchTerm).draw();
+                }
+            });
         },
     },
 });
