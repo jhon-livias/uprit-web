@@ -84,6 +84,12 @@ class WebController extends Controller
     public function detallecarrera($id)
     {
         $carrera = Carrera::with('docentes')->findOrFail($id);
+        $carrera->setRelation(
+            'docentes',
+            $carrera->docentes
+                ->sortBy(fn (Docente $docente) => $docente->tieneTagCoordinador() ? 0 : 1)
+                ->values()
+        );
         $categoria = Categoria::findOrFail($carrera->categoria_id);
         return view('web.detalle-carrera', compact('carrera', 'categoria'));
     }

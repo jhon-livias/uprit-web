@@ -53,6 +53,23 @@ class Docente extends Model
         };
     }
 
+    public function tieneTagCoordinador(): bool
+    {
+        $tags = $this->tags ?? [];
+
+        if (! is_array($tags)) {
+            $tags = json_decode($tags ?: '[]', true) ?: [];
+        }
+
+        foreach ($tags as $tag) {
+            if (preg_match('/coordinador/i', (string) $tag)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public function scopeInvestigadoresOrdenados($query)
     {
         return $query
