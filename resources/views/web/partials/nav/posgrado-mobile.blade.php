@@ -7,10 +7,12 @@
     <a href="#">{{ $navGroup->label }}</a>
     <ul class="submenu">
         @foreach($categorias as $categoria)
+        @continue($categoria->hijos->isEmpty())
         <li class="has-droupdown">
             <a href="#">{{ $categoria->nombre }}</a>
             <ul class="submenu">
                 @foreach($categoria->hijos as $hijo)
+                @continue($hijo->carreras->isEmpty())
                 <li class="has-droupdown">
                     <a href="#">{{ $hijo->nombre }}</a>
                     <ul class="submenu">
