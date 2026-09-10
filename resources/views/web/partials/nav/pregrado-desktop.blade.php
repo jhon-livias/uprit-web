@@ -3,44 +3,52 @@
     $tabPuede = $navGroup->meta['tab_puede_label'] ?? 'Pregrado Puede';
     $tabPuedeHint = $navGroup->meta['tab_puede_hint'] ?? 'Para personas que trabajan';
     $tabSegunda = $navGroup->meta['tab_segunda_label'] ?? 'Segunda Especialidad';
+    $pregradoTabs = array_values(array_filter([
+        [
+            'id' => 'pregrado-regular',
+            'label' => $tabRegular,
+            'hint' => null,
+            'categorias' => $pregradoCategorias,
+        ],
+        [
+            'id' => 'pregrado-puede',
+            'label' => $tabPuede,
+            'hint' => $tabPuedeHint,
+            'categorias' => $pregradoPuedeCategorias,
+        ],
+        [
+            'id' => 'pregrado-segunda',
+            'label' => $tabSegunda,
+            'hint' => null,
+            'categorias' => $segundaEspecialidadCategorias,
+        ],
+    ], fn (array $tab) => $tab['categorias']->isNotEmpty()));
 @endphp
+@if(!empty($pregradoTabs))
 <li class="has-droupdown mega-pregrado">
     <a href="#">{{ $navGroup->label }}</a>
     <div class="mega-pregrado-wrapper mega-tabs-wrapper">
         <div class="mega-categorias" role="tablist" aria-label="{{ $navGroup->label }}">
-            <button type="button" class="cat-btn active"
-                data-target="pregrado-regular"
+            @foreach($pregradoTabs as $index => $tab)
+            <button type="button" class="cat-btn {{ $index === 0 ? 'active' : '' }}"
+                data-target="{{ $tab['id'] }}"
                 role="tab"
-                aria-selected="true"
-                aria-controls="pregrado-regular">
-                {{ $tabRegular }}
+                aria-selected="{{ $index === 0 ? 'true' : 'false' }}"
+                aria-controls="{{ $tab['id'] }}">
+                {{ $tab['label'] }}
+                @if($tab['hint'])
+                <small class="cat-btn-hint d-block">{{ $tab['hint'] }}</small>
+                @endif
             </button>
-            <button type="button" class="cat-btn"
-                data-target="pregrado-puede"
-                role="tab"
-                aria-selected="false"
-                aria-controls="pregrado-puede">
-                {{ $tabPuede }}
-                <small class="cat-btn-hint d-block">{{ $tabPuedeHint }}</small>
-            </button>
-            <button type="button" class="cat-btn"
-                data-target="pregrado-segunda"
-                role="tab"
-                aria-selected="false"
-                aria-controls="pregrado-segunda">
-                {{ $tabSegunda }}
-            </button>
+            @endforeach
         </div>
         <div class="mega-contenido">
-            <div class="mega-box active" id="pregrado-regular" role="tabpanel">
-                @include('web.partials.nav.pregrado-facultades', ['categorias' => $pregradoCategorias])
+            @foreach($pregradoTabs as $index => $tab)
+            <div class="mega-box {{ $index === 0 ? 'active' : '' }}" id="{{ $tab['id'] }}" role="tabpanel">
+                @include('web.partials.nav.pregrado-facultades', ['categorias' => $tab['categorias']])
             </div>
-            <div class="mega-box" id="pregrado-puede" role="tabpanel">
-                @include('web.partials.nav.pregrado-facultades', ['categorias' => $pregradoPuedeCategorias])
-            </div>
-            <div class="mega-box" id="pregrado-segunda" role="tabpanel">
-                @include('web.partials.nav.pregrado-facultades', ['categorias' => $segundaEspecialidadCategorias])
-            </div>
+            @endforeach
         </div>
     </div>
 </li>
+@endif

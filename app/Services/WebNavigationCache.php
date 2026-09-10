@@ -191,23 +191,29 @@ class WebNavigationCache
             ->whereHas('nivelAcademico', fn ($q) => $q->where('nombre', $nivelNombre));
 
         if ($withHijos) {
-            return $query
+            return self::filterMenuCategorias(
+                $query
+                    ->with([
+                        'hijos' => fn ($q) => $q->select($categoriaColumns)->orderBy('nombre'),
+                        'hijos.carreras' => $visibleInNav,
+                    ])
+                    ->orderBy('nombre')
+                    ->get(),
+                withHijos: true
+            );
+        }
+
+        return self::filterMenuCategorias(
+            $query
                 ->with([
+                    'carreras' => $visibleInNav,
                     'hijos' => fn ($q) => $q->select($categoriaColumns)->orderBy('nombre'),
                     'hijos.carreras' => $visibleInNav,
                 ])
                 ->orderBy('nombre')
-                ->get();
-        }
-
-        return $query
-            ->with([
-                'carreras' => $visibleInNav,
-                'hijos' => fn ($q) => $q->select($categoriaColumns)->orderBy('nombre'),
-                'hijos.carreras' => $visibleInNav,
-            ])
-            ->orderBy('nombre')
-            ->get();
+                ->get(),
+            withHijos: false
+        );
     }
 
     private static function querySegundaEspecialidadMenu(): Collection
@@ -226,7 +232,36 @@ class WebNavigationCache
             ])
             ->first();
 
-        return $root ? collect([$root]) : collect();
+        if (! $root) {
+            return collect();
+        }
+
+        return self::filterMenuCategorias(collect([$root]), withHijos: false);
+    }
+
+    /**
+     * Oculta subcategorías sin carreras visibles y categorías padre sin contenido activo.
+     */
+    private static function filterMenuCategorias(Collection $categorias, bool $withHijos): Collection
+    {
+        return $categorias
+            ->map(function (Categoria $categoria) {
+                $hijos = $categoria->hijos
+                    ->filter(fn (Categoria $hijo) => $hijo->carreras->isNotEmpty())
+                    ->values();
+
+                $categoria->setRelation('hijos', $hijos);
+
+                return $categoria;
+            })
+            ->filter(function (Categoria $categoria) use ($withHijos) {
+                if ($withHijos) {
+                    return $categoria->hijos->isNotEmpty();
+                }
+
+                return $categoria->carreras->isNotEmpty() || $categoria->hijos->isNotEmpty();
+            })
+            ->values();
     }
 
     /**
@@ -271,7 +306,7 @@ class WebNavigationCache
                 'hijos.carreras' => fn ($q) => $q->select($carreraColumns)->orderBy('nombre'),
             ], $carreraRelationConstraints));
 
-            return $query->get()
+            return self::filterMenuCategorias($query->get(), withHijos: true)
                 ->map(fn (Categoria $categoria) => [
                     'id' => $categoria->id,
                     'nombre' => $categoria->nombre,
@@ -299,7 +334,7 @@ class WebNavigationCache
             ARRAY_FILTER_USE_KEY
         )));
 
-        return $query->get()
+        return self::filterMenuCategorias($query->get(), withHijos: false)
             ->map(fn (Categoria $categoria) => [
                 'id' => $categoria->id,
                 'nombre' => $categoria->nombre,
