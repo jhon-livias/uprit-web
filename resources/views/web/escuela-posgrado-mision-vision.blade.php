@@ -27,7 +27,8 @@
                                 </div>
                             </div>
                             <div class="posgrado-mvv-card__body">
-                                <p>La Universidad Privada de Trujillo brinda una formación profesional integral y humanista de excelencia, generando conocimiento científico y tecnológico que contribuye al desarrollo armónico y sostenible de la sociedad, abordando los problemas, retos y desafíos sociales, económicos, culturales, y ambientales que la aquejan con un alto espíritu de responsabilidad social y ética.</p>
+                                <p>La Escuela de Posgrado de la Universidad Privada de Trujillo tiene como propósito formar, mediante una propuesta educativa humanista y científica, a profesionales líderes, capaces de participar armónicamente en la creación de riqueza moral y económica, y comprometidos con la creación de conocimiento y el desarrollo humano de nuestra sociedad.
+                                </p>
                             </div>
                         </article>
 
@@ -43,7 +44,7 @@
                                 <span class="posgrado-mvv-card__badge">2027</span>
                             </div>
                             <div class="posgrado-mvv-card__body">
-                                <p>Al 2027 nuestra universidad está integrada al mundo, reconocida por su aporte significativo al desarrollo humano, al responder a las demandas, retos y desafíos del entorno, favoreciendo con ello la competitividad y la sostenibilidad a través de la excelencia de sus egresados y la investigación e innovación actuando con un alto sentido de responsabilidad social y ética.</p>
+                                <p>La Escuela de Posgrado de la Universidad Privada de Trujillo aspira a ser reconocida como una de las más importantes del Perú gracias a su alta calidad de enseñanza, a su moderna infraestructura, a la excelencia de sus egresados y al nivel de sus intercambios internacionales. La Escuela de Posgrado de la Universidad Privada de Trujillo estará caracterizada por la innovación, vocación social y compromiso con el desarrollo humano y social</p>
                             </div>
                         </article>
                     </div>
