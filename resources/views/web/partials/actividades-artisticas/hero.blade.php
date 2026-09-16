@@ -2,9 +2,9 @@
     $strips = [
         ['file' => 'danza.jpg', 'alt' => 'Taller de danza'],
         ['file' => 'musica.jpg', 'alt' => 'Taller de música'],
-        ['file' => 'volley.webp', 'alt' => 'Taller de vóley'],
-        ['file' => 'basket.webp', 'alt' => 'Taller de básquet'],
-        ['file' => 'chess.jpg', 'alt' => 'Taller de ajedrez'],
+        ['file' => 'teatro.jpg', 'alt' => 'Taller de teatro'],
+        ['file' => 'danza.jpg', 'alt' => 'Taller de danza'],
+        ['file' => 'musica.jpg', 'alt' => 'Taller de música'],
     ];
 @endphp
 
@@ -21,9 +21,9 @@
     </div>
 
     <div class="cultura-hero__copy">
-        <h1 class="cultura-hero__title">Programa de Actividades Artísticas y Culturales</h1>
+        <h1 class="cultura-hero__title">Descubre tu talento</h1>
         <p class="cultura-hero__lead">
-            Descubre tu talento, fortalece tu cuerpo y mente y forma parte de nuestra comunidad UPRIT.
+            Programa de Actividades Artísticas y Culturales. Fortalece tu expresión, comparte en comunidad y forma parte de UPRIT.
         </p>
         <p class="cultura-hero__lead">
             {{ config('bienestar.cultura.responsable') }} — {{ config('bienestar.cultura.cargo') }}

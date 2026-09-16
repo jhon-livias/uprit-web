@@ -1,9 +1,9 @@
 @php
     $staff = [
-        ['name' => 'Lic. Ana Torres', 'role' => 'Docente de Danza'],
-        ['name' => 'Mg. Pedro Salas', 'role' => 'Docente de Música'],
-        ['name' => 'Prof. Luis Mendoza', 'role' => 'Docente de Vóley'],
-        ['name' => 'Prof. Carla Núñez', 'role' => 'Docente de Básquet'],
+        [
+            'name' => config('bienestar.cultura.responsable'),
+            'role' => config('bienestar.cultura.cargo'),
+        ],
     ];
 
     $testimonials = [
@@ -11,19 +11,19 @@
             'quote' => 'El taller de danza me ayudó a desconectarme del estrés académico y a conocer a personas increíbles. ¡Es el mejor momento de mi semana!',
             'name' => 'Estefany J.',
             'role' => 'Estudiante de Administración',
-            'photo' => 'staff-1.jpg',
+            'photo' => 'danza.jpg',
         ],
         [
             'quote' => 'Gracias al taller de música pude volver a tocar guitarra y ahora formo parte del ensamble universitario.',
             'name' => 'Carlos R.',
             'role' => 'Estudiante de Ingeniería',
-            'photo' => 'staff-2.jpg',
+            'photo' => 'musica.jpg',
         ],
         [
-            'quote' => 'En vóley encontré un equipo, disciplina y mucha energía. Representar a la UPRIT es un orgullo.',
+            'quote' => 'En teatro encontré un espacio para expresarme y ganar confianza. Representar a la UPRIT es un orgullo.',
             'name' => 'Lucía M.',
             'role' => 'Estudiante de Derecho',
-            'photo' => 'staff-3.jpg',
+            'photo' => 'teatro.jpg',
         ],
     ];
 @endphp
@@ -33,19 +33,12 @@
         <div class="cultura-team-testimonials__grid">
             <div class="cultura-team">
                 <header class="cultura-block-heading">
-                    <h2>Nuestros Docentes</h2>
+                    <h2>Responsable del programa</h2>
                 </header>
 
                 <div class="cultura-team__list">
-                    @foreach($staff as $index => $member)
+                    @foreach($staff as $member)
                     <article class="cultura-team-member">
-                        <span class="cultura-avatar">
-                            <img
-                                src="{{ asset('web/imagenes/bienestar/artisticas/staff-' . ($index + 1) . '.jpg') }}"
-                                alt="{{ $member['name'] }}"
-                                loading="lazy"
-                                decoding="async">
-                        </span>
                         <p class="cultura-team-member__text">
                             <strong>{{ $member['name'] }}</strong>
                             <span>{{ $member['role'] }}</span>

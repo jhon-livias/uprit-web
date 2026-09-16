@@ -3,19 +3,19 @@
         [
             'title' => 'Orientación en salud',
             'description' => 'Consejería y educación en temas de salud para tomar decisiones informadas y cuidar tu bienestar.',
-            'image' => 'web/imagenes/bienestar/salud/orientacion.webp',
+            'image' => 'web/imagenes/bienestar/salud/orientacion.jpg',
             'icon' => 'mdi:account-heart-outline',
         ],
         [
             'title' => 'Promoción y prevención',
             'description' => 'Charlas, campañas y talleres para prevenir enfermedades y adoptar hábitos saludables.',
-            'image' => 'web/imagenes/bienestar/salud/promocion.webp',
+            'image' => 'web/imagenes/bienestar/salud/promocion.jpg',
             'icon' => 'mdi:heart-pulse',
         ],
         [
             'title' => 'Primeros auxilios',
             'description' => 'Atención inmediata ante accidentes o malestares dentro del campus.',
-            'image' => 'web/imagenes/bienestar/salud/primeros-auxilios.webp',
+            'image' => 'web/imagenes/bienestar/salud/primeros-auxilios.jpg',
             'icon' => 'mdi:medical-bag',
         ],
     ];

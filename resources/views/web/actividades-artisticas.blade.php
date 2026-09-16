@@ -1,5 +1,7 @@
 @extends('web.layouts.principal')
 
+@section('body_class', 'page-actividades-artisticas')
+
 @section('content')
 @include('web.partials.actividades-artisticas.hero')
 @include('web.partials.actividades-artisticas.talleres')

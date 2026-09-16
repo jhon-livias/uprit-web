@@ -13,13 +13,13 @@
             'icon' => 'mdi:sleep',
         ],
         [
-            'title' => 'Primeros auxilios básicos',
-            'description' => 'Aprende qué hacer ante emergencias comunes y cómo actuar de forma segura.',
-            'image' => 'web/imagenes/bienestar/salud/auxilios-basicos.jpg',
-            'icon' => 'mdi:medical-bag',
+            'title' => 'Higiene y bienestar',
+            'description' => 'Prácticas cotidianas para cuidar tu salud y prevenir enfermedades.',
+            'image' => 'web/imagenes/bienestar/salud/higiene.jpg',
+            'icon' => 'mdi:hand-wash-outline',
         ],
         [
-            'title' => 'Técnicas de respiración',
+            'title' => 'Salud respiratoria y técnicas de respiración',
             'description' => 'Estrategias sencillas para regular tu respiración y cuidar tu bienestar físico y mental.',
             'image' => 'web/imagenes/bienestar/salud/respiracion.jpg',
             'icon' => 'mdi:weather-windy',

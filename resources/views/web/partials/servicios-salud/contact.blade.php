@@ -13,8 +13,7 @@
             'icon' => 'mdi:map-marker-outline',
             'title' => '¿Dónde estamos?',
             'lines' => [
-                'Tópico UPRIT, Campus Universitario,',
-                'Av. América Sur 3145, Trujillo – Perú.',
+                config('bienestar.campus_direccion'),
             ],
         ],
         [
