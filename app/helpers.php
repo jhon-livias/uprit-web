@@ -63,3 +63,70 @@ if (! function_exists('modalidades_oficiales')) {
         )));
     }
 }
+
+if (! function_exists('perfil_egresado_bloques')) {
+    /**
+     * Separa el perfil de egresado en párrafos y viñetas para no mostrarlas amontonadas.
+     *
+     * @return list<array{type: 'p', text: string}|array{type: 'ul', items: list<string>}>
+     */
+    function perfil_egresado_bloques(?string $texto): array
+    {
+        $texto = trim(preg_replace("/\r\n?/", "\n", (string) $texto) ?? '');
+
+        if ($texto === '') {
+            return [];
+        }
+
+        if (str_contains($texto, '•')) {
+            return perfil_egresado_partir($texto, '/\s*•\s*/u');
+        }
+
+        $guiones = preg_match_all('/(?:^|\n|:)\s*[-–]\s*\S|(?<=\.)\s+[-–]\s*\S/u', $texto);
+
+        if ($guiones >= 2) {
+            return perfil_egresado_partir(
+                $texto,
+                '/(?:^|\n)\s*[-–]\s*|(?<=:)\s*[-–]\s*|(?<=\.)\s+[-–]\s*/u'
+            );
+        }
+
+        $parrafos = preg_split('/\n{2,}/', $texto) ?: [$texto];
+
+        return array_values(array_map(
+            static fn (string $parrafo) => ['type' => 'p', 'text' => trim($parrafo)],
+            array_filter(array_map('trim', $parrafos))
+        ));
+    }
+}
+
+if (! function_exists('perfil_egresado_partir')) {
+    /**
+     * @return list<array{type: 'p', text: string}|array{type: 'ul', items: list<string>}>
+     */
+    function perfil_egresado_partir(string $texto, string $patron): array
+    {
+        $partes = preg_split($patron, $texto) ?: [];
+        $partes = array_values(array_filter(array_map('trim', $partes)));
+
+        if ($partes === []) {
+            return [['type' => 'p', 'text' => $texto]];
+        }
+
+        $empiezaConVineta = (bool) preg_match('/^\s*[-–•]/u', $texto);
+        $intro = $empiezaConVineta ? '' : (string) array_shift($partes);
+        $items = $partes;
+
+        $bloques = [];
+
+        if ($intro !== '') {
+            $bloques[] = ['type' => 'p', 'text' => $intro];
+        }
+
+        if ($items !== []) {
+            $bloques[] = ['type' => 'ul', 'items' => $items];
+        }
+
+        return $bloques !== [] ? $bloques : [['type' => 'p', 'text' => $texto]];
+    }
+}

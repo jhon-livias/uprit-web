@@ -10005,3 +10005,35 @@ a.rsu-news__all span {
     }
 }
 
+.perfil-egresado .tag-descripcion {
+    margin-bottom: 1rem;
+}
+
+.perfil-egresado-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.perfil-egresado-lista li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin: 0 0 0.85rem;
+    text-align: justify;
+    color: #919598;
+    font-family: var(--font-primary);
+    line-height: 1.6;
+}
+
+.perfil-egresado-lista li:last-child {
+    margin-bottom: 0;
+}
+
+.perfil-egresado-lista li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #EE4A62;
+    font-weight: 700;
+}
+
