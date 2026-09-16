@@ -304,6 +304,9 @@ return [
         'direccion.docente' => [
             'parent' => ['label' => 'Dirección de Investigación', 'route' => 'direccion'],
         ],
+        'direccion.columna' => [
+            'parent' => ['label' => 'Dirección de Investigación', 'route' => 'direccion'],
+        ],
         'centro_investigacion' => [
             'title' => 'Centros de Investigación',
             'menu_label' => 'Centros de Investigación',

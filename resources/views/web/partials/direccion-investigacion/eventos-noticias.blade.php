@@ -19,18 +19,21 @@
                         $fecha = !empty($item['fecha'])
                             ? \Carbon\Carbon::parse($item['fecha'])->locale('es')
                             : null;
-                        $imagen = !empty($item['imagen'])
-                            ? asset($item['imagen'])
-                            : asset('web/imagenes/slider/slider01.webp');
                     @endphp
                     <article class="direccion-eventos-card">
                         <div class="direccion-eventos-card__media">
-                            <img
-                                src="{{ $imagen }}"
-                                alt="{{ $item['titulo'] ?? 'Evento de investigación' }}"
-                                class="direccion-eventos-card__image"
-                                loading="lazy"
-                                decoding="async">
+                            @if (!empty($item['imagen']))
+                                <img
+                                    src="{{ asset($item['imagen']) }}"
+                                    alt="{{ $item['titulo'] ?? 'Evento de investigación' }}"
+                                    class="direccion-eventos-card__image"
+                                    loading="lazy"
+                                    decoding="async">
+                            @else
+                                <div class="direccion-eventos-card__placeholder" aria-hidden="true">
+                                    <iconify-icon icon="mdi:calendar-blank-outline"></iconify-icon>
+                                </div>
+                            @endif
                             @if (!empty($item['categoria']))
                                 <span class="direccion-eventos-card__categoria">{{ $item['categoria'] }}</span>
                             @endif
@@ -62,7 +65,7 @@
                             </ul>
                             @if (!empty($item['url']))
                                 <a href="{{ $item['url'] }}" class="direccion-eventos-card__link" @if(str_starts_with($item['url'], 'http')) target="_blank" rel="noopener noreferrer" @endif>
-                                    Ver más
+                                    {{ $item['cta'] ?? 'Ver más' }}
                                     <span aria-hidden="true">→</span>
                                 </a>
                             @endif

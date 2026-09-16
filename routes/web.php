@@ -192,6 +192,9 @@ Route::get('/medioambiental', [WebController::class, 'medioambiental'])->name('m
 Route::get('/defensoria', [WebController::class, 'defensoria'])->name('defensoria');
 
 Route::get('/direccion', [WebController::class, 'direccion'])->name('direccion');
+Route::get('/direccion/columna/{slug}', [WebController::class, 'columnaInvestigador'])
+    ->name('direccion.columna')
+    ->where('slug', '[a-z0-9\-]+');
 Route::get('/direccion/docente/{id}', [WebController::class, 'detalleDocenteInvestigacion'])
     ->name('direccion.docente')
     ->whereNumber('id');

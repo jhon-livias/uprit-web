@@ -6,6 +6,7 @@
         'linea' => 'Línea de investigación',
         'aliado' => 'Aliado / Beneficiario',
         'producto' => 'Producto',
+        'anio' => 'Año',
     ];
 @endphp
 

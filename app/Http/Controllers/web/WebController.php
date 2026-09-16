@@ -286,23 +286,15 @@ class WebController extends Controller
 
         $columnaInvestigador = collect(config('direccion_investigacion.columna.articulos', []))
             ->map(function (array $articulo) {
-                $docente = Docente::query()
-                    ->where('es_investigador', true)
-                    ->where('nombre', $articulo['docente_nombre'])
-                    ->first();
-
-                if (!$docente) {
-                    return null;
-                }
+                $docente = Docente::findInvestigadorByNombre($articulo['docente_nombre'] ?? '');
 
                 return [
                     'titulo' => $articulo['titulo'],
-                    'url' => $articulo['url'] ?? route('web.noticias'),
-                    'imagen' => $docente->imagen,
-                    'nombre_con_titulo' => $docente->nombre_con_titulo,
+                    'url' => $articulo['url'] ?? route('direccion.columna', $articulo['slug']),
+                    'imagen' => $docente?->imagen,
+                    'nombre_con_titulo' => $docente?->nombre_con_titulo ?? ($articulo['docente_nombre'] ?? ''),
                 ];
             })
-            ->filter()
             ->values();
 
         return view('web.direccion', compact('docentesInvestigadores', 'columnaInvestigador'));
@@ -316,6 +308,18 @@ class WebController extends Controller
             ->firstOrFail();
 
         return view('web.detalle-docente-investigacion', compact('docente'));
+    }
+
+    public function columnaInvestigador(string $slug)
+    {
+        $articulo = collect(config('direccion_investigacion.columna.articulos', []))
+            ->firstWhere('slug', $slug);
+
+        abort_unless($articulo, 404);
+
+        $docente = Docente::findInvestigadorByNombre($articulo['docente_nombre'] ?? '');
+
+        return view('web.detalle-columna-investigador', compact('articulo', 'docente'));
     }
 
     public function centro_investigacion()

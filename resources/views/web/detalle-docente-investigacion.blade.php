@@ -42,6 +42,15 @@
                     </div>
                     @endif
 
+                    @if($docente->orcid)
+                    <div class="docente-investigador-perfil__dato">
+                        <span class="docente-investigador-perfil__label">ORCID</span>
+                        <a href="https://orcid.org/{{ $docente->orcid }}" target="_blank" rel="noopener noreferrer" class="docente-investigador-perfil__valor">
+                            {{ $docente->orcid }}
+                        </a>
+                    </div>
+                    @endif
+
                     @if($docente->departamento)
                     <div class="docente-investigador-perfil__dato">
                         <span class="docente-investigador-perfil__label">Departamento</span>

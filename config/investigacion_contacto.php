@@ -2,11 +2,12 @@
 
 return [
     'direccion_investigacion' => [
-        'telefono' => '+51933248429',
-        'telefono_display' => '+51 933 248 529',
-        'whatsapp' => '51933248429',
-        'whatsapp_mensaje' => 'Hola, necesito orientación sobre ética en la investigación.',
-        'etiqueta' => 'Número corporativo – Dirección de Investigación',
+        'telefono' => '+51923098323',
+        'telefono_display' => '+51 923 098 323',
+        'whatsapp' => '51923098323',
+        'whatsapp_mensaje' => 'Hola, me comunico con la Dirección de Investigación de UPRIT.',
+        'email' => 'direccion.investigacion@uprit.edu.pe',
+        'etiqueta' => 'Contacto oficial – Dirección de Investigación',
     ],
 
     'codigo_etica_investigacion' => [

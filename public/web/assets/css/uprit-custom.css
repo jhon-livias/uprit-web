@@ -9553,9 +9553,61 @@ a.rsu-news__all span {
     text-decoration: none;
 }
 
-.investigacion-etica__contacto-whatsapp:hover {
+.investigacion-etica__contacto-email {
+    color: #91001E;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    word-break: break-word;
+}
+
+.investigacion-etica__contacto-email:hover {
+    text-decoration: underline;
+}
+
+.direccion-investigacion__nota {
+    font-size: 13px;
+    color: #777;
+    margin: 0;
+}
+
+.direccion-investigacion-convenio-logo {
+    max-height: 40px;
+    max-width: 120px;
+    object-fit: contain;
+}
+
+.direccion-eventos-card__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 180px;
+    background: linear-gradient(135deg, #91001e 0%, #5c0014 100%);
     color: #fff;
-    opacity: 0.9;
+}
+
+.direccion-eventos-card__placeholder iconify-icon {
+    font-size: 48px;
+}
+
+.direccion-columna-articulo__cuerpo {
+    margin-top: 24px;
+}
+
+.direccion-columna-articulo__cita {
+    margin: 32px 0;
+    padding: 20px 24px;
+    border-left: 4px solid #91001E;
+    background: #f8f8f8;
+    border-radius: 0 8px 8px 0;
+}
+
+.direccion-columna-articulo__cita p {
+    margin: 0;
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.6;
+    color: #333;
 }
 
 /* Escuela de Posgrado — Misión / Visión */
