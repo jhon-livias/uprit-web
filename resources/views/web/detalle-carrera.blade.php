@@ -285,9 +285,18 @@
                             <div class="course-tab-content">
                                 <div class="course-instructor">
 
-                                    <div class="author-content">
-                                        <p class="tag-descripcion">{{$carrera->perfilEgresado?->descripcion ?? '' }}</p>
-
+                                    <div class="author-content perfil-egresado">
+                                        @foreach (perfil_egresado_bloques($carrera->perfilEgresado?->descripcion) as $bloque)
+                                            @if ($bloque['type'] === 'ul')
+                                                <ul class="tag-descripcion perfil-egresado-lista">
+                                                    @foreach ($bloque['items'] as $item)
+                                                        <li>{{ $item }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            @else
+                                                <p class="tag-descripcion">{!! nl2br(e($bloque['text'])) !!}</p>
+                                            @endif
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
