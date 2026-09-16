@@ -64,6 +64,22 @@ if (! function_exists('modalidades_oficiales')) {
     }
 }
 
+if (! function_exists('grado_obtenido_visible')) {
+    /**
+     * Oculta grado vacío o el placeholder "No aplica".
+     */
+    function grado_obtenido_visible(?string $grado): bool
+    {
+        $grado = trim((string) $grado);
+
+        if ($grado === '') {
+            return false;
+        }
+
+        return ! preg_match('/^no aplica$/iu', $grado);
+    }
+}
+
 if (! function_exists('perfil_egresado_bloques')) {
     /**
      * Separa el perfil de egresado en párrafos y viñetas para no mostrarlas amontonadas.

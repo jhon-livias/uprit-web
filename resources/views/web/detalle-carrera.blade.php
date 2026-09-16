@@ -491,7 +491,7 @@
 
                                     </div>
 
-                                    @if (filled($carrera->grado_obtenido))
+                                    @if (grado_obtenido_visible($carrera->grado_obtenido))
                                     <div class="info-item">
 
                                         <div class="info-icon">
@@ -540,12 +540,15 @@
                                         </div>
 
                                         <div class="info-content">
+                                            @php
+                                                $modalidades = modalidades_oficiales($carrera->modalidades);
+                                            @endphp
 
                                             <span class="titulo">
-                                                Modalidades:
+                                                {{ count($modalidades) === 1 ? 'Modalidad:' : 'Modalidades:' }}
                                             </span>
 
-                                            @foreach(modalidades_oficiales($carrera->modalidades) as $modalidad)
+                                            @foreach($modalidades as $modalidad)
                                             <span class="texto modalidad-item d-block">
                                                 {{ $modalidad }}
                                             </span>

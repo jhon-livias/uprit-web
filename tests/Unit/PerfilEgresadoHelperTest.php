@@ -38,3 +38,10 @@ test('mantiene párrafos sin viñetas', function () {
         ['type' => 'p', 'text' => $texto],
     ]);
 });
+
+test('oculta grado vacio o no aplica', function () {
+    expect(grado_obtenido_visible(null))->toBeFalse()
+        ->and(grado_obtenido_visible(''))->toBeFalse()
+        ->and(grado_obtenido_visible('No aplica'))->toBeFalse()
+        ->and(grado_obtenido_visible('Bachiller en Educación'))->toBeTrue();
+});
