@@ -2,33 +2,28 @@
     $benefits = [
         ['icon' => 'mdi:account-outline', 'label' => 'Desarrolla nuevas habilidades'],
         ['icon' => 'mdi:heart-outline', 'label' => 'Mejora la salud física y mental'],
-        ['icon' => 'mdi:basketball', 'label' => 'Aumenta la concentración'],
+        ['icon' => 'mdi:lightbulb-on-outline', 'label' => 'Aumenta la concentración'],
         ['icon' => 'mdi:account-group-outline', 'label' => 'Conoce nuevas personas'],
-        ['icon' => 'mdi:trophy-outline', 'label' => 'Representa a la UPRIT en competencias'],
+        ['icon' => 'mdi:drama-masks', 'label' => 'Participa en muestras culturales'],
     ];
 
     $events = [
-        ['day' => '18', 'month' => 'MAY', 'title' => 'Inicio Talleres de Danza y Música'],
-        ['day' => '18', 'month' => 'MAY', 'title' => 'Campeonato interno de Vóley'],
-        ['day' => '22', 'month' => 'MAY', 'title' => 'Torneo de Básquet'],
-        ['day' => '25', 'month' => 'MAY', 'title' => 'Torneo de Ajedrez'],
-        ['day' => '30', 'month' => 'MAY', 'title' => 'Festival Artístico Cultural'],
+        ['day' => '18', 'month' => 'SET', 'title' => 'Inicio de talleres de Danza y Música'],
+        ['day' => '25', 'month' => 'SET', 'title' => 'Ensayo abierto de Teatro'],
+        ['day' => '30', 'month' => 'SET', 'title' => 'Muestra artística cultural'],
     ];
 
     $gallery = [
-        ['image' => 'comunidad-4.webp', 'alt' => 'Premiación universitaria', 'filter' => 'eventos'],
         ['image' => 'danza.jpg', 'alt' => 'Taller de danza', 'filter' => 'artisticos'],
-        ['image' => 'basket.webp', 'alt' => 'Equipo de básquet', 'filter' => 'deportes'],
-        ['image' => 'volley.webp', 'alt' => 'Equipo de vóley', 'filter' => 'deportes'],
-        ['image' => 'chess.jpg', 'alt' => 'Taller de ajedrez', 'filter' => 'competencias'],
+        ['image' => 'musica.jpg', 'alt' => 'Taller de música', 'filter' => 'artisticos'],
+        ['image' => 'teatro.jpg', 'alt' => 'Taller de teatro', 'filter' => 'artisticos'],
+        ['image' => 'comunidad-4.webp', 'alt' => 'Actividad cultural UPRIT', 'filter' => 'eventos'],
     ];
 
     $tabs = [
         'todos' => 'Todos',
-        'deportes' => 'Deportes',
         'artisticos' => 'Artístico',
         'eventos' => 'Eventos',
-        'competencias' => 'Competencias',
     ];
 @endphp
 

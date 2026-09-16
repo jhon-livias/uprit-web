@@ -3,12 +3,10 @@
         [
             'name' => 'Lic. Tatiana Aponte Garcis',
             'role' => 'Responsable de Servicios de Salud',
-            'photo' => 'web/imagenes/bienestar/salud/tatiana.jpg',
         ],
         [
             'name' => 'Lic. Romelia Ormeño Ordoñez',
             'role' => 'Asistente de Servicios de Salud',
-            'photo' => 'web/imagenes/bienestar/salud/romelia.jpg',
         ],
     ];
 @endphp
@@ -30,13 +28,7 @@
 
             <div class="salud-team__members">
                 @foreach($team as $member)
-                <article class="salud-team-member">
-                    <img
-                        src="{{ asset($member['photo']) }}"
-                        alt="{{ $member['name'] }}"
-                        class="salud-team-member__photo"
-                        loading="lazy"
-                        decoding="async">
+                <article class="salud-team-member salud-team-member--text">
                     <div class="salud-team-member__info">
                         <h3 class="salud-team-member__name">{{ $member['name'] }}</h3>
                         <p class="salud-team-member__role">{{ $member['role'] }}</p>

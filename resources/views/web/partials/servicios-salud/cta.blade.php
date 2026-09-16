@@ -12,8 +12,8 @@
                     </p>
                 </div>
             </div>
-            <a href="{{ route('web.noticias') }}" class="salud-cta__btn">
-                Conoce nuestras actividades
+            <a href="{{ config('bienestar.calendario_salud_paho') }}" class="salud-cta__btn" target="_blank" rel="noopener">
+                Conoce el calendario anual de salud
                 <iconify-icon icon="mdi:calendar-month-outline" aria-hidden="true"></iconify-icon>
             </a>
         </div>

@@ -37,6 +37,9 @@
                     <a href="{{ $inscripcionUrl }}" class="deportes-taller-card__btn" target="_blank" rel="noopener">
                         Inscríbete al taller
                     </a>
+                    <a href="{{ config('bienestar.whatsapp_url') }}" class="deportes-taller-card__whatsapp" target="_blank" rel="noopener">
+                        WhatsApp Bienestar
+                    </a>
                 </div>
             </article>
             @endforeach

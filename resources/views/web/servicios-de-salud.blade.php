@@ -10,11 +10,5 @@
 @include('web.partials.servicios-salud.cta')
 @include('web.partials.servicios-salud.contact')
 
-<section class="salud-page-footer">
-    <div class="container">
-        @include('web.partials.bienestar-rsu-campaign-banner')
-    </div>
-</section>
-
 @include('web.partials.rsu.page-footer')
 @endsection

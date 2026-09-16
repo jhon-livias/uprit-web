@@ -1,32 +1,24 @@
 @php
     $workshops = [
         [
-            'title' => 'Introducción a la Cita Psicopedagógica',
-            'description' => 'Apoyo emocional, consejería y orientación.',
+            'title' => 'Atención psicopedagógica',
+            'description' => 'Apoyo emocional, consejería y acompañamiento personalizado.',
         ],
         [
-            'title' => 'Técnicas de Estudio para Exámenes',
-            'description' => 'Técnicas de estudio, gestión del tiempo y concentración.',
+            'title' => 'Técnicas de estudio',
+            'description' => 'Gestión del tiempo, concentración y estrategias para exámenes.',
         ],
         [
-            'title' => 'Taller de Orientación Vocacional',
-            'description' => 'Descubre tu perfil y elige tu carrera profesional.',
+            'title' => 'Orientación vocacional',
+            'description' => 'Descubre tu perfil y fortalece tus proyectos profesionales.',
         ],
         [
-            'title' => 'Cápsula de Salud Mental: Manejo del Estrés',
-            'description' => 'Técnicas de relajación y control de ansiedad.',
+            'title' => 'Salud mental universitaria',
+            'description' => 'Herramientas para el manejo del estrés y la ansiedad académica.',
         ],
         [
-            'title' => 'Testimonio: Superando Retos Académicos',
-            'description' => 'Intervención en retos específicos de aprendizaje.',
-        ],
-        [
-            'title' => 'Habilidades Sociales Universitarias',
+            'title' => 'Habilidades sociales',
             'description' => 'Comunicación asertiva y relaciones en el campus.',
-        ],
-        [
-            'title' => 'Organización del Tiempo Académico',
-            'description' => 'Planifica tu semana y mejora tu rendimiento.',
         ],
     ];
 @endphp
@@ -47,30 +39,11 @@
                     @foreach($workshops as $workshop)
                     <div class="swiper-slide">
                         <article class="psico-workshop-card">
-                            <div class="psico-workshop-card__media">
-                                <img
-                                    src="{{ asset('web/imagenes/bienestar/psicopedagogico/video-thumb.jpg') }}"
-                                    alt="{{ $workshop['title'] }}"
-                                    class="psico-workshop-card__thumb"
-                                    loading="lazy"
-                                    decoding="async">
-                                <span class="psico-workshop-card__play" aria-hidden="true">
-                                    <iconify-icon icon="mdi:play"></iconify-icon>
-                                </span>
-                                <div class="psico-workshop-card__bar" aria-hidden="true">
-                                    <iconify-icon icon="mdi:play"></iconify-icon>
-                                    <span class="psico-workshop-card__bar-track">
-                                        <span></span>
-                                    </span>
-                                    <iconify-icon icon="mdi:volume-high"></iconify-icon>
-                                    <iconify-icon icon="mdi:fullscreen"></iconify-icon>
-                                </div>
-                            </div>
                             <div class="psico-workshop-card__body">
                                 <h3 class="psico-workshop-card__title">{{ $workshop['title'] }}</h3>
                                 <p class="psico-workshop-card__description">{{ $workshop['description'] }}</p>
                                 <a href="#consejeria" class="psico-workshop-card__btn">
-                                    Ver más
+                                    Reservar atención
                                     <span aria-hidden="true">&gt;</span>
                                 </a>
                             </div>
@@ -84,13 +57,6 @@
                 <iconify-icon icon="mdi:chevron-right" aria-hidden="true"></iconify-icon>
             </button>
         </div>
-
-        <div class="psico-workshops__cta">
-            <a href="#consejeria" class="psico-btn psico-btn--solid">
-                ¡Solicita tu asesoría ahora!
-                <span aria-hidden="true">&gt;</span>
-            </a>
-        </div>
     </div>
 </section>
 
@@ -101,7 +67,7 @@
         if (!el || typeof Swiper === 'undefined') return;
 
         new Swiper(el, {
-            slidesPerView: 5,
+            slidesPerView: 4,
             spaceBetween: 16,
             watchOverflow: true,
             navigation: {
@@ -112,8 +78,7 @@
                 0: { slidesPerView: 1.15, spaceBetween: 12 },
                 576: { slidesPerView: 2, spaceBetween: 14 },
                 768: { slidesPerView: 3, spaceBetween: 14 },
-                992: { slidesPerView: 4, spaceBetween: 16 },
-                1200: { slidesPerView: 5, spaceBetween: 16 },
+                1200: { slidesPerView: 4, spaceBetween: 16 },
             },
         });
     })();

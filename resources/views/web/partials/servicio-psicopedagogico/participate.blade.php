@@ -7,13 +7,7 @@
         ['icon' => 'mdi:account-group-outline', 'label' => 'Te integras a la comunidad UPRIT.'],
     ];
 
-    $events = [
-        ['day' => '12', 'month' => 'MAY', 'title' => 'Charla sobre Hábitos de Estudio'],
-        ['day' => '19', 'month' => 'MAY', 'title' => 'Taller de Orientación Vocacional'],
-        ['day' => '26', 'month' => 'MAY', 'title' => 'Sesión de Manejo del Estrés'],
-        ['day' => '02', 'month' => 'JUN', 'title' => 'Taller de Técnicas de Memorización'],
-        ['day' => '09', 'month' => 'JUN', 'title' => 'Foro sobre Salud Mental Universitaria'],
-    ];
+    $events = config('bienestar.psicopedagogico.eventos', []);
 
     $communityTabs = [
         'alumnos' => [
@@ -105,11 +99,8 @@
                         <h3>Calendario de Actividades</h3>
                     </header>
                     <div class="psico-card__body">
-                        <p class="psico-event-list__title">
-                            {{ config('bienestar.psicopedagogico.leyenda_horarios') }}
-                        </p>
                         <ul class="psico-event-list">
-                            @foreach($events as $event)
+                            @forelse($events as $event)
                             <li class="psico-event-list__item">
                                 <span class="psico-event-list__date">
                                     <strong>{{ $event['day'] }}</strong>
@@ -117,12 +108,12 @@
                                 </span>
                                 <span class="psico-event-list__title">{{ $event['title'] }}</span>
                             </li>
-                            @endforeach
+                            @empty
+                            <li class="psico-event-list__item">
+                                <span class="psico-event-list__title">Las actividades del mes se publicarán en este calendario.</span>
+                            </li>
+                            @endforelse
                         </ul>
-                        <a href="{{ route('web.noticias') }}" class="psico-card__btn">
-                            Ver calendario completo
-                            <span aria-hidden="true">&gt;</span>
-                        </a>
                     </div>
                 </article>
 
@@ -135,19 +126,23 @@
                                 <p>Elige el tipo de acompañamiento que necesitas.</p>
                             </div>
                         </header>
-                        <a href="{{ route('contactenos') }}" class="psico-card__btn">
-                            Consejería
+                        <p class="psico-counseling__label">Reservas de atenciones</p>
+                        <a href="{{ config('bienestar.psicopedagogico.calendar_atencion') }}" class="psico-card__btn" target="_blank" rel="noopener">
+                            Atención psicopedagógica
                             <span aria-hidden="true">&gt;</span>
                         </a>
-                        <a href="{{ route('contactenos') }}" class="psico-card__btn">
+                        <a href="{{ config('bienestar.psicopedagogico.calendar_vocacional') }}" class="psico-card__btn" target="_blank" rel="noopener">
                             Orientación vocacional
                             <span aria-hidden="true">&gt;</span>
                         </a>
                     </div>
-                    <a href="{{ config('bienestar.whatsapp_url') }}" class="psico-card__whatsapp" target="_blank" rel="noopener">
-                        <iconify-icon icon="mdi:whatsapp" aria-hidden="true"></iconify-icon>
-                        <span>¿Dudas? Escríbenos<br>por WhatsApp</span>
-                    </a>
+                    <div class="psico-counseling__channels">
+                        <p class="psico-counseling__label">Canales de contacto</p>
+                        <a href="mailto:{{ config('bienestar.psicopedagogico.email') }}" class="psico-card__email">
+                            <iconify-icon icon="mdi:email-outline" aria-hidden="true"></iconify-icon>
+                            <span>{{ config('bienestar.psicopedagogico.email') }}</span>
+                        </a>
+                    </div>
                 </article>
             </div>
         </div>

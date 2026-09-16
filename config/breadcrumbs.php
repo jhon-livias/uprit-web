@@ -122,9 +122,9 @@ return [
             'parent' => ['label' => 'Servicios'],
         ],
         'salud' => [
-            'title' => 'Servicios Psicopedagógicos y Salud',
-            'menu_label' => 'Servicios Psicopedagógicos y Salud',
-            'parent' => ['label' => 'Servicios'],
+            'title' => 'Programa de alimentación saludable',
+            'menu_label' => 'Programa de Alimentación Saludable',
+            'parent' => ['label' => 'RSU', 'route' => 'bienestar-rsu'],
         ],
         'servicios-de-salud' => [
             'title' => 'Servicios de Salud',

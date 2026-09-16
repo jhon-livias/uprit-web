@@ -92,15 +92,15 @@
                     <ul class="sociales-contact__list">
                         <li>
                             <iconify-icon icon="mdi:email-outline" aria-hidden="true"></iconify-icon>
-                            <a href="mailto:becas@uprit.edu.pe">becas@uprit.edu.pe</a>
+                            <a href="mailto:{{ config('bienestar.email') }}">{{ config('bienestar.email') }}</a>
                         </li>
                         <li>
                             <iconify-icon icon="mdi:phone" aria-hidden="true"></iconify-icon>
-                            <a href="tel:+5144604444">(044) 604444 anexo 123</a>
+                            <a href="{{ config('bienestar.whatsapp_url') }}" target="_blank" rel="noopener">+51 933 248 429</a>
                         </li>
                         <li>
                             <iconify-icon icon="mdi:map-marker-outline" aria-hidden="true"></iconify-icon>
-                            <span>Av. América Sur 3145, Trujillo</span>
+                            <span>{{ config('bienestar.campus_direccion') }}</span>
                         </li>
                         <li>
                             <iconify-icon icon="mdi:clock-outline" aria-hidden="true"></iconify-icon>

@@ -4,6 +4,9 @@ return [
     'whatsapp' => '51933248429',
     'whatsapp_url' => 'https://wa.me/51933248429',
     'email' => 'bienestarinstitucional@uprit.edu.pe',
+    'campus_direccion' => 'Av. Carretera Industrial a Laredo Km 4 (esquina con la Av. Villarreal), Urb. Semi Rústica El Bosque, Trujillo, Perú',
+
+    'calendario_salud_paho' => 'https://www.paho.org/es/documentos/afiche-calendario-celebraciones-dias-salud-ops-para-2026',
 
     'google_form_inscripcion' => 'https://forms.gle/hSaME47UegLGmzMB7',
 
@@ -123,6 +126,14 @@ return [
     ],
 
     'psicopedagogico' => [
-        'leyenda_horarios' => 'Horario disponible (verde), horario reservado (rojo) y posible cambio (amarillo).',
+        'responsable' => 'Mg. Ashlly Marycriss Vasquez Guzmán',
+        'cargo' => 'Responsable del Servicio Psicopedagógico',
+        'email' => 'ashlly.vasquez@uprit.edu.pe',
+        'foto' => 'web/imagenes/bienestar/psicopedagogico/responsable.jpg',
+        'calendar_atencion' => 'https://calendar.app.google/mUmBvEECv9nRdK2x6',
+        'calendar_vocacional' => 'https://calendar.app.google/eU9HKYjKYtiJjVkN6',
+        'eventos' => [
+            ['day' => '10', 'month' => 'SET', 'title' => 'Día mundial de la prevención del suicidio'],
+        ],
     ],
 ];
