@@ -51,46 +51,72 @@ return [
     ],
 
     'deportes' => [
-        'titulo' => ['DEPORTES', 'UPRIT'],
-        'subtitulo' => 'Forma parte de nuestros equipos deportivos',
+        'kicker' => 'Servicios deportivos',
+        'titulo' => 'Talleres Deportivos y Programas de Alta Competencia',
+        'subtitulo' => 'Disciplina, talento y trabajo en equipo para llegar más lejos.',
+        'sello' => 'Deporte para formar personas',
+        'intro_titulo' => 'En UPRIT, el deporte también es parte de tu formación',
+        'intro' => 'La Universidad Privada de Trujillo (UPRIT) te brinda la oportunidad de participar en nuestros talleres deportivos y programas de alta competencia, donde podrás desarrollar tus habilidades, mejorar tu bienestar físico y mental, y pertenecer a nuestra comunidad en diferentes disciplinas.',
+        'cita' => '¡Muévete, supera tus límites y sé parte de la familia UPRIT!',
+        'youtube' => 'https://www.youtube.com/@comunidaduprit',
+        'beneficios' => [
+            ['icon' => 'mdi:heart-outline', 'text' => 'Mejora tu salud y bienestar'],
+            ['icon' => 'mdi:trophy-outline', 'text' => 'Desarrolla habilidades y talentos'],
+            ['icon' => 'mdi:handshake-outline', 'text' => 'Representa a UPRIT en equipos y torneos'],
+            ['icon' => 'mdi:run', 'text' => 'Fortalece la disciplina y la constancia'],
+        ],
+        'docentes' => [
+            [
+                'name' => 'Gustavo Alonso Tapia Morella',
+                'photo' => 'web/imagenes/bienestar/deportes/docente-ajedrez.jpg',
+            ],
+            [
+                'name' => 'Cristian Diego Mendoza Barreto',
+                'photo' => 'web/imagenes/bienestar/deportes/docente-equipo.jpg',
+            ],
+        ],
+        'videos' => [
+            [
+                'title' => 'Taller de Ajedrez',
+                'image' => 'web/imagenes/bienestar/deportes/video-ajedrez.jpg',
+            ],
+            [
+                'title' => 'Taller de Vóley',
+                'image' => 'web/imagenes/bienestar/deportes/video-voley.jpg',
+            ],
+            [
+                'title' => 'Taller de Básquet',
+                'image' => 'web/imagenes/bienestar/deportes/video-basquet.jpg',
+            ],
+        ],
         'talleres' => [
             [
-                'title' => 'Vóley',
+                'title' => 'Ajedrez',
+                'icon' => 'mdi:chess-knight',
+                'image' => 'web/imagenes/bienestar/deportes/chess.jpg',
+                'details' => [
+                    ['icon' => 'mdi:account-outline', 'label' => 'Docente', 'text' => 'Gustavo Alonso Tapia Morella'],
+                    ['icon' => 'mdi:clock-outline', 'label' => 'Horario', 'text' => 'Lunes de 9:00 a.m. a 11:00 a.m.'],
+                    ['icon' => 'mdi:timer-outline', 'label' => 'Duración', 'text' => '2 horas'],
+                    ['icon' => 'mdi:video-outline', 'label' => 'Modalidad', 'text' => 'Virtual (Google Meet)'],
+                ],
+            ],
+            [
+                'title' => 'Voley',
                 'icon' => 'mdi:volleyball',
-                'image' => 'web/imagenes/bienestar/deportes/volley.webp',
-                'description' => 'Trabajo en equipo, coordinación y diversión en cada partido.',
-                'teacher' => 'Prof. Luis Mendoza',
-                'schedule' => 'Martes 10:00 a.m. - 11:30 a.m.',
-                'benefits' => [
-                    ['icon' => 'mdi:account-group-outline', 'text' => 'Mejora tu condición física'],
-                    ['icon' => 'mdi:handshake-outline', 'text' => 'Desarrolla trabajo en equipo'],
-                    ['icon' => 'mdi:run', 'text' => 'Fortalece la coordinación y reflejos'],
+                'image' => 'web/imagenes/bienestar/deportes/volley.jpg',
+                'details' => [
+                    ['icon' => 'mdi:account-outline', 'label' => 'Docente', 'text' => 'Cristian Diego Mendoza Barreto'],
+                    ['icon' => 'mdi:clock-outline', 'label' => 'Horario', 'text' => 'Martes y jueves de 9:00 a.m. a 11:00 a.m.'],
                 ],
             ],
             [
                 'title' => 'Básquet',
                 'icon' => 'mdi:basketball',
-                'image' => 'web/imagenes/bienestar/deportes/basket.webp',
-                'description' => 'Agilidad, estrategia y pasión en cada jugada.',
-                'teacher' => 'Prof. Carla Núñez',
-                'schedule' => 'Jueves 10:00 a.m. - 11:30 a.m.',
-                'benefits' => [
-                    ['icon' => 'mdi:heart-pulse', 'text' => 'Mejora la resistencia y agilidad'],
-                    ['icon' => 'mdi:brain', 'text' => 'Desarrolla concentración y disciplina'],
-                    ['icon' => 'mdi:trophy-outline', 'text' => 'Fomenta el liderazgo'],
-                ],
-            ],
-            [
-                'title' => 'Ajedrez',
-                'icon' => 'mdi:chess-knight',
-                'image' => 'web/imagenes/bienestar/deportes/chess.jpg',
-                'description' => 'Piensa, analiza y toma decisiones estratégicas.',
-                'teacher' => 'Ing. Diego Paredes',
-                'schedule' => 'Domingos 9:00 a.m. - 12:00 p.m.',
-                'benefits' => [
-                    ['icon' => 'mdi:brain', 'text' => 'Mejora la concentración y memoria'],
-                    ['icon' => 'mdi:target', 'text' => 'Desarrolla pensamiento lógico'],
-                    ['icon' => 'mdi:lightbulb-on-outline', 'text' => 'Potencia la creatividad y estrategia'],
+                'image' => 'web/imagenes/bienestar/deportes/basket.jpg',
+                'details' => [
+                    ['icon' => 'mdi:account-outline', 'label' => 'Docente', 'text' => 'Cristian Diego Mendoza Barreto'],
+                    ['icon' => 'mdi:clock-outline', 'label' => 'Horario', 'text' => 'Martes y jueves de 9:00 a.m. a 11:00 a.m.'],
                 ],
             ],
         ],
