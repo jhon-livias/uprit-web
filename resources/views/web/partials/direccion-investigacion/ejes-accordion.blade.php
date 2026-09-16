@@ -23,18 +23,50 @@
                 <p class="direccion-investigacion__lead">{{ $colaboracion['descripcion'] }}</p>
                 <p class="direccion-investigacion__lead"><strong>{{ $colaboracion['intro'] }}</strong></p>
                 @if (!empty($colaboracion['convenios']))
-                    <div class="direccion-investigacion-convenios">
-                        @foreach ($colaboracion['convenios'] as $convenio)
-                            <a href="{{ $convenio['url'] ?? '#' }}" class="direccion-investigacion-convenio" @if(!empty($convenio['url'])) target="_blank" rel="noopener noreferrer" @endif>
-                                @if (!empty($convenio['logo']))
-                                    <img src="{{ asset($convenio['logo']) }}" alt="{{ $convenio['nombre'] }}">
-                                @endif
-                                <span>{{ $convenio['nombre'] }}</span>
-                            </a>
-                        @endforeach
+                    @php
+                        $hasLogos = collect($colaboracion['convenios'])->contains(fn ($convenio) => !empty($convenio['logo']));
+                    @endphp
+                    <div class="table-responsive direccion-investigacion-table-wrap">
+                        <table class="direccion-investigacion-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">N°</th>
+                                    <th scope="col">Institución / Convenio</th>
+                                    @if ($hasLogos)
+                                        <th scope="col">Logotipo</th>
+                                    @endif
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($colaboracion['convenios'] as $index => $convenio)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>
+                                            @if (!empty($convenio['url']))
+                                                <a href="{{ $convenio['url'] }}" target="_blank" rel="noopener noreferrer">{{ $convenio['nombre'] }}</a>
+                                            @else
+                                                {{ $convenio['nombre'] }}
+                                            @endif
+                                        </td>
+                                        @if ($hasLogos)
+                                            <td>
+                                                @if (!empty($convenio['logo']))
+                                                    <img src="{{ asset($convenio['logo']) }}" alt="{{ $convenio['nombre'] }}" class="direccion-investigacion-convenio-logo">
+                                                @else
+                                                    —
+                                                @endif
+                                            </td>
+                                        @endif
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
+                    @unless ($hasLogos)
+                        <p class="direccion-investigacion__nota">Los logotipos institucionales se publicarán cuando estén disponibles.</p>
+                    @endunless
                 @else
-                    <p class="text-muted mb-0">Los logotipos de convenios de investigación se publicarán próximamente.</p>
+                    <p class="text-muted mb-0">Los convenios de investigación se publicarán próximamente.</p>
                 @endif
             </div>
         </div>
@@ -53,7 +85,7 @@
                 <h4 class="direccion-investigacion__subtitulo">{{ $produccion['proyectos_titulo'] }}</h4>
                 @include('web.partials.direccion-investigacion.proyectos-table', [
                     'proyectos' => $produccion['proyectos'],
-                    'columns' => ['titulo', 'investigador_principal', 'coautores', 'linea', 'producto'],
+                    'columns' => ['titulo', 'investigador_principal', 'coautores', 'linea', 'producto', 'anio'],
                 ])
                 <div class="direccion-investigacion-repositorio">
                     <a href="{{ $repositorioUrl }}" target="_blank" rel="noopener noreferrer" class="btn-ver-perfil-docente">

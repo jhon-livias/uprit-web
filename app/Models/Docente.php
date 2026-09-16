@@ -23,6 +23,7 @@ class Docente extends Model
         'genero',
         'titulo_academico',
         'resumen_investigacion',
+        'orcid',
     ];
 
     protected $casts = [
@@ -47,7 +48,7 @@ class Docente extends Model
     {
         return match ($this->rol_investigacion) {
             'director' => 'Director de Investigación',
-            'coordinadora' => 'Coordinadora de Control de Proyectos',
+            'coordinadora' => 'Coordinadora de Control de Proyectos de Investigación',
             'docente' => 'Docente Investigador',
             default => null,
         };
@@ -75,9 +76,49 @@ class Docente extends Model
         return $query
             ->where('es_investigador', true)
             ->orderByRaw("CASE rol_investigacion WHEN 'director' THEN 1 WHEN 'coordinadora' THEN 2 ELSE 3 END")
-            ->orderByRaw("CASE WHEN rol_investigacion = 'docente' THEN CASE genero WHEN 'F' THEN 0 WHEN 'M' THEN 1 ELSE 2 END ELSE 0 END")
             ->orderBy('orden_investigacion')
             ->orderBy('nombre');
+    }
+
+    public static function findInvestigadorByNombre(string $nombre): ?self
+    {
+        $needle = self::normalizeInvestigadorNombre($nombre);
+
+        if ($needle === '') {
+            return null;
+        }
+
+        return static::query()
+            ->where('es_investigador', true)
+            ->get()
+            ->first(function (self $docente) use ($needle) {
+                $haystack = self::normalizeInvestigadorNombre($docente->nombre);
+
+                return $haystack === $needle
+                    || str_contains($haystack, $needle)
+                    || str_contains($needle, $haystack)
+                    || self::apellidosInvestigador($haystack) === self::apellidosInvestigador($needle);
+            });
+    }
+
+    private static function normalizeInvestigadorNombre(string $nombre): string
+    {
+        $nombre = trim(mb_strtolower($nombre));
+        $nombre = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $nombre) ?: $nombre;
+        $nombre = preg_replace('/[^a-z\s]/', '', $nombre) ?? $nombre;
+
+        return trim(preg_replace('/\s+/', ' ', $nombre) ?? $nombre);
+    }
+
+    private static function apellidosInvestigador(string $normalized): string
+    {
+        $parts = array_values(array_filter(explode(' ', $normalized)));
+
+        if (count($parts) < 2) {
+            return $normalized;
+        }
+
+        return implode(' ', array_slice($parts, -2));
     }
 
     public function carreras(): BelongsToMany

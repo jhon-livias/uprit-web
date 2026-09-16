@@ -14,6 +14,7 @@
                     <div class="text-block">
                         @include('web.partials.direccion-investigacion.ejes-accordion')
                     </div>
+                    @include('web.partials.investigacion.contacto-direccion')
                 </div>
             </div>
             <div class="col-lg-4">
@@ -38,8 +39,8 @@
 
     <div class="container ">
         <div class="text-block text-center">
-            <h3 class="title">Equipo Directivo de Investigación</h3>
-            <p style="padding-left: 58px; padding-right: 58px;">Un grupo de profesionales con amplia experiencia académica y de gestión, comprometidos con brindar una educación de calidad, formar líderes y transformar el futuro de nuestros estudiantes.</p>
+            <h3 class="title">Equipo de Investigación</h3>
+            <p style="padding-left: 58px; padding-right: 58px;">Un grupo de profesionales con amplia experiencia académica y de gestión, comprometidos con la investigación científica, la formación de investigadores y el desarrollo de conocimiento con impacto para la sociedad.</p>
         </div>
         <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:30px;margin-top:50px;">
             @foreach($docentesInvestigadores as $docente)

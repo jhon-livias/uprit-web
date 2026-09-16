@@ -22,6 +22,11 @@
             <a href="tel:{{ $contacto['telefono'] }}" class="investigacion-etica__contacto-link">
                 {{ $contacto['telefono_display'] }}
             </a>
+            @if (!empty($contacto['email']))
+                <a href="mailto:{{ $contacto['email'] }}" class="investigacion-etica__contacto-email">
+                    {{ $contacto['email'] }}
+                </a>
+            @endif
             <a href="{{ $whatsappUrl }}" class="investigacion-etica__contacto-whatsapp" target="_blank" rel="noopener noreferrer">
                 WhatsApp
             </a>
