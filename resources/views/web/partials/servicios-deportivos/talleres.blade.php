@@ -3,14 +3,10 @@
     $inscripcionUrl = config('bienestar.google_form_inscripcion');
 @endphp
 
-<section class="deportes-talleres">
+<section class="deportes-talleres" id="talleres">
     <div class="container">
-        <header class="deportes-talleres__header">
-            <p class="deportes-talleres__kicker">Talleres deportivos</p>
-            <h2 class="deportes-talleres__title">¡Actívate, aprende y crece!</h2>
-            <p class="deportes-talleres__lead">
-                Desarrolla tu talento, fortalece tu cuerpo y mente y forma parte de nuestra comunidad.
-            </p>
+        <header class="deportes-section-heading">
+            <h2 class="deportes-section-heading__title">Nuestros Talleres</h2>
         </header>
 
         <div class="deportes-talleres__grid">
@@ -22,53 +18,28 @@
                         alt="{{ $taller['title'] }}"
                         loading="lazy"
                         decoding="async">
-                    <div class="deportes-taller-card__label">
-                        <span class="deportes-taller-card__sport-icon" aria-hidden="true">
-                            <iconify-icon icon="{{ $taller['icon'] }}"></iconify-icon>
-                        </span>
-                        <h3>{{ $taller['title'] }}</h3>
-                    </div>
                 </div>
                 <div class="deportes-taller-card__body">
-                    <p class="deportes-taller-card__desc">{{ $taller['description'] }}</p>
-                    <p class="cultura-taller-card__meta">
-                        <strong>Docente:</strong> {{ $taller['teacher'] }}
-                    </p>
-                    <p class="cultura-taller-card__meta">
-                        <strong>Horario:</strong> {{ $taller['schedule'] }}
-                    </p>
-                    <p class="deportes-taller-card__benefits-title">Beneficios</p>
-                    <ul class="deportes-taller-card__benefits">
-                        @foreach($taller['benefits'] as $benefit)
+                    <h3 class="deportes-taller-card__title">{{ $taller['title'] }}</h3>
+                    <ul class="deportes-taller-card__details">
+                        @foreach($taller['details'] as $detail)
                         <li>
-                            <span aria-hidden="true">
-                                <iconify-icon icon="{{ $benefit['icon'] }}"></iconify-icon>
+                            <span class="deportes-taller-card__icon" aria-hidden="true">
+                                <iconify-icon icon="{{ $detail['icon'] }}"></iconify-icon>
                             </span>
-                            {{ $benefit['text'] }}
+                            <span>
+                                <strong>{{ $detail['label'] }}:</strong>
+                                {{ $detail['text'] }}
+                            </span>
                         </li>
                         @endforeach
                     </ul>
                     <a href="{{ $inscripcionUrl }}" class="deportes-taller-card__btn" target="_blank" rel="noopener">
-                        Inscríbete aquí
-                        <span aria-hidden="true">&gt;</span>
+                        Inscríbete al taller
                     </a>
                 </div>
             </article>
             @endforeach
-        </div>
-
-        <div class="deportes-talleres__cta">
-            <p class="deportes-talleres__cta-left">
-                <iconify-icon icon="mdi:account-group-outline" aria-hidden="true"></iconify-icon>
-                <span>¡Tú eliges tu reto, nosotros te acompañamos!</span>
-            </p>
-            <p class="deportes-talleres__cta-right">
-                <iconify-icon icon="mdi:calendar-month-outline" aria-hidden="true"></iconify-icon>
-                <span>
-                    <strong>Inscripciones abiertas</strong>
-                    ¡No te quedes fuera!
-                </span>
-            </p>
         </div>
     </div>
 </section>
