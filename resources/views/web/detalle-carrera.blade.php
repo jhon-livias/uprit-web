@@ -482,6 +482,7 @@
 
                                     </div>
 
+                                    @if (filled($carrera->grado_obtenido))
                                     <div class="info-item">
 
                                         <div class="info-icon">
@@ -501,6 +502,7 @@
                                         </div>
 
                                     </div>
+                                    @endif
 
                                     <div class="info-item">
 
