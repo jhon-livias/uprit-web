@@ -16,7 +16,7 @@
             'text' => 'Promovemos el cuidado del medio ambiente y la cultura de sostenibilidad.',
         ],
         [
-            'image' => 'eje-4.webp',
+            'image' => 'eje-4.jpg',
             'title' => 'Investigación e innovación social',
             'text' => 'Fomentamos la investigación aplicada para aportar soluciones a problemas sociales.',
         ],

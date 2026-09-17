@@ -13,17 +13,17 @@
         'alumnos' => [
             'label' => 'Alumnos',
             'caption' => 'Nuestros Alumnos',
-            'images' => ['comunidad-1.jpg', 'comunidad-2.jpg', 'comunidad-3.jpg', 'comunidad-1.jpg', 'comunidad-2.jpg'],
+            'images' => ['comunidad-1.jpg', 'comunidad-2.jpg', 'comunidad-3.jpg', 'comunidad-4.jpg', 'comunidad-1.jpg'],
         ],
         'docentes' => [
             'label' => 'Docentes',
             'caption' => 'Nuestros Docentes en Formación',
-            'images' => ['comunidad-2.jpg', 'comunidad-3.jpg', 'comunidad-1.jpg', 'comunidad-2.jpg', 'comunidad-3.jpg'],
+            'images' => ['comunidad-2.jpg', 'comunidad-4.jpg', 'comunidad-1.jpg', 'comunidad-3.jpg', 'comunidad-2.jpg'],
         ],
         'tutores' => [
             'label' => 'Tutores',
             'caption' => 'Nuestros Tutores y Mentores',
-            'images' => ['comunidad-3.jpg', 'comunidad-1.jpg', 'comunidad-2.jpg', 'comunidad-3.jpg', 'comunidad-1.jpg'],
+            'images' => ['comunidad-3.jpg', 'comunidad-1.jpg', 'comunidad-4.jpg', 'comunidad-2.jpg', 'comunidad-3.jpg'],
         ],
     ];
 @endphp

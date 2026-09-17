@@ -32,10 +32,6 @@
             </div>
 
             <article class="sociales-hero-card">
-                <img
-                    src="{{ asset('web/imagenes/bienestar/sociales/responsable.jpg') }}"
-                    alt="{{ config('bienestar.sociales.responsable') }}"
-                    class="sociales-hero-card__photo">
                 <div class="sociales-hero-card__text">
                     <p class="sociales-hero-card__label">Responsable:</p>
                     <p class="sociales-hero-card__name">{{ config('bienestar.sociales.responsable') }}</p>
