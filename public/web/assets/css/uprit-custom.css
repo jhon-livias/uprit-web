@@ -1851,6 +1851,112 @@ a.categorie-grid {
     font-weight: 700;
 }
 
+.carrera-certificaciones {
+    display: grid;
+    gap: 28px;
+}
+
+.certificacion-card {
+    border: 1px solid #e6e8eb;
+    border-radius: 12px;
+    padding: 28px 30px;
+    background: #fff;
+}
+
+.certificacion-card__eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #1b6aa8;
+    margin-bottom: 8px;
+}
+
+.certificacion-card__title {
+    font-size: 22px;
+    line-height: 1.35;
+    margin: 0 0 8px;
+}
+
+.certificacion-card__ciclo {
+    margin: 0 0 18px;
+    color: #5b6166;
+    font-weight: 600;
+}
+
+.certificacion-card__block + .certificacion-card__block {
+    margin-top: 20px;
+}
+
+.certificacion-card__block h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.certificacion-card__block p,
+.certificacion-card__block li {
+    font-family: var(--font-primary);
+    color: #4b5156;
+    line-height: 1.7;
+}
+
+.certificacion-card__block ul {
+    padding-left: 18px;
+    margin: 0;
+}
+
+.certificacion-cursos {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.certificacion-cursos th,
+.certificacion-cursos td {
+    border-bottom: 1px solid #edf0f2;
+    padding: 8px 10px;
+    text-align: left;
+}
+
+.certificacion-cursos th {
+    color: #6b7176;
+    font-weight: 700;
+}
+
+.puede-convalidacion {
+    margin: 18px 0 8px;
+    padding: 18px 18px 14px;
+    border: 1px solid #d9e6f2;
+    border-radius: 10px;
+    background: #f5f9fc;
+}
+
+.puede-convalidacion__title {
+    font-size: 16px;
+    margin: 0 0 6px;
+}
+
+.puede-convalidacion__intro {
+    margin: 0 0 8px;
+    font-size: 14px;
+    color: #5b6166;
+}
+
+.puede-convalidacion__list {
+    margin: 0 0 10px;
+    padding-left: 18px;
+    color: #3d4348;
+    font-weight: 600;
+}
+
+.puede-convalidacion__link {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
 .tag-descripcion {
     font-family: var(--font-primary);
     text-align: justify;

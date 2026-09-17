@@ -74,6 +74,11 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="carriculam-tab" data-bs-toggle="tab" data-bs-target="#carriculam" type="button" role="tab" aria-controls="carriculam" aria-selected="false">Malla Curricular</button>
                         </li>
+                        @if($carrera->certificaciones && $carrera->certificaciones->count() > 0)
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="certificaciones-tab" data-bs-toggle="tab" data-bs-target="#certificaciones" type="button" role="tab" aria-controls="certificaciones" aria-selected="false">Certificaciones</button>
+                        </li>
+                        @endif
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="instructor-tab" data-bs-toggle="tab" data-bs-target="#instructor" type="button" role="tab" aria-controls="instructor" aria-selected="false">Perfil de Egresado</button>
                         </li>
@@ -281,6 +286,88 @@
 
                             </div>
                         </div>
+                        @if($carrera->certificaciones && $carrera->certificaciones->count() > 0)
+                        <div class="tab-pane fade" id="certificaciones" role="tabpanel" aria-labelledby="certificaciones-tab">
+                            <div class="course-tab-content">
+                                <div class="carrera-certificaciones">
+                                    @foreach($carrera->certificaciones as $certificacion)
+                                    <article class="certificacion-card">
+                                        <header class="certificacion-card__header">
+                                            @if($certificacion->titulo)
+                                            <span class="certificacion-card__eyebrow">{{ $certificacion->titulo }}</span>
+                                            @endif
+                                            <h3 class="certificacion-card__title">{{ $certificacion->nombre }}</h3>
+                                            @if($certificacion->ciclo)
+                                            <p class="certificacion-card__ciclo">Ciclo requerido: {{ $certificacion->ciclo }}</p>
+                                            @endif
+                                        </header>
+
+                                        @if($certificacion->requisitos)
+                                        <div class="certificacion-card__block">
+                                            <h4>Requisitos</h4>
+                                            <p>{!! nl2br(e($certificacion->requisitos)) !!}</p>
+                                        </div>
+                                        @endif
+
+                                        @php
+                                            $cursosCert = is_array($certificacion->cursos) ? $certificacion->cursos : [];
+                                        @endphp
+                                        @if(count($cursosCert) > 0)
+                                        <div class="certificacion-card__block">
+                                            <h4>Cursos clave</h4>
+                                            <div class="table-responsive">
+                                                <table class="certificacion-cursos">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Código</th>
+                                                            <th>Tipo</th>
+                                                            <th>Asignatura</th>
+                                                            <th>Créditos</th>
+                                                            <th>Horas</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach($cursosCert as $cursoCert)
+                                                        <tr>
+                                                            <td>{{ $cursoCert['codigo'] ?? '' }}</td>
+                                                            <td>{{ $cursoCert['tipo'] ?? '' }}</td>
+                                                            <td>{{ $cursoCert['asignatura'] ?? '' }}</td>
+                                                            <td>{{ $cursoCert['creditos'] ?? '' }}</td>
+                                                            <td>{{ $cursoCert['horas'] ?? '' }}</td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        @endif
+
+                                        @php
+                                            $competencias = is_array($certificacion->competencias) ? $certificacion->competencias : [];
+                                        @endphp
+                                        @if(count($competencias) > 0)
+                                        <div class="certificacion-card__block">
+                                            <h4>Competencias que acredita</h4>
+                                            <ul>
+                                                @foreach($competencias as $competencia)
+                                                <li>{{ $competencia }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        @endif
+
+                                        @if($certificacion->perfil_salida)
+                                        <div class="certificacion-card__block">
+                                            <h4>Perfil de salida</h4>
+                                            <p>{{ $certificacion->perfil_salida }}</p>
+                                        </div>
+                                        @endif
+                                    </article>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        @endif
                         <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
                             <div class="course-tab-content">
                                 <div class="course-instructor">
@@ -559,6 +646,18 @@
                                         </div>
 
                                     </div>
+                                    @if($carrera->ofreceConvalidacionPuede())
+                                    <div class="puede-convalidacion">
+                                        <h3 class="puede-convalidacion__title">Pregrado Puede</h3>
+                                        <p class="puede-convalidacion__intro">Convalidación según estudios previos:</p>
+                                        <ul class="puede-convalidacion__list">
+                                            <li>1 año</li>
+                                            <li>2.5 años</li>
+                                            <li>5 años</li>
+                                        </ul>
+                                        <a href="{{ route('convalidacion') }}" class="puede-convalidacion__link">Ver proceso de convalidación</a>
+                                    </div>
+                                    @endif
                                     @if($carrera->brochureUrl())
                                     <a href="{{ $carrera->brochureUrl() }}" target="_blank" rel="noopener noreferrer" class="edu-btn btn-secondary detalle-button d-flex align-items-center justify-content-center gap-2">
 

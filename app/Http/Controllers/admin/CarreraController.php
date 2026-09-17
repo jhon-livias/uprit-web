@@ -10,6 +10,7 @@ use App\Models\Categoria;
 use App\Models\CarreraDescripcion;
 use App\Models\CarreraPregunta;
 use App\Models\CarreraMalla;
+use App\Models\CarreraCertificacion;
 use App\Models\CarreraPerfilEgresado;
 use App\Models\Docente;
 use App\Services\WebNavigationCache;
@@ -23,7 +24,7 @@ class CarreraController extends Controller
     public function getCarrera()
     {
         $carreras = Carrera::with('categoria.nivelAcademico')->get()->sortBy('categoria.nivel_academico_id');
-        $carreras->load('categoria.nivelAcademico', 'categoria.padre', 'preguntas', 'docentes', 'malla', 'detalle_descripcion', 'perfilEgresado');
+        $carreras->load('categoria.nivelAcademico', 'categoria.padre', 'preguntas', 'docentes', 'malla', 'certificaciones', 'detalle_descripcion', 'perfilEgresado');
         return response()->json($carreras);
     }
     public function index()
@@ -190,6 +191,39 @@ class CarreraController extends Controller
         }
 
         WebNavigationCache::forget();
+        return response()->json(true);
+    }
+
+    public function storeCertificaciones(Request $request)
+    {
+        CarreraCertificacion::where('carrera_id', $request->carrera_id)->delete();
+
+        $titulos = $request->titulo ?? [];
+        $nombres = $request->nombre ?? [];
+
+        foreach ($nombres as $index => $nombre) {
+            $nombre = trim((string) $nombre);
+            $titulo = trim((string) ($titulos[$index] ?? ''));
+
+            if ($nombre === '' && $titulo === '') {
+                continue;
+            }
+
+            $certificacion = new CarreraCertificacion();
+            $certificacion->carrera_id = $request->carrera_id;
+            $certificacion->orden = $index + 1;
+            $certificacion->titulo = $titulo !== '' ? $titulo : null;
+            $certificacion->nombre = $nombre !== '' ? $nombre : $titulo;
+            $certificacion->ciclo = trim((string) ($request->ciclo[$index] ?? '')) ?: null;
+            $certificacion->requisitos = trim((string) ($request->requisitos[$index] ?? '')) ?: null;
+            $certificacion->perfil_salida = trim((string) ($request->perfil_salida[$index] ?? '')) ?: null;
+            $certificacion->cursos = json_decode($request->cursos[$index] ?? '[]', true) ?: [];
+            $certificacion->competencias = json_decode($request->competencias[$index] ?? '[]', true) ?: [];
+            $certificacion->save();
+        }
+
+        WebNavigationCache::forget();
+
         return response()->json(true);
     }
 

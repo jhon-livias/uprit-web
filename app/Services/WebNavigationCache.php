@@ -224,7 +224,9 @@ class WebNavigationCache
         $root = Categoria::query()
             ->select($categoriaColumns)
             ->where('nombre', 'Segunda Especialidad')
-            ->whereHas('nivelAcademico', fn ($q) => $q->where('nombre', 'Pregrado'))
+            ->whereNull('padre_id')
+            ->whereHas('nivelAcademico', fn ($q) => $q->whereIn('nombre', ['Pregrado', 'Posgrado']))
+            ->orderByRaw("CASE WHEN nivel_academico_id = ? THEN 0 ELSE 1 END", [Carrera::NIVEL_PREGRADO])
             ->with([
                 'carreras' => $visibleInNav,
                 'hijos' => fn ($q) => $q->select($categoriaColumns)->orderBy('nombre'),

@@ -56,6 +56,7 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::post('/carreras/delete/{id}', [CarreraController::class, 'delete'])->name('carreras.delete');
     Route::post('/carreras/descripcion/store', [CarreraController::class, 'storeDescipcion'])->name('carreras.descripcion.store');
     Route::post('/carreras/malla/store', [CarreraController::class, 'storeMalla'])->name('carreras.malla.store');
+    Route::post('/carreras/certificaciones/store', [CarreraController::class, 'storeCertificaciones'])->name('carreras.certificaciones.store');
     Route::post('/carreras/perfil/store', [CarreraController::class, 'storePerfilEgresado'])->name('carreras.perfil.store');
     Route::post('/carreras/docente/store', [CarreraController::class, 'storeDocente'])->name('carreras.docente.store');
 
