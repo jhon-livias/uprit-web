@@ -11,19 +11,19 @@
             'quote' => 'El taller de danza me ayudó a desconectarme del estrés académico y a conocer a personas increíbles. ¡Es el mejor momento de mi semana!',
             'name' => 'Estefany J.',
             'role' => 'Estudiante de Administración',
-            'photo' => 'danza.jpg',
+            'photo' => 'student-1.jpg',
         ],
         [
             'quote' => 'Gracias al taller de música pude volver a tocar guitarra y ahora formo parte del ensamble universitario.',
             'name' => 'Carlos R.',
             'role' => 'Estudiante de Ingeniería',
-            'photo' => 'musica.jpg',
+            'photo' => 'student-2.jpg',
         ],
         [
             'quote' => 'En teatro encontré un espacio para expresarme y ganar confianza. Representar a la UPRIT es un orgullo.',
             'name' => 'Lucía M.',
             'role' => 'Estudiante de Derecho',
-            'photo' => 'teatro.jpg',
+            'photo' => 'student-3.jpg',
         ],
     ];
 @endphp

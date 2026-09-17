@@ -3,8 +3,8 @@
         ['file' => 'danza.jpg', 'alt' => 'Taller de danza'],
         ['file' => 'musica.jpg', 'alt' => 'Taller de música'],
         ['file' => 'teatro.jpg', 'alt' => 'Taller de teatro'],
-        ['file' => 'danza.jpg', 'alt' => 'Taller de danza'],
-        ['file' => 'musica.jpg', 'alt' => 'Taller de música'],
+        ['file' => 'comunidad-1.jpg', 'alt' => 'Ensamble musical'],
+        ['file' => 'comunidad-2.jpg', 'alt' => 'Comunidad artística UPRIT'],
     ];
 @endphp
 

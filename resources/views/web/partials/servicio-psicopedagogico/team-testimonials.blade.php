@@ -4,19 +4,19 @@
             'quote' => 'El servicio psicopedagógico me ayudó a organizar mi tiempo y a entender mis fortalezas. ¡Ahora me siento más segura en mis estudios!',
             'name' => 'Estefany J.',
             'role' => 'Estudiante UPRIT',
-            'photo' => 'staff-1.jpg',
+            'photo' => 'student-1.jpg',
         ],
         [
             'quote' => 'Gracias a la orientación vocacional pude confirmar que estaba en la carrera correcta y mejorar mi rendimiento académico.',
             'name' => 'Carlos R.',
             'role' => 'Estudiante UPRIT',
-            'photo' => 'staff-2.jpg',
+            'photo' => 'student-2.jpg',
         ],
         [
             'quote' => 'Las sesiones me dieron herramientas para manejar el estrés de los exámenes y concentrarme mejor en mis clases.',
             'name' => 'Lucía M.',
             'role' => 'Estudiante UPRIT',
-            'photo' => 'staff-3.jpg',
+            'photo' => 'student-3.jpg',
         ],
     ];
 @endphp

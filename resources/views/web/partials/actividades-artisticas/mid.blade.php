@@ -17,7 +17,7 @@
         ['image' => 'danza.jpg', 'alt' => 'Taller de danza', 'filter' => 'artisticos'],
         ['image' => 'musica.jpg', 'alt' => 'Taller de música', 'filter' => 'artisticos'],
         ['image' => 'teatro.jpg', 'alt' => 'Taller de teatro', 'filter' => 'artisticos'],
-        ['image' => 'comunidad-4.webp', 'alt' => 'Actividad cultural UPRIT', 'filter' => 'eventos'],
+        ['image' => 'comunidad-4.jpg', 'alt' => 'Actividad cultural UPRIT', 'filter' => 'eventos'],
     ];
 
     $tabs = [

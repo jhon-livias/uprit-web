@@ -18,21 +18,17 @@
             </a>
         </div>
 
-        <article class="rsu-hero-card">
-            <img
-                src="{{ asset('web/imagenes/bienestar/rsu/responsable.jpg') }}"
-                alt="{{ config('bienestar.rsu.responsable') }}"
-                class="rsu-hero-card__photo">
-            <p class="rsu-hero-card__label">Responsable de RSU</p>
-            <p class="rsu-hero-card__name">{{ config('bienestar.rsu.responsable') }}</p>
-            <p class="rsu-hero-card__role">{{ config('bienestar.rsu.cargo') }}</p>
-            <p class="rsu-hero-card__role">
-                <a href="tel:{{ config('bienestar.rsu.telefono') }}">{{ config('bienestar.rsu.telefono') }}</a>
-            </p>
-            <a href="{{ route('contactenos') }}" class="rsu-btn rsu-btn--solid rsu-btn--sm">
-                Conoce más sobre él
-                <iconify-icon icon="mdi:file-document-outline" aria-hidden="true"></iconify-icon>
-            </a>
-        </article>
+            <article class="rsu-hero-card">
+                <p class="rsu-hero-card__label">Responsable de RSU</p>
+                <p class="rsu-hero-card__name">{{ config('bienestar.rsu.responsable') }}</p>
+                <p class="rsu-hero-card__role">{{ config('bienestar.rsu.cargo') }}</p>
+                <p class="rsu-hero-card__role">
+                    <a href="tel:{{ config('bienestar.rsu.telefono') }}">{{ config('bienestar.rsu.telefono') }}</a>
+                </p>
+                <a href="{{ route('contactenos') }}" class="rsu-btn rsu-btn--solid rsu-btn--sm">
+                    Conoce más sobre él
+                    <iconify-icon icon="mdi:file-document-outline" aria-hidden="true"></iconify-icon>
+                </a>
+            </article>
     </div>
 </section>

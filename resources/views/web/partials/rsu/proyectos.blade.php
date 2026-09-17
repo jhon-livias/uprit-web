@@ -1,17 +1,17 @@
 @php
     $proyectos = [
         [
-            'image' => 'proyecto-1.webp',
+            'image' => 'proyecto-1.jpg',
             'title' => 'Educar para transformar',
             'text' => 'Talleres y acompañamiento educativo en comunidades vecinas.',
         ],
         [
-            'image' => 'proyecto-2.webp',
+            'image' => 'proyecto-2.jpg',
             'title' => 'Campus sostenible',
             'text' => 'Acciones de reciclaje, reforestación y cultura ambiental en UPRIT.',
         ],
         [
-            'image' => 'proyecto-3.webp',
+            'image' => 'proyecto-3.jpg',
             'title' => 'Salud para todos',
             'text' => 'Campañas preventivas y jornadas de atención junto a aliados.',
         ],

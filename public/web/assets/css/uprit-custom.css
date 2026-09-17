@@ -4588,6 +4588,10 @@ body.salud-flyer-open {
     border-radius: 8px;
 }
 
+body.page-servicio-psicopedagogico .salud-flyer__dialog {
+    width: min(920px, 100%);
+}
+
 .salud-banner {
     position: relative;
     overflow: visible;
