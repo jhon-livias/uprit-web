@@ -7,140 +7,58 @@
         <div class="row row--30">
             <div class="col-lg-8">
                 <div class="privacy-policy">
-                    <div class="text-block text-center">
-                        <h3 style="margin-bottom:20px;font-weight: 700;font-size:30px">
-                            Nuestras Autoridades
-                        </h3>
+                    <div class="course-details-content course-details-7 autoridades-tabs">
+                        <ul class="nav nav-tabs" id="autoridadesTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="directivo-tab" data-bs-toggle="tab" data-bs-target="#directivo" type="button" role="tab" aria-controls="directivo" aria-selected="true">Consejo Directivo</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="academicos-tab" data-bs-toggle="tab" data-bs-target="#academicos" type="button" role="tab" aria-controls="academicos" aria-selected="false">Académicos</button>
+                            </li>
+                        </ul>
 
-                        <p style="margin-bottom:30px;">
-                            Conoce a los integrantes del Consejo Directivo de la Universidad Privada de Trujillo, <br> maxima instancia de direccion ejecutiva de nuestra Universidad.
-                        </p>
+                        <div class="tab-content" id="autoridadesTabContent">
+                            <div class="tab-pane fade show active" id="directivo" role="tabpanel" aria-labelledby="directivo-tab">
+                                <p class="autoridades-intro">
+                                    Integrantes del Consejo Directivo, máxima instancia de dirección ejecutiva de la Universidad Privada de Trujillo.
+                                </p>
+
+                                @foreach($directivo as $index => $autoridad)
+                                <div class="autoridad-fila{{ $index % 2 === 1 ? ' autoridad-fila--invertida' : '' }}">
+                                    <div class="autoridad-fila__foto">
+                                        <img src="{{ asset($autoridad['foto']) }}"
+                                            alt="{{ $autoridad['nombre'] }}"
+                                            class="autoridad-foto">
+                                    </div>
+                                    <div class="autoridad-fila__texto">
+                                        <h3>{{ $autoridad['nombre'] }}</h3>
+                                        <p>{{ $autoridad['cargo'] }}</p>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+
+                            <div class="tab-pane fade" id="academicos" role="tabpanel" aria-labelledby="academicos-tab">
+                                <p class="autoridades-intro">
+                                    Equipo académico que conduce las facultades y el gobierno universitario.
+                                </p>
+
+                                @foreach($academicas as $index => $autoridad)
+                                <div class="autoridad-fila{{ $index % 2 === 1 ? ' autoridad-fila--invertida' : '' }}">
+                                    <div class="autoridad-fila__foto">
+                                        <img src="{{ $autoridad['foto'] ? asset($autoridad['foto']) : asset('web/assets/images/svg-icons/instructor.svg') }}"
+                                            alt="{{ $autoridad['nombre'] }}"
+                                            class="autoridad-foto">
+                                    </div>
+                                    <div class="autoridad-fila__texto">
+                                        <h3>{{ $autoridad['nombre'] }}</h3>
+                                        <p>{{ $autoridad['cargo'] }}</p>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
-                    <!-- AUTORIDAD 1 -->
-                    <div style="display:flex;align-items:center;gap:50px;margin-top:60px;margin-bottom:80px;flex-wrap:wrap;">
-
-                        <div style="flex:1;min-width:300px;">
-                            <img src="{{ asset('web/imagenes/au1.jpg') }}"
-                                alt="Autoridad"
-                                style="width:100%;max-width:450px;border-radius:15px;height:350px">
-                        </div>
-
-                        <div style="flex:1;min-width:300px;">
-                            <h3 style="font-weight:700;margin-bottom:15px;">
-                                Juan Mauricio Noriega Escobedo
-                            </h3>
-
-                            <p style="margin:0;font-size:17px;line-height:1.8;">
-                                Presidente del Consejo Directivo UPRIT, MBA, Catedrático.
-                            </p>
-                        </div>
-
-                    </div>
-
-                    <!-- AUTORIDAD 2 -->
-                    <div style="display:flex;align-items:center;gap:50px;margin-bottom:50px;flex-wrap:wrap;">
-
-                        <div style="flex:1;min-width:300px;">
-                            <h3 style="font-weight:700;margin-bottom:15px;">
-                                Rómulo Mucho Mamani
-                            </h3>
-
-                            <p style="margin:0;font-size:17px;line-height:1.8;">
-                                Director, Ingeniero, ex Ministro de Energía y Minas, Catedrático.
-                            </p>
-                        </div>
-
-                        <div style="flex:1;min-width:300px;text-align:right;">
-                            <img src="{{ asset('web/imagenes/au2.jpg') }}"
-                                alt="Autoridad"
-                                style="width:100%;max-width:450px;border-radius:15px;height:350px">
-                        </div>
-
-                    </div>
-                    <div style="display:flex;align-items:center;gap:50px;margin-top:60px;margin-bottom:80px;flex-wrap:wrap;">
-
-                        <div style="flex:1;min-width:300px;">
-                            <img src="{{ asset('web/imagenes/au3.jpg') }}"
-                                alt="Autoridad"
-                                style="width:100%;max-width:450px;border-radius:15px;height:350px">
-                        </div>
-
-                        <div style="flex:1;min-width:300px;">
-                            <h3 style="font-weight:700;margin-bottom:15px;">
-
-                                Enrique Manuel Durand Bazán
-                            </h3>
-
-                            <p style="margin:0;font-size:17px;line-height:1.8;">
-                                Director, Phd, empresario del sector construcción, Catedrático.
-                            </p>
-                        </div>
-
-                    </div>
-
-                    <!-- AUTORIDAD 2 -->
-                    <div style="display:flex;align-items:center;gap:50px;margin-bottom:50px;flex-wrap:wrap;">
-
-                        <div style="flex:1;min-width:300px;">
-                            <h3 style="font-weight:700;margin-bottom:15px;">
-                                Militza Jovick Muñoz
-                            </h3>
-
-                            <p style="margin:0;font-size:17px;line-height:1.8;">
-                                Director, Médico Cirujano, ex Presidente de la FILACP.
-                            </p>
-                        </div>
-
-                        <div style="flex:1;min-width:300px;text-align:right;">
-                            <img src="{{ asset('web/imagenes/au4.jpg') }}"
-                                alt="Autoridad"
-                                style="width:100%;max-width:450px;border-radius:15px;height:350px">
-                        </div>
-
-                    </div>
-                    <div style="display:flex;align-items:center;gap:50px;margin-top:60px;margin-bottom:80px;flex-wrap:wrap;">
-
-                        <div style="flex:1;min-width:300px;">
-                            <img src="{{ asset('web/imagenes/au5.jpg') }}"
-                                alt="Autoridad"
-                                style="width:100%;max-width:450px;border-radius:15px;height:350px">
-                        </div>
-
-                        <div style="flex:1;min-width:300px;">
-                            <h3 style="font-weight:700;margin-bottom:15px;">
-                                Diego Emilio Leyton Martínez
-                            </h3>
-
-                            <p style="margin:0;font-size:17px;line-height:1.8;">
-                                Director, MBA, Director Sostenibilidad Cia.M.B, Catedrático.
-                            </p>
-                        </div>
-
-                    </div>
-
-                    <!-- AUTORIDAD 2 -->
-                    <div style="display:flex;align-items:center;gap:50px;margin-bottom:50px;flex-wrap:wrap;">
-
-                        <div style="flex:1;min-width:300px;">
-                            <h3 style="font-weight:700;margin-bottom:15px;">
-                                Juan Carlos Noriega Escobedo
-                            </h3>
-
-                            <p style="margin:0;font-size:17px;line-height:1.8;">
-                                Director, MBA, Gerente Regional Bioreg Pharma, Catedrático.
-                            </p>
-                        </div>
-
-                        <div style="flex:1;min-width:300px;text-align:right;">
-                            <img src="{{ asset('web/imagenes/au1.jpg') }}"
-                                alt="Autoridad"
-                                style="width:100%;max-width:450px;border-radius:15px;height:350px">
-                        </div>
-
-                    </div>
-
-
-
                 </div>
             </div>
             <div class="col-lg-4">

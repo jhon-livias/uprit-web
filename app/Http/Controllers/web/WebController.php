@@ -350,7 +350,62 @@ class WebController extends Controller
     public function autoridades()
     {
         $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
-        return view('web.autoridades', compact('ultimasnoticias'));
+
+        $directivo = [
+            [
+                'nombre' => 'Juan Mauricio Noriega Escobedo',
+                'cargo' => 'Presidente del Consejo Directivo UPRIT, MBA, Catedrático.',
+                'foto' => 'web/imagenes/autoridades/juan-mauricio-noriega.jpg',
+            ],
+            [
+                'nombre' => 'Rómulo Mucho Mamani',
+                'cargo' => 'Director, Ingeniero, ex Ministro de Energía y Minas, Catedrático.',
+                'foto' => 'web/imagenes/autoridades/romulo-mucho.jpg',
+            ],
+            [
+                'nombre' => 'Militza Jovick Muñoz',
+                'cargo' => 'Director, Médico Cirujano, ex Presidente de la FILACP.',
+                'foto' => 'web/imagenes/autoridades/militza-jovick.jpg',
+            ],
+            [
+                'nombre' => 'Diego Emilio Leyton Martínez',
+                'cargo' => 'Director, MBA, Director Sostenibilidad Cia.M.B, Catedrático.',
+                'foto' => 'web/imagenes/autoridades/diego-leyton.jpg',
+            ],
+            [
+                'nombre' => 'Juan Carlos Noriega Escobedo',
+                'cargo' => 'Director, MBA, Gerente Regional Bioreg Pharma, Catedrático.',
+                'foto' => 'web/imagenes/autoridades/juan-carlos-noriega.jpg',
+            ],
+        ];
+
+        $academicas = [
+            ['buscar' => 'José Miguel Sibina', 'nombre' => 'José Miguel Sibina Pereyra', 'cargo' => 'Decano'],
+            ['buscar' => 'Olenka Ana Catherine', 'nombre' => 'Olenka Ana Catherine Espinoza Rodriguez', 'cargo' => 'Vicerrectora'],
+            ['buscar' => 'Alexander Máximo Rodríguez', 'nombre' => 'Alexander Máximo Rodríguez García', 'cargo' => 'Decano de la Facultad de Derecho y Ciencias Sociales'],
+            ['buscar' => 'Santos Pedro Aponte', 'nombre' => 'Santos Pedro Aponte Mendez', 'cargo' => 'Decano de la Facultad de Ciencias Empresariales'],
+            ['buscar' => 'Luis Alberto Acosta', 'nombre' => 'Luis Alberto Acosta Sánchez', 'cargo' => 'Decano de la Facultad de Ingeniería y Arquitectura'],
+        ];
+
+        $academicas = array_map(function (array $item) {
+            $docente = $this->docenteAutoridad($item['buscar']);
+
+            return [
+                'nombre' => $docente?->nombre_con_titulo ?: $item['nombre'],
+                'cargo' => $item['cargo'],
+                'foto' => $docente?->imagen ?: null,
+            ];
+        }, $academicas);
+
+        return view('web.autoridades', compact('ultimasnoticias', 'directivo', 'academicas'));
+    }
+
+    private function docenteAutoridad(string $nombre): ?Docente
+    {
+        return Docente::query()
+            ->where('nombre', 'like', '%'.$nombre.'%')
+            ->orderByRaw("CASE WHEN imagen IS NULL OR imagen = '' THEN 1 ELSE 0 END")
+            ->first();
     }
 
     public function rednexo()
