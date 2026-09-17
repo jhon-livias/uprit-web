@@ -264,6 +264,9 @@
                                                     <a class="nav-link" :class="{ active: tabActiva === 'malla' }" href="javascript:;" @click="cambiarTab('malla')">Malla curricular</a>
                                                 </li>
                                                 <li class="nav-item">
+                                                    <a class="nav-link" :class="{ active: tabActiva === 'certificaciones' }" href="javascript:;" @click="cambiarTab('certificaciones')">Certificaciones</a>
+                                                </li>
+                                                <li class="nav-item">
                                                     <a class="nav-link" :class="{ active: tabActiva === 'perfil' }" href="javascript:;" @click="cambiarTab('perfil')">Perfil de egresado</a>
                                                 </li>
                                                 <li class="nav-item">
@@ -494,6 +497,89 @@
                                                 </form>
                                             </div>
 
+                                            <!-- Tab: Certificaciones -->
+                                            <div v-show="tabActiva === 'certificaciones'">
+                                                <form @submit.prevent="guardarCertificaciones">
+                                                    <div v-for="(item, index) in certificaciones" :key="index" class="border rounded p-3 mb-3">
+                                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                                            <strong>Certificación {{ index + 1 }}</strong>
+                                                            <div>
+                                                                <button type="button" class="btn btn-info btn-sm esp-dere" @click="item.collapsed = !item.collapsed">
+                                                                    <i class="fa" :class="item.collapsed ? 'fa-plus' : 'fa-minus'"></i>
+                                                                </button>
+                                                                <button type="button" class="btn btn-danger btn-sm" @click="eliminarCertificacion(index)">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <div v-show="!item.collapsed">
+                                                            <div class="form-group">
+                                                                <input v-model="item.titulo" type="text" class="form-control" placeholder="Título (ej. Primera certificación)">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input v-model="item.nombre" type="text" class="form-control" placeholder="Nombre de la certificación">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input v-model="item.ciclo" type="text" class="form-control" placeholder="Ciclo (ej. VI ciclo)">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <textarea v-model="item.requisitos" rows="3" class="form-control" placeholder="Requisitos"></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Cursos clave</label>
+                                                                <div v-for="(curso, cursoIndex) in item.cursos" :key="cursoIndex" class="row mb-2">
+                                                                    <div class="col-md-2">
+                                                                        <input v-model="curso.codigo" class="form-control form-control-sm" placeholder="Código">
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input v-model="curso.tipo" class="form-control form-control-sm" placeholder="Tipo">
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <input v-model="curso.asignatura" class="form-control form-control-sm" placeholder="Asignatura">
+                                                                    </div>
+                                                                    <div class="col-md-1">
+                                                                        <input v-model="curso.creditos" class="form-control form-control-sm" placeholder="Créd.">
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input v-model="curso.horas" class="form-control form-control-sm" placeholder="Horas">
+                                                                    </div>
+                                                                    <div class="col-md-1">
+                                                                        <button type="button" class="btn btn-sm btn-outline-danger" @click="item.cursos.splice(cursoIndex, 1)">
+                                                                            <i class="fa fa-times"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <button type="button" class="btn btn-sm btn-success" @click="agregarCursoCertificacion(item)">
+                                                                    <i class="fa fa-plus"></i> Curso
+                                                                </button>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Competencias</label>
+                                                                <div class="input-group mb-2">
+                                                                    <input type="text" class="form-control" placeholder="Agregar competencia" @keyup.enter.prevent="agregarCompetencia(item, $event)">
+                                                                    <div class="input-group-append">
+                                                                        <button type="button" class="btn btn-success" @click="agregarCompetencia(item, $event)">Agregar</button>
+                                                                    </div>
+                                                                </div>
+                                                                <span v-for="(comp, compIndex) in item.competencias" :key="compIndex" class="badge badge-primary mr-2 mb-2">
+                                                                    {{ comp }}
+                                                                    <i class="fa fa-times ml-1" style="cursor:pointer" @click="item.competencias.splice(compIndex, 1)"></i>
+                                                                </span>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <textarea v-model="item.perfil_salida" rows="3" class="form-control" placeholder="Perfil de salida"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button type="button" class="btn btn-success" @click="agregarCertificacion">
+                                                        <i class="fa fa-plus"></i> Agregar certificación
+                                                    </button>
+                                                    <div class="text-right mt-3">
+                                                        <button type="submit" class="btn btn-primary">Guardar certificaciones</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
                                             <!-- Tab: Perfil de egresado -->
                                             <div v-show="tabActiva === 'perfil'">
                                                 <form @submit.prevent="guardarPerfil">
@@ -567,6 +653,7 @@ export default {
 
             nuevaOportunidad: '',
             malla: [],
+            certificaciones: [],
             perfil: {
                 descripcion: ''
             },
@@ -651,6 +738,25 @@ export default {
             this.perfil = {
                 descripcion: item.perfil_egresado?.descripcion ?? ''
             };
+
+            this.certificaciones = item.certificaciones?.length
+                ? item.certificaciones.map(c => ({
+                    titulo: c.titulo ?? '',
+                    nombre: c.nombre ?? '',
+                    ciclo: c.ciclo ?? '',
+                    requisitos: c.requisitos ?? '',
+                    perfil_salida: c.perfil_salida ?? '',
+                    cursos: Array.isArray(c.cursos) ? c.cursos.map(curso => ({
+                        codigo: curso.codigo ?? '',
+                        tipo: curso.tipo ?? '',
+                        asignatura: curso.asignatura ?? '',
+                        creditos: curso.creditos ?? '',
+                        horas: curso.horas ?? '',
+                    })) : [],
+                    competencias: Array.isArray(c.competencias) ? [...c.competencias] : [],
+                    collapsed: true,
+                }))
+                : [];
 
             this.docentesSeleccionados = item.docentes?.length
                 ? item.docentes.map(d => String(d.id))
@@ -1116,6 +1222,72 @@ export default {
 
                 });
 
+        },
+        certificacionVacia() {
+            return {
+                titulo: '',
+                nombre: '',
+                ciclo: '',
+                requisitos: '',
+                perfil_salida: '',
+                cursos: [],
+                competencias: [],
+                collapsed: false,
+            };
+        },
+        agregarCertificacion() {
+            this.certificaciones.push(this.certificacionVacia());
+        },
+        eliminarCertificacion(index) {
+            this.certificaciones.splice(index, 1);
+        },
+        agregarCursoCertificacion(item) {
+            item.cursos.push({
+                codigo: '',
+                tipo: '',
+                asignatura: '',
+                creditos: '',
+                horas: '',
+            });
+        },
+        agregarCompetencia(item, event) {
+            const input = event.target.closest('.input-group').querySelector('input');
+            const valor = input.value.trim();
+            if (!valor) return;
+            item.competencias.push(valor);
+            input.value = '';
+        },
+        guardarCertificaciones() {
+            let formData = new FormData();
+            formData.append('carrera_id', this.carrera.id);
+
+            this.certificaciones.forEach((item) => {
+                formData.append('titulo[]', item.titulo);
+                formData.append('nombre[]', item.nombre);
+                formData.append('ciclo[]', item.ciclo);
+                formData.append('requisitos[]', item.requisitos);
+                formData.append('perfil_salida[]', item.perfil_salida);
+                formData.append('cursos[]', JSON.stringify(item.cursos));
+                formData.append('competencias[]', JSON.stringify(item.competencias));
+            });
+
+            axios.post(
+                route('carreras.certificaciones.store'),
+                formData
+            )
+                .then(() => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'CERTIFICACIONES GUARDADAS',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    this.getCarreras();
+                })
+                .catch((error) => {
+                    console.log(error);
+                    toastr.error('Error al guardar');
+                });
         },
         guardarPerfil() {
 

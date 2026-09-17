@@ -72,6 +72,20 @@ class Carrera extends Model
         return $this->hasMany(CarreraMalla::class, 'carrera_id');
     }
 
+    public function certificaciones()
+    {
+        return $this->hasMany(CarreraCertificacion::class, 'carrera_id')->orderBy('orden');
+    }
+
+    public function ofreceConvalidacionPuede(): bool
+    {
+        return in_array($this->nombre, [
+            'Educación Inicial',
+            'Educación Primaria',
+            'Educación Secundaria con Mención en Ciencias Sociales',
+        ], true) && $this->isPregradoPuede();
+    }
+
     public function detalle_descripcion()
     {
         return $this->hasOne(

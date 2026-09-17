@@ -83,7 +83,7 @@ class WebController extends Controller
 
     public function detallecarrera($id)
     {
-        $carrera = Carrera::with('docentes')->findOrFail($id);
+        $carrera = Carrera::with(['docentes', 'certificaciones', 'malla'])->findOrFail($id);
         $carrera->setRelation(
             'docentes',
             $carrera->docentes
