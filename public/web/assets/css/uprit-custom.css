@@ -10458,10 +10458,6 @@ a.rsu-news__all span {
     font-weight: 700;
 }
 
-.privacy-policy-area {
-    padding: 120px 0 40px;
-}
-
 .autoridad-foto {
     width: 100%;
     max-width: 450px;
@@ -10538,12 +10534,6 @@ a.rsu-news__all span {
     line-height: 1.8;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    .privacy-policy-area {
-        padding: 100px 0 40px;
-    }
-}
-
 @media only screen and (max-width: 991px) {
     .autoridades-tabs .nav-tabs .nav-item .nav-link {
         padding: 12px 16px;
@@ -10580,10 +10570,6 @@ a.rsu-news__all span {
 }
 
 @media only screen and (max-width: 767px) {
-    .privacy-policy-area {
-        padding: 90px 0 32px;
-    }
-
     .autoridades-intro {
         margin: 18px 0 6px;
         padding: 0 4px;
