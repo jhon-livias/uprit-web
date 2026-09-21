@@ -10762,3 +10762,8 @@ a.rsu-news__all span {
     }
 }
 
+.privacy-policy-area > .container > .row.row--30 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
