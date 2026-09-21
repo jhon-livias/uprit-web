@@ -29,6 +29,14 @@
 
     <div class="career-finder__chips" role="group" aria-label="Nivel académico"></div>
 
+    <div class="career-finder__filters-head">
+        <span class="career-finder__filters-label">Filtros de carrera</span>
+        <button type="button" class="career-finder__reset-filters" hidden>
+            <iconify-icon icon="mdi:filter-off-outline"></iconify-icon>
+            Limpiar filtros
+        </button>
+    </div>
+
     <div class="career-finder__filters">
         <label>
             <span>Facultad</span>

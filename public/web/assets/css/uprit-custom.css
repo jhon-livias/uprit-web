@@ -11234,7 +11234,7 @@ a.rsu-news__all span {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
-    margin-top: 14px;
+    margin-top: 0;
 }
 
 .career-finder__filters label {
@@ -11262,6 +11262,46 @@ a.rsu-news__all span {
     font-weight: 600;
 }
 
+.career-finder__filters-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+.career-finder__filters-label {
+    color: #5c6570;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.career-finder__reset-filters {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #ffeaef;
+    color: #91001e;
+    border: 1px solid #ffeaef;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.career-finder__reset-filters:hover {
+    background: #91001e;
+    border-color: #91001e;
+    color: #ffffff;
+}
+
+.career-finder__reset-filters iconify-icon {
+    font-size: 16px;
+}
 .career-finder__hint,
 .career-finder__count,
 .career-finder__suggest-label,
