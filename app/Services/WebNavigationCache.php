@@ -30,6 +30,8 @@ class WebNavigationCache
 
     public const KEY_NAV_GROUPS = 'web.nav.groups';
 
+    public const KEY_CAREER_SEARCH = 'web.nav.career_search';
+
     /** @var list<string> */
     private const ALL_KEYS = [
         self::KEY_NIVEL_ACADEMICO,
@@ -41,6 +43,7 @@ class WebNavigationCache
         self::KEY_CHATBOT_PREGRADO_PUEDE,
         self::KEY_CHATBOT_POSGRADO,
         self::KEY_NAV_GROUPS,
+        self::KEY_CAREER_SEARCH,
     ];
 
     public static function ttl(): int
@@ -417,6 +420,170 @@ class WebNavigationCache
         }
 
         return $payload;
+    }
+
+    /**
+     * Catálogo compacto del buscador público. Se filtra en el navegador.
+     *
+     * @return array{carreras: list<array<string, mixed>>}
+     */
+    public static function careerSearchCatalog(): array
+    {
+        return self::rememberArray(
+            self::KEY_CAREER_SEARCH,
+            fn () => self::buildCareerSearchCatalog()
+        );
+    }
+
+    /**
+     * @return array{carreras: list<array<string, mixed>>}
+     */
+    private static function buildCareerSearchCatalog(): array
+    {
+        $query = Carrera::query()
+            ->select(['id', 'categoria_id', 'nombre', 'duracion', 'modalidades'])
+            ->with([
+                'categoria:id,nombre,nivel_academico_id,padre_id',
+                'categoria.nivelAcademico:id,nombre',
+                'categoria.padre:id,nombre,padre_id',
+            ])
+            ->orderBy('nombre');
+
+        if (Schema::hasColumn('carreras', 'visible_in_nav')) {
+            $query->where('visible_in_nav', true);
+        }
+
+        $carreras = [];
+
+        foreach ($query->get() as $carrera) {
+            $item = self::mapCareerSearchItem($carrera);
+
+            if ($item !== null) {
+                $carreras[] = $item;
+            }
+        }
+
+        return ['carreras' => $carreras];
+    }
+
+    /**
+     * @return array<string, mixed>|null
+     */
+    private static function mapCareerSearchItem(Carrera $carrera): ?array
+    {
+        $nombre = trim((string) $carrera->nombre);
+        $categoria = $carrera->categoria;
+
+        if ($nombre === '' || $categoria === null) {
+            return null;
+        }
+
+        $nivel = self::careerSearchNivel($carrera);
+
+        if ($nivel === null) {
+            return null;
+        }
+
+        $duracion = self::duracionBuscador($carrera->duracion);
+
+        return [
+            'id' => $carrera->id,
+            'nombre' => $nombre,
+            'nivel' => $nivel['id'],
+            'nivelLabel' => $nivel['label'],
+            'facultad' => $categoria->padre->nombre ?? $categoria->nombre,
+            'modalidades' => self::modalidadesBuscador($carrera->modalidades),
+            'duracion' => $duracion['label'],
+            'duracionKey' => $duracion['key'],
+            'url' => route('web.detallecarrera', $carrera->id),
+        ];
+    }
+
+    /**
+     * @return array{id: string, label: string}|null
+     */
+    private static function careerSearchNivel(Carrera $carrera): ?array
+    {
+        $categoria = $carrera->categoria;
+        $nivelNombre = (string) ($categoria?->nivelAcademico?->nombre ?? '');
+        $nombres = array_filter([
+            $categoria?->nombre,
+            $categoria?->padre?->nombre,
+        ]);
+
+        if (in_array('Segunda Especialidad', $nombres, true)) {
+            return ['id' => 'segunda', 'label' => 'Segunda especialidad'];
+        }
+
+        return match ($nivelNombre) {
+            'Pregrado Puede' => ['id' => 'puede', 'label' => 'Puede'],
+            'Posgrado' => ['id' => 'posgrado', 'label' => 'Posgrado'],
+            'Pregrado' => ['id' => 'pregrado', 'label' => 'Pregrado'],
+            default => null,
+        };
+    }
+
+    /**
+     * @return list<string>
+     */
+    private static function modalidadesBuscador(?string $raw): array
+    {
+        $keys = [];
+
+        foreach (modalidades_oficiales($raw) as $linea) {
+            $valor = str_contains($linea, ':') ? trim(explode(':', $linea, 2)[1]) : $linea;
+            $folded = mb_strtolower($valor);
+
+            if (str_contains($folded, 'semi')) {
+                $keys[] = 'Semipresencial';
+            } elseif (str_contains($folded, 'distancia') || str_contains($folded, 'virtual')) {
+                $keys[] = 'A Distancia';
+            } elseif (str_contains($folded, 'presencial')) {
+                $keys[] = 'Presencial';
+            }
+        }
+
+        return array_values(array_unique($keys));
+    }
+
+    /**
+     * @return array{key: string, label: string}
+     */
+    private static function duracionBuscador(?string $raw): array
+    {
+        $label = trim(preg_replace('/\s+/u', ' ', (string) $raw) ?? '');
+
+        if ($label === '') {
+            return ['key' => '', 'label' => ''];
+        }
+
+        $years = null;
+
+        if (preg_match('/(\d+(?:[.,]\d+)?)\s*a(?:ñ|n)os?/iu', $label, $matches)) {
+            $years = (float) str_replace(',', '.', $matches[1]);
+        } elseif (preg_match('/(\d+)\s*ciclos?/iu', $label, $matches)) {
+            $years = ((int) $matches[1]) / 2;
+        } elseif (preg_match('/(\d+)\s*meses/iu', $label, $matches)) {
+            $years = ((int) $matches[1]) / 12;
+        }
+
+        if ($years === null) {
+            return ['key' => mb_strtolower($label), 'label' => $label];
+        }
+
+        if ($years <= 1) {
+            $key = '1 año o menos';
+        } elseif ($years <= 2) {
+            $key = '2 años';
+        } elseif ($years <= 3) {
+            $key = '3 años';
+        } elseif ($years <= 5) {
+            $key = '4 a 5 años';
+        } else {
+            $key = 'Más de 5 años';
+        }
+
+        return ['key' => $key, 'label' => $label];
     }
 
     /**

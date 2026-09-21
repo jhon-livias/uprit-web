@@ -56,39 +56,16 @@
         </div>
     </div>
 </div>
-<div class="features-area-3">
+<section class="career-finder-band" aria-label="Buscador de carreras">
     <div class="container">
-        <div class="features-grid-wrap">
-            <div class="features-box features-style-3 color-primary-style edublink-svg-animate">
-                <div class="icon">
-                    @include('web.partials.icons.icon01')
-                </div>
-                <div class="content">
-                    <h4 class="title">Presencial</h4>
-                    <p>80% créditos presenciales y un máximo de 20% de créditos virtuales.</p>
-                </div>
-            </div>
-            <div class="features-box features-style-3 color-secondary-style edublink-svg-animate">
-                <div class="icon">
-                    @include('web.partials.icons.icon02')
-                </div>
-                <div class="content">
-                    <h4 class="title">Semipresencial</h4>
-                    <p>60% créditos virtuales y 40% créditos presenciales.</p>
-                </div>
-            </div>
-            <div class="features-box features-style-3 color-extra02-style edublink-svg-animate">
-                <div class="icon">
-                    @include('web.partials.icons.icon03')
-                </div>
-                <div class="content">
-                    <h4 class="title">A Distancia</h4>
-                    <p>100% virtual desde donde estés y a tu ritmo.</p>
-                </div>
-            </div>
-        </div>
+        @include('web.partials.career-finder', [
+            'finderId' => 'career-finder-home',
+            'finderContext' => 'home',
+            'finderTitle' => 'Encuentra tu carrera',
+        ])
     </div>
-</div>
+</section>
+
 <div class="edu-about-area about-style-3">
     <div class="container">
         <div class="row g-5 align-items-center">
@@ -200,6 +177,39 @@
         </li>
     </ul>
 </div>
+<div class="features-area-3">
+    <div class="container">
+        <div class="features-grid-wrap">
+            <div class="features-box features-style-3 color-primary-style edublink-svg-animate">
+                <div class="icon">
+                    @include('web.partials.icons.icon01')
+                </div>
+                <div class="content">
+                    <h4 class="title">Presencial</h4>
+                    <p>80% créditos presenciales y un máximo de 20% de créditos virtuales.</p>
+                </div>
+            </div>
+            <div class="features-box features-style-3 color-secondary-style edublink-svg-animate">
+                <div class="icon">
+                    @include('web.partials.icons.icon02')
+                </div>
+                <div class="content">
+                    <h4 class="title">Semipresencial</h4>
+                    <p>60% créditos virtuales y 40% créditos presenciales.</p>
+                </div>
+            </div>
+            <div class="features-box features-style-3 color-extra02-style edublink-svg-animate">
+                <div class="icon">
+                    @include('web.partials.icons.icon03')
+                </div>
+                <div class="content">
+                    <h4 class="title">A Distancia</h4>
+                    <p>100% virtual desde donde estés y a tu ritmo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="hero-banner hero-style-9 bd-slider-secundario">
     <div class="slider">
         <div class="container">
@@ -215,11 +225,9 @@
                             <p class="letra-gris descripcion-carrera-sl">{{$slcarrera->carrera->descripcion}}</p>
                             <div class="banner-btn">
                                 <a href="{{route('web.detallecarrera', $slcarrera->carrera->id)}}"
-                                    class="edu-btn btn-secondary d-flex align-items-center gap-2" style="width:180px">
-
+                                    class="edu-btn btn-secondary d-flex align-items-center gap-2" style="width:180px; justify-content: center;">
                                     <iconify-icon icon="mdi:pencil" style="font-size:20px"></iconify-icon>
-
-                                    Postula Aquí
+                                    <span>Postula Aquí</span>
                                 </a>
                             </div>
                         </div>

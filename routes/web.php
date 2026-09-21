@@ -145,6 +145,7 @@ Route::get('/noticias/{categoria?}', [WebController::class, 'noticias'])->name('
 Route::get('/detalle-noticia/{id}', [WebController::class, 'detallenoticia'])
     ->name('web.detallenoticia')
     ->whereNumber('id');
+Route::get('/buscador/carreras', [WebController::class, 'buscadorCarreras'])->name('web.buscador.carreras');
 Route::get('/detalle-carrera/{id}', [WebController::class, 'detallecarrera'])
     ->name('web.detallecarrera')
     ->whereNumber('id');
