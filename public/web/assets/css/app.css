@@ -6009,19 +6009,19 @@ body.sal-disabled [data-sal|='flip'] {
 }
 
 .about-style-3 {
-    padding: 90px 0 120px;
+    padding: 0 0 120px;
     position: relative
 }
 
 @media only screen and (min-width:768px) and (max-width:991px) {
     .about-style-3 {
-        padding: 90px 0 100px
+        padding: 30px 0 100px
     }
 }
 
 @media only screen and (max-width:767px) {
     .about-style-3 {
-        padding: 80px 0
+        padding: 30px 0
     }
 }
 
@@ -16500,7 +16500,7 @@ only screen and (max-width:1199px) {
     height: 100%;
     width: 100%;
     background: -webkit-linear-gradient(left, rgba(0, 0, 0, .85) 0%, rgba(0, 0, 0, 0) 80%);
-    background: linear-gradient(90deg, hsl(348deg 100% 28%) 0%,  rgba(0, 0, 0, 0.92) 50%);
+    background: linear-gradient(90deg, hsl(348deg 100% 28%) 0%, rgba(0, 0, 0, 0.92) 50%);
     position: absolute;
     top: 0;
     bottom: 0;

@@ -99,6 +99,17 @@
 
         @include('web.layouts.header')
 
+        <dialog id="career-finder-dialog" class="career-finder-dialog" aria-labelledby="career-finder-dialog-root-title">
+            <button type="button" class="career-finder-dialog__close" data-career-finder-close aria-label="Cerrar buscador">
+                <iconify-icon icon="mdi:close" aria-hidden="true"></iconify-icon>
+            </button>
+            @include('web.partials.career-finder', [
+                'finderId' => 'career-finder-dialog-root',
+                'finderContext' => 'dialog',
+                'finderTitle' => 'Buscar carrera',
+            ])
+        </dialog>
+
         @yield('content')
 
         @include('web.layouts.footer')
@@ -133,6 +144,7 @@
     @yield('scripts')
     <script src="{{ static_asset('web/assets/js/app.js') }}"></script>
     <script src="{{ static_asset('web/assets/js/mobile-menu.js') }}"></script>
+    <script src="{{ static_asset('web/assets/js/career-finder.js') }}"></script>
     @stack('after_app_scripts')
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 

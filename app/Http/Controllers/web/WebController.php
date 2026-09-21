@@ -14,6 +14,7 @@ use App\Models\CategoriaNoticia;
 use App\Models\SliderCarrera;
 use App\Models\Reclamo;
 use App\Models\Docente;
+use App\Services\WebNavigationCache;
 
 
 class WebController extends Controller
@@ -506,5 +507,12 @@ class WebController extends Controller
 
         $reclamo->save();
         return redirect()->route('libroreclamaciones')->with('agregar-reclamo', 'ok');
+    }
+
+    public function buscadorCarreras()
+    {
+        return response()
+            ->json(WebNavigationCache::careerSearchCatalog())
+            ->header('Cache-Control', 'public, max-age=300');
     }
 }

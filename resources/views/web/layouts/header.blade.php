@@ -58,6 +58,12 @@
                 </div>
                 <div class="header-right">
                     <ul class="header-action">
+                        <li class="career-finder-trigger">
+                            <button type="button" class="career-finder-open" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px;" data-career-finder-open aria-label="Buscar carrera" aria-haspopup="dialog" aria-controls="career-finder-dialog">
+                                <iconify-icon icon="mdi:magnify" aria-hidden="true"></iconify-icon>
+                                <span>Carreras</span>
+                            </button>
+                        </li>
                         <li class="mobile-menu-bar d-block d-xl-none">
                             <button type="button" class="hamberger-button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-navigation">
                                 <iconify-icon icon="mdi:menu" aria-hidden="true"></iconify-icon>
