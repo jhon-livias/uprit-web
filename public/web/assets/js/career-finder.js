@@ -325,6 +325,7 @@
         var chips = root.querySelector('.career-finder__chips');
         var hint = root.querySelector('.career-finder__hint');
         var count = root.querySelector('.career-finder__count');
+        var resetFiltersBtn = root.querySelector('.career-finder__reset-filters');
         var results = root.querySelector('.career-finder__results');
         var selects = {
             facultad: root.querySelector('[data-filter="facultad"]'),
@@ -335,19 +336,29 @@
         var carreras = [];
         var idleLimit = root.getAttribute('data-context') === 'home' ? 6 : 12;
 
-        function subsetForOptions() {
-            return carreras.filter(function (c) { return !state.nivel || c.nivel === state.nivel; });
+        function subsetFor(fieldToIgnore) {
+            return carreras.filter(function (c) {
+                if (state.nivel && c.nivel !== state.nivel) return false;
+                if (fieldToIgnore !== 'facultad' && state.facultad && c.facultad !== state.facultad) return false;
+                if (fieldToIgnore !== 'modalidad' && state.modalidad && (c.modalidades || []).indexOf(state.modalidad) === -1) return false;
+                if (fieldToIgnore !== 'duracion' && state.duracion && c.duracionKey !== state.duracion) return false;
+                return true;
+            });
         }
 
         function refreshOptions() {
-            var subset = subsetForOptions();
+            var subFacultad = subsetFor('facultad');
+            var subModalidad = subsetFor('modalidad');
+            var subDuracion = subsetFor('duracion');
+
             var facultadLabel = selects.facultad.parentElement.querySelector('span');
             if (facultadLabel) {
                 facultadLabel.textContent = (state.nivel === 'posgrado' || state.nivel === 'segunda') ? 'Área' : 'Facultad';
             }
-            fillSelect(selects.facultad, uniqueSorted(subset.map(function (c) { return c.facultad; })));
-            fillSelect(selects.modalidad, uniqueSorted(subset.reduce(function (all, c) { return all.concat(c.modalidades || []); }, [])));
-            fillSelect(selects.duracion, uniqueSorted(subset.map(function (c) { return c.duracionKey; })), DURACION_ORDER);
+            fillSelect(selects.facultad, uniqueSorted(subFacultad.map(function (c) { return c.facultad; })));
+            fillSelect(selects.modalidad, uniqueSorted(subModalidad.reduce(function (all, c) { return all.concat(c.modalidades || []); }, [])));
+            fillSelect(selects.duracion, uniqueSorted(subDuracion.map(function (c) { return c.duracionKey; })), DURACION_ORDER);
+            
             state.facultad = selects.facultad.value;
             state.modalidad = selects.modalidad.value;
             state.duracion = selects.duracion.value;
@@ -452,6 +463,10 @@
                 ? 'Mostrando ' + Math.min(shownCount, idleLimit) + ' de ' + hits.length
                 : shownCount + (shownCount === 1 ? ' resultado' : ' resultados');
 
+            if (resetFiltersBtn) {
+                resetFiltersBtn.hidden = !(state.facultad || state.modalidad || state.duracion || state.nivel);
+            }
+
             // Hint de intención
             var idea = tokens.length ? intentHint(state.query, function (patch) {
                 if (patch.nivel) state.nivel = patch.nivel;
@@ -510,8 +525,25 @@
 
         input.addEventListener('input', function () { state.query = input.value; render(); });
         clearBtn.addEventListener('click', function () { input.value = ''; state.query = ''; input.focus(); render(); });
+        if (resetFiltersBtn) {
+            resetFiltersBtn.addEventListener('click', function () {
+                state.facultad = '';
+                state.modalidad = '';
+                state.duracion = '';
+                state.nivel = '';
+                selects.facultad.value = '';
+                selects.modalidad.value = '';
+                selects.duracion.value = '';
+                refreshOptions();
+                render();
+            });
+        }
         Object.keys(selects).forEach(function (key) {
-            selects[key].addEventListener('change', function () { state[key] = selects[key].value; render(); });
+            selects[key].addEventListener('change', function () { 
+                state[key] = selects[key].value; 
+                refreshOptions(); 
+                render(); 
+            });
         });
 
         count.textContent = 'Cargando carreras…';
