@@ -8,7 +8,7 @@
         <div class="alimentacion-hero__inner">
             <h1 class="alimentacion-hero__title">Programa de alimentación saludable</h1>
             <p class="alimentacion-hero__lead">
-                Fomentamos hábitos alimenticios saludables y un estilo de vida equilibrado para toda la comunidad universitaria.
+                Promovemos hábitos de alimentación saludable para mejorar tu calidad de vida.
             </p>
             <p class="alimentacion-hero__text">
                 Desde Bienestar Universitario impulsamos una cultura de alimentación consciente, prevención y autocuidado, en articulación con los Servicios de Salud de la UPRIT.
