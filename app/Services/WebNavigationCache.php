@@ -419,6 +419,91 @@ class WebNavigationCache
         return $payload;
     }
 
+    /**
+     * Compact catalog for the Angela WhatsApp widget (nivel → carreras).
+     *
+     * @return array{niveles: list<array{id: string, nombre: string, carreras: list<array{id: mixed, nombre: string, modalidades: list<string>, admision: string|null}>}>}
+     */
+    public static function angelaWidgetCatalog(): array
+    {
+        return [
+            'niveles' => [
+                [
+                    'id' => 'pregrado',
+                    'nombre' => 'Pregrado',
+                    'carreras' => self::flattenChatbotCarreras(self::chatbotPregrado()),
+                ],
+                [
+                    'id' => 'pregrado_puede',
+                    'nombre' => 'Pregrado Puede',
+                    'carreras' => self::flattenChatbotCarreras(self::chatbotPregradoPuede()),
+                ],
+                [
+                    'id' => 'posgrado',
+                    'nombre' => 'Posgrado',
+                    'carreras' => self::flattenChatbotCarreras(self::chatbotPosgrado(), withHijos: true),
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * @param  array<int, array<string, mixed>>  $categorias
+     * @return list<array{id: mixed, nombre: string, modalidades: list<string>, admision: string|null}>
+     */
+    private static function flattenChatbotCarreras(array $categorias, bool $withHijos = false): array
+    {
+        $carreras = [];
+
+        foreach ($categorias as $categoria) {
+            $listas = $categoria['carreras'] ?? [];
+
+            if ($withHijos) {
+                foreach ($categoria['hijos'] ?? [] as $hijo) {
+                    foreach ($hijo['carreras'] ?? [] as $carrera) {
+                        $listas[] = $carrera;
+                    }
+                }
+            }
+
+            foreach ($listas as $carrera) {
+                $carreras[] = self::mapAngelaWidgetCarrera($carrera);
+            }
+        }
+
+        return $carreras;
+    }
+
+    /**
+     * @param  array<string, mixed>  $carrera
+     * @return array{id: mixed, nombre: string, modalidades: list<string>, admision: string|null}
+     */
+    private static function mapAngelaWidgetCarrera(array $carrera): array
+    {
+        $modalidades = array_values(array_filter(array_map(
+            'trim',
+            preg_split('/,\s*/', (string) ($carrera['modalidades'] ?? '')) ?: []
+        )));
+
+        $admision = null;
+        if (! empty($carrera['admision'])) {
+            try {
+                $admision = \Carbon\Carbon::parse($carrera['admision'])
+                    ->locale('es')
+                    ->translatedFormat('j \d\e F \d\e Y');
+            } catch (\Throwable) {
+                $admision = is_string($carrera['admision']) ? $carrera['admision'] : null;
+            }
+        }
+
+        return [
+            'id' => $carrera['id'] ?? null,
+            'nombre' => (string) ($carrera['nombre'] ?? ''),
+            'modalidades' => $modalidades,
+            'admision' => $admision,
+        ];
+    }
+
     private static function visibleInNavCarrerasRelation(): \Closure
     {
         return function ($query): void {

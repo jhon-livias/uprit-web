@@ -942,6 +942,9 @@
         document.addEventListener("DOMContentLoaded", () => {
 
             const modal = document.getElementById("chatbotModal");
+            if (!modal) {
+                return;
+            }
             const closeBtn = document.getElementById("closeChatbot");
             const contactoBtn = document.getElementById("contactoBtn");
             const chatResponse = document.getElementById("chatResponse");
