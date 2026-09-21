@@ -60,7 +60,7 @@
                     <h2 class="bienestar-director-card__heading">Nuestra Directora</h2>
                     <div class="bienestar-director-card__photo-wrap">
                         <img
-                            src="{{ asset('web/imagenes/bienestar/directora.jpg') }}"
+                            src="{{ asset('web/imagenes/bienestar/directora-jovana.jpg') }}"
                             alt="Jovana Bracamonte"
                             class="bienestar-director-card__photo"
                             loading="lazy"
