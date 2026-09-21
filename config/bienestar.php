@@ -4,7 +4,7 @@ return [
     'whatsapp' => '51933248429',
     'whatsapp_url' => 'https://wa.me/51933248429',
     'email' => 'bienestarinstitucional@uprit.edu.pe',
-    'campus_direccion' => 'Av. Carretera Industrial a Laredo Km 4 (esquina con la Av. Villarreal), Urb. Semi Rústica El Bosque, Trujillo, Perú',
+    'campus_direccion' => 'Av. Industrial Km. 04, Mz. Z′ Lote Resultante 1A, Urb. Semirústica El Bosque (Espalda de Sedalib), Trujillo - La Libertad, Perú',
 
     'calendario_salud_paho' => 'https://www.paho.org/es/documentos/afiche-calendario-celebraciones-dias-salud-ops-para-2026',
 
