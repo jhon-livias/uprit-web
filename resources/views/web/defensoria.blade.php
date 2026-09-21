@@ -1,6 +1,9 @@
 @extends('web.layouts.principal')
 @section('content')
 @include('web.partials.breadcrumb')
+@php
+    $defensoria = config('defensoria');
+@endphp
 
 <section class="privacy-policy-area">
     <div class="container">
@@ -8,6 +11,10 @@
             <div class="col-lg-8">
                 <div class="privacy-policy">
                     <div class="text-block text-center">
+                        <blockquote class="defensoria-quote">
+                            <p>“{{ $defensoria['cita'] }}”</p>
+                            <cite>— {{ $defensoria['cita_autor'] }}</cite>
+                        </blockquote>
                         <h3 style="margin-bottom:20px;font-weight: 700;font-size:30px">
                             Lo que Guía Nuestras Acciones
                         </h3>
@@ -30,24 +37,32 @@
                                 Somos el área encargada de proteger los derechos individuales de todos los miembros de la comunidad universitaria: estudiantes, docentes, egresados, graduados, personal administrativo, autoridades académicas y personal de servicio contratado; y procurar el cumplimiento del Principio de Autoridad Responsable. De esta manera, tenemos la facultad de tomar conocimiento y recepcionar las solicitudes, reclamos, quejas y denuncias que formulen los miembros de nuestra comunidad universitaria.
                             </p>
 
+                            <div class="defensoria-audience">
+                                <h4 class="defensoria-audience__title">Quiénes pueden acudir:</h4>
+                                <div class="defensoria-audience__list">
+                                    @foreach($defensoria['audiencia'] as $publico)
+                                    <span class="defensoria-audience__item">{{ $publico }}</span>
+                                    @endforeach
+                                </div>
+                            </div>
 
                         </div>
 
 
 
-                        <!-- Video derecha -->
-                        <!-- Imagen derecha -->
-                        <div style=" flex:1;min-width:350px;">
-
-                            <div style="overflow:hidden;border-radius:15px;">
-
+                        <div style=" flex:1;min-width:280px;">
+                            <article class="defensoria-profile">
                                 <img
-                                    src="{{ asset('web/imagenes/por.jpg') }}"
-                                    alt="Mensaje del Director"
-                                    style="width:100%;height:auto;display:block;">
-
-                            </div>
-
+                                    src="{{ asset($defensoria['defensor']['foto']) }}"
+                                    alt="{{ $defensoria['defensor']['nombre'] }}"
+                                    class="defensoria-profile__photo">
+                                <h3 class="defensoria-profile__name">{{ $defensoria['defensor']['nombre'] }}</h3>
+                                <p class="defensoria-profile__role">{{ $defensoria['defensor']['cargo'] }}</p>
+                                <a href="mailto:{{ $defensoria['defensor']['email'] }}" class="defensoria-profile__email">
+                                    <iconify-icon icon="mdi:email-outline" aria-hidden="true"></iconify-icon>
+                                    {{ $defensoria['defensor']['email'] }}
+                                </a>
+                            </article>
                         </div>
 
                     </div>
@@ -56,7 +71,7 @@
                         <h3 class="title">Canales de Atención</h3>
                         <ul>
                             <li>
-                                Oficina Presencial: Av. Industrial Km. 04, Mz. Z′ Lote Resultante 1A, Urb. Semirústica El Bosque (Espalda de Sedalib), Campus Universitario UPRIT, 3er piso (costado Dirección de Investigación), Trujillo - La Libertad, Perú.
+                                Oficina Presencial: {{ $defensoria['oficina'] }}
                             </li>
                         </ul>
                     </div>
@@ -80,12 +95,7 @@
                                                     <div class="accordion-body">
                                                         <div class="course-lesson">
                                                             <p>
-                                                                Lunes a Viernes, de 8 am a 1 pm y de 2 pm a 5pm
-                                                                Sábados, de 8 am a 1 pm
-
-                                                                Correo Institucional
-
-                                                                defensoriauniversitaria@uprit.e
+                                                                {{ $defensoria['horario'] }}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -100,7 +110,7 @@
                                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
                                                         <div class="course-lesson">
-                                                            <p><a href="mailto:defensoriauniversitaria@uprit.edu.pe">defensoriauniversitaria@uprit.edu.pe</a></p>
+                                                            <p><a href="mailto:{{ $defensoria['correo'] }}">{{ $defensoria['correo'] }}</a></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -442,9 +452,9 @@
                     <div style="display:flex;align-items:center;gap:50px;margin-top:60px;margin-bottom:80px;flex-wrap:wrap;">
 
                         <div style="flex:1;min-width:300px;">
-                            <img src="{{ asset('web/imagenes/de1.avif') }}"
-                                alt="Autoridad"
-                                style="width:100%;max-width:450px;border-radius:15px;height:350px">
+                            <img src="{{ asset('web/imagenes/defensoria/solicitudes.jpg') }}"
+                                alt="Solicitudes"
+                                style="width:100%;max-width:450px;border-radius:15px;height:350px;object-fit:cover;">
                         </div>
 
                         <div style="flex:1;min-width:300px;">
@@ -473,9 +483,9 @@
                         </div>
 
                         <div style="flex:1;min-width:300px;text-align:right;">
-                            <img src="{{ asset('web/imagenes/d2.jpg') }}"
-                                alt="Autoridad"
-                                style="width:100%;max-width:450px;border-radius:15px;height:350px">
+                            <img src="{{ asset('web/imagenes/defensoria/reclamos.jpg') }}"
+                                alt="Reclamos"
+                                style="width:100%;max-width:450px;border-radius:15px;height:350px;object-fit:cover;">
                         </div>
 
                     </div>
@@ -483,9 +493,9 @@
                     <div style="display:flex;align-items:center;gap:50px;margin-top:60px;margin-bottom:80px;flex-wrap:wrap;">
 
                         <div style="flex:1;min-width:300px;">
-                            <img src="{{ asset('web/imagenes/d3.avif') }}"
-                                alt="Autoridad"
-                                style="width:100%;max-width:450px;border-radius:15px;height:350px">
+                            <img src="{{ asset('web/imagenes/defensoria/quejas.jpg') }}"
+                                alt="Quejas"
+                                style="width:100%;max-width:450px;border-radius:15px;height:350px;object-fit:cover;">
                         </div>
 
                         <div style="flex:1;min-width:300px;">
@@ -514,19 +524,11 @@
                         </div>
 
                         <div style="flex:1;min-width:300px;text-align:right;">
-                            <img src="{{ asset('web/imagenes/d4.jpg') }}"
-                                alt="Autoridad"
-                                style="width:100%;max-width:450px;border-radius:15px;height:350px">
+                            <img src="{{ asset('web/imagenes/defensoria/denuncias.jpg') }}"
+                                alt="Denuncias"
+                                style="width:100%;max-width:450px;border-radius:15px;height:350px;object-fit:cover;">
                         </div>
 
-                    </div>
-                    <div class="text-block text-center">
-                        <h3 class="title">Conoce nuestra normativa</h3>
-                        <p>Accede a los documentos normativos clave de la Defensoría Universitaria. Estos reglamentos y políticas son fundamentales para entender cómo protegemos y garantizamos los derechos de nuestra comunidad, promoviendo un ambiente seguro y equitativo para todos.</p>
-                    </div>
-                    <div class="text-block text-center">
-                        <h3 class="title">¿Tienes algún pedido a la Defensoría?</h3>
-                        <p>Ingresa los datos del siguiente formulario y envianos tu pedido.</p>
                     </div>
                     <div class="text-block text-center">
                         <h3 class="title">Conoce nuestra normativa</h3>
@@ -536,6 +538,18 @@
                             y garantizamos los derechos de nuestra comunidad, promoviendo un ambiente
                             seguro y equitativo para todos.
                         </p>
+                    </div>
+
+                    <div class="defensoria-docs">
+                        @foreach($defensoria['documentos'] as $documento)
+                        <article class="defensoria-doc">
+                            <p class="defensoria-doc__title">{{ $documento['titulo'] }}</p>
+                            <a href="{{ asset($documento['archivo']) }}" class="defensoria-doc__link" target="_blank" rel="noopener">
+                                Ver Documento
+                                <iconify-icon icon="mdi:open-in-new" aria-hidden="true"></iconify-icon>
+                            </a>
+                        </article>
+                        @endforeach
                     </div>
 
                     <div class="text-block text-center" style="margin-bottom:40px;">
@@ -656,13 +670,16 @@
 
                     </div>
                     <br> <br>
-                    <div class="text-block text-center" style="margin-bottom:40px;">
-                        <h3 class="title">¿Qué es Hostigamiento Sexual?</h3>
-                        <ul>
-                            <li>
+                    <div class="defensoria-hostigamiento">
+                        <div class="defensoria-hostigamiento__media">
+                            <img src="{{ asset('web/imagenes/defensoria/hostigamiento.jpg') }}" alt="¿Qué es Hostigamiento Sexual?">
+                        </div>
+                        <div class="defensoria-hostigamiento__copy">
+                            <h3 class="title">¿Qué es Hostigamiento Sexual?</h3>
+                            <p>
                                 El Hostigamiento Sexual es una manifestación de violencia que se produce por medio de actos (físicos o verbales) de naturaleza o significado sexual o sexista no deseada y/o rechazada por la persona a la que se dirigen estos actos. Esta conducta puede ser efectuada por uno o varias personas; intimidando, humillando y afectando la dignidad de la persona hostigada y sus derechos fundamentales. No es un requisito indispensable comprobar el rechazo de la víctima o la reiteración del acto.
-                            </li>
-                        </ul>
+                            </p>
+                        </div>
                     </div>
                     <div class="text-block" style="margin-bottom:40px;">
                         <h3 class="title">¿Cómo reconocer un acto de Hostigamiento Sexual?</h3>
@@ -886,11 +903,6 @@
                     </div>
                     <div class="text-block">
                         <h3 class="title">¿Qué hacer ante un acto de Hostigamiento Sexual?</h3>
-                        <ul>
-                            <li>
-                                Si extraviaste o encontraste algo, dirígete a la Oficina 3203, Edificio 3.
-                            </li>
-                        </ul>
                     </div>
                     <div class="accordion edu-accordion edu-accordion-sec"
                         id="accordionInternacional">
@@ -918,7 +930,7 @@
 
                                 <div class="accordion-body">
                                     <div class="course-lesson">
-                                        <p>Puedes acercarte a la oficina de Defensoría Universitaria en el 3er piso (costado Dirección de Investigación): Av. Industrial Km. 04, Mz. Z′ Lote Resultante 1A, Urb. Semirústica El Bosque (Espalda de Sedalib), Campus Universitario UPRIT, Trujillo - La Libertad, Perú.</p>
+                                        <p>Puedes acercarte a la oficina de Defensoría Universitaria en el 3er piso (costado Dirección de Investigación): {{ $defensoria['oficina'] }}</p>
                                     </div>
                                 </div>
 
@@ -949,9 +961,10 @@
 
                                 <div class="accordion-body">
                                     <div class="course-lesson">
-                                        <p>Paso 1: Descarga el formato, completa los datos resaltados y adjunta los documentos (opcional dependiendo del caso)Ver Documento
+                                        <p>Paso 1: Descarga el formato, completa los datos resaltados y adjunta los documentos (opcional dependiendo del caso)
+                                            <a href="{{ asset('web/documentos/defensoria/reglamento-hostigamiento-sexual.pdf') }}" target="_blank" rel="noopener">Ver Documento</a>
                                             <br>
-                                            Paso 2: Escanea el documento y envíalo al correo institucional: <a href="mailto:defensoriauniversitaria@uprit.edu.pe">defensoriauniversitaria@uprit.edu.pe</a>
+                                            Paso 2: Escanea el documento y envíalo al correo institucional: <a href="mailto:{{ $defensoria['correo'] }}">{{ $defensoria['correo'] }}</a>
                                         </p>
                                     </div>
                                 </div>
