@@ -185,10 +185,6 @@
         <iconify-icon icon="mdi:wheelchair"></iconify-icon>
     </a>
 
-    <a href="https://api.whatsapp.com/send?phone=%2B51933248429&context=AferTi8xZX836bsH1jwi_SMA_wJ5XhwsM8Ykr7oA6jN0Axmgusf4_o5E0hZaTmh9dEIUIonhdp3E2uHQ9EFB0zAJ5YkOnQRElIjAfwGuWTyXgtrLJ0AQDOTKZuCErkGWiPv24e0Eu2riCwhTyruS2LoSUA&source=FB_Page&app=facebook&entry_point=page_cta&fbclid=IwY2xjawKjA_tleHRuA2FlbQIxMABicmlkETFxam4wb0VPYTlIRUZLcjdNAR48jGqyZHyQapDXwxRZatsFzr5p58GPK1q5br-7XLxOYlGkawtbWv5koMLmsQ_aem_6f09mYlMquvt7aKbArCx8Q" class="menu-item whatsapp" target="_blank">
-        <iconify-icon icon="mdi:whatsapp"></iconify-icon>
-    </a>
-
 </div>
 
 <div id="accessibilityMenu" class="accessibility-menu">
@@ -314,40 +310,4 @@
 
 <div id="readingMask"></div>
 <div class="big-cursor" id="bigCursor"></div>
-<!-- Modal Chatbot -->
-<div id="chatbotModal" class="chatbot-modal">
-    <div class="chatbot-content">
-
-        <div class="chatbot-header">
-            <div class="chatbot-title">
-                <div class="chatbot-avatar">
-                    <img src="{{asset('admin/imagenes/perfil.jpg')}}" alt="">
-                </div>
-                <div>
-                    <h3>Asistente Virtual</h3>
-                    <div class="chatbot-status">
-                        <span class="status-dot"></span>
-                        <span>Estamos en línea</span>
-                    </div>
-                </div>
-            </div>
-
-            <button id="closeChatbot">
-                <iconify-icon icon="mdi:close"></iconify-icon>
-            </button>
-        </div>
-
-        <div class="chatbot-body">
-
-            <div class="bot-message">
-                <img src="{{asset('web/imagenes/saludo.gif')}}" alt="" width="20"> Hola, soy tu asistente virtual.
-                <br>
-                ¿Qué información deseas consultar?
-            </div>
-
-            <div id="chatResponse"></div>
-
-        </div>
-
-    </div>
-</div>
+@include('web.partials.angela-widget')

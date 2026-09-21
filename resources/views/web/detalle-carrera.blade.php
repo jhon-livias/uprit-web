@@ -37,13 +37,38 @@
                                             Examen de Admisión: {{ \Carbon\Carbon::parse($carrera->admision)->locale('es')->translatedFormat('j \d\e F \d\e Y') }}
                                         </div>
 
+                                        @php
+                                            $carrera->loadMissing('categoria.nivelAcademico');
+                                            $angelaNivel = $carrera->categoria?->nivelAcademico?->nombre
+                                                ?? ($carrera->isPregradoPuede() ? 'Pregrado Puede' : ($carrera->isPregrado() ? 'Pregrado' : 'Posgrado'));
+                                            $angelaModalidades = modalidades_oficiales($carrera->modalidades);
+                                            $angelaAdmision = $carrera->admision
+                                                ? \Carbon\Carbon::parse($carrera->admision)->locale('es')->translatedFormat('j \d\e F \d\e Y')
+                                                : null;
+                                        @endphp
+                                        <button
+                                            type="button"
+                                            class="angela-carrera-cta"
+                                            data-angela-open
+                                            data-angela-id="{{ $carrera->id }}"
+                                            data-angela-programa="{{ $carrera->nombre }}"
+                                            data-angela-nivel="{{ $angelaNivel }}"
+                                            data-angela-modalidades="{{ implode(', ', $angelaModalidades) }}"
+                                            data-angela-admision="{{ $angelaAdmision }}"
+                                            data-angela-fuente="ficha-carrera"
+                                        >
+                                            <iconify-icon icon="mdi:whatsapp" aria-hidden="true"></iconify-icon>
+                                            Hablar con un asesor de este programa
+                                        </button>
+                                        <p class="angela-carrera-cta__hint">Te atiende Angela por WhatsApp, con este programa ya cargado.</p>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-5">
-              
+
                             </div>
 
                         </div>
