@@ -930,7 +930,7 @@
 
                                 <div class="accordion-body">
                                     <div class="course-lesson">
-                                        <p>Puedes acercarte a la oficina de Defensoría Universitaria en el 3er piso (costado Dirección de Investigación): {{ $defensoria['oficina'] }}</p>
+                                        <p>Puedes acercarte a la oficina de Defensoría Universitaria: {{ $defensoria['oficina'] }}</p>
                                     </div>
                                 </div>
 
