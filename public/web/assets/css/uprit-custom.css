@@ -10597,3 +10597,168 @@ a.rsu-news__all span {
     }
 }
 
+.defensoria-quote {
+    margin: 0 0 28px;
+    padding: 22px 24px;
+    border-left: 4px solid #91001E;
+    background: #faf5f6;
+    border-radius: 0 12px 12px 0;
+}
+
+.defensoria-quote p {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.5;
+    color: #222;
+}
+
+.defensoria-quote cite {
+    color: #91001E;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.defensoria-audience {
+    margin: 18px 0 0;
+}
+
+.defensoria-audience__title {
+    margin: 0 0 10px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.defensoria-audience__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.defensoria-audience__item {
+    display: inline-flex;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #f3e6e9;
+    color: #91001E;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.defensoria-profile {
+    padding: 22px;
+    border: 1px solid #ececec;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.defensoria-profile__photo {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto 16px;
+    border-radius: 12px;
+    object-fit: contain;
+    aspect-ratio: 3 / 4;
+    background: #fff;
+}
+
+.defensoria-profile__name {
+    margin: 0 0 4px;
+    color: #91001E;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.defensoria-profile__role {
+    margin: 0 0 14px;
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+}
+
+.defensoria-profile__email {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #91001E;
+    font-weight: 600;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.defensoria-profile__email:hover {
+    text-decoration: underline;
+}
+
+.defensoria-docs {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 28px 0 48px;
+}
+
+.defensoria-doc {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 20px;
+    border: 1px solid #ececec;
+    border-radius: 14px;
+    background: #fff;
+}
+
+.defensoria-doc__title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.45;
+    color: #222;
+}
+
+.defensoria-doc__link {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #91001E;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.defensoria-doc__link:hover {
+    text-decoration: underline;
+}
+
+.defensoria-hostigamiento {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.defensoria-hostigamiento__media {
+    flex: 1 1 280px;
+}
+
+.defensoria-hostigamiento__media img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.defensoria-hostigamiento__copy {
+    flex: 1 1 280px;
+}
+
+@media (min-width: 768px) {
+    .defensoria-docs {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
