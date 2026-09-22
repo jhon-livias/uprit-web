@@ -42,7 +42,7 @@
                             <div class="psico-workshop-card__body">
                                 <h3 class="psico-workshop-card__title">{{ $workshop['title'] }}</h3>
                                 <p class="psico-workshop-card__description">{{ $workshop['description'] }}</p>
-                                <a href="#consejeria" class="psico-workshop-card__btn">
+                                <a href="https://calendar.app.google/mUmBvEECv9nRdK2x6" class="psico-workshop-card__btn">
                                     Reservar atención
                                     <span aria-hidden="true">&gt;</span>
                                 </a>

@@ -595,7 +595,7 @@
                         </div>
                     </div>
                     <!-- End Single Widget  -->
-                    <div class="edu-blog-widget widget-latest-post">
+                    <!-- <div class="edu-blog-widget widget-latest-post">
                         <div class="inner">
                             <h4 class="widget-title">Últimas Noticias</h4>
                             <div class="content latest-post-list">
@@ -617,7 +617,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>

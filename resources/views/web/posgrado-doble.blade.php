@@ -76,10 +76,10 @@
 
                     <br><br>
                     <div class="text-block">
-                        <h3> Ventajas del Doble Grado Internacional (UPRIT y Florida Global University)</h3>    
+                        <h3> Ventajas del Doble Grado Internacional (UPRIT y Florida Global University)</h3>
                         <ul>
                             <li>Esta opción es una inversión en tu futuro global. Te ofrece una combinación poderosa de conocimiento local con una visión y acreditación internacional. Sus principales ventajas son:</li>
-                        </ul>           
+                        </ul>
                     </div>
                     <div class="tab-content" id="myTabContentSeguro">
 
@@ -330,7 +330,7 @@
                         </div>
 
                     </div>
-                    
+
                 </div>
             </div>
             <div class="col-lg-4">
@@ -344,7 +344,7 @@
                         </div>
                     </div>
                     <!-- End Single Widget  -->
-                    <div class="edu-blog-widget widget-latest-post">
+                    <!-- <div class="edu-blog-widget widget-latest-post">
                         <div class="inner">
                             <h4 class="widget-title">Últimas Noticias</h4>
                             <div class="content latest-post-list">
@@ -366,7 +366,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>

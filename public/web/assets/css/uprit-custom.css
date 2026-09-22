@@ -5035,7 +5035,7 @@ body.page-servicio-psicopedagogico .salud-flyer__dialog {
 
 .salud-topic-card__head {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
     margin-bottom: 10px;
 }
@@ -5058,7 +5058,6 @@ body.page-servicio-psicopedagogico .salud-flyer__dialog {
     color: #222;
     font-size: 13px;
     font-weight: 700;
-    line-height: 1.35;
 }
 
 .salud-topic-card__description {

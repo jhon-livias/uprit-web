@@ -47,10 +47,10 @@
                 <div class="salud-service-card__body">
                     <h3 class="salud-service-card__title">{{ $service['title'] }}</h3>
                     <p class="salud-service-card__description">{{ $service['description'] }}</p>
-                    <a href="#contacto" class="salud-service-card__btn">
+                    <!-- <a href="#contacto" class="salud-service-card__btn">
                         Conocer más
                         <span aria-hidden="true">→</span>
-                    </a>
+                    </a> -->
                 </div>
             </article>
             @endforeach

@@ -241,7 +241,7 @@
                         <p>Nuestros laboratorios de enseñanza e investigación brindan servicios a empresas. Puedes rentar espacio y equipos, o solicitar estudios y ensayos específicos.</p>
                         <a href="mailto:Laboratorios.ingenieria@uprit.edu.pe">Laboratorios.ingenieria@uprit.edu.pe</a>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="col-lg-4">
@@ -255,7 +255,7 @@
                         </div>
                     </div>
                     <!-- End Single Widget  -->
-                    <div class="edu-blog-widget widget-latest-post">
+                    <!-- <div class="edu-blog-widget widget-latest-post">
                         <div class="inner">
                             <h4 class="widget-title">Últimas Noticias</h4>
                             <div class="content latest-post-list">
@@ -277,7 +277,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>

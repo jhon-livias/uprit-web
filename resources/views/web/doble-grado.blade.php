@@ -109,7 +109,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="text-block text-center" style="margin-top: -30px;">                   
+                    <div class="text-block text-center" style="margin-top: -30px;">
                         <p>
                             Para más información sobre qué programas aplican a estos dobles grados, las condiciones y costos asociados, <a href="{{ route('asesores') }}">comunícate con el área de admisión de la Universidad</a>.
                         </p>
@@ -456,7 +456,7 @@
                         </div>
                     </div>
                     <!-- End Single Widget  -->
-                    <div class="edu-blog-widget widget-latest-post">
+                    <!-- <div class="edu-blog-widget widget-latest-post">
                         <div class="inner">
                             <h4 class="widget-title">Últimas Noticias</h4>
                             <div class="content latest-post-list">
@@ -478,7 +478,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>

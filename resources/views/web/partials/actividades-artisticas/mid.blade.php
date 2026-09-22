@@ -77,12 +77,12 @@
                         @endforeach
                     </div>
 
-                    <div class="cultura-community__cta">
+                    <!-- <div class="cultura-community__cta">
                         <a href="{{ route('web.noticias') }}" class="cultura-btn cultura-btn--outline">
                             Ver toda la galería
                             <span aria-hidden="true">&gt;</span>
                         </a>
-                    </div>
+                    </div> -->
                 </article>
 
                 <article class="cultura-card cultura-card--why">
@@ -123,10 +123,10 @@
                             </li>
                             @endforeach
                         </ul>
-                        <a href="{{ route('web.noticias') }}" class="cultura-card__btn">
+                        <!-- <a href="{{ route('web.noticias') }}" class="cultura-card__btn">
                             Ver calendario completo
                             <span aria-hidden="true">&gt;</span>
-                        </a>
+                        </a> -->
                     </div>
                 </article>
 
