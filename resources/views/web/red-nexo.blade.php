@@ -34,7 +34,7 @@
                                                         Puntos de Estudio y Colaboración
                                                     </button>
                                                 </h3>
-                                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
                                                         <div class="course-lesson">
                                                             <p>
@@ -151,7 +151,7 @@
                                                 </h3>
 
                                                 <div id="collapseOneSeguro"
-                                                    class="accordion-collapse collapse"
+                                                    class="accordion-collapse collapse show"
                                                     aria-labelledby="headingOneSeguro"
                                                     data-bs-parent="#accordionExampleSeguro">
 

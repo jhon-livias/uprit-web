@@ -824,7 +824,7 @@
                                                 </h3>
 
                                                 <div id="collapseTwoNotas"
-                                                    class="accordion-collapse collapse"
+                                                    class="accordion-collapse collapse show"
                                                     aria-labelledby="headingTwoNotas"
                                                     data-bs-parent="#accordionExampleNotas">
 
