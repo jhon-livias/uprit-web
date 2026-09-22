@@ -44,10 +44,10 @@
     $lideres = [
         ['buscar' => 'Edmundo González', 'nombre' => 'Dr. Edmundo González Zavaleta', 'cargo' => 'Director General de la Escuela de Posgrado'],
         ['buscar' => 'Milagros Rivas', 'nombre' => 'Mtra. Milagros Rivas Mendoza', 'cargo' => 'Director Académico'],
-        ['buscar' => 'Roberto Mimbela', 'nombre' => 'Dr. Roberto Mimbela', 'cargo' => 'Director de Programas de Administración'],
-        ['buscar' => 'Gustavo Silva', 'nombre' => 'Dr. Gustavo Silva', 'cargo' => 'Director de Programas de Derecho'],
+        ['buscar' => 'Roberto Edgar Mimbela', 'nombre' => 'Dr. Roberto Mimbela', 'cargo' => 'Director de Programas de Administración'],
+        ['buscar' => 'Gustavo Antero Silva', 'nombre' => 'Dr. Gustavo Silva', 'cargo' => 'Director de Programas de Derecho'],
         ['buscar' => 'Miguel Sibina', 'nombre' => 'Dr. Miguel Sibina', 'cargo' => 'Director de Programas de Educación'],
-        ['buscar' => 'Diego Reyes', 'nombre' => 'Mg. Diego Reyes', 'cargo' => 'Director de Programas de Gerencia de Proyectos PMI'],
+        ['buscar' => 'Diego E. Reyes', 'nombre' => 'Mg. Diego Reyes', 'cargo' => 'Director de Programas de Gerencia de Proyectos PMI'],
     ];
 
     $lideres = array_map(function (array $item) {
