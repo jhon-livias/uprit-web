@@ -5,7 +5,8 @@
                 <div class="header-top-left">
                     <ul class="header-info">
                         <li id="fecha"></li>
-                        <li style="padding-right:0px"><iconify-icon icon="mdi:phone" style="font-size:14px; margin-top:5px"></iconify-icon></li>
+                        <li style="padding-right:0px"><iconify-icon icon="mdi:phone"
+                                style="font-size:14px; margin-top:5px"></iconify-icon></li>
                         <li style="padding-left:5px">Central telefónica: +51933248429</li>
                     </ul>
                 </div>
@@ -14,16 +15,23 @@
                         @if(\App\Support\SiteNavigation::hasDbNav())
                             @include('web.partials.nav.topbar-desktop')
                         @else
-                            <li class="raya"><a href="https://idiomas.uprit.edu.pe" class="hov-sup" target="_blank" rel="noopener">Idiomas</a></li>
+                            <li class="raya"><a href="https://idiomas.uprit.edu.pe" class="hov-sup" target="_blank"
+                                    rel="noopener">Idiomas</a></li>
                             <li class="raya"><a href="{{ route('web.noticias') }}" class="hov-sup">Noticias</a></li>
                             <li class="raya"><a href="{{ route('transparencia') }}" class="hov-sup">Transparencia</a></li>
                             <li class="submenu-platform menu-plataforma">
                                 <a href="#" class="hov-sup">Nuestra Plataforma</a>
                                 <ul class="platform-dropdown">
-                                    <li style="padding-bottom: 0px;"><a href="https://intranet.uprit.edu.pe/" target="_blank" rel="noopener">ERP</a></li>
-                                    <li style="padding-bottom: 0px; padding-top: 5px;"><a href="https://www.digitaliapublishing.com/" target="_blank" rel="noopener">Biblioteca Virtual</a></li>
-                                    <li style="padding-bottom: 0px; padding-top: 5px;"><a href="https://repositorio.uprit.edu.pe/" target="_blank" rel="noopener">Repositorio - ALICIA</a></li>
-                                    <li style="padding-top: 0px;"><a href="https://moodle.uprit.edu.pe" target="_blank" rel="noopener">Aula Virtual</a></li>
+                                    <li style="padding-bottom: 0px;"><a href="https://intranet.uprit.edu.pe/"
+                                            target="_blank" rel="noopener">ERP</a></li>
+                                                    <li style="padding-bottom: 0px; padding-top: 5px;"><a
+                                                            href="{{ route('biblioteca-virtual') }}"
+                                                            >Biblioteca Virtual</a></li>
+                                    <li style="padding-bottom: 0px; padding-top: 5px;"><a
+                                            href="https://repositorio.uprit.edu.pe/" target="_blank"
+                                            rel="noopener">Repositorio - ALICIA</a></li>
+                                    <li style="padding-top: 0px;"><a href="https://moodle.uprit.edu.pe" target="_blank"
+                                            rel="noopener">Aula Virtual</a></li>
                                 </ul>
                             </li>
                         @endif
@@ -39,8 +47,10 @@
                 <div class="header-brand">
                     <div class="logo">
                         <a href="{{ route('web.index') }}">
-                            <img class="logo-light" src="{{ asset('web/imagenes/logo_uprit_light.svg') }}" alt="Corporate Logo">
-                            <img class="logo-dark" src="{{ asset('web/imagenes/logo_uprit_light.svg') }}" alt="Corporate Logo">
+                            <img class="logo-light" src="{{ asset('web/imagenes/logo_uprit_light.svg') }}"
+                                alt="Corporate Logo">
+                            <img class="logo-dark" src="{{ asset('web/imagenes/logo_uprit_light.svg') }}"
+                                alt="Corporate Logo">
                         </a>
                     </div>
                 </div>
@@ -59,13 +69,17 @@
                 <div class="header-right">
                     <ul class="header-action">
                         <li class="career-finder-trigger">
-                            <button type="button" class="career-finder-open" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px;" data-career-finder-open aria-label="Buscar carrera" aria-haspopup="dialog" aria-controls="career-finder-dialog">
+                            <button type="button" class="career-finder-open"
+                                style="display: inline-flex; align-items: center; justify-content: center; gap: 6px;"
+                                data-career-finder-open aria-label="Buscar carrera" aria-haspopup="dialog"
+                                aria-controls="career-finder-dialog">
                                 <iconify-icon icon="mdi:magnify" aria-hidden="true"></iconify-icon>
                                 <span>Carreras</span>
                             </button>
                         </li>
                         <li class="mobile-menu-bar d-block d-xl-none">
-                            <button type="button" class="hamberger-button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-navigation">
+                            <button type="button" class="hamberger-button" aria-label="Abrir menú de navegación"
+                                aria-expanded="false" aria-controls="mobile-navigation">
                                 <iconify-icon icon="mdi:menu" aria-hidden="true"></iconify-icon>
                             </button>
                         </li>

@@ -47,7 +47,7 @@
     <a href="#">Nuestra Plataforma</a>
     <ul class="submenu">
         <li><a href="https://intranet.uprit.edu.pe/" target="_blank" rel="noopener">ERP</a></li>
-        <li><a href="https://www.digitaliapublishing.com/" target="_blank" rel="noopener">Biblioteca Virtual</a></li>
+        <li><a href="{{ route('biblioteca-virtual') }}">Biblioteca Virtual</a></li>
         <li><a href="https://repositorio.uprit.edu.pe/" target="_blank" rel="noopener">Repositorio - ALICIA</a></li>
         <li><a href="https://moodle.uprit.edu.pe" target="_blank" rel="noopener">Aula Virtual</a></li>
     </ul>

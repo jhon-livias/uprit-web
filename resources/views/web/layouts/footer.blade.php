@@ -123,7 +123,7 @@
                         <div class="inner footer-accordion-content">
                             <ul class="footer-link link-hover footer-lista">
                                 <li><a href="https://intranet.uprit.edu.pe/" target="_blank" class="gris-footer">ERP</a></li>
-                                <li><a href="https://www.digitaliapublishing.com/" target="_blank" class="gris-footer">Biblioteca Virtual</a></li>
+                                <li><a href="{{ route('biblioteca-virtual') }}" class="gris-footer">Biblioteca Virtual</a></li>
                                 <li><a href="https://repositorio.uprit.edu.pe/" target="_blank" rel="noopener noreferrer" class="gris-footer">Repositorio - ALICIA</a></li>
                                 <!-- <li><a href="#" class="gris-footer">Bolsa de Trabajo</a></li>
                                 <li><a href="#" class="gris-footer">Correo Institucional</a></li> -->
