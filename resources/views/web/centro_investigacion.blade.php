@@ -54,7 +54,7 @@
                                                 </h3>
 
                                                 <div id="collapseOneSeguro"
-                                                    class="accordion-collapse collapse"
+                                                    class="accordion-collapse collapse show"
                                                     aria-labelledby="headingOneSeguro"
                                                     data-bs-parent="#accordionExampleSeguro">
 

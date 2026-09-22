@@ -30,7 +30,7 @@
                                                         Becas Internacionales
                                                     </button>
                                                 </h3>
-                                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
                                                         <div class="course-lesson">
                                                             <p>
@@ -176,7 +176,7 @@
                                                 </h3>
 
                                                 <div id="collapseOneSeguro"
-                                                    class="accordion-collapse collapse"
+                                                    class="accordion-collapse collapse show"
                                                     aria-labelledby="headingOneSeguro"
                                                     data-bs-parent="#accordionExampleSeguro">
 
@@ -350,7 +350,7 @@
                                                 </h3>
 
                                                 <div id="collapseOneNuevo"
-                                                    class="accordion-collapse collapse"
+                                                    class="accordion-collapse collapse show"
                                                     aria-labelledby="headingOneNuevo"
                                                     data-bs-parent="#accordionExampleNuevo">
 
@@ -771,7 +771,7 @@
                                                 </h3>
 
                                                 <div id="collapseOneHabil"
-                                                    class="accordion-collapse collapse"
+                                                    class="accordion-collapse collapse show"
                                                     aria-labelledby="headingOneHabil"
                                                     data-bs-parent="#accordionExampleHabil">
 
@@ -923,7 +923,7 @@
                                                 </h3>
 
                                                 <div id="collapseOneObje"
-                                                    class="accordion-collapse collapse"
+                                                    class="accordion-collapse collapse show"
                                                     aria-labelledby="headingOneObje"
                                                     data-bs-parent="#accordionExampleObje">
 
@@ -1117,7 +1117,7 @@
                                                 </h3>
 
                                                 <div id="collapseOneAcu"
-                                                    class="accordion-collapse collapse"
+                                                    class="accordion-collapse collapse show"
                                                     aria-labelledby="headingOneAcu"
                                                     data-bs-parent="#accordionExampleAcu">
 
