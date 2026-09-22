@@ -348,6 +348,12 @@ class WebController extends Controller
         return view('web.investigacion.denuncias_etica_investigacion');
     }
 
+    public function bibliotecaVirtual()
+    {
+        $title = 'Biblioteca Virtual';
+        return view('web.biblioteca-virtual', compact('title'));
+    }
+
     public function autoridades()
     {
         $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
