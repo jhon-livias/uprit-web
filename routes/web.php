@@ -211,4 +211,3 @@ Route::get('/denuncias_etica_investigacion', [WebController::class, 'denunciasEt
 Route::get('/contactenos', function () {
     return view('web.contactenos');
 })->name('contactenos');
-

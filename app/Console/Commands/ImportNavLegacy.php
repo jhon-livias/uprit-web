@@ -134,7 +134,7 @@ class ImportNavLegacy extends Command
 
         $links = [
             ['label' => 'ERP', 'url' => 'https://intranet.uprit.edu.pe/', 'external' => true],
-            ['label' => 'Biblioteca Virtual', 'url' => 'https://www.digitaliapublishing.com/', 'external' => true],
+            ['label' => 'Biblioteca Virtual', 'url' => '/biblioteca-virtual', 'external' => false],
             ['label' => 'Repositorio - ALICIA', 'url' => 'https://repositorio.uprit.edu.pe/', 'external' => true],
             ['label' => 'Aula Virtual', 'url' => 'https://moodle.uprit.edu.pe', 'external' => true],
         ];
