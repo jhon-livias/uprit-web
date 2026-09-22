@@ -89,7 +89,6 @@ class Docente extends Model
         }
 
         return static::query()
-            ->where('es_investigador', true)
             ->get()
             ->first(function (self $docente) use ($needle) {
                 $haystack = self::normalizeInvestigadorNombre($docente->nombre);
