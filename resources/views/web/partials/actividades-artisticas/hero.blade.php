@@ -28,7 +28,7 @@
         <p class="cultura-hero__lead">
             {{ config('bienestar.cultura.responsable') }} — {{ config('bienestar.cultura.cargo') }}
         </p>
-        <a href="#inscripciones" class="cultura-hero__cta">
+        <a href="https://forms.gle/hSaME47UegLGmzMB7" class="cultura-hero__cta">
             ¡Inscríbete ahora!
             <span aria-hidden="true">&gt;</span>
         </a>

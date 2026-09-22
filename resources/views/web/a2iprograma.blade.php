@@ -544,7 +544,7 @@
                         </div>
 
                     </div>
-                    
+
                     <div>
 
                         <img
@@ -559,7 +559,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         ">
 
-                    </div>        
+                    </div>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -573,7 +573,7 @@
                         </div>
                     </div>
                     <!-- End Single Widget  -->
-                    <div class="edu-blog-widget widget-latest-post">
+                    <!-- <div class="edu-blog-widget widget-latest-post">
                         <div class="inner">
                             <h4 class="widget-title">Últimas Noticias</h4>
                             <div class="content latest-post-list">
@@ -595,7 +595,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>

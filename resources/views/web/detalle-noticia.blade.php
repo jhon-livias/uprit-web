@@ -43,7 +43,7 @@
                                 </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
 
@@ -55,7 +55,7 @@
                     <div class="author-content">
                         <h5 class="title">{{$noticia->autor_nombre}}</h5>
                         <p class="justificar">{{$noticia->autor_descripcion}}</p>
-                        
+
                     </div>
                 </div>
                 <div class="des-completa">
@@ -84,7 +84,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="edu-blog-widget widget-latest-post">
+                    <!-- <div class="edu-blog-widget widget-latest-post">
                         <div class="inner">
                             <h4 class="widget-title">Últimas Noticias</h4>
                             <div class="content latest-post-list">
@@ -106,7 +106,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="edu-blog-widget widget-categories">
                         <div class="inner">
                             <h4 class="widget-title">Categorias</h4>
@@ -119,7 +119,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -133,7 +133,7 @@
         const container = sidebar.closest('.row');
         const marginTop = 120;
 
-        
+
         const sidebarWidth = sidebar.offsetWidth;
 
         window.addEventListener('scroll', () => {
@@ -144,19 +144,19 @@
             if (containerRect.top > marginTop) {
                 sidebar.style.position = 'static';
                 sidebar.style.transform = 'translateY(0px)';
-                sidebar.style.width = 'auto'; 
+                sidebar.style.width = 'auto';
             } else if (containerRect.top <= marginTop && limiteFondo > 0) {
-                
+
                 sidebar.style.position = 'fixed';
                 sidebar.style.top = `${marginTop}px`;
                 sidebar.style.transform = 'translateY(0px)';
-                
+
                 sidebar.style.width = `${sidebarWidth}px`;
             } else {
                 sidebar.style.position = 'absolute';
                 sidebar.style.top = 'auto';
                 sidebar.style.transform = `translateY(${container.offsetHeight - sidebarHeight}px)`;
-                
+
                 sidebar.style.width = `${sidebarWidth}px`;
             }
         });

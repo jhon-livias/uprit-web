@@ -7,9 +7,9 @@
             'icon' => 'mdi:human-handsup',
         ],
         [
-            'title' => 'Higiene del sueño',
+            'title' => 'Salud del sueño',
             'description' => 'Hábitos que favorecen un descanso saludable.',
-            'image' => 'web/imagenes/bienestar/salud/sueno.jpg',
+            'image' => 'web/imagenes/bienestar/salud/sueno.png',
             'icon' => 'mdi:sleep',
         ],
         [
@@ -21,7 +21,7 @@
         [
             'title' => 'Salud respiratoria y técnicas de respiración',
             'description' => 'Estrategias sencillas para regular tu respiración y cuidar tu bienestar físico y mental.',
-            'image' => 'web/imagenes/bienestar/salud/respiracion.jpg',
+            'image' => 'web/imagenes/bienestar/salud/respiracion.png',
             'icon' => 'mdi:weather-windy',
         ],
     ];
@@ -55,10 +55,10 @@
                         <h3 class="salud-topic-card__title">{{ $topic['title'] }}</h3>
                     </div>
                     <p class="salud-topic-card__description">{{ $topic['description'] }}</p>
-                    <a href="#contacto" class="salud-topic-card__link">
+                    <!-- <a href="#contacto" class="salud-topic-card__link">
                         Leer más
                         <span aria-hidden="true">→</span>
-                    </a>
+                    </a> -->
                 </div>
             </article>
             @endforeach

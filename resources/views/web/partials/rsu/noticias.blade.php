@@ -42,10 +42,10 @@
     <div class="container">
         <header class="rsu-news__header">
             <h2 class="rsu-news__title">Noticias y actividades</h2>
-            <a href="{{ route('web.noticias') }}" class="rsu-news__all">
+            <!-- <a href="{{ route('web.noticias') }}" class="rsu-news__all">
                 Ver todas las noticias
                 <span aria-hidden="true">→</span>
-            </a>
+            </a> -->
         </header>
 
         <div class="rsu-news__grid">
@@ -63,10 +63,10 @@
                         {{ $item['date'] }}
                     </p>
                     <h3 class="rsu-card__title">{{ $item['title'] }}</h3>
-                    <a href="{{ $item['url'] }}" class="rsu-card__link">
+                    <!-- <a href="{{ $item['url'] }}" class="rsu-card__link">
                         Leer más
                         <span aria-hidden="true">→</span>
-                    </a>
+                    </a> -->
                 </div>
             </article>
             @endforeach

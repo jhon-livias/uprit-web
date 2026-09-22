@@ -10,10 +10,10 @@
                     <p class="rsu-cta__lead">Súmate como voluntario y participa en nuestras actividades.</p>
                 </div>
             </div>
-            <a href="{{ route('contactenos') }}" class="rsu-btn rsu-btn--solid">
+            <!-- <a href="{{ route('contactenos') }}" class="rsu-btn rsu-btn--solid">
                 Quiero participar
                 <span aria-hidden="true">→</span>
-            </a>
+            </a> -->
         </div>
     </div>
 </section>

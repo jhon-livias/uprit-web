@@ -31,7 +31,7 @@ return [
                     'column_route' => 'bienestar-rsu',
                     'items' => [
                         ['label' => 'Servicio Psicopedagógico', 'route' => 'servicio-psicopedagogico'],
-                        ['label' => 'Programa de Alimentación Saludable', 'route' => 'salud'],
+                        // ['label' => 'Programa de Alimentación Saludable', 'route' => 'salud'],
                         ['label' => 'Servicios de Salud', 'route' => 'servicios-de-salud'],
                         ['label' => 'Servicios Deportivos y Programas Deportivos de Alta Competencia', 'route' => 'servicios-deportivos'],
                         ['label' => 'Programa de Actividades Artísticas y culturales', 'route' => 'actividades-artisticas'],

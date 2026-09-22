@@ -31,10 +31,10 @@
                 <p class="rsu-proyectos__lead">
                     Cada iniciativa busca generar un cambio concreto en las personas y en el territorio donde nos desenvolvemos.
                 </p>
-                <a href="{{ route('web.noticias') }}" class="rsu-btn rsu-btn--light">
+                <!-- <a href="{{ route('web.noticias') }}" class="rsu-btn rsu-btn--light">
                     Ver todos los proyectos
                     <span aria-hidden="true">→</span>
-                </a>
+                </a> -->
             </div>
 
             <div class="rsu-proyectos__carousel">
