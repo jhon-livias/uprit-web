@@ -88,16 +88,25 @@ class Docente extends Model
             return null;
         }
 
-        return static::query()
-            ->get()
-            ->first(function (self $docente) use ($needle) {
-                $haystack = self::normalizeInvestigadorNombre($docente->nombre);
+        $docentes = static::query()->get();
 
-                return $haystack === $needle
-                    || str_contains($haystack, $needle)
-                    || str_contains($needle, $haystack)
-                    || self::apellidosInvestigador($haystack) === self::apellidosInvestigador($needle);
-            });
+        // 1. Exact match or contains
+        $match = $docentes->first(function (self $docente) use ($needle) {
+            $haystack = self::normalizeInvestigadorNombre($docente->nombre);
+            return $haystack === $needle
+                || str_contains($haystack, $needle)
+                || str_contains($needle, $haystack);
+        });
+
+        if ($match) {
+            return $match;
+        }
+
+        // 2. Fallback to matching only last names
+        return $docentes->first(function (self $docente) use ($needle) {
+            $haystack = self::normalizeInvestigadorNombre($docente->nombre);
+            return self::apellidosInvestigador($haystack) === self::apellidosInvestigador($needle);
+        });
     }
 
     private static function normalizeInvestigadorNombre(string $nombre): string
