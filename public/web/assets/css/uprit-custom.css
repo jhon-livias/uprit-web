@@ -3890,7 +3890,7 @@ body.dark-mode .list-noticia-bg {
 
     font-weight:700;
 
-    margin-right:10px; 
+    margin-right:10px;
 
     margin-top:2px;
 
@@ -4141,6 +4141,7 @@ body.dark-mode .list-noticia-bg {
     color: #555;
     line-height: 1.75;
     margin-bottom: 18px;
+    margin-top: 0;
 }
 
 .direccion-investigacion-accordion .accordion-body > p:last-child,
@@ -8919,7 +8920,7 @@ body.page-servicios-sociales .header-mainmenu:not(.sticky-active) {
     .sociales-bottom__grid,
     .sociales-values__grid {
         grid-template-columns: 1fr;
-       
+
     }
 
     .sociales-diversidad__grid {
@@ -11592,18 +11593,17 @@ a.rsu-news__all span {
         padding: 0 10px !important;
         font-size: 14px !important;
     }
-    
+
     .boton-li .edu-btn {
         padding: 0 15px !important;
         font-size: 13px !important;
         height: 40px !important;
         line-height: 40px !important;
     }
-    
+
     .header-action .career-finder-open {
         padding: 0 12px;
         height: 40px;
         font-size: 14px;
     }
 }
-
