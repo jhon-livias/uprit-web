@@ -42,13 +42,19 @@
     ];
 
     $lideres = [
-        ['nombre' => 'Dr. Edmundo González Zavaleta', 'cargo' => 'Director General de la Escuela de Posgrado'],
-        ['nombre' => 'Mtra. Milagros Rivas Mendoza', 'cargo' => 'Director Académico'],
-        ['nombre' => 'Dr. Roberto Mimbela', 'cargo' => 'Director de Programas de Administración'],
-        ['nombre' => 'Dr. Gustavo Silva', 'cargo' => 'Director de Programas de Derecho'],
-        ['nombre' => 'Dr. Miguel Sibina', 'cargo' => 'Director de Programas de Educación'],
-        ['nombre' => 'Mg. Diego Reyes', 'cargo' => 'Director de Programas de Gerencia de Proyectos PMI'],
+        ['buscar' => 'Edmundo González', 'nombre' => 'Dr. Edmundo González Zavaleta', 'cargo' => 'Director General de la Escuela de Posgrado'],
+        ['buscar' => 'Milagros Rivas', 'nombre' => 'Mtra. Milagros Rivas Mendoza', 'cargo' => 'Director Académico'],
+        ['buscar' => 'Roberto Mimbela', 'nombre' => 'Dr. Roberto Mimbela', 'cargo' => 'Director de Programas de Administración'],
+        ['buscar' => 'Gustavo Silva', 'nombre' => 'Dr. Gustavo Silva', 'cargo' => 'Director de Programas de Derecho'],
+        ['buscar' => 'Miguel Sibina', 'nombre' => 'Dr. Miguel Sibina', 'cargo' => 'Director de Programas de Educación'],
+        ['buscar' => 'Diego Reyes', 'nombre' => 'Mg. Diego Reyes', 'cargo' => 'Director de Programas de Gerencia de Proyectos PMI'],
     ];
+
+    $lideres = array_map(function (array $item) {
+        $docente = \App\Models\Docente::where('nombre', 'like', '%'.$item['buscar'].'%')->first();
+        $item['foto'] = $docente ? $docente->imagen : null;
+        return $item;
+    }, $lideres);
 @endphp
 
 <section class="privacy-policy-area escuela-posgrado-page">
@@ -113,8 +119,12 @@
                         <div class="escuela-posgrado-lideres">
                             @foreach ($lideres as $lider)
                             <article class="escuela-posgrado-lider-card">
-                                <span class="escuela-posgrado-lider-card__avatar" aria-hidden="true">
-                                    <iconify-icon icon="mdi:account-tie-outline"></iconify-icon>
+                                <span class="escuela-posgrado-lider-card__avatar" aria-hidden="true" style="overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                                    @if(!empty($lider['foto']))
+                                        <img src="{{ asset($lider['foto']) }}" alt="{{ $lider['nombre'] }}" style="width: 100%; height: 100%; object-fit: cover;">
+                                    @else
+                                        <iconify-icon icon="mdi:account-tie-outline"></iconify-icon>
+                                    @endif
                                 </span>
                                 <h4 class="escuela-posgrado-lider-card__nombre">{{ $lider['nombre'] }}</h4>
                                 <p class="escuela-posgrado-lider-card__cargo">{{ $lider['cargo'] }}</p>
