@@ -4160,12 +4160,14 @@ body.dark-mode .list-noticia-bg {
 .direccion-investigacion-table-wrap {
     margin: 8px 0 28px;
     border-radius: 8px;
-    overflow: hidden;
+    overflow-x: auto;
     border: 1px solid #ececec;
+    -webkit-overflow-scrolling: touch;
 }
 
 .direccion-investigacion-table {
     width: 100%;
+    min-width: 900px;
     border-collapse: collapse;
     font-size: 14px;
     margin-bottom: 0;
