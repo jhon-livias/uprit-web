@@ -64,7 +64,7 @@ class WebController extends Controller
             ->withQueryString();
 
         $ultimasnoticias = Noticia::orderBy('fecha', 'desc')
-            
+
             ->get();
 
         return view('web.noticia', compact(
@@ -197,7 +197,7 @@ class WebController extends Controller
         $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.programa', compact('ultimasnoticias'));
     }
-    
+
         public function convalidacion()
     {
         $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
@@ -218,25 +218,25 @@ class WebController extends Controller
 
     public function intercambioperu()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get(); 
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.intercambio-peru', compact('ultimasnoticias'));
     }
 
     public function tallertitulacion()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get(); 
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.taller-titulacion', compact('ultimasnoticias'));
     }
 
     public function asesores()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get(); 
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.asesores', compact('ultimasnoticias'));
     }
-    
+
      public function escuelaposgrado()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();   
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.escuela-posgrado', compact('ultimasnoticias'));
     }
 
@@ -249,35 +249,35 @@ class WebController extends Controller
 
     public function posgradodoble()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();   
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.posgrado-doble', compact('ultimasnoticias'));
     }
 
     public function misionacademica()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();   
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.mision-academica', compact('ultimasnoticias'));
     }
 
     public function vive()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();   
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.vive', compact('ultimasnoticias'));
     }
-    
+
     public function porque()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();  
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.porque', compact('ultimasnoticias'));
     }
 
     public function modeloeducativo()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();   
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.modelo-educativo', compact('ultimasnoticias'));
     }
-    
-    
+
+
     public function direccion()
     {
         $docentesInvestigadores = Docente::query()
@@ -324,7 +324,7 @@ class WebController extends Controller
 
     public function centro_investigacion()
     {
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();       
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.centro_investigacion', compact('ultimasnoticias'));
     }
 

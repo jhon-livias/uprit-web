@@ -16,7 +16,7 @@
                     <strong>gratuito</strong> para toda la comunidad universitaria y se realiza a través del Aula Virtual.
                 </p>
                 <a href="https://moodle.uprit.edu.pe" target="_blank" rel="noopener" class="edu-btn btn-medium mt--20">
-                    Ir al Aula Virtual &nbsp;<i class="icon-arrow-right-line-right"></i>
+                    Ir al Aula Virtual <i class="icon-4"></i>
                 </a>
             </div>
         </div>
@@ -25,12 +25,12 @@
         <div class="row justify-content-center mb--60">
             <div class="col-lg-10">
                 <div class="d-flex align-items-center justify-content-center gap-5 flex-wrap"
-                     style="background:#f8f9fa; border-radius:16px; padding:32px 40px;">
-                    <img src="{{ asset('web/imagenes/logo_uprit_dark.svg') }}" alt="Logo UPRIT" style="height:64px;">
-                    <div style="width:2px; height:48px; background:#dee2e6;"></div>
+                     style="background:var(--color-primary); border-radius:16px; padding:32px 40px;">
+                    <img src="{{ asset('web/imagenes/logo_uprit_light.svg') }}" alt="Logo UPRIT" style="height:64px;">
+                    <div style="width:2px; height:48px; background:rgba(255,255,255,0.2);"></div>
                     <div class="text-center">
-                        <p class="mb-0" style="font-size:13px; color:#6c757d; letter-spacing:1px; text-transform:uppercase;">Recurso Institucional</p>
-                        <p class="mb-0 fw-bold" style="font-size:15px; color:#212529;">Digitalia Hispánica para UPRIT</p>
+                        <p class="mb-0" style="font-size:13px; color:rgba(255,255,255,0.7); letter-spacing:1px; text-transform:uppercase;">Recurso Institucional</p>
+                        <p class="mb-0 fw-bold" style="font-size:15px; color:#fff;">Digitalia Hispánica para UPRIT</p>
                     </div>
                 </div>
             </div>
