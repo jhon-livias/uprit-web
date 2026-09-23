@@ -25,7 +25,9 @@ use App\Http\Controllers\web\WebController;
 Route::middleware('guest')->group(function () {
 
     Route::get('/login', [AuthController::class, 'showLogin'])->name('administrador.login');
-    Route::post('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])
+        ->name('login')
+        ->middleware('throttle:10,1'); // HIGH-04: máx 10 intentos/minuto por IP
 });
 
 Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
@@ -104,6 +106,11 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::get('/listar_reclamos', [ReclamoController::class, 'index'])->name('reclamos.index');
     Route::get('/get_reclamos', [ReclamoController::class, 'getReclamos'])->name('reclamos.get');
     Route::post('/reclamos/delete/{id}', [ReclamoController::class, 'delete'])->name('reclamos.delete');
+    // HIGH-03: Descarga protegida de evidencias (solo admins autenticados)
+    Route::get('/reclamos/evidencia/{filename}', [ReclamoController::class, 'descargarEvidencia'])
+        ->name('reclamos.evidencia.download')
+        ->where('filename', '[a-zA-Z0-9_\-\.]+');
+
 
     // TRANSPARENCIA
     Route::get('/listar_transparencia', [TransparenciaController::class, 'index'])->name('transparencia.index');
@@ -126,7 +133,8 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::post('/observaciones/comentarios/store', [ObservacionController::class, 'storeComentario'])->name('observaciones.comentarios.store');
     Route::post('/observaciones/comentarios/delete/{id}', [ObservacionController::class, 'deleteComentario'])->name('observaciones.comentarios.delete');
     Route::post('/observaciones/delete/{id}', [ObservacionController::class, 'delete'])->name('observaciones.delete');
-    Route::post('/observaciones/reimport', [ObservacionController::class, 'reimport'])->name('observaciones.reimport');
+    // CRIT-03: Ruta /reimport eliminada por riesgo de re-seeding en producción
+    // Route::post('/observaciones/reimport', ...) — REMOVIDA
 
     // MENÚ WEB
     Route::get('/listar_menu', [MenuController::class, 'index'])->name('menu.index');
