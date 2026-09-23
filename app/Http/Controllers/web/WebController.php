@@ -15,6 +15,7 @@ use App\Models\SliderCarrera;
 use App\Models\Reclamo;
 use App\Models\Docente;
 use App\Services\WebNavigationCache;
+use Illuminate\Support\Facades\Storage;
 
 
 class WebController extends Controller
@@ -502,12 +503,14 @@ class WebController extends Controller
         $reclamo->detalle = $request->detalle;
 
 
+        // HIGH-03: Guardar evidencia en storage privado (no accesible sin auth)
         if ($request->hasFile('evidencia')) {
             $file = $request->file('evidencia');
-            $nameimg = 'evidencia_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
-            $path = public_path() . '/reclamos_evidencia/';
-            $file->move($path, $nameimg);
-            $reclamo->evidencia = $nameimg;
+            // MED-04: nombre impredecible + LOW-02: extensión por MIME real
+            $ext = strtolower($file->extension());
+            $filename = 'evidencia_' . bin2hex(random_bytes(16)) . '.' . $ext;
+            Storage::disk('local')->putFileAs('reclamos', $file, $filename);
+            $reclamo->evidencia = $filename;
         }
 
 
