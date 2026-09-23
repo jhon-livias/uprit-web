@@ -71,7 +71,7 @@
 
                                 <label>
                                     <input type="radio" name="modalidad">
-                                    Hyflex
+                                    Semipresencial
                                 </label>
                             </div>
                             <div class="form-group col-12">
