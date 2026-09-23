@@ -142,7 +142,7 @@ class ImportNavLegacy extends Command
         foreach ($links as $index => $link) {
             NavLink::create([
                 'group_id' => $group->id,
-                'label' => $link['label'],4
+                'label' => $link['label'],
                 'url' => $link['url'],
                 'external' => $link['external'],
                 'orden' => $index,
