@@ -28,6 +28,18 @@ class NoticiaController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'categoria_noticia_id' => 'required|exists:categoria_noticias,id',
+            'titulo'              => 'required|string|max:255',
+            'fecha'               => 'required|date',
+            'descripcion_corta'   => 'nullable|string|max:500',
+            'autor_nombre'        => 'nullable|string|max:150',
+            'autor_descripcion'   => 'nullable|string|max:500',
+            'descripcion_total'   => 'nullable|string',
+            'imagen'              => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'autor_imagen'        => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+        ]);
+
         $noticia = new Noticia();
         $noticia->categoria_noticia_id = $request->categoria_noticia_id;
         $noticia->titulo = $request->titulo;
@@ -40,7 +52,8 @@ class NoticiaController extends Controller
 
         if ($request->hasFile('imagen')) {
             $file = $request->file('imagen');
-            $nameimg = 'noticia_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
+            $ext = strtolower($file->extension());
+            $nameimg = 'noticia_' . bin2hex(random_bytes(16)) . '.' . $ext;
             $path = public_path() . '/noticias_imagenes/';
             $file->move($path, $nameimg);
             $noticia->imagen = $nameimg;
@@ -48,7 +61,8 @@ class NoticiaController extends Controller
 
         if ($request->hasFile('autor_imagen')) {
             $file = $request->file('autor_imagen');
-            $nameimg = 'noticia_autor_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
+            $ext = strtolower($file->extension());
+            $nameimg = 'noticia_autor_' . bin2hex(random_bytes(16)) . '.' . $ext;
             $path = public_path() . '/noticias_autor_imagenes/';
             $file->move($path, $nameimg);
             $noticia->autor_imagen = $nameimg;
@@ -61,6 +75,19 @@ class NoticiaController extends Controller
 
     public function update(Request $request)
     {
+        $request->validate([
+            'id'                  => 'required|exists:noticias,id',
+            'categoria_noticia_id' => 'required|exists:categoria_noticias,id',
+            'titulo'              => 'required|string|max:255',
+            'fecha'               => 'required|date',
+            'descripcion_corta'   => 'nullable|string|max:500',
+            'autor_nombre'        => 'nullable|string|max:150',
+            'autor_descripcion'   => 'nullable|string|max:500',
+            'descripcion_total'   => 'nullable|string',
+            'imagen'              => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'autor_imagen'        => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+        ]);
+
         $noticia = Noticia::find($request->id);
         $noticia->categoria_noticia_id = $request->categoria_noticia_id;
         $noticia->titulo = $request->titulo;
@@ -78,7 +105,8 @@ class NoticiaController extends Controller
                 }
             }
             $file = $request->file('imagen');
-            $nameimg = 'noticia_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
+            $ext = strtolower($file->extension());
+            $nameimg = 'noticia_' . bin2hex(random_bytes(16)) . '.' . $ext;
             $path = public_path() . '/noticias_imagenes/';
             $file->move($path, $nameimg);
             $noticia->imagen = $nameimg;
@@ -93,7 +121,8 @@ class NoticiaController extends Controller
             }
 
             $file = $request->file('autor_imagen');
-            $nameimg = 'noticia_autor_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
+            $ext = strtolower($file->extension());
+            $nameimg = 'noticia_autor_' . bin2hex(random_bytes(16)) . '.' . $ext;
             $path = public_path() . '/noticias_autor_imagenes/';
             $file->move($path, $nameimg);
             $noticia->autor_imagen = $nameimg;

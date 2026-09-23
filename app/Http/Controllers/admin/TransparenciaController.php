@@ -26,6 +26,13 @@ class TransparenciaController extends Controller
 
     public function storeSeccion(Request $request)
     {
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'subtitulo' => 'nullable|string|max:255',
+            'icono' => 'nullable|string|max:100',
+            'orden' => 'nullable|integer',
+        ]);
+
         $seccion = new TransparenciaSeccion();
         $seccion->titulo = $request->titulo;
         $seccion->subtitulo = $request->subtitulo;
@@ -39,6 +46,14 @@ class TransparenciaController extends Controller
 
     public function updateSeccion(Request $request)
     {
+        $request->validate([
+            'id' => 'required|exists:transparencia_secciones,id',
+            'titulo' => 'required|string|max:255',
+            'subtitulo' => 'nullable|string|max:255',
+            'icono' => 'nullable|string|max:100',
+            'orden' => 'nullable|integer',
+        ]);
+
         $seccion = TransparenciaSeccion::findOrFail($request->id);
         $seccion->titulo = $request->titulo;
         $seccion->subtitulo = $request->subtitulo;
@@ -65,6 +80,14 @@ class TransparenciaController extends Controller
 
     public function storeDocumento(Request $request)
     {
+        $request->validate([
+            'seccion_id' => 'required|exists:transparencia_secciones,id',
+            'etiqueta' => 'required|string|max:255',
+            'url' => 'nullable|url|max:1000',
+            'orden' => 'nullable|integer',
+            'archivo' => 'nullable|file|max:51200', // 50MB limit
+        ]);
+
         $documento = new TransparenciaDocumento();
         $documento->seccion_id = $request->seccion_id;
         $documento->etiqueta = $request->etiqueta;
@@ -83,6 +106,14 @@ class TransparenciaController extends Controller
 
     public function updateDocumento(Request $request)
     {
+        $request->validate([
+            'id' => 'required|exists:transparencia_documentos,id',
+            'etiqueta' => 'required|string|max:255',
+            'url' => 'nullable|url|max:1000',
+            'orden' => 'nullable|integer',
+            'archivo' => 'nullable|file|max:51200',
+        ]);
+
         $documento = TransparenciaDocumento::findOrFail($request->id);
         $documento->etiqueta = $request->etiqueta;
         $documento->orden = $request->orden ?? $documento->orden;
@@ -118,7 +149,8 @@ class TransparenciaController extends Controller
         $path = public_path('transparencia_documentos');
         File::ensureDirectoryExists($path, 0775);
 
-        $filename = 'transparencia_' . time() . '_' . rand(1, 200) . '.' . $file->getClientOriginalExtension();
+        $ext = strtolower($file->extension());
+        $filename = 'transparencia_' . bin2hex(random_bytes(16)) . '.' . $ext;
         $file->move($path, $filename);
 
         return $filename;

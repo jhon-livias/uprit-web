@@ -25,6 +25,15 @@ class SliderController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'titulo_superior'  => 'nullable|string|max:255',
+            'titulo_principal' => 'nullable|string|max:255',
+            'descripcion'      => 'nullable|string|max:500',
+            'enlace_boton'     => 'nullable|url|max:500',
+            'orden'            => 'nullable|integer|min:0|max:999',
+            'video'            => 'nullable|file|mimes:mp4,webm,ogg|max:204800',  // 200 MB max
+            'imagen'           => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+        ]);
 
         $slider = new Slider();
         $slider->titulo_superior = $request->titulo_superior;
@@ -34,7 +43,8 @@ class SliderController extends Controller
         $slider->orden = $request->orden;
         if ($request->hasFile('video')) {
             $file = $request->file('video');
-            $namevideo = 'video_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
+            $ext = strtolower($file->extension());
+            $namevideo = 'video_' . bin2hex(random_bytes(16)) . '.' . $ext;
             $path = public_path() . '/slider_principal_videos/';
             $file->move($path, $namevideo);
             $slider->video = $namevideo;
@@ -42,7 +52,8 @@ class SliderController extends Controller
 
         if ($request->hasFile('imagen')) {
             $file = $request->file('imagen');
-            $nameimg = 'slider_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
+            $ext = strtolower($file->extension());
+            $nameimg = 'slider_' . bin2hex(random_bytes(16)) . '.' . $ext;
             $path = public_path() . '/slider_principal_imagenes/';
             $file->move($path, $nameimg);
             $slider->imagen = $nameimg;
@@ -55,6 +66,17 @@ class SliderController extends Controller
 
     public function update(Request $request)
     {
+        $request->validate([
+            'id'               => 'required|exists:sliders,id',
+            'titulo_superior'  => 'nullable|string|max:255',
+            'titulo_principal' => 'nullable|string|max:255',
+            'descripcion'      => 'nullable|string|max:500',
+            'enlace_boton'     => 'nullable|url|max:500',
+            'orden'            => 'nullable|integer|min:0|max:999',
+            'video'            => 'nullable|file|mimes:mp4,webm,ogg|max:204800',  // 200 MB max
+            'imagen'           => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+        ]);
+
         $slider = Slider::find($request->id);
         $slider->titulo_superior = $request->titulo_superior;
         $slider->titulo_principal = $request->titulo_principal;
@@ -70,7 +92,8 @@ class SliderController extends Controller
                 }
             }
             $file = $request->file('video');
-            $namevideo = 'video_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
+            $ext = strtolower($file->extension());
+            $namevideo = 'video_' . bin2hex(random_bytes(16)) . '.' . $ext;
             $path = public_path() . '/slider_principal_videos/';
             $file->move($path, $namevideo);
             $slider->video = $namevideo;
@@ -84,7 +107,8 @@ class SliderController extends Controller
                 }
             }
             $file = $request->file('imagen');
-            $nameimg = 'slider_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
+            $ext = strtolower($file->extension());
+            $nameimg = 'slider_' . bin2hex(random_bytes(16)) . '.' . $ext;
             $path = public_path() . '/slider_principal_imagenes/';
             $file->move($path, $nameimg);
             $slider->imagen = $nameimg;
@@ -135,7 +159,8 @@ class SliderController extends Controller
         $sliderCarrera->orden = $request->orden;
         if ($request->hasFile('imagen')) {
             $file = $request->file('imagen');
-            $nameimg = 'slidercarrera_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
+            $ext = strtolower($file->extension());
+            $nameimg = 'slidercarrera_' . bin2hex(random_bytes(16)) . '.' . $ext;
             $path = public_path() . '/slider_carreras_imagenes/';
             $file->move($path, $nameimg);
             $sliderCarrera->imagen = $nameimg;
@@ -159,7 +184,8 @@ class SliderController extends Controller
                 }
             }
             $file = $request->file('imagen');
-            $nameimg = 'slidercarrera_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
+            $ext = strtolower($file->extension());
+            $nameimg = 'slidercarrera_' . bin2hex(random_bytes(16)) . '.' . $ext;
             $path = public_path() . '/slider_carreras_imagenes/';
             $file->move($path, $nameimg);
             $sliderCarrera->imagen = $nameimg;
