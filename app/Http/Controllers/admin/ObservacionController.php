@@ -145,6 +145,11 @@ class ObservacionController extends Controller
 
     public function reimport()
     {
+        // CRIT-03: Bloqueado en producción — ruta también eliminada de web.php
+        if (app()->environment('production')) {
+            abort(403, 'Esta operación no está disponible en producción.');
+        }
+
         Artisan::call('db:seed', [
             '--class' => ObservacionSeeder::class,
             '--force' => true,
