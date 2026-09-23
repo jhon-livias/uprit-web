@@ -21,6 +21,13 @@ class TestimonioController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre'      => 'required|string|max:150',
+            'profesion'   => 'nullable|string|max:150',
+            'comentario'  => 'nullable|string|max:1000',
+            'imagen'      => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+        ]);
+
         $testimonio = new Testimonio();
         $testimonio->nombre = $request->nombre;
         $testimonio->profesion = $request->profesion;
@@ -29,7 +36,8 @@ class TestimonioController extends Controller
 
         if ($request->hasFile('imagen')) {
             $file = $request->file('imagen');
-            $nameimg = 'testimonio_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
+            $ext = strtolower($file->extension());
+            $nameimg = 'testimonio_' . bin2hex(random_bytes(16)) . '.' . $ext;
             $path = $this->testimoniosUploadPath();
             $file->move($path, $nameimg);
             $testimonio->imagen = $nameimg;
@@ -42,6 +50,14 @@ class TestimonioController extends Controller
 
     public function update(Request $request)
     {
+        $request->validate([
+            'id'          => 'required|exists:testimonios,id',
+            'nombre'      => 'required|string|max:150',
+            'profesion'   => 'nullable|string|max:150',
+            'comentario'  => 'nullable|string|max:1000',
+            'imagen'      => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+        ]);
+
         $testimonio = Testimonio::find($request->id);
         $testimonio->nombre = $request->nombre;
         $testimonio->profesion = $request->profesion;
@@ -56,7 +72,8 @@ class TestimonioController extends Controller
                 }
             }
             $file = $request->file('imagen');
-            $nameimg = 'testimonio_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
+            $ext = strtolower($file->extension());
+            $nameimg = 'testimonio_' . bin2hex(random_bytes(16)) . '.' . $ext;
             $path = $this->testimoniosUploadPath();
             $file->move($path, $nameimg);
             $testimonio->imagen = $nameimg;
