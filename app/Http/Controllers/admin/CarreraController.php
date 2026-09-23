@@ -36,6 +36,21 @@ class CarreraController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'categoria_id'   => 'required|integer|exists:categorias,id',
+            'nombre'         => 'required|string|max:255',
+            'descripcion'    => 'nullable|string',
+            'admision'       => 'nullable|string|max:255',
+            'duracion'       => 'nullable|string|max:100',
+            'grado_obtenido' => 'nullable|string|max:255',
+            'titulacion'     => 'nullable|string|max:255',
+            'modalidades'    => 'nullable|string',
+            'visible_in_nav' => 'nullable|boolean',
+            'brochure'       => 'nullable|file|mimes:pdf|max:' . self::BROCHURE_MAX_KB,
+            'imagen'         => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'imagen_banner'  => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+        ]);
+
         $carrera = new Carrera();
         $carrera->categoria_id = $request->categoria_id;
         $carrera->nombre = $request->nombre;
@@ -46,9 +61,6 @@ class CarreraController extends Controller
         $carrera->titulacion = $request->titulacion;
         $carrera->modalidades = $request->modalidades;
         $carrera->visible_in_nav = $request->boolean('visible_in_nav', true);
-        $request->validate([
-            'brochure' => 'nullable|file|mimes:pdf|max:' . self::BROCHURE_MAX_KB,
-        ]);
         $brochure = $this->savePublicUpload($request, 'brochure', 'brochures_carreras', 'brochure');
         if ($brochure !== null) {
             $carrera->brochure = $brochure;
@@ -68,6 +80,22 @@ class CarreraController extends Controller
 
     public function update(Request $request)
     {
+        $request->validate([
+            'id'             => 'required|integer|exists:carreras,id',
+            'categoria_id'   => 'required|integer|exists:categorias,id',
+            'nombre'         => 'required|string|max:255',
+            'descripcion'    => 'nullable|string',
+            'admision'       => 'nullable|string|max:255',
+            'duracion'       => 'nullable|string|max:100',
+            'grado_obtenido' => 'nullable|string|max:255',
+            'titulacion'     => 'nullable|string|max:255',
+            'modalidades'    => 'nullable|string',
+            'visible_in_nav' => 'nullable|boolean',
+            'brochure'       => 'nullable|file|mimes:pdf|max:' . self::BROCHURE_MAX_KB,
+            'imagen'         => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'imagen_banner'  => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+        ]);
+
         $carrera = Carrera::find($request->id);
         $carrera->categoria_id = $request->categoria_id;
         $carrera->nombre = $request->nombre;
@@ -78,9 +106,6 @@ class CarreraController extends Controller
         $carrera->titulacion = $request->titulacion;
         $carrera->modalidades = $request->modalidades;
         $carrera->visible_in_nav = $request->boolean('visible_in_nav', true);
-        $request->validate([
-            'brochure' => 'nullable|file|mimes:pdf|max:' . self::BROCHURE_MAX_KB,
-        ]);
         $brochure = $this->savePublicUpload($request, 'brochure', 'brochures_carreras', 'brochure', $carrera->brochure);
         if ($brochure !== null) {
             $carrera->brochure = $brochure;
@@ -287,7 +312,8 @@ class CarreraController extends Controller
             }
         }
 
-        $filename = $prefix . '_' . time() . rand(1, 200) . '.' . $file->getClientOriginalExtension();
+        $ext = strtolower($file->extension());
+        $filename = $prefix . '_' . bin2hex(random_bytes(16)) . '.' . $ext;
         $file->move($path, $filename);
 
         return $filename;

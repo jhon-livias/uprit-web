@@ -173,7 +173,8 @@ class DocenteController extends Controller
             }
         }
 
-        $filename = time() . '_' . $file->getClientOriginalName();
+        $ext = strtolower($file->extension());
+        $filename = 'docente_' . bin2hex(random_bytes(16)) . '.' . $ext;
         $file->move($path, $filename);
 
         return $directory . '/' . $filename;
