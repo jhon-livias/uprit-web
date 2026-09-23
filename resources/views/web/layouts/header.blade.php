@@ -23,7 +23,7 @@
                                 <a href="#" class="hov-sup">Nuestra Plataforma</a>
                                 <ul class="platform-dropdown">
                                     <li style="padding-bottom: 0px;"><a href="https://intranet.uprit.edu.pe/"
-                                            target="_blank" rel="noopener">ERP</a></li>
+                                            target="_blank" rel="noopener">Intranet</a></li>
                                                     <li style="padding-bottom: 0px; padding-top: 5px;"><a
                                                             href="{{ route('biblioteca-virtual') }}"
                                                             >Biblioteca Virtual</a></li>
