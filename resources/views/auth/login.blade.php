@@ -42,8 +42,9 @@
                                 </a>
                             </div>
                             <div class="m-login__signin">
-                                <form class="m-login__form m-form" method="POST" action="{{ route('login') }}">
+                                <form class="m-login__form m-form" method="POST" action="{{ route('login') }}" id="login-form">
                                     @csrf
+                                    <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
                                     <div class="m-login__head">
                                         <h3 class="m-login__title" style="color: #fff;">
                                             Ingresa a tu cuenta
@@ -94,6 +95,26 @@
                                                     Los Datos son Incorrectos
                                                 </strong>
 
+                                            </div>
+                                            <div class="m-alert__close">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        @endif
+                                        @if ($errors->has('captcha'))
+                                        <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible fade show"
+                                            style="margin-top: 5%;" role="alert">
+                                            <div class="m-alert__icon">
+                                                <i class="fas fa-exclamation-triangle"></i>
+                                                <span></span>
+                                            </div>
+                                            <div class="m-alert__text">
+                                                <strong>
+                                                    {{ $errors->first('captcha') }}
+                                                </strong>
                                             </div>
                                             <div class="m-alert__close">
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -157,6 +178,18 @@
     <script src="{{ asset('admin/demo/vendors.bundle.js') }}" type="text/javascript"></script>
     <script src="{{ asset('admin/demo/scripts.bundle.js') }}" type="text/javascript"></script>
     <script src="{{ asset('admin/demo/login.js') }}" type="text/javascript"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.key') }}"></script>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            grecaptcha.ready(function() {
+                grecaptcha.execute('{{ config('services.recaptcha.key') }}', {action: 'submit'}).then(function(token) {
+                    document.getElementById('g-recaptcha-response').value = token;
+                    document.getElementById('login-form').submit();
+                });
+            });
+        });
+    </script>
 
 </body>
 

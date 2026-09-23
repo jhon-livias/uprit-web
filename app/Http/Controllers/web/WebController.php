@@ -16,6 +16,7 @@ use App\Models\Reclamo;
 use App\Models\Docente;
 use App\Services\WebNavigationCache;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Http;
 
 
 class WebController extends Controller
@@ -453,6 +454,21 @@ class WebController extends Controller
             return back()->withErrors([
                 'spam' => 'Se detectó una posible actividad automática.'
             ]);
+        }
+
+        $recaptchaResponse = $request->input('g-recaptcha-response');
+        if (!$recaptchaResponse) {
+            return back()->withErrors(['captcha' => 'Por favor completa el reCAPTCHA.']);
+        }
+
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => config('services.recaptcha.secret'),
+            'response' => $recaptchaResponse,
+            'remoteip' => $request->ip()
+        ]);
+
+        if (!$response->json('success') || $response->json('score') < 0.5) {
+            return back()->withErrors(['captcha' => 'Fallo la validación reCAPTCHA. Se detectó actividad sospechosa.']);
         }
 
         $request->validate([

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Laravel\Sanctum\PersonalAccessToken;
+use Illuminate\Support\Facades\Http;
 
 class AuthController extends Controller
 {
@@ -48,6 +49,27 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
+
+        $recaptchaResponse = $request->input('g-recaptcha-response');
+        if (!$recaptchaResponse) {
+            return back()->withErrors(['captcha' => 'Falta token de validación reCAPTCHA.']);
+        }
+
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => config('services.recaptcha.secret'),
+            'response' => $recaptchaResponse,
+            'remoteip' => $request->ip()
+        ]);
+
+        if (!$response->json('success') || $response->json('score') < 0.5) {
+            LoginLog::create([
+                'email' => $request->email,
+                'ip_address' => $request->ip(),
+                'success' => false,
+                'message' => 'Fallo la validación reCAPTCHA'
+            ]);
+            return back()->withErrors(['captcha' => 'Se detectó actividad sospechosa (Bot).']);
+        }
 
         $user = User::where('email', $request->email)->first();
 

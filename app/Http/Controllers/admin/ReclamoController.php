@@ -16,7 +16,7 @@ class ReclamoController extends Controller
     }
 
     public function getReclamos(){
-        $reclamos = Reclamo::orderby('fecha', 'desc')->get();
+        $reclamos = Reclamo::orderby('fecha', 'desc')->paginate(50);
         return response()->json($reclamos);
     }
 
