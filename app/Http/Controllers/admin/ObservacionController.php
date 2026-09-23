@@ -44,7 +44,7 @@ class ObservacionController extends Controller
             'areas' => Observacion::query()->distinct()->orderBy('area')->pluck('area'),
             'paginas' => Observacion::query()->distinct()->orderBy('pagina')->pluck('pagina'),
             'carpetas' => Observacion::query()->distinct()->orderBy('carpeta_origen')->pluck('carpeta_origen'),
-            'usuarios' => User::query()->orderBy('name')->get(['id', 'name', 'email']),
+            'usuarios' => User::query()->orderBy('name')->get(['id', 'name']),
             'totales' => [
                 'total' => Observacion::count(),
                 'duplicados' => Observacion::where('es_duplicado', true)->count(),

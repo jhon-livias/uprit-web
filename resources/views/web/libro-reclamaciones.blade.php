@@ -6,9 +6,10 @@
 @section('content')
 @include('web.partials.breadcrumb')
 
-<form action="{{ route('reclamos.store') }}" method="POST" enctype="multipart/form-data">
+<form id="reclamo-form" action="{{ route('reclamos.store') }}" method="POST" enctype="multipart/form-data">
 
     @csrf
+    <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
 
     @if ($errors->any())
         <div class="alert alert-danger mb-4 container mt-4">
@@ -255,6 +256,7 @@
 
 @endsection
 @section('scripts')
+<script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.key') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @if (session('agregar-reclamo') == 'ok')
 <script>
@@ -283,5 +285,15 @@
     });
 
     fechaInput.value = fechaLima;
+
+    document.getElementById('reclamo-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        grecaptcha.ready(function() {
+            grecaptcha.execute('{{ config('services.recaptcha.key') }}', {action: 'submit'}).then(function(token) {
+                document.getElementById('g-recaptcha-response').value = token;
+                document.getElementById('reclamo-form').submit();
+            });
+        });
+    });
 </script>
 @endsection
