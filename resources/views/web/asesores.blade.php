@@ -22,8 +22,8 @@
                         <div class="col-lg-4 col-md-6">
                             <div style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,.08);height:100%;">
 
-                                <img src="img/asesores/norman.jpg" alt="Norman Lazaro"
-                                    style="width:100%;height:320px;object-fit:cover;">
+                                <!-- <img src="img/asesores/norman.jpg" alt="Norman Lazaro"
+                                    style="width:100%;height:320px;object-fit:cover;"> -->
 
                                 <div style="padding:25px;text-align:center;">
 
@@ -50,9 +50,9 @@
                         <!-- ASESOR 2 -->
                         <div class="col-lg-4 col-md-6">
                             <div style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,.08);height:100%;">
-
+<!--
                                 <img src="img/asesores/christian.jpg" alt="Christian Sanchez"
-                                    style="width:100%;height:320px;object-fit:cover;">
+                                    style="width:100%;height:320px;object-fit:cover;"> -->
 
                                 <div style="padding:25px;text-align:center;">
 
@@ -80,8 +80,8 @@
                         <div class="col-lg-4 col-md-6">
                             <div style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,.08);height:100%;">
 
-                                <img src="img/asesores/ericka.jpg" alt="Ericka Yacila"
-                                    style="width:100%;height:320px;object-fit:cover;">
+                                <!-- <img src="img/asesores/ericka.jpg" alt="Ericka Yacila"
+                                    style="width:100%;height:320px;object-fit:cover;"> -->
 
                                 <div style="padding:25px;text-align:center;">
 
