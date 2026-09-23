@@ -278,7 +278,7 @@
                         </svg>
                     </div>
                     <div class="content">
-                        <h5 class="title letra-blanca">ERP</h5>
+                        <h5 class="title letra-blanca">Intranet</h5>
                     </div>
                 </a>
             </div>
