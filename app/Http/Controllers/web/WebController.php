@@ -89,7 +89,7 @@ class WebController extends Controller
         $carrera->setRelation(
             'docentes',
             $carrera->docentes
-                ->sortBy(fn (Docente $docente) => $docente->tieneTagCoordinador() ? 0 : 1)
+                ->sortBy(fn(Docente $docente) => $docente->tieneTagCoordinador() ? 0 : 1)
                 ->values()
         );
         $categoria = Categoria::findOrFail($carrera->categoria_id);
@@ -199,7 +199,7 @@ class WebController extends Controller
         return view('web.programa', compact('ultimasnoticias'));
     }
 
-        public function convalidacion()
+    public function convalidacion()
     {
         $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.convalidacion', compact('ultimasnoticias'));
@@ -235,7 +235,7 @@ class WebController extends Controller
         return view('web.asesores', compact('ultimasnoticias'));
     }
 
-     public function escuelaposgrado()
+    public function escuelaposgrado()
     {
         $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.escuela-posgrado', compact('ultimasnoticias'));
@@ -411,7 +411,7 @@ class WebController extends Controller
     private function docenteAutoridad(string $nombre): ?Docente
     {
         return Docente::query()
-            ->where('nombre', 'like', '%'.$nombre.'%')
+            ->where('nombre', 'like', '%' . $nombre . '%')
             ->orderByRaw("CASE WHEN imagen IS NULL OR imagen = '' THEN 1 ELSE 0 END")
             ->first();
     }
@@ -456,30 +456,30 @@ class WebController extends Controller
         }
 
         $request->validate([
-            'nombres'      => 'required|string|max:100',
-            'apellidos'    => 'required|string|max:100',
-            'dni'          => 'required|digits_between:8,12',
-            'correo'       => 'required|email|max:150',
-            'telefono'     => 'nullable|string|max:20',
-            'sede'         => 'required|string|max:100',
-            'tipo'         => 'required|string|max:100',
+            'nombres' => 'required|string|max:100',
+            'apellidos' => 'required|string|max:100',
+            'dni' => 'required|digits_between:8,12',
+            'correo' => 'required|email|max:150',
+            'telefono' => 'nullable|string|max:20',
+            'sede' => 'required|string|max:100',
+            'tipo' => 'required|string|max:100',
             'tipo_reclamo' => 'required|string|max:100',
-            'descripcion'  => 'required|string|min:10|max:2000',
-            'evidencia'    => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:5120',
+            'descripcion' => 'required|string|min:10|max:2000',
+            'evidencia' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:5120',
         ], [
-            'nombres.required'      => 'El nombre es obligatorio.',
-            'apellidos.required'    => 'Los apellidos son obligatorios.',
-            'dni.required'          => 'El DNI es obligatorio.',
-            'dni.digits_between'    => 'El DNI debe tener entre 8 y 12 dígitos.',
-            'correo.required'       => 'El correo electrónico es obligatorio.',
-            'correo.email'          => 'Ingrese un correo válido.',
-            'sede.required'         => 'Seleccione una sede.',
-            'tipo.required'         => 'Seleccione el tipo de reclamo.',
+            'nombres.required' => 'El nombre es obligatorio.',
+            'apellidos.required' => 'Los apellidos son obligatorios.',
+            'dni.required' => 'El DNI es obligatorio.',
+            'dni.digits_between' => 'El DNI debe tener entre 8 y 12 dígitos.',
+            'correo.required' => 'El correo electrónico es obligatorio.',
+            'correo.email' => 'Ingrese un correo válido.',
+            'sede.required' => 'Seleccione una sede.',
+            'tipo.required' => 'Seleccione el tipo de reclamo.',
             'tipo_reclamo.required' => 'Seleccione la categoría del reclamo.',
-            'descripcion.required'  => 'La descripción es obligatoria.',
-            'descripcion.min'       => 'La descripción debe tener al menos 10 caracteres.',
-            'evidencia.mimes'       => 'La evidencia debe ser JPG, PNG o PDF.',
-            'evidencia.max'         => 'La evidencia no puede superar 5 MB.',
+            'descripcion.required' => 'La descripción es obligatoria.',
+            'descripcion.min' => 'La descripción debe tener al menos 10 caracteres.',
+            'evidencia.mimes' => 'La evidencia debe ser JPG, PNG o PDF.',
+            'evidencia.max' => 'La evidencia no puede superar 5 MB.',
         ]);
 
         $reclamo = new Reclamo();
