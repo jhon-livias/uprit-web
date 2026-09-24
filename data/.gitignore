@@ -1,5 +1,0 @@
-# Ignorar documentos fuente; solo versionar el export normalizado
-*
-!export/
-!export/**
-!.gitignore
