@@ -147,7 +147,7 @@ return [
             'subtitulo' => 'Canal institucional para la orientación y comunicación sobre aspectos éticos de la actividad investigativa',
         ],
         'intro' => [
-            'La UPRIT promueve una cultura de integridad científica y el cumplimiento de los principios éticos en todas las actividades de investigación. Este espacio facilita el acceso al marco normativo aplicable y a un medio de contacto directo con la Dirección de Investigación para consultas o denuncias relacionadas con la ética en investigación.',
+            'La UPRIT promueve una cultura de integridad científica y el cumplimiento de los principios éticos en todas las actividades de investigación. Este espacio facilita el acceso al marco normativo aplicable y a un medio de contacto directo con el Vicerrectorado de Investigación para consultas o denuncias relacionadas con la ética en investigación.',
         ],
     ],
 ];

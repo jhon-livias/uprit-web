@@ -5,9 +5,9 @@ return [
         'telefono' => '+51923098323',
         'telefono_display' => '+51 923 098 323',
         'whatsapp' => '51923098323',
-        'whatsapp_mensaje' => 'Hola, me comunico con la Dirección de Investigación de UPRIT.',
+        'whatsapp_mensaje' => 'Hola, me comunico con el Vicerrectorado de Investigación de UPRIT.',
         'email' => 'direccion.investigacion@uprit.edu.pe',
-        'etiqueta' => 'Contacto oficial – Dirección de Investigación',
+        'etiqueta' => 'Contacto oficial – Vicerrectorado de Investigación',
     ],
 
     'codigo_etica_investigacion' => [

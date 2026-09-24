@@ -202,18 +202,18 @@ Route::get('/a2iprograma', [WebController::class, 'a2iprograma'])->name('a2iprog
 Route::get('/medioambiental', [WebController::class, 'medioambiental'])->name('medioambiental');
 Route::get('/defensoria', [WebController::class, 'defensoria'])->name('defensoria');
 
-Route::get('/direccion', [WebController::class, 'direccion'])->name('direccion');
-Route::get('/direccion/columna/{slug}', [WebController::class, 'columnaInvestigador'])
+Route::get('/vicerrectorado-de-investigacion', [WebController::class, 'direccion'])->name('direccion');
+Route::get('/vicerrectorado-de-investigacion/columna/{slug}', [WebController::class, 'columnaInvestigador'])
     ->name('direccion.columna')
     ->where('slug', '[a-z0-9\-]+');
-Route::get('/direccion/docente/{id}', [WebController::class, 'detalleDocenteInvestigacion'])
+Route::get('/vicerrectorado-de-investigacion/docente/{id}', [WebController::class, 'detalleDocenteInvestigacion'])
     ->name('direccion.docente')
     ->whereNumber('id');
-Route::get('/centro_investigacion', [WebController::class, 'centro_investigacion'])->name('centro_investigacion');
-Route::get('/revista_cientifica', [WebController::class, 'revistaCientifica'])->name('revista_cientifica');
-Route::get('/vinculacion_empresas', [WebController::class, 'vinculacionEmpresas'])->name('vinculacion_empresas');
-Route::get('/repositorio_publicaciones', [WebController::class, 'repositorioPublicaciones'])->name('repositorio_publicaciones');
-Route::get('/denuncias_etica_investigacion', [WebController::class, 'denunciasEticaInvestigacion'])->name('denuncias_etica_investigacion');
+Route::get('/centro-investigacion', [WebController::class, 'centro_investigacion'])->name('centro_investigacion');
+Route::get('/revista-cientifica', [WebController::class, 'revistaCientifica'])->name('revista_cientifica');
+Route::get('/vinculacion-empresas', [WebController::class, 'vinculacionEmpresas'])->name('vinculacion_empresas');
+Route::get('/repositorio-publicaciones', [WebController::class, 'repositorioPublicaciones'])->name('repositorio_publicaciones');
+Route::get('/denuncias-etica-investigacion', [WebController::class, 'denunciasEticaInvestigacion'])->name('denuncias_etica_investigacion');
 
 
 Route::get('/contactenos', function () {

@@ -87,7 +87,7 @@
 
         <div class="text-center mt-5 mb-4">
             <a href="{{ route('direccion') }}" class="docente-investigador-perfil__volver">
-                ← Volver a Dirección de Investigación
+                ← Volver a Vicerrectorado de Investigación
             </a>
         </div>
     </div>

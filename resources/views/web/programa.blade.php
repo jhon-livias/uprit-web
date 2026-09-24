@@ -131,7 +131,7 @@
                     <div class="text-block">
                         <h3 class="title">Innovación, Colaboración y Apoyo</h3>
                         <ul>
-                            <li>La Dirección de Investigación cultiva un ambiente de excelencia científica y empresarial, conectando a la comunidad universitaria con la industria y las empresas emergentes.</li>
+                            <li>El Vicerrectorado de Investigación cultiva un ambiente de excelencia científica y empresarial, conectando a la comunidad universitaria con la industria y las empresas emergentes.</li>
                         </ul>
                     </div>
                     <div class="text-block">
