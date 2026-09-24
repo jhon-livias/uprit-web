@@ -5,7 +5,7 @@
 
 <div class="text-block investigacion-etica__contacto">
     <h3 class="title">Contacto</h3>
-    <p>Para orientación o comunicación con la Dirección de Investigación, utilice los siguientes medios oficiales:</p>
+    <p>Para orientación o comunicación con el Vicerrectorado de Investigación, utilice los siguientes medios oficiales:</p>
     <div class="investigacion-etica__contacto-card">
         <p class="investigacion-etica__contacto-label">{{ $contacto['etiqueta'] }}</p>
         <div class="investigacion-etica__contacto-actions">

@@ -96,7 +96,7 @@
                                                     <div class="col-12">
                                                         <label>{{ docente.es_investigador ? 'Historial / biografía completa' : 'Descripción' }}</label>
                                                         <textarea v-model="docente.descripcion" class="form-control mb-3 docente-descripcion-textarea"
-                                                            :placeholder="docente.es_investigador ? 'Texto completo que aparece en el perfil de Dirección de Investigación' : ''"></textarea>
+                                                            :placeholder="docente.es_investigador ? 'Texto completo que aparece en el perfil de Vicerrectorado de Investigación' : ''"></textarea>
                                                     </div>
                                                     <div class="col-12">
                                                         <label>Etiquetas</label>
@@ -124,7 +124,7 @@
                                                             <input type="checkbox" class="custom-control-input"
                                                                 id="esInvestigadorNuevo" v-model="docente.es_investigador">
                                                             <label class="custom-control-label" for="esInvestigadorNuevo">
-                                                                Mostrar en Dirección de Investigación
+                                                                Mostrar en Vicerrectorado de Investigación
                                                             </label>
                                                         </div>
                                                     </div>
@@ -136,7 +136,7 @@
                                                                 class="form-control mb-3">
                                                         </div>
                                                         <div class="col-12">
-                                                            <label>Resumen para Dirección de Investigación</label>
+                                                            <label>Resumen para Vicerrectorado de Investigación</label>
                                                             <textarea v-model="docente.resumen_investigacion"
                                                                 class="form-control mb-3 docente-descripcion-textarea"
                                                                 placeholder="Texto que aparece en la tarjeta del equipo directivo"></textarea>
@@ -210,7 +210,7 @@
                                                     <div class="col-12">
                                                         <label>{{ docente.es_investigador ? 'Historial / biografía completa' : 'Descripción' }}</label>
                                                         <textarea v-model="docente.descripcion" class="form-control mb-3 docente-descripcion-textarea"
-                                                            :placeholder="docente.es_investigador ? 'Texto completo que aparece en el perfil de Dirección de Investigación' : ''"></textarea>
+                                                            :placeholder="docente.es_investigador ? 'Texto completo que aparece en el perfil de Vicerrectorado de Investigación' : ''"></textarea>
                                                     </div>
                                                     <div class="col-12">
                                                         <label>Etiquetas</label>
@@ -238,7 +238,7 @@
                                                             <input type="checkbox" class="custom-control-input"
                                                                 id="esInvestigadorEditar" v-model="docente.es_investigador">
                                                             <label class="custom-control-label" for="esInvestigadorEditar">
-                                                                Mostrar en Dirección de Investigación
+                                                                Mostrar en Vicerrectorado de Investigación
                                                             </label>
                                                         </div>
                                                     </div>
@@ -250,7 +250,7 @@
                                                                 class="form-control mb-3">
                                                         </div>
                                                         <div class="col-12">
-                                                            <label>Resumen para Dirección de Investigación</label>
+                                                            <label>Resumen para Vicerrectorado de Investigación</label>
                                                             <textarea v-model="docente.resumen_investigacion"
                                                                 class="form-control mb-3 docente-descripcion-textarea"
                                                                 placeholder="Texto que aparece en la tarjeta del equipo directivo"></textarea>

@@ -15,7 +15,7 @@
 
 <div class="text-block investigacion-etica__contacto">
     <h3 class="title">Contacto</h3>
-    <p>Para orientación o comunicación relacionada con aspectos éticos de la investigación, comuníquese directamente con la Dirección de Investigación:</p>
+    <p>Para orientación o comunicación relacionada con aspectos éticos de la investigación, comuníquese directamente con el Vicerrectorado de Investigación:</p>
     <div class="investigacion-etica__contacto-card">
         <p class="investigacion-etica__contacto-label">{{ $contacto['etiqueta'] }}</p>
         <div class="investigacion-etica__contacto-actions">
