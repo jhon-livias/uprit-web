@@ -297,15 +297,15 @@ return [
             'parent' => ['label' => 'Investigación'],
         ],
         'direccion' => [
-            'title' => 'Dirección de Investigación',
-            'menu_label' => 'Dirección de Investigación',
+            'title' => 'Vicerrectorado de Investigación',
+            'menu_label' => 'Vicerrectorado de Investigación',
             'parent' => ['label' => 'Investigación'],
         ],
         'direccion.docente' => [
-            'parent' => ['label' => 'Dirección de Investigación', 'route' => 'direccion'],
+            'parent' => ['label' => 'Vicerrectorado de Investigación', 'route' => 'direccion'],
         ],
         'direccion.columna' => [
-            'parent' => ['label' => 'Dirección de Investigación', 'route' => 'direccion'],
+            'parent' => ['label' => 'Vicerrectorado de Investigación', 'route' => 'direccion'],
         ],
         'centro_investigacion' => [
             'title' => 'Centros de Investigación',

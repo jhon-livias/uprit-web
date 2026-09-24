@@ -10,7 +10,7 @@ return [
 
     'ejes' => [
         'titulo' => 'Ejes Estratégicos de la Investigación',
-        'intro' => 'En este apartado se presentan los ejes estratégicos que orientan y articulan las actividades de investigación de la Dirección de Investigación.',
+        'intro' => 'En este apartado se presentan los ejes estratégicos que orientan y articulan las actividades de investigación de la Vicerrectorado de Investigación.',
     ],
 
     'colaboracion_internacional' => [
@@ -142,7 +142,7 @@ return [
 
     'investigacion_rsu' => [
         'titulo' => 'Investigación con Responsabilidad Social Universitaria',
-        'intro' => 'La Dirección de Investigación promueve proyectos que articulan la generación de conocimiento con la atención de necesidades y problemáticas de la sociedad, contribuyendo al desarrollo sostenible y al fortalecimiento de la Responsabilidad Social Universitaria.',
+        'intro' => 'El Vicerrectorado de Investigación promueve proyectos que articulan la generación de conocimiento con la atención de necesidades y problemáticas de la sociedad, contribuyendo al desarrollo sostenible y al fortalecimiento de la Responsabilidad Social Universitaria.',
         'descripcion' => 'Nuestros proyectos impulsan la innovación en ciencia, tecnología, agricultura, humanidades y más, beneficiando al país y al mundo.',
         'proyectos' => [
             [

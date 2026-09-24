@@ -9,7 +9,7 @@ class SyncInvestigacionObservacionEstados extends Command
 {
     protected $signature = 'observaciones:sync-investigacion-estados {--dry-run : Muestra cambios sin guardar}';
 
-    protected $description = 'Actualiza estados del kanban para observaciones de Dirección de Investigación (import_id #28–#80)';
+    protected $description = 'Actualiza estados del kanban para observaciones de Vicerrectorado de Investigación (import_id #28–#80)';
 
     public function handle(): int
     {
