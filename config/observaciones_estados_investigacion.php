@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Estados del kanban (import_id => estado) — bloque Dirección de Investigación (#28–#80).
+ * Estados del kanban (import_id => estado) — bloque Vicerrectorado de Investigación (#28–#80).
  * Actualizar tras revisar implementación en staging.
  */
 return [

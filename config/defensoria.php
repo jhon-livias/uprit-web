@@ -13,7 +13,7 @@ return [
 
     'correo' => 'defensoriauniversitaria@uprit.edu.pe',
     'horario' => 'Lunes a Viernes, de 8 am a 1 pm y de 2 pm a 5pm. Sábados, de 8 am a 1 pm',
-    'oficina' => 'Av. Industrial Km. 04, Mz. Z′ Lote Resultante 1A, Urb. Semirústica El Bosque (Espalda de Sedalib), Campus Universitario UPRIT, 3er piso (costado Dirección de Investigación), Trujillo - La Libertad, Perú',
+    'oficina' => 'Av. Industrial Km. 04, Mz. Z′ Lote Resultante 1A, Urb. Semirústica El Bosque (Espalda de Sedalib), Campus Universitario UPRIT, 3er piso (costado Vicerrectorado de Investigación), Trujillo - La Libertad, Perú',
 
     'audiencia' => [
         'Estudiantes',

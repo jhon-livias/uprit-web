@@ -191,6 +191,7 @@ class WebNavigationCache
         $query = Categoria::query()
             ->select($categoriaColumns)
             ->whereNull('padre_id')
+            ->where('nombre', '!=', 'Segunda Especialidad')
             ->whereHas('nivelAcademico', fn ($q) => $q->where('nombre', $nivelNombre));
 
         if ($withHijos) {
