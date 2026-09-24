@@ -76,7 +76,7 @@ class WebController extends Controller
         ));
     }
 
-    public function detallenoticia($id)
+    public function detallenoticia(mixed $id)
     {
         $noticia = Noticia::findOrFail($id);
         $categorias = CategoriaNoticia::all();
@@ -84,7 +84,7 @@ class WebController extends Controller
         return view('web.detalle-noticia', compact('noticia', 'categorias', 'ultimasnoticias'));
     }
 
-    public function detallecarrera($id)
+    public function detallecarrera(mixed $id)
     {
         $carrera = Carrera::with(['docentes', 'certificaciones', 'malla'])->findOrFail($id);
         $carrera->setRelation(
