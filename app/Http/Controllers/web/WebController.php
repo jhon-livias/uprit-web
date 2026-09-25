@@ -389,7 +389,7 @@ class WebController extends Controller
         ];
 
         $academicas = [
-            ['buscar' => 'José Miguel Sibina', 'nombre' => 'José Miguel Sibina Pereyra', 'cargo' => 'Decano'],
+            ['buscar' => 'José Miguel Sibina', 'nombre' => 'José Miguel Sibina Pereyra', 'cargo' => 'Rector'],
             ['buscar' => 'Olenka Ana Catherine', 'nombre' => 'Olenka Ana Catherine Espinoza Rodriguez', 'cargo' => 'Vicerrectora'],
             ['buscar' => 'Alexander Máximo Rodríguez', 'nombre' => 'Alexander Máximo Rodríguez García', 'cargo' => 'Decano de la Facultad de Derecho y Ciencias Sociales'],
             ['buscar' => 'Santos Pedro Aponte', 'nombre' => 'Santos Pedro Aponte Mendez', 'cargo' => 'Decano de la Facultad de Ciencias Empresariales'],
