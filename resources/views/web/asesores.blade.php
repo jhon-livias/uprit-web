@@ -21,39 +21,6 @@
                         <!-- ASESOR 1 -->
                         <div class="col-lg-4 col-md-6">
                             <div style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,.08);height:100%;">
-
-                                <!-- <img src="img/asesores/norman.jpg" alt="Norman Lazaro"
-                                    style="width:100%;height:320px;object-fit:cover;"> -->
-
-                                <div style="padding:25px;text-align:center;">
-
-                                    <h4 style="font-weight:700;margin-bottom:5px;">Norman Lazaro</h4>
-
-                                    <p style="color:#777;margin-bottom:10px;">Trujillo</p>
-
-                                    <div style="width:60px;height:3px;background:#c8102e;margin:15px auto;"></div>
-
-                                    <p style="font-weight:600;">Asesor de Admisión</p>
-
-                                    <a href="https://wa.me/51933248429?text=Hola,%20necesito%20informaci%C3%B3n%20sobre%20admisi%C3%B3n" target="_blank" rel="noopener noreferrer" style="display:block;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px;">
-                                        <i class="ri-whatsapp-line"></i> Contactar
-                                    </a>
-
-                                    <a href="https://wa.me/51933248429?text=Hola,%20quiero%20programar%20una%20cita%20con%20un%20asesor" target="_blank" rel="noopener noreferrer" style="display:block;border:1px solid #ddd;color:#444;padding:12px;border-radius:10px;text-decoration:none;">
-                                        <i class="ri-calendar-line"></i> Programa una cita
-                                    </a>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ASESOR 2 -->
-                        <div class="col-lg-4 col-md-6">
-                            <div style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,.08);height:100%;">
-<!--
-                                <img src="img/asesores/christian.jpg" alt="Christian Sanchez"
-                                    style="width:100%;height:320px;object-fit:cover;"> -->
-
                                 <div style="padding:25px;text-align:center;">
 
                                     <h4 style="font-weight:700;margin-bottom:5px;">Christian Sanchez</h4>
@@ -64,11 +31,36 @@
 
                                     <p style="font-weight:600;">Asesor de Admisión</p>
 
-                                    <a href="https://wa.me/51933248429?text=Hola,%20necesito%20informaci%C3%B3n%20sobre%20admisi%C3%B3n" target="_blank" rel="noopener noreferrer" style="display:block;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px;">
+                                    <a href="https://wa.me/51933253400?text=Hola,%20necesito%20informaci%C3%B3n%20sobre%20admisi%C3%B3n" target="_blank" rel="noopener noreferrer" style="display:block;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px;">
                                         <i class="ri-whatsapp-line"></i> Contactar
                                     </a>
 
-                                    <a href="https://wa.me/51933248429?text=Hola,%20quiero%20programar%20una%20cita%20con%20un%20asesor" target="_blank" rel="noopener noreferrer" style="display:block;border:1px solid #ddd;color:#444;padding:12px;border-radius:10px;text-decoration:none;">
+                                    <a href="https://wa.me/51933253400?text=Hola,%20quiero%20programar%20una%20cita%20con%20un%20asesor" target="_blank" rel="noopener noreferrer" style="display:block;border:1px solid #ddd;color:#444;padding:12px;border-radius:10px;text-decoration:none;">
+                                        <i class="ri-calendar-line"></i> Programa una cita
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ASESOR 2 -->
+                        <div class="col-lg-4 col-md-6">
+                            <div style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,.08);height:100%;">
+                                <div style="padding:25px;text-align:center;">
+
+                                    <h4 style="font-weight:700;margin-bottom:5px;">Joselyn Gallardo</h4>
+
+                                    <p style="color:#777;margin-bottom:10px;">Trujillo</p>
+
+                                    <div style="width:60px;height:3px;background:#c8102e;margin:15px auto;"></div>
+
+                                    <p style="font-weight:600;">Asesor de Admisión</p>
+
+                                    <a href="https://wa.me/51970599969?text=Hola,%20necesito%20informaci%C3%B3n%20sobre%20admisi%C3%B3n" target="_blank" rel="noopener noreferrer" style="display:block;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px;">
+                                        <i class="ri-whatsapp-line"></i> Contactar
+                                    </a>
+
+                                    <a href="https://wa.me/51970599969?text=Hola,%20quiero%20programar%20una%20cita%20con%20un%20asesor" target="_blank" rel="noopener noreferrer" style="display:block;border:1px solid #ddd;color:#444;padding:12px;border-radius:10px;text-decoration:none;">
                                         <i class="ri-calendar-line"></i> Programa una cita
                                     </a>
 
@@ -79,10 +71,6 @@
                         <!-- ASESOR 3 -->
                         <div class="col-lg-4 col-md-6">
                             <div style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,.08);height:100%;">
-
-                                <!-- <img src="img/asesores/ericka.jpg" alt="Ericka Yacila"
-                                    style="width:100%;height:320px;object-fit:cover;"> -->
-
                                 <div style="padding:25px;text-align:center;">
 
                                     <h4 style="font-weight:700;margin-bottom:5px;">Ericka Yacila</h4>
@@ -93,11 +81,11 @@
 
                                     <p style="font-weight:600;">Asesor de Admisión</p>
 
-                                    <a href="https://wa.me/51933248429?text=Hola,%20necesito%20informaci%C3%B3n%20sobre%20admisi%C3%B3n" target="_blank" rel="noopener noreferrer" style="display:block;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px;">
+                                    <a href="https://wa.me/51966288497?text=Hola,%20necesito%20informaci%C3%B3n%20sobre%20admisi%C3%B3n" target="_blank" rel="noopener noreferrer" style="display:block;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px;">
                                         <i class="ri-whatsapp-line"></i> Contactar
                                     </a>
 
-                                    <a href="https://wa.me/51933248429?text=Hola,%20quiero%20programar%20una%20cita%20con%20un%20asesor" target="_blank" rel="noopener noreferrer" style="display:block;border:1px solid #ddd;color:#444;padding:12px;border-radius:10px;text-decoration:none;">
+                                    <a href="https://wa.me/51966288497?text=Hola,%20quiero%20programar%20una%20cita%20con%20un%20asesor" target="_blank" rel="noopener noreferrer" style="display:block;border:1px solid #ddd;color:#444;padding:12px;border-radius:10px;text-decoration:none;">
                                         <i class="ri-calendar-line"></i> Programa una cita
                                     </a>
 
@@ -106,8 +94,6 @@
                         </div>
 
                     </div>
-
-
                 </div>
             </div>
             <div class="col-lg-4">
@@ -117,7 +103,7 @@
                             <h4 class="widget-title">Categorías</h4>
                             <div class="content">
                                 @include('web.partials.section-nav')
-</div>
+                            </div>
                         </div>
                     </div>
                     <!-- End Single Widget  -->

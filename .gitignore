@@ -30,3 +30,4 @@ Thumbs.db
 # Scripts locales de deploy/SSH (no versionar)
 /vps/
 /qa/
+/backup
