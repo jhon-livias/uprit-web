@@ -52,7 +52,7 @@ return [
             [
                 'titulo' => 'Probabilidades de Daños en Estructuras de Sistema Estructural Dual Frente a Sismos de Gran Magnitud, Lima – 2025',
                 'investigador_principal' => 'Dr. Lenin Miguel Bendezú Romero',
-                'coautores' => 'Enrique Manuel Durand Bazán',
+                // 'coautores' => 'Enrique Manuel Durand Bazán',
                 'linea' => 'Gestión, Innovación, Infraestructura Sostenible y Sistemas Constructivos',
                 'producto' => 'Artículo científico',
                 'anio' => '2025',
