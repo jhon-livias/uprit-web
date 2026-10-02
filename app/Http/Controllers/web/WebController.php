@@ -390,7 +390,7 @@ class WebController extends Controller
 
         $academicas = [
             ['buscar' => 'José Miguel Sibina', 'nombre' => 'José Miguel Sibina Pereyra', 'cargo' => 'Rector'],
-            ['buscar' => 'Olenka Ana Catherine', 'nombre' => 'Olenka Ana Catherine Espinoza Rodriguez', 'cargo' => 'Vicerrectora'],
+            ['buscar' => 'Olenka Ana Catherine', 'nombre' => 'Olenka Ana Catherine Espinoza Rodriguez', 'cargo' => 'Vicerrectora Académica'],
             ['buscar' => 'Alexander Máximo Rodríguez', 'nombre' => 'Alexander Máximo Rodríguez García', 'cargo' => 'Decano de la Facultad de Derecho y Ciencias Sociales'],
             ['buscar' => 'Santos Pedro Aponte', 'nombre' => 'Santos Pedro Aponte Mendez', 'cargo' => 'Decano de la Facultad de Ciencias Empresariales'],
             ['buscar' => 'Luis Alberto Acosta', 'nombre' => 'Luis Alberto Acosta Sánchez', 'cargo' => 'Decano de la Facultad de Ingeniería y Arquitectura'],
