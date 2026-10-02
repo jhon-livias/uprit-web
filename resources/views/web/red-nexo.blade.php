@@ -290,7 +290,7 @@
                         </div>
 
                     </div>
-                    <div>
+                    <!-- <div>
 
                         <img
                             src="{{ asset('web/imagenes/nexo.avif') }}"
@@ -304,7 +304,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         ">
 
-                    </div>
+                    </div> -->
                     <br> <br>
                     <div class="text-block text-center">
                         <p style="margin-bottom:30px;">
