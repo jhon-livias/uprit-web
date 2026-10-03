@@ -7,16 +7,38 @@
         <div class="row row--30">
             <div class="col-lg-8">
                 <div class="privacy-policy">
-                    <div class="text-block">
-                        <h3>
+                    <div class="text-block mb-4">
+                        <h3 class="mb-3">
                             Servicios de la Red Nexo UPRIT
                         </h3>
-
-                        <ul>
-                            <li>
-                                La Red Nexo no son solo espacios físicos, sino centros de actividad y apoyo diseñados para tu vida académica y profesional.
-                            </li>
-                        </ul>
+                        <p class="lead">
+                            La Red Nexo no son solo espacios físicos, sino centros de actividad y apoyo integral diseñados para tu vida académica y profesional.
+                        </p>
+                        
+                        <!-- Visual summary of benefits -->
+                        <div class="row g-4 mt-2 mb-5">
+                            <div class="col-md-4 text-center">
+                                <div class="p-3 border rounded shadow-sm bg-light h-100">
+                                    <i class="icon-book-open fs-1 mb-2 text-primary"></i>
+                                    <h5>Puntos de Estudio</h5>
+                                    <p class="small text-muted mb-0">Wi-Fi, pizarras y salas de colaboración.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="p-3 border rounded shadow-sm bg-light h-100">
+                                    <i class="icon-user fs-1 mb-2 text-primary"></i>
+                                    <h5>Asesoría Directa</h5>
+                                    <p class="small text-muted mb-0">Trámites y servicios sin ir al campus principal.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="p-3 border rounded shadow-sm bg-light h-100">
+                                    <i class="icon-briefcase fs-1 mb-2 text-primary"></i>
+                                    <h5>Eventos y Redes</h5>
+                                    <p class="small text-muted mb-0">Networking, charlas y desarrollo profesional.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">

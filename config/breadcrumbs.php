@@ -54,6 +54,7 @@ return [
         ],
         'conocenos' => [
             'routes' => [
+                'quienes-somos',
                 'porque',
                 'modelo-educativo',
                 'autoridades',
@@ -193,6 +194,11 @@ return [
         ],
 
         // Conócenos
+        'quienes-somos' => [
+            'title' => 'Quiénes Somos',
+            'menu_label' => 'Quiénes Somos',
+            'parent' => ['label' => 'Quiénes Somos'],
+        ],
         'porque' => [
             'title' => '¿Por qué Estudiar en la Uprit?',
             'menu_label' => '¿Por qué Estudiar en la Uprit?',

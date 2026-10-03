@@ -18,7 +18,7 @@ class MenuController extends Controller
 
     public function getGroups()
     {
-        $groups = NavGroup::with(['links' => fn ($q) => $q->orderBy('orden')])
+        $groups = NavGroup::with(['links' => fn ($q) => $q->whereNull('parent_id')->with('children.children')->orderBy('orden')])
             ->orderBy('orden')
             ->get()
             ->map(fn (NavGroup $group) => $this->formatGroup($group));
@@ -73,6 +73,7 @@ class MenuController extends Controller
 
         $link = new NavLink();
         $link->group_id = $group->id;
+        $link->parent_id = $request->parent_id ?: null;
         $link->label = $request->label;
         $link->route_name = $request->route_name ?: null;
         $link->url = $request->url ?: null;
@@ -80,7 +81,7 @@ class MenuController extends Controller
         $link->visible = filter_var($request->visible ?? true, FILTER_VALIDATE_BOOLEAN);
         $link->visible_desktop = filter_var($request->visible_desktop ?? true, FILTER_VALIDATE_BOOLEAN);
         $link->visible_mobile = filter_var($request->visible_mobile ?? true, FILTER_VALIDATE_BOOLEAN);
-        $link->orden = $request->orden ?? ((int) NavLink::where('group_id', $group->id)->max('orden') + 1);
+        $link->orden = $request->orden ?? ((int) NavLink::where('group_id', $group->id)->where('parent_id', $link->parent_id)->max('orden') + 1);
         $link->save();
 
         WebNavigationCache::forget();
@@ -91,6 +92,7 @@ class MenuController extends Controller
     public function updateLink(Request $request)
     {
         $link = NavLink::findOrFail($request->id);
+        $link->parent_id = $request->parent_id ?: null;
         $link->label = $request->label;
         $link->route_name = $request->route_name ?: null;
         $link->url = $request->url ?: null;

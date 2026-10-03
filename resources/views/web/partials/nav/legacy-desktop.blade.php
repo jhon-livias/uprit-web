@@ -43,7 +43,7 @@
     </ul>
 </li>
 @include('web.partials.nav.servicios-desktop', ['navGroup' => (object) ['label' => 'Servicios']])
-<li class="has-droupdown"><a href="#">Conócenos</a>
+<li class="has-droupdown"><a href="#">Quiénes Somos</a>
     <ul class="mega-menu conocenos">
         <li>
             <ul class="submenu mega-sub-menu mega-sub-menu-01">

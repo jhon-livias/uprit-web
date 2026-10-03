@@ -33,7 +33,7 @@
     </ul>
 </li>
 @include('web.partials.nav.servicios-mobile', ['navGroup' => (object) ['label' => 'Servicios']])
-<li class="has-droupdown"><a href="#">Conócenos</a>
+<li class="has-droupdown"><a href="#">Quiénes Somos</a>
     <ul class="submenu">
         @include('web.partials.menu-nav-links', ['section' => 'conocenos', 'context' => 'mobile'])
     </ul>

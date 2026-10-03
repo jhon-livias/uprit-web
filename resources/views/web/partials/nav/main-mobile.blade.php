@@ -2,15 +2,9 @@
     @continue(!$navGroup->visible_mobile)
     @continue($navGroup->key === 'pregrado_puede')
     @if($navGroup->tipo === 'academic')
-        @if($navGroup->key === 'posgrado')
-            @include('web.partials.nav.posgrado-mobile', ['navGroup' => $navGroup])
-        @elseif($navGroup->key === 'pregrado')
-            @include('web.partials.nav.pregrado-mobile', ['navGroup' => $navGroup])
-        @else
-            @include('web.partials.nav.academic-mobile', ['navGroup' => $navGroup])
-        @endif
+        @include('web.partials.nav.academic-mobile', ['navGroup' => $navGroup])
     @elseif($navGroup->tipo === 'section')
-        @if($navGroup->key === 'servicios')
+        @if(in_array($navGroup->key, ['servicios', 'pregrado', 'posgrado']))
             @include('web.partials.nav.servicios-mobile', ['navGroup' => $navGroup])
         @else
             @include('web.partials.nav.section-mobile', ['navGroup' => $navGroup])
