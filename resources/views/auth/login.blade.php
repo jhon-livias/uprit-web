@@ -19,7 +19,7 @@
             google: {
                 "families": ["Poppins:300,400,500,600,700", "Roboto:300,400,500,600,700"]
             },
-            active: function() {
+            active: function () {
                 sessionStorage.fonts = true;
             }
         });
@@ -28,11 +28,13 @@
 
 </head>
 
-<body class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
+<body
+    class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
     <div class="m-grid m-grid--hor m-grid--root m-page">
         <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile m-login m-login--1 m-login--singin"
             id="m_login">
-            <div class="m-grid__item m-grid__item--order-tablet-and-mobile-2 m-login__aside" style="background: #91001E;">
+            <div class="m-grid__item m-grid__item--order-tablet-and-mobile-2 m-login__aside"
+                style="background: #91001E;">
                 <div class="m-stack m-stack--hor m-stack--desktop">
                     <div class="m-stack__item m-stack__item--fluid">
                         <div class="m-login__wrapper">
@@ -42,7 +44,8 @@
                                 </a>
                             </div>
                             <div class="m-login__signin">
-                                <form class="m-login__form m-form" method="POST" action="{{ route('login') }}" id="login-form">
+                                <form class="m-login__form m-form" method="POST" action="{{ route('login') }}"
+                                    id="login-form">
                                     @csrf
                                     <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
                                     <div class="m-login__head">
@@ -53,58 +56,61 @@
                                     <br>
 
                                     <div class="form-group m-form__group ">
-                                        <input class="form-control m-input @error('email') is-invalid @enderror" type="text"
-                                            style="padding: 12px 20px;border-radius: 5px;" placeholder="Usuario"
-                                            name="email"
-                                            required autofocus>
+                                        <input class="form-control m-input @error('email') is-invalid @enderror"
+                                            type="text" style="padding: 12px 20px;border-radius: 5px;"
+                                            placeholder="Usuario" name="email" required autofocus>
 
                                     </div>
                                     <div class="form-group m-form__group ">
-                                        <input class="form-control m-input m-login__form-input--last @error('password') is-invalid @enderror"
+                                        <input
+                                            class="form-control m-input m-login__form-input--last @error('password') is-invalid @enderror"
                                             style=" padding: 12px 20px;border-radius: 5px;margin-top: 5%;"
-                                            type="password" placeholder="Contraseña" name="password" autocomplete="current-password" required>
+                                            type="password" placeholder="Contraseña" name="password"
+                                            autocomplete="current-password" required>
                                         @if ($errors->has('password'))
-                                        <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible fade show"
-                                            style="margin-top: 5%;" role="alert">
-                                            <div class="m-alert__icon">
-                                                <i class="fas fa-exclamation-triangle"></i>
-                                                <span></span>
-                                            </div>
-                                            <div class="m-alert__text">
-                                                <strong>
-                                                    Los Datos son Incorrectos
-                                                </strong>
+                                            <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible fade show"
+                                                style="margin-top: 5%;" role="alert">
+                                                <div class="m-alert__icon">
+                                                    <i class="fas fa-exclamation-triangle"></i>
+                                                    <span></span>
+                                                </div>
+                                                <div class="m-alert__text">
+                                                    <strong>
+                                                        Los Datos son Incorrectos
+                                                    </strong>
 
+                                                </div>
+                                                <div class="m-alert__close">
+                                                    <button type="button" class="close" data-dismiss="alert"
+                                                        aria-label="Close">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <div class="m-alert__close">
-                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                    <i class="fas fa-times"></i>
-                                                </button>
-                                            </div>
-                                        </div>
                                         @endif
                                         @if ($errors->has('email'))
-                                        <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible fade show"
-                                            style="margin-top: 5%;" role="alert">
-                                            <div class="m-alert__icon">
-                                                <i class="fas fa-exclamation-triangle"></i>
-                                                <span></span>
-                                            </div>
-                                            <div class="m-alert__text">
-                                                <strong>
-                                                    Los Datos son Incorrectos
-                                                </strong>
+                                                <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible fade show"
+                                                    style="margin-top: 5%;" role="alert">
+                                                    <div class="m-alert__icon">
+                                                        <i class="fas fa-exclamation-triangle"></i>
+                                                        <span></span>
+                                                    </div>
+                                                    <div class="m-alert__text">
+                                                        <strong>
+                                                            Los Datos son Incorrectos
+                                                        </strong>
 
+                                                    </div>
+                                                    <div class="m-alert__close">
+                                                        <button type="button" class="close" data-dismiss="alert"
+                                                            aria-label="Close">
+                                                            <i class="fas fa-times"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="m-alert__close">
-                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                    <i class="fas fa-times"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        </div>
                                         @endif
-                                        @if ($errors->has('captcha'))
+                                    @if ($errors->has('captcha'))
                                         <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible fade show"
                                             style="margin-top: 5%;" role="alert">
                                             <div class="m-alert__icon">
@@ -122,75 +128,69 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        @endif
-                                    </div>
-                                    <div class="row m-login__form-sub">
-                                        {{-- <div class="col m--align-left">
-                                            <label class="m-checkbox m-checkbox--focus">
-                                                <input type="checkbox" name="remember"> Recuérdame
-                                                <span></span>
-                                            </label>
-                                        </div>
-                                        <div class="col m--align-right">
-                                            <a href="javascript:;" id="m_login_forget_password" class="m-link">
-                                                Contraseña olvidada ?
-                                            </a>
-                                        </div>--}}
-                                    </div>
-                                    <div class="m-login__form-action">
-                                        <button type="submit"
-                                            class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air" style="background-color: #EE4A62 !important;border-color: #EE4A62 !important;border-radius: 5px !important;">
-                                            Ingresar
-                                        </button>
-                                    </div>
-                                </form>
+                                    @endif
                             </div>
-
-
+                            <div class="row m-login__form-sub">
+                                {{-- <div class="col m--align-left">
+                                    <label class="m-checkbox m-checkbox--focus">
+                                        <input type="checkbox" name="remember"> Recuérdame
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="col m--align-right">
+                                    <a href="javascript:;" id="m_login_forget_password" class="m-link">
+                                        Contraseña olvidada ?
+                                    </a>
+                                </div>--}}
+                            </div>
+                            <div class="m-login__form-action">
+                                <button type="submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air"
+                                    style="background-color: #EE4A62 !important;border-color: #EE4A62 !important;border-radius: 5px !important;">
+                                    Ingresar
+                                </button>
+                            </div>
+                            </form>
                         </div>
-                    </div>
-                    <div class="m-stack__item m-stack__item--center">
-                        <span class="m-footer__copyright" style="color:#fff;">
-                            2018 a la actualidad &copy; UNIVERSIDAD PRIVADA DE TRUJILLO
-                            <span>DESARROLLADO POR UPRIT DATA</span>
-                        </span>
+
+
                     </div>
                 </div>
+                <div class="m-stack__item m-stack__item--center">
+                    <span class="m-footer__copyright" style="color:#fff;">
+                        2018 a la actualidad &copy; UNIVERSIDAD PRIVADA DE TRUJILLO
+                        <span>DESARROLLADO POR UPRIT DATA</span>
+                    </span>
+                </div>
             </div>
-            <div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor 
-            m-grid__item--order-tablet-and-mobile-1 m-login__content"
-
-                style="
+        </div>
+        <div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor
+            m-grid__item--order-tablet-and-mobile-1 m-login__content" style="
         background-image: url('{{ asset('admin/demo/blo.avif') }}');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
     ">
-            </div>
         </div>
     </div>
-
-
-
-
-
+    </div>
 
     <script src="{{ asset('admin/demo/vendors.bundle.js') }}" type="text/javascript"></script>
     <script src="{{ asset('admin/demo/scripts.bundle.js') }}" type="text/javascript"></script>
     <script src="{{ asset('admin/demo/login.js') }}" type="text/javascript"></script>
-    <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.key') }}"></script>
-    <script>
-        document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            grecaptcha.ready(function() {
-                grecaptcha.execute('{{ config('services.recaptcha.key') }}', {action: 'submit'}).then(function(token) {
-                    document.getElementById('g-recaptcha-response').value = token;
-                    document.getElementById('login-form').submit();
+    @if(config('services.recaptcha.key') && !in_array(request()->getHost(), ['127.0.0.1', 'localhost']))
+        <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.key') }}"></script>
+        <script>
+            document.getElementById('login-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                grecaptcha.ready(function () {
+                    grecaptcha.execute('{{ config('services.recaptcha.key') }}', { action: 'submit' }).then(function (token) {
+                        document.getElementById('g-recaptcha-response').value = token;
+                        document.getElementById('login-form').submit();
+                    });
                 });
             });
-        });
-    </script>
-
+        </script>
+    @endif
 </body>
 
 </html>

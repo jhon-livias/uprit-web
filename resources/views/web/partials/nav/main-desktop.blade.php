@@ -5,15 +5,9 @@
     @continue(!$navGroup->visible_desktop)
     @continue($navGroup->key === 'pregrado_puede')
     @if($navGroup->tipo === 'academic')
-        @if($navGroup->key === 'posgrado')
-            @include('web.partials.nav.posgrado-desktop', ['navGroup' => $navGroup])
-        @elseif($navGroup->key === 'pregrado')
-            @include('web.partials.nav.pregrado-desktop', ['navGroup' => $navGroup])
-        @else
-            @include('web.partials.nav.academic-desktop', ['navGroup' => $navGroup])
-        @endif
+        @include('web.partials.nav.academic-desktop', ['navGroup' => $navGroup])
     @elseif($navGroup->tipo === 'section')
-        @if($navGroup->key === 'servicios')
+        @if(in_array($navGroup->key, ['servicios', 'pregrado', 'posgrado']))
             @include('web.partials.nav.servicios-desktop', ['navGroup' => $navGroup])
         @else
             @include('web.partials.nav.section-desktop', ['navGroup' => $navGroup])

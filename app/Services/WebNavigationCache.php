@@ -83,7 +83,7 @@ class WebNavigationCache
             return self::rememberCollection(
                 self::KEY_NAV_GROUPS,
                 fn () => NavGroup::query()
-                    ->with(['links' => fn ($q) => $q->orderBy('orden')])
+                    ->with(['links' => fn ($q) => $q->whereNull('parent_id')->with('children.children')->orderBy('orden')])
                     ->orderBy('orden')
                     ->get()
             );
@@ -442,7 +442,7 @@ class WebNavigationCache
     private static function buildCareerSearchCatalog(): array
     {
         $query = Carrera::query()
-            ->select(['id', 'categoria_id', 'nombre', 'duracion', 'modalidades'])
+            ->select(['id', 'slug', 'categoria_id', 'nombre', 'duracion', 'modalidades'])
             ->with([
                 'categoria:id,nombre,nivel_academico_id,padre_id',
                 'categoria.nivelAcademico:id,nombre',
@@ -487,6 +487,12 @@ class WebNavigationCache
 
         $duracion = self::duracionBuscador($carrera->duracion);
 
+        $routeName = match($nivel['id']) {
+            'posgrado' => 'web.carrera.posgrado',
+            'segunda' => 'web.carrera.segunda',
+            default => 'web.carrera.pregrado'
+        };
+
         return [
             'id' => $carrera->id,
             'nombre' => $nombre,
@@ -496,7 +502,7 @@ class WebNavigationCache
             'modalidades' => self::modalidadesBuscador($carrera->modalidades),
             'duracion' => $duracion['label'],
             'duracionKey' => $duracion['key'],
-            'url' => route('web.detallecarrera', $carrera->id),
+            'url' => route($routeName, $carrera->slug),
         ];
     }
 

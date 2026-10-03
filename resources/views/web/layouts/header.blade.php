@@ -74,7 +74,10 @@
                                 data-career-finder-open aria-label="Buscar carrera" aria-haspopup="dialog"
                                 aria-controls="career-finder-dialog">
                                 <iconify-icon icon="mdi:magnify" aria-hidden="true"></iconify-icon>
-                                <span>Carreras</span>
+                                @php
+                                    $carrerasGroup = \App\Services\WebNavigationCache::navGroups()->firstWhere('key', 'carreras');
+                                @endphp
+                                <span>{{ $carrerasGroup ? $carrerasGroup->label : 'Carreras' }}</span>
                             </button>
                         </li>
                         <li class="mobile-menu-bar d-block d-xl-none">

@@ -1,4 +1,4 @@
-﻿<div id="left-sidebar" class="sidebar" style="left:0px;background-color:#20272F;">
+<div id="left-sidebar" class="sidebar" style="left:0px;background-color:#20272F;">
     <div class="sidebar-scroll">
         <div class="user-account">
             <img src="{{asset('admin/demo/user4.jpg')}}" class="rounded-circle user-photo" alt="User Profile Picture">
@@ -34,6 +34,10 @@
                         <li id="noticias">
                             <a href="{{ route('noticias.index') }}"><i class="fa fa-newspaper-o"></i>
                                 <span>Noticias</span></a>
+                        </li>
+                        <li id="autoridades">
+                            <a href="{{ route('autoridades.index') }}"><i class="fa fa-users"></i>
+                                <span>Autoridades</span></a>
                         </li>
                         <li id="reclamos">
                             <a href="{{ route('reclamos.index') }}"><i class="fa fa-file-text-o"></i>

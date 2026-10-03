@@ -43,7 +43,21 @@
                                     Equipo académico que conduce las facultades y el gobierno universitario.
                                 </p>
 
-                                @foreach($academicas as $index => $autoridad)
+                                @foreach($alta_direccion as $index => $autoridad)
+                                <div class="autoridad-fila{{ $index % 2 === 1 ? ' autoridad-fila--invertida' : '' }}">
+                                    <div class="autoridad-fila__foto">
+                                        <img src="{{ $autoridad['foto'] ? asset($autoridad['foto']) : asset('web/assets/images/svg-icons/instructor.svg') }}"
+                                            alt="{{ $autoridad['nombre'] }}"
+                                            class="autoridad-foto">
+                                    </div>
+                                    <div class="autoridad-fila__texto">
+                                        <h3>{{ $autoridad['nombre'] }}</h3>
+                                        <p>{{ $autoridad['cargo'] }}</p>
+                                    </div>
+                                </div>
+                                @endforeach
+
+                                @foreach($gobierno_interno as $index => $autoridad)
                                 <div class="autoridad-fila{{ $index % 2 === 1 ? ' autoridad-fila--invertida' : '' }}">
                                     <div class="autoridad-fila__foto">
                                         <img src="{{ $autoridad['foto'] ? asset($autoridad['foto']) : asset('web/assets/images/svg-icons/instructor.svg') }}"

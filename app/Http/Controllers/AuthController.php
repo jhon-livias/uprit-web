@@ -50,25 +50,28 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        $recaptchaResponse = $request->input('g-recaptcha-response');
-        if (!$recaptchaResponse) {
-            return back()->withErrors(['captcha' => 'Falta token de validación reCAPTCHA.']);
-        }
+        // CAPTCHA Validation - Only if configured and not on localhost
+        if (config('services.recaptcha.secret') && !in_array(request()->getHost(), ['127.0.0.1', 'localhost'])) {
+            $recaptchaResponse = $request->input('g-recaptcha-response');
+            if (!$recaptchaResponse) {
+                return back()->withErrors(['captcha' => 'Falta token de validación reCAPTCHA.']);
+            }
 
-        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret' => config('services.recaptcha.secret'),
-            'response' => $recaptchaResponse,
-            'remoteip' => $request->ip()
-        ]);
-
-        if (!$response->json('success') || $response->json('score') < 0.5) {
-            LoginLog::create([
-                'email' => $request->email,
-                'ip_address' => $request->ip(),
-                'success' => false,
-                'message' => 'Fallo la validación reCAPTCHA'
+            $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+                'secret' => config('services.recaptcha.secret'),
+                'response' => $recaptchaResponse,
+                'remoteip' => $request->ip()
             ]);
-            return back()->withErrors(['captcha' => 'Se detectó actividad sospechosa (Bot).']);
+
+            if (!$response->json('success') || $response->json('score') < 0.5) {
+                LoginLog::create([
+                    'email' => $request->email,
+                    'ip_address' => $request->ip(),
+                    'success' => false,
+                    'message' => 'Fallo la validación reCAPTCHA'
+                ]);
+                return back()->withErrors(['captcha' => 'Se detectó actividad sospechosa (Bot).']);
+            }
         }
 
         $user = User::where('email', $request->email)->first();
