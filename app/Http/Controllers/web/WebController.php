@@ -86,14 +86,75 @@ class WebController extends Controller
 
     public function detallecarrera(mixed $id)
     {
-        $carrera = Carrera::with(['docentes', 'certificaciones', 'malla'])->findOrFail($id);
+        $carrera = Carrera::findOrFail($id);
+        $categoria = Categoria::findOrFail($carrera->categoria_id);
+        
+        if ($categoria->nivel_academico_id == 5) {
+            return redirect()->route('web.carrera.posgrado', ['slug' => $carrera->slug], 301);
+        } else {
+            if ($categoria->nombre === 'Segunda Especialidad' || $categoria->padre_id == 4) {
+                $modalidad = 'segunda-especialidad';
+            } elseif ($categoria->nivel_academico_id == 4) {
+                $modalidad = 'pregrado-puede';
+            } else {
+                $modalidad = 'pregrado-regular';
+            }
+            return redirect()->route('web.carrera.pregrado', ['modalidad' => $modalidad, 'slug' => $carrera->slug], 301);
+        }
+    }
+
+    public function detalleCarreraPregrado($modalidad, $slug)
+    {
+        $carrera = Carrera::where('slug', $slug)
+            ->whereHas('categoria', function ($query) use ($modalidad) {
+                if ($modalidad === 'pregrado-regular') {
+                    $query->where('nivel_academico_id', 3)
+                          ->where('nombre', '!=', 'Segunda Especialidad')
+                          ->where(function($q) {
+                              $q->where('padre_id', '!=', 4)->orWhereNull('padre_id');
+                          });
+                } elseif ($modalidad === 'pregrado-puede') {
+                    $query->where('nivel_academico_id', 4);
+                } elseif ($modalidad === 'segunda-especialidad') {
+                    $query->where(function($q) {
+                        $q->where('nombre', 'Segunda Especialidad')
+                          ->orWhere('padre_id', 4);
+                    });
+                }
+            })
+            ->with(['docentes', 'certificaciones', 'malla'])
+            ->firstOrFail();
+
+        $categoria = Categoria::findOrFail($carrera->categoria_id);
+
         $carrera->setRelation(
             'docentes',
             $carrera->docentes
                 ->sortBy(fn(Docente $docente) => $docente->tieneTagCoordinador() ? 0 : 1)
                 ->values()
         );
+        
+        return view('web.detalle-carrera', compact('carrera', 'categoria'));
+    }
+
+    public function detalleCarreraPosgrado($slug)
+    {
+        $carrera = Carrera::where('slug', $slug)
+            ->whereHas('categoria', function ($query) {
+                $query->where('nivel_academico_id', 5);
+            })
+            ->with(['docentes', 'certificaciones', 'malla'])
+            ->firstOrFail();
+
         $categoria = Categoria::findOrFail($carrera->categoria_id);
+
+        $carrera->setRelation(
+            'docentes',
+            $carrera->docentes
+                ->sortBy(fn(Docente $docente) => $docente->tieneTagCoordinador() ? 0 : 1)
+                ->values()
+        );
+        
         return view('web.detalle-carrera', compact('carrera', 'categoria'));
     }
 
@@ -360,53 +421,25 @@ class WebController extends Controller
     {
         $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
 
-        $directivo = [
-            [
-                'nombre' => 'Juan Mauricio Noriega Escobedo',
-                'cargo' => 'Presidente del Consejo Directivo UPRIT, MBA, Catedrático.',
-                'foto' => 'web/imagenes/autoridades/juan-mauricio-noriega.jpg',
-            ],
-            [
-                'nombre' => 'Rómulo Mucho Mamani',
-                'cargo' => 'Director, Ingeniero, ex Ministro de Energía y Minas, Catedrático.',
-                'foto' => 'web/imagenes/autoridades/romulo-mucho.jpg',
-            ],
-            [
-                'nombre' => 'Militza Jovick Muñoz',
-                'cargo' => 'Director, Médico Cirujano, ex Presidente de la FILACP.',
-                'foto' => 'web/imagenes/autoridades/militza-jovick.jpg',
-            ],
-            [
-                'nombre' => 'Diego Emilio Leyton Martínez',
-                'cargo' => 'Director, MBA, Director Sostenibilidad Cia.M.B, Catedrático.',
-                'foto' => 'web/imagenes/autoridades/diego-leyton.jpg',
-            ],
-            [
-                'nombre' => 'Juan Carlos Noriega Escobedo',
-                'cargo' => 'Director, MBA, Gerente Regional Bioreg Pharma, Catedrático.',
-                'foto' => 'web/imagenes/autoridades/juan-carlos-noriega.jpg',
-            ],
-        ];
+        $directivo = \App\Models\Autoridad::where('estado', 1)
+            ->where('tipo', 'Consejo Directivo')
+            ->orderBy('orden')
+            ->get()
+            ->toArray();
 
-        $academicas = [
-            ['buscar' => 'José Miguel Sibina', 'nombre' => 'José Miguel Sibina Pereyra', 'cargo' => 'Rector'],
-            ['buscar' => 'Olenka Ana Catherine', 'nombre' => 'Olenka Ana Catherine Espinoza Rodriguez', 'cargo' => 'Vicerrectora Académica'],
-            ['buscar' => 'Alexander Máximo Rodríguez', 'nombre' => 'Alexander Máximo Rodríguez García', 'cargo' => 'Decano de la Facultad de Derecho y Ciencias Sociales'],
-            ['buscar' => 'Santos Pedro Aponte', 'nombre' => 'Santos Pedro Aponte Mendez', 'cargo' => 'Decano de la Facultad de Ciencias Empresariales'],
-            ['buscar' => 'Luis Alberto Acosta', 'nombre' => 'Luis Alberto Acosta Sánchez', 'cargo' => 'Decano de la Facultad de Ingeniería y Arquitectura'],
-        ];
+        $alta_direccion = \App\Models\Autoridad::where('estado', 1)
+            ->where('tipo', 'Alta Dirección')
+            ->orderBy('orden')
+            ->get()
+            ->toArray();
 
-        $academicas = array_map(function (array $item) {
-            $docente = $this->docenteAutoridad($item['buscar']);
+        $gobierno_interno = \App\Models\Autoridad::where('estado', 1)
+            ->where('tipo', 'Gobierno Interno')
+            ->orderBy('orden')
+            ->get()
+            ->toArray();
 
-            return [
-                'nombre' => $docente?->nombre_con_titulo ?: $item['nombre'],
-                'cargo' => $item['cargo'],
-                'foto' => $docente?->imagen ?: null,
-            ];
-        }, $academicas);
-
-        return view('web.autoridades', compact('ultimasnoticias', 'directivo', 'academicas'));
+        return view('web.autoridades', compact('ultimasnoticias', 'directivo', 'alta_direccion', 'gobierno_interno'));
     }
 
     private function docenteAutoridad(string $nombre): ?Docente
@@ -540,4 +573,27 @@ class WebController extends Controller
             ->json(WebNavigationCache::careerSearchCatalog())
             ->header('Cache-Control', 'public, max-age=300');
     }
+    public function quienesSomos()
+    {
+        $directivo = \App\Models\Autoridad::where('estado', 1)
+            ->where('tipo', 'Consejo Directivo')
+            ->orderBy('orden')
+            ->get()
+            ->toArray();
+
+        $alta_direccion = \App\Models\Autoridad::where('estado', 1)
+            ->where('tipo', 'Alta Dirección')
+            ->orderBy('orden')
+            ->get()
+            ->toArray();
+
+        $gobierno_interno = \App\Models\Autoridad::where('estado', 1)
+            ->where('tipo', 'Gobierno Interno')
+            ->orderBy('orden')
+            ->get()
+            ->toArray();
+
+        return view('web.quienes-somos', compact('directivo', 'alta_direccion', 'gobierno_interno'));
+    }
+
 }

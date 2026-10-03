@@ -206,7 +206,9 @@
             const buttons = wrapper.querySelectorAll('.cat-btn');
 
             function activateTab(btn) {
-                wrapper.querySelectorAll('.cat-btn').forEach(b => {
+                if (!btn.dataset.target) return; // Ignore direct links without a target pane
+
+                wrapper.querySelectorAll('.cat-btn[data-target]').forEach(b => {
                     b.classList.remove('active');
                     b.setAttribute('aria-selected', 'false');
                 });

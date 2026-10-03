@@ -22,69 +22,148 @@
                         <code>php artisan nav:import-legacy</code>
                     </div>
 
-                    <div v-for="group in groups" :key="group.id" class="card mb-3">
-                        <div class="card-header d-flex justify-content-between align-items-start flex-wrap">
-                            <div class="mb-2 mb-md-0">
-                                <strong>{{ group.label }}</strong>
-                                <small class="text-muted d-block">
-                                    {{ group.key }} · {{ tipoLabel(group.tipo) }}
-                                    <span v-if="group.is_academic"> · {{ group.academic_nivel }}</span>
-                                </small>
-                            </div>
-                            <div class="text-nowrap">
-                                <button type="button" class="btn btn-sm btn-info" @click="showEditGroup(group)">
-                                    <i class="fa fa-edit"></i> Editar grupo
-                                </button>
-                                <button v-if="group.editable_links" type="button" class="btn btn-sm btn-primary" @click="showNewLink(group)">
-                                    <i class="fa fa-plus"></i> Enlace
-                                </button>
-                            </div>
-                        </div>
+                    <ul class="nav nav-tabs mb-4">
+                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab-0">Megamenú</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-1">Topbar</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-2">CTA / Botones</a></li>
+                    </ul>
 
-                        <div v-if="group.is_academic" class="card-body py-2">
-                            <small class="text-muted">Contenido dinámico desde categorías/carreras del nivel académico.</small>
-                        </div>
+                    <div class="tab-content">
+                        <div v-for="(tabGroups, idx) in [megamenuGroups, topbarGroups, ctaGroups]" 
+                             :key="idx" 
+                             class="tab-pane fade" 
+                             :class="{ 'show active': idx === 0 }" 
+                             :id="'tab-' + idx">
 
-                        <div v-else-if="group.editable_links" class="card-body p-0">
-                            <table class="table table-striped mb-0">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 50px">#</th>
-                                        <th>Etiqueta</th>
-                                        <th>Ruta / URL</th>
-                                        <th>Visibilidad</th>
-                                        <th style="width: 120px">Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-if="!group.links || group.links.length === 0">
-                                        <td colspan="5" class="text-center text-muted">Sin enlaces</td>
-                                    </tr>
-                                    <tr v-for="(link, index) in group.links" :key="link.id">
-                                        <td>{{ index + 1 }}</td>
-                                        <td>{{ link.label }}</td>
-                                        <td>
-                                            <span v-if="link.route_name">{{ link.route_name }}</span>
-                                            <a v-else-if="link.url" :href="link.url" target="_blank">{{ link.url }}</a>
-                                            <span v-else class="text-muted">—</span>
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-secondary" v-if="!link.visible">Oculto</span>
-                                            <span class="badge badge-light" v-if="!link.visible_desktop">Sin desktop</span>
-                                            <span class="badge badge-light" v-if="!link.visible_mobile">Sin mobile</span>
-                                            <span v-if="link.visible && link.visible_desktop && link.visible_mobile" class="text-success">Visible</span>
-                                        </td>
-                                        <td class="text-nowrap">
-                                            <button type="button" class="btn btn-sm btn-info" @click="showEditLink(group, link)">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-sm btn-danger" @click="deleteLink(link.id)">
-                                                <i class="fa fa-trash-o"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div v-if="tabGroups.length === 0" class="alert alert-light text-center border">
+                                No hay grupos en esta categoría.
+                            </div>
+
+                            <div v-for="group in tabGroups" :key="group.id" class="card shadow-sm border-0 mb-4">
+                                <div class="card-header bg-light d-flex justify-content-between align-items-start flex-wrap border-bottom-0 pb-0">
+                                    <div class="mb-2 mb-md-0">
+                                        <span style="font-size: 18px; font-weight: 700; color: #333;">{{ group.label }}</span>
+                                        <small class="text-muted d-block mt-1">
+                                            <code>{{ group.key }}</code> · {{ tipoLabel(group.tipo) }}
+                                            <span v-if="group.is_academic"> · {{ group.academic_nivel }}</span>
+                                        </small>
+                                    </div>
+                                    <div class="text-nowrap mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-info mr-2" @click="showEditGroup(group)">
+                                            <i class="fa fa-edit"></i> Editar Configuración
+                                        </button>
+                                        <button v-if="group.editable_links" type="button" class="btn btn-sm btn-primary" @click="showNewLink(group)">
+                                            <i class="fa fa-plus"></i> Nuevo Enlace Padre
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div v-if="group.is_academic" class="card-body py-3 bg-white">
+                                    <div class="alert alert-secondary mb-0">Contenido dinámico autogenerado desde categorías/carreras del nivel académico.</div>
+                                </div>
+
+                                <div v-else-if="group.editable_links" class="card-body p-0 bg-white">
+                                    <table class="table table-hover mb-0">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th style="width: 50px">#</th>
+                                                <th>Etiqueta</th>
+                                                <th>Ruta / URL</th>
+                                                <th>Visibilidad</th>
+                                                <th style="width: 140px" class="text-center">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-if="!group.links || group.links.length === 0">
+                                                <td colspan="5" class="text-center text-muted py-4">Sin enlaces configurados</td>
+                                            </tr>
+                                            <template v-for="(link, index) in group.links" :key="link.id">
+                                                <tr style="background-color: #f8f9fa; border-top: 2px solid #e9ecef;">
+                                                    <td style="font-weight: bold;">{{ index + 1 }}</td>
+                                                    <td style="font-weight: bold; color: #2c3e50;">{{ link.label }}</td>
+                                                    <td>
+                                                        <span v-if="link.route_name" class="badge badge-info">{{ link.route_name }}</span>
+                                                        <a v-else-if="link.url" :href="link.url" target="_blank" class="text-primary">{{ link.url }}</a>
+                                                        <span v-else class="text-muted">—</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="badge badge-secondary" v-if="!link.visible">Oculto</span>
+                                                        <span class="badge badge-warning" v-if="!link.visible_desktop">Sin desktop</span>
+                                                        <span class="badge badge-warning" v-if="!link.visible_mobile">Sin mobile</span>
+                                                        <span v-if="link.visible && link.visible_desktop && link.visible_mobile" class="badge badge-success">Visible</span>
+                                                    </td>
+                                                    <td class="text-nowrap text-center">
+                                                        <button type="button" class="btn btn-sm btn-outline-primary" title="Añadir Sub-enlace" @click="showNewLink(group, link.id)">
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+                                                        <button type="button" class="btn btn-sm btn-outline-info mx-1" title="Editar" @click="showEditLink(group, link)">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                        <button type="button" class="btn btn-sm btn-outline-danger" title="Eliminar" @click="deleteLink(link.id)">
+                                                            <i class="fa fa-trash-o"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <template v-for="(child, childIndex) in link.children" :key="child.id">
+                                                    <tr>
+                                                        <td class="text-muted">{{ index + 1 }}.{{ childIndex + 1 }}</td>
+                                                        <td style="padding-left: 40px; color: #555;">
+                                                            <i class="fa fa-level-up fa-rotate-90 text-muted mr-2"></i> {{ child.label }}
+                                                        </td>
+                                                        <td>
+                                                            <span v-if="child.route_name" class="badge badge-info">{{ child.route_name }}</span>
+                                                            <a v-else-if="child.url" :href="child.url" target="_blank" class="text-primary">{{ child.url }}</a>
+                                                            <span v-else class="text-muted">—</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge badge-secondary" v-if="!child.visible">Oculto</span>
+                                                            <span class="badge badge-warning" v-if="!child.visible_desktop">Sin desktop</span>
+                                                            <span class="badge badge-warning" v-if="!child.visible_mobile">Sin mobile</span>
+                                                            <span v-if="child.visible && child.visible_desktop && child.visible_mobile" class="badge badge-success">Visible</span>
+                                                        </td>
+                                                        <td class="text-nowrap text-center">
+                                                            <button type="button" class="btn btn-sm btn-outline-primary" title="Añadir Sub-enlace" @click="showNewLink(group, child.id)">
+                                                                <i class="fa fa-plus"></i>
+                                                            </button>
+                                                            <button type="button" class="btn btn-sm btn-outline-info mx-1" title="Editar" @click="showEditLink(group, child)">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button type="button" class="btn btn-sm btn-outline-danger" title="Eliminar" @click="deleteLink(child.id)">
+                                                                <i class="fa fa-trash-o"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr v-for="(grandchild, gcIndex) in child.children" :key="'gc-'+grandchild.id">
+                                                        <td class="text-muted">{{ index + 1 }}.{{ childIndex + 1 }}.{{ gcIndex + 1 }}</td>
+                                                        <td style="padding-left: 70px; color: #777;">
+                                                            <i class="fa fa-angle-right text-muted mr-2"></i> {{ grandchild.label }}
+                                                        </td>
+                                                        <td>
+                                                            <span v-if="grandchild.route_name" class="badge badge-info">{{ grandchild.route_name }}</span>
+                                                            <a v-else-if="grandchild.url" :href="grandchild.url" target="_blank" class="text-primary">{{ grandchild.url }}</a>
+                                                            <span v-else class="text-muted">—</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge badge-secondary" v-if="!grandchild.visible">Oculto</span>
+                                                            <span class="badge badge-warning" v-if="!grandchild.visible_desktop">Sin desktop</span>
+                                                            <span class="badge badge-warning" v-if="!grandchild.visible_mobile">Sin mobile</span>
+                                                            <span v-if="grandchild.visible && grandchild.visible_desktop && grandchild.visible_mobile" class="badge badge-success">Visible</span>
+                                                        </td>
+                                                        <td class="text-nowrap text-center">
+                                                            <button type="button" class="btn btn-sm btn-outline-info mx-1" title="Editar" @click="showEditLink(group, grandchild)">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button type="button" class="btn btn-sm btn-outline-danger" title="Eliminar" @click="deleteLink(grandchild.id)">
+                                                                <i class="fa fa-trash-o"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </template>
+                                            </template>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -233,6 +312,15 @@ export default {
         informesOptions() {
             return this.groups.filter(g => g.tipo === 'section' && ['contactanos', 'posgrado'].includes(g.key));
         },
+        megamenuGroups() {
+            return this.groups.filter(g => g.show_in_main_nav && g.tipo !== 'button');
+        },
+        topbarGroups() {
+            return this.groups.filter(g => g.show_in_topbar);
+        },
+        ctaGroups() {
+            return this.groups.filter(g => g.tipo === 'button');
+        }
     },
     mounted() {
         this.loadGroups();
@@ -250,14 +338,14 @@ export default {
             return map[tipo] || tipo;
         },
         loadGroups() {
-            axios.get(route('menu.get')).then((response) => {
+            axios.get('/admin/get_menu').then((response) => {
                 this.groups = response.data;
             }).catch(() => {
                 toastr.error('No se pudo cargar el menú');
             });
         },
         loadRouteNames() {
-            axios.get(route('menu.routes')).then((response) => {
+            axios.get('/admin/get_menu_routes').then((response) => {
                 this.routeNames = response.data;
             });
         },
@@ -280,7 +368,7 @@ export default {
                 meta: this.groupForm.meta,
             };
 
-            axios.post(route('menu.group.edit'), payload).then((response) => {
+            axios.post('/admin/menu/group/edit', payload).then((response) => {
                 if (response.data) {
                     Swal.fire({ icon: 'success', title: 'Grupo actualizado', showConfirmButton: false, timer: 1500 });
                     this.loadGroups();
@@ -290,10 +378,11 @@ export default {
                 toastr.error('No se pudo guardar el grupo');
             });
         },
-        resetLinkForm(groupId = null) {
+        resetLinkForm(groupId = null, parentId = null) {
             this.linkForm = {
                 id: null,
                 group_id: groupId,
+                parent_id: parentId,
                 label: '',
                 route_name: '',
                 url: '',
@@ -304,15 +393,21 @@ export default {
                 orden: 0,
             };
         },
-        showNewLink(group) {
-            this.resetLinkForm(group.id);
-            this.linkForm.orden = group.links ? group.links.length : 0;
+        showNewLink(group, parentId = null) {
+            this.resetLinkForm(group.id, parentId);
+            if (parentId) {
+                let parentLink = group.links.find(l => l.id === parentId);
+                this.linkForm.orden = parentLink && parentLink.children ? parentLink.children.length : 0;
+            } else {
+                this.linkForm.orden = group.links ? group.links.length : 0;
+            }
             $('#mdlLink').modal('show');
         },
         showEditLink(group, link) {
             this.linkForm = {
                 ...link,
                 group_id: group.id,
+                parent_id: link.parent_id || null,
                 route_name: link.route_name || '',
                 url: link.url || '',
             };
@@ -321,8 +416,8 @@ export default {
         saveLink() {
             const payload = { ...this.linkForm };
             const request = payload.id
-                ? axios.post(route('menu.link.edit'), payload)
-                : axios.post(route('menu.link.store'), payload);
+                ? axios.post('/admin/menu/link/edit', payload)
+                : axios.post('/admin/menu/link/store', payload);
 
             request.then((response) => {
                 if (response.data) {
@@ -342,7 +437,7 @@ export default {
                 confirmButtonText: 'Sí, eliminar',
             }).then((result) => {
                 if (result.value) {
-                    axios.post(route('menu.link.delete', id)).then((response) => {
+                    axios.post('/admin/menu/link/delete/' + id).then((response) => {
                         if (response.data) {
                             this.loadGroups();
                             Swal.fire({ icon: 'success', title: 'Enlace eliminado', showConfirmButton: false, timer: 1500 });

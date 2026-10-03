@@ -91,6 +91,14 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::post('/testimonios/edit', [TestimonioController::class, 'update'])->name('testimonios.edit');
     Route::post('/testimonios/delete/{id}', [TestimonioController::class, 'delete'])->name('testimonios.delete');
 
+    // AUTORIDADES
+    Route::get("/listar_autoridades", [App\Http\Controllers\admin\AutoridadController::class, "index"])->name("autoridades.index");
+    Route::get("/get_autoridades", [App\Http\Controllers\admin\AutoridadController::class, "getAutoridades"])->name("autoridades.get");
+    Route::post("/autoridades/store", [App\Http\Controllers\admin\AutoridadController::class, "store"])->name("autoridades.store");
+    Route::post("/autoridades/edit", [App\Http\Controllers\admin\AutoridadController::class, "update"])->name("autoridades.edit");
+    Route::post("/autoridades/delete/{id}", [App\Http\Controllers\admin\AutoridadController::class, "delete"])->name("autoridades.delete");
+
+
     // NOTICIA
     Route::get('/listar_noticias', [NoticiaController::class, 'index'])->name('noticias.index');
     Route::get('/get_categorias_noticias', [NoticiaController::class, 'getCatNoticia'])->name('noticias.get.categoria');
@@ -138,7 +146,7 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
 
     // MENÚ WEB
     Route::get('/listar_menu', [MenuController::class, 'index'])->name('menu.index');
-    Route::get('/get_menu', [MenuController::class, 'getGroups'])->name('menu.get');
+    
     Route::get('/get_menu_routes', [MenuController::class, 'getRouteNames'])->name('menu.routes');
     Route::post('/menu/group/edit', [MenuController::class, 'updateGroup'])->name('menu.group.edit');
     Route::post('/menu/link/store', [MenuController::class, 'storeLink'])->name('menu.link.store');
@@ -146,6 +154,8 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::post('/menu/link/delete/{id}', [MenuController::class, 'deleteLink'])->name('menu.link.delete');
 
 });
+
+Route::get('/admin/get_menu', [App\Http\Controllers\admin\MenuController::class, 'getGroups']);
 
 
 Route::get('/', [WebController::class, 'index'])->name('web.index');
@@ -157,6 +167,11 @@ Route::get('/buscador/carreras', [WebController::class, 'buscadorCarreras'])->na
 Route::get('/detalle-carrera/{id}', [WebController::class, 'detallecarrera'])
     ->name('web.detallecarrera')
     ->whereNumber('id');
+
+Route::get('/pregrado/{modalidad}/{slug}', [WebController::class, 'detalleCarreraPregrado'])
+    ->where('modalidad', 'pregrado-regular|pregrado-puede|segunda-especialidad')
+    ->name('web.carrera.pregrado');
+Route::get('/posgrado/{slug}', [WebController::class, 'detalleCarreraPosgrado'])->name('web.carrera.posgrado');
 Route::get('/soporte', [WebController::class, 'soporte'])->name('soporte');
 Route::get('/bienestar-universitario-rsu', [WebController::class, 'bienestarRsu'])->name('bienestar-rsu');
 Route::get('/salud', [WebController::class, 'salud'])->name('salud');
@@ -219,3 +234,4 @@ Route::get('/denuncias-etica-investigacion', [WebController::class, 'denunciasEt
 Route::get('/contactenos', function () {
     return view('web.contactenos');
 })->name('contactenos');
+Route::get('/quienes-somos', [App\Http\Controllers\web\WebController::class, 'quienesSomos'])->name('quienes-somos');
