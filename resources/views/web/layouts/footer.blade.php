@@ -109,12 +109,12 @@
                                 <li><a href="{{ route('becas') }}" class="gris-footer">Becas y Ayudas Financieras</a></li>
                                 <li><a href="#" class="gris-footer">Bolsa de Trabajo</a></li>
                                 <li><a href="{{ route('defensoria') }}" class="gris-footer">Defensoría Universitaria</a></li>
-                                <li><a href="{{ url('contactenos') }}#ubicacion" class="gris-footer">Sede Principal</a></li>
-                                <li><a href="#" class="gris-footer">Políticas de Privacidad</a></li>
+                                <li><a href="{{ route('campus') }}" class="gris-footer">Nuestro Campus</a></li>
+                                <li><a href="{{ route('privacy-policy') }}" class="gris-footer">Políticas de Privacidad</a></li>
                                 <li><a href="#" class="gris-footer">Términos y Condiciones</a></li>
                                 <li><a href="#" class="gris-footer">Eliminación de Datos</a></li>
                             </ul>
-                        </div>
+                        </div>44
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 mt-0">
