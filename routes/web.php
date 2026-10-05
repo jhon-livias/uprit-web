@@ -235,3 +235,5 @@ Route::get('/contactenos', function () {
     return view('web.contactenos');
 })->name('contactenos');
 Route::get('/quienes-somos', [App\Http\Controllers\web\WebController::class, 'quienesSomos'])->name('quienes-somos');
+Route::view('/nuestro-campus', 'web.campus')->name('campus');
+Route::view('/politicas-de-privacidad', 'web.privacy-policy')->name('privacy-policy');
