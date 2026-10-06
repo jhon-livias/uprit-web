@@ -1,7 +1,7 @@
 @extends('web.layouts.principal')
 @section('content')
 
-@include('web.partials.breadcrumb', ['titulo' => 'Políticas de Privacidad'])
+@include('web.partials.breadcrumb')
 
 <section class="privacy-area py-5" style="padding-top: 60px; padding-bottom: 60px;">
     <div class="container">
@@ -9,7 +9,7 @@
             <div class="col-lg-12">
                 <div class="privacy-content" style="background: #fff; border-radius: 15px; padding: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
                     <h2 style="font-weight: 700; color: #a30f25; margin-bottom: 30px;">Políticas de Privacidad</h2>
-                    
+
                     <div style="font-size: 16px; color: #555; line-height: 1.8;">
                         <p style="color: #555; font-size: 16px; line-height: 1.8; margin-bottom: 25px; text-align: right; font-style: italic;">Última actualización: 31 de julio de 2025.</p>
                         <h3 style="color: #a30f25; font-weight: 700; font-size: 20px; margin-top: 35px; margin-bottom: 20px;">1. Información General</h3>

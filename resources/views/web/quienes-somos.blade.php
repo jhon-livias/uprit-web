@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="col-lg-6 mt-4 mt-lg-0 text-center">
-                <img src="{{ asset('web/imagenes/logos/logo_uprit_color.svg') }}" alt="Historia UPRIT" class="img-fluid rounded" style="max-height: 250px;">
+                <img src="{{ asset('admin/demo/blo.avif') }}" alt="Historia UPRIT" class="img-fluid rounded" style="max-height: 250px;">
             </div>
         </div>
 
@@ -65,47 +65,8 @@
         </div>
 
         @if(count($alta_direccion) > 0)
-        <h4 class="text-center mb-4 text-primary">Alta Dirección</h4>
         <div class="row justify-content-center mb-5">
             @foreach($alta_direccion as $autoridad)
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card text-center border-0 shadow-sm h-100">
-                    <div class="card-body p-4">
-                        <div class="rounded-circle overflow-hidden mx-auto mb-3 shadow-sm border border-2 border-white" style="width: 150px; height: 150px; background-color: #eee;">
-                            <img src="{{ $autoridad['foto'] ? asset($autoridad['foto']) : asset('web/assets/images/svg-icons/instructor.svg') }}" alt="{{ $autoridad['nombre'] }}" class="img-fluid h-100 w-100" style="object-fit: cover;">
-                        </div>
-                        <h5 class="title mb-1 fs-5">{{ $autoridad['nombre'] }}</h5>
-                        <p class="text-muted mb-3 small">{{ $autoridad['cargo'] }}</p>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        @endif
-
-        @if(count($directivo) > 0)
-        <h4 class="text-center mb-4 text-primary">Consejo Directivo</h4>
-        <div class="row justify-content-center mb-5">
-            @foreach($directivo as $autoridad)
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card text-center border-0 shadow-sm h-100">
-                    <div class="card-body p-4">
-                        <div class="rounded-circle overflow-hidden mx-auto mb-3 shadow-sm border border-2 border-white" style="width: 150px; height: 150px; background-color: #eee;">
-                            <img src="{{ $autoridad['foto'] ? asset($autoridad['foto']) : asset('web/assets/images/svg-icons/instructor.svg') }}" alt="{{ $autoridad['nombre'] }}" class="img-fluid h-100 w-100" style="object-fit: cover;">
-                        </div>
-                        <h5 class="title mb-1 fs-5">{{ $autoridad['nombre'] }}</h5>
-                        <p class="text-muted mb-3 small">{{ $autoridad['cargo'] }}</p>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        @endif
-
-        @if(count($gobierno_interno) > 0)
-        <h4 class="text-center mb-4 text-primary">Gobierno Interno</h4>
-        <div class="row justify-content-center mb-5">
-            @foreach($gobierno_interno as $autoridad)
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card text-center border-0 shadow-sm h-100">
                     <div class="card-body p-4">

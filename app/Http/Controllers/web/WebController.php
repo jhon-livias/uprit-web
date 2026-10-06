@@ -596,4 +596,8 @@ class WebController extends Controller
         return view('web.quienes-somos', compact('directivo', 'alta_direccion', 'gobierno_interno'));
     }
 
+    public function terminosYCondiciones()
+    {
+        return view('web.terminos-y-condiciones');
+    }
 }

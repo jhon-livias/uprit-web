@@ -1,7 +1,7 @@
 @extends('web.layouts.principal')
 @section('content')
 
-@include('web.partials.breadcrumb', ['titulo' => 'Nuestro Campus'])
+@include('web.partials.breadcrumb')
 
 <section class="campus-area py-5" style="padding-top: 60px; padding-bottom: 60px;">
     <div class="container">

@@ -111,8 +111,8 @@
                                 <li><a href="{{ route('defensoria') }}" class="gris-footer">Defensoría Universitaria</a></li>
                                 <li><a href="{{ route('campus') }}" class="gris-footer">Nuestro Campus</a></li>
                                 <li><a href="{{ route('privacy-policy') }}" class="gris-footer">Políticas de Privacidad</a></li>
-                                <li><a href="#" class="gris-footer">Términos y Condiciones</a></li>
-                                <li><a href="#" class="gris-footer">Eliminación de Datos</a></li>
+                                <li><a href="{{ route('terminos') }}" class="gris-footer">Términos y Condiciones</a></li>
+                                <li><a href="{{ route('eliminacion-datos') }}" class="gris-footer">Eliminación de Datos</a></li>
                             </ul>
                         </div>
                     </div>

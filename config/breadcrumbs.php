@@ -356,5 +356,21 @@ return [
             'menu_label' => 'Contáctenos',
             'url' => '/contactenos',
         ],
+        'campus' => [
+            'title' => 'Nuestro Campus',
+            'menu_label' => 'Nuestro Campus',
+        ],
+        'privacy-policy' => [
+            'title' => 'Políticas de Privacidad',
+            'menu_label' => 'Políticas de Privacidad',
+        ],
+        'terminos' => [
+            'title' => 'Términos y Condiciones',
+            'menu_label' => 'Términos y Condiciones',
+        ],
+        'eliminacion-datos' => [
+            'title' => 'Eliminación de Datos',
+            'menu_label' => 'Eliminación de Datos',
+        ],
     ],
 ];
