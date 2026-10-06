@@ -237,3 +237,5 @@ Route::get('/contactenos', function () {
 Route::get('/quienes-somos', [App\Http\Controllers\web\WebController::class, 'quienesSomos'])->name('quienes-somos');
 Route::view('/nuestro-campus', 'web.campus')->name('campus');
 Route::view('/politicas-de-privacidad', 'web.privacy-policy')->name('privacy-policy');
+Route::view('/eliminacion-de-datos', 'web.eliminacion-de-datos')->name('eliminacion-datos');
+Route::get('/terminos-y-condiciones', [WebController::class, 'terminosYCondiciones'])->name('terminos');
