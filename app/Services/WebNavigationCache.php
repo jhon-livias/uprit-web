@@ -489,9 +489,22 @@ class WebNavigationCache
 
         $routeName = match($nivel['id']) {
             'posgrado' => 'web.carrera.posgrado',
-            'segunda' => 'web.carrera.segunda',
             default => 'web.carrera.pregrado'
         };
+
+        if ($routeName === 'web.carrera.posgrado') {
+            $url = route($routeName, ['slug' => $carrera->slug]);
+        } else {
+            // Determine modalidad for pregrado
+            if ($categoria->nombre === 'Segunda Especialidad' || $categoria->padre_id == 4) {
+                $modalidad = 'segunda-especialidad';
+            } elseif (stripos($carrera->modalidades, 'PUEDE') !== false) {
+                $modalidad = 'pregrado-puede';
+            } else {
+                $modalidad = 'pregrado-regular';
+            }
+            $url = route($routeName, ['modalidad' => $modalidad, 'slug' => $carrera->slug]);
+        }
 
         return [
             'id' => $carrera->id,
@@ -502,7 +515,7 @@ class WebNavigationCache
             'modalidades' => self::modalidadesBuscador($carrera->modalidades),
             'duracion' => $duracion['label'],
             'duracionKey' => $duracion['key'],
-            'url' => route($routeName, $carrera->slug),
+            'url' => $url,
         ];
     }
 
