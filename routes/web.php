@@ -239,3 +239,4 @@ Route::view('/nuestro-campus', 'web.campus')->name('campus');
 Route::view('/politicas-de-privacidad', 'web.privacy-policy')->name('privacy-policy');
 Route::view('/eliminacion-de-datos', 'web.eliminacion-de-datos')->name('eliminacion-datos');
 Route::get('/terminos-y-condiciones', [WebController::class, 'terminosYCondiciones'])->name('terminos');
+Route::get('/sitemap.xml', [WebController::class, 'sitemap'])->name('sitemap');
