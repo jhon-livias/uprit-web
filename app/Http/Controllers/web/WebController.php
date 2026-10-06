@@ -600,4 +600,73 @@ class WebController extends Controller
     {
         return view('web.terminos-y-condiciones');
     }
+
+    public function sitemap()
+    {
+        $carreras = \App\Models\Carrera::with('categoria')->where('estado', 1)->get();
+        $noticias = \App\Models\Noticia::where('estado', 1)->get();
+
+        $urls = [];
+
+        // Rutas estáticas principales
+        $staticRoutes = [
+            'web.index', 'quienes-somos', 'campus', 'privacy-policy', 'terminos', 'eliminacion-datos',
+            'contactenos', 'transparencia', 'libroreclamaciones',
+            'web.noticias', 'autoridades', 'red-nexo'
+        ];
+
+        foreach ($staticRoutes as $routeName) {
+            if (\Route::has($routeName)) {
+                $urls[] = [
+                    'loc' => route($routeName),
+                    'lastmod' => now()->tz('UTC')->toAtomString(),
+                    'changefreq' => 'weekly',
+                    'priority' => '0.8',
+                ];
+            }
+        }
+
+        // Carreras
+        foreach ($carreras as $carrera) {
+            $categoria = $carrera->categoria;
+            if (!$categoria) continue;
+
+            if ($categoria->nivel_academico_id == 5) {
+                // Posgrado
+                $urls[] = [
+                    'loc' => route('web.carrera.posgrado', ['slug' => $carrera->slug]),
+                    'lastmod' => $carrera->updated_at->tz('UTC')->toAtomString(),
+                    'changefreq' => 'monthly',
+                    'priority' => '0.9',
+                ];
+            } else {
+                // Pregrado
+                if ($categoria->nombre === 'Segunda Especialidad' || $categoria->padre_id == 4) {
+                    $modalidad = 'segunda-especialidad';
+                } elseif ($categoria->nivel_academico_id == 4) {
+                    $modalidad = 'pregrado-puede';
+                } else {
+                    $modalidad = 'pregrado-regular';
+                }
+                $urls[] = [
+                    'loc' => route('web.carrera.pregrado', ['modalidad' => $modalidad, 'slug' => $carrera->slug]),
+                    'lastmod' => $carrera->updated_at->tz('UTC')->toAtomString(),
+                    'changefreq' => 'monthly',
+                    'priority' => '1.0',
+                ];
+            }
+        }
+
+        // Noticias
+        foreach ($noticias as $noticia) {
+            $urls[] = [
+                'loc' => route('web.detallenoticia', ['id' => $noticia->id]),
+                'lastmod' => $noticia->updated_at->tz('UTC')->toAtomString(),
+                'changefreq' => 'monthly',
+                'priority' => '0.7',
+            ];
+        }
+
+        return response()->view('web.sitemap', compact('urls'))->header('Content-Type', 'text/xml');
+    }
 }
