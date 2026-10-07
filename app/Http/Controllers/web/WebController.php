@@ -603,8 +603,8 @@ class WebController extends Controller
 
     public function sitemap()
     {
-        $carreras = \App\Models\Carrera::with('categoria')->where('estado', 1)->get();
-        $noticias = \App\Models\Noticia::where('estado', 1)->get();
+        $carreras = \App\Models\Carrera::with('categoria')->get();
+        $noticias = \App\Models\Noticia::get();
 
         $urls = [];
 
