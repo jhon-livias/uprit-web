@@ -56,16 +56,33 @@
         var initialize = function () {
             var element = bulletin.querySelector('.home-bulletin__swiper');
             if (!element || typeof Swiper === 'undefined' || element.swiper) return;
-            new Swiper(element, {
+
+            // Swiper debe medir un contenedor visible; de lo contrario conserva
+            // una altura de pantalla aunque el flyer sea más pequeño.
+            bulletin.hidden = false;
+            document.body.classList.add('home-bulletin-open');
+
+            var swiper = new Swiper(element, {
                 slidesPerView: 1,
                 spaceBetween: 16,
+                autoHeight: true,
                 loop: {{ $homeFlyers->count() > 1 ? 'true' : 'false' }},
                 autoplay: {{ $homeFlyers->count() > 1 ? "{ delay: 6000, disableOnInteraction: false }" : 'false' }},
                 navigation: { nextEl: '.home-bulletin__next', prevEl: '.home-bulletin__prev' },
                 pagination: { el: '.home-bulletin__pagination', clickable: true },
+                on: {
+                    slideChangeTransitionEnd: function () {
+                        this.updateAutoHeight(0);
+                    },
+                },
             });
-            bulletin.hidden = false;
-            document.body.classList.add('home-bulletin-open');
+
+            element.querySelectorAll('img').forEach(function (image) {
+                image.addEventListener('load', function () {
+                    swiper.updateAutoHeight(0);
+                });
+            });
+            swiper.updateAutoHeight(0);
         };
 
         if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initialize);

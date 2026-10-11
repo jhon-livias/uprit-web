@@ -11,6 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Esta tabla existía en algunas instalaciones antes de que se añadiera
+        // esta migración al historial. No se debe recrear ni perder sus datos.
+        if (Schema::hasTable('autoridades')) {
+            return;
+        }
+
         Schema::create('autoridades', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
@@ -29,6 +35,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('autoridades');
+        // La migración puede haber adoptado una tabla preexistente. Por seguridad,
+        // el rollback no elimina registros de autoridades.
     }
 };
