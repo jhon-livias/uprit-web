@@ -5,7 +5,7 @@
 <!--=====================================-->
 
 
-@include('web.partials.breadcrumb', ['title' => $noticia->titulo])
+@include('web.partials.breadcrumb', ['title' => $noticia->titulo, 'url' => request()->url()])
 
 <div class="blog-details-area section-gap-equal">
     <div class="container">
@@ -16,51 +16,37 @@
                         <span class="category">{{$noticia->categoriaNoticia->nombre}}</span>
                         <h3 class="title">{{$noticia->titulo}}</h3>
                         <ul class="blog-meta">
-                            <li><i class="icon-27"></i>{{ ucfirst(\Carbon\Carbon::parse($noticia->fecha)->locale('es')->translatedFormat('d F, Y')) }}</li>
-
+                            <li><i class="icon-27"></i>{{ $noticia->fecha_rango }}</li>
                         </ul>
                         <div class="thumbnail">
                             <img src="{{ asset('noticias_imagenes/' . $noticia->imagen) }}" alt="Blog Image">
                         </div>
                     </div>
-                    <p class="tag-descripcion justificar">{{$noticia->descripcion_corta}}</p>
-                    <div class="blog-share-area">
-                        <div class="row align-items-center">
-                            <div class="col-md-12">
-                                <div class="blog-tags">
-                                    <h6 class="title">Etiquetas:</h6>
-                                    <div class="tag-list">
-
-                                    @php
-                                        $tags = is_array($noticia->tags)
-                                            ? $noticia->tags
-                                            : json_decode($noticia->tags ?? '[]', true) ?? [];
-                                    @endphp
-                                    @foreach($tags as $tag)
-                                    <a href="#">{{ $tag }}</a>
-                                    @endforeach
-
-                                </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
                 </div>
-                <div class="blog-author">
-                    <div class="thumbnail">
-                        <img src="{{ asset('noticias_autor_imagenes/' . $noticia->autor_imagen) }}" alt="Author Images">
-                    </div>
-                    <div class="author-content">
-                        <h5 class="title">{{$noticia->autor_nombre}}</h5>
-                        <p class="justificar">{{$noticia->autor_descripcion}}</p>
+
+                <div class="blog-share-area d-flex">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="blog-tags">
+                                <h6 class="title">Etiquetas:</h6>
+                                <div class="tag-list">
+                                @php
+                                    $tags = is_array($noticia->tags)
+                                        ? $noticia->tags
+                                        : json_decode($noticia->tags ?? '[]', true) ?? [];
+                                @endphp
+                                @foreach($tags as $tag)
+                                <a href="#">{{ $tag }}</a>
+                                @endforeach
+
+                            </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
                 <div class="des-completa">
                     <p class="tag-descripcion justificar">{!! $noticia->descripcion_total !!}</p>
-
                 </div>
 
                 <p class="tag-descripcion descargos-responsabilidad justificar">

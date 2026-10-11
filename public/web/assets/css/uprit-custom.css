@@ -109,6 +109,32 @@
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
 }
 
+/* Las páginas internas sin hero oscuro necesitan una cabecera legible. */
+body.page-noticias .edu-header {
+    background: linear-gradient(105deg, #260006 0%, #630011 43%, #d51f43 100%) !important;
+}
+
+body.page-noticias .header-top-bar {
+    background: transparent !important;
+    box-shadow: none;
+}
+
+body.page-noticias .header-mainmenu:not(.sticky-active) {
+    background: transparent !important;
+    box-shadow: none;
+}
+
+body.page-noticias .header-mainmenu.sticky-active {
+    background: linear-gradient(105deg, #260006 0%, #630011 43%, #d51f43 100%) !important;
+}
+
+body.page-noticias .header-mainmenu .mainmenu > li > a,
+body.page-noticias .header-mainmenu .header-action .career-finder-open,
+body.page-noticias .header-top .header-info li,
+body.page-noticias .header-top .header-info li a {
+    color: #fff !important;
+}
+
 [data-sal] {
     opacity: 0;
     transform: translateY(40px);
@@ -2426,7 +2452,7 @@ a.categorie-grid {
         align-items: flex-start !important;
     }
 
-    .blog-details-content .blog-share-area {
+    .blog-share-area {
         margin-top: 30px;
     }
 
@@ -11535,6 +11561,27 @@ a.rsu-news__all span {
 .career-finder-dialog__close:hover {
     background: #e8eaed;
 }
+
+/* Boletín flotante administrable del inicio */
+body.home-bulletin-open { overflow: hidden; }
+.home-bulletin { position: fixed; inset: 0; z-index: 12000; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.home-bulletin[hidden] { display: none; }
+.home-bulletin__backdrop { position: absolute; inset: 0; background: rgba(16, 4, 8, .72); }
+.home-bulletin__dialog { position: relative; z-index: 1; width: min(680px, 100%); max-height: calc(100vh - 48px); overflow: auto; padding: 16px; border-radius: 16px; background: #fff; box-shadow: 0 24px 60px rgba(0, 0, 0, .28); }
+.home-bulletin__header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.home-bulletin__header h2 { margin: 0; color: #20272f; font-size: 20px; font-weight: 700; }
+.home-bulletin__close { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 0; border-radius: 50%; background: #f3e7ea; color: #6b1221; cursor: pointer; font-size: 20px; }
+.home-bulletin__close:hover, .home-bulletin__close:focus-visible { background: #6b1221; color: #fff; }
+.home-bulletin__swiper { padding-bottom: 34px; }
+.home-bulletin__slide { display: block; color: inherit; text-decoration: none; }
+.home-bulletin__slide:hover, .home-bulletin__slide:focus-visible { color: inherit; }
+.home-bulletin__slide img { display: block; width: 100%; max-height: calc(100vh - 190px); object-fit: contain; border-radius: 8px; background: #f7f7f7; }
+.home-bulletin__slide span { display: flex; justify-content: space-between; gap: 12px; padding: 11px 4px 0; color: #20272f; font-size: 14px; font-weight: 700; }
+.home-bulletin__prev, .home-bulletin__next { position: absolute; top: calc(50% - 20px); z-index: 2; width: 40px; height: 40px; border: 0; border-radius: 50%; background: rgba(145, 0, 30, .92); color: #fff; cursor: pointer; }
+.home-bulletin__prev { left: 10px; }.home-bulletin__next { right: 10px; }
+.home-bulletin__prev:hover, .home-bulletin__next:hover { background: #20272f; }
+.home-bulletin__pagination { bottom: 0 !important; }.home-bulletin__pagination .swiper-pagination-bullet-active { background: #91001e; }
+@media (max-width: 575px) { .home-bulletin { padding: 12px; } .home-bulletin__dialog { max-height: calc(100vh - 24px); padding: 12px; } .home-bulletin__slide img { max-height: calc(100vh - 150px); } .home-bulletin__prev, .home-bulletin__next { width: 34px; height: 34px; } }
 
 .career-finder-dialog__close iconify-icon {
     font-size: 20px;

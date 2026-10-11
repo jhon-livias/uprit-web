@@ -5,471 +5,1483 @@
                 <div class="body">
                     <div class="row">
                         <div class="col-12">
-                            <span style="font-weight:bold; color: #20272f; font-size: 24px;">Lista de Noticias</span>
-                            <button type="button" class="btn btn-success" @click="showNuevo"
-                                style="float: right; color: white;">
-                                <i class="icon-plus"></i> <span> Nueva Noticia</span>
+                            <span
+                                style="
+                                    font-weight: bold;
+                                    color: #20272f;
+                                    font-size: 24px;
+                                "
+                                >Lista de Noticias</span
+                            >
+                            <button
+                                type="button"
+                                class="btn btn-success"
+                                @click="showNuevo"
+                                style="float: right; color: white"
+                            >
+                                <i class="icon-plus"></i>
+                                <span> Nueva Noticia</span>
                             </button>
-                            <button type="button" class="btn btn-info" @click="showNuevoCat"
-                                style="float: right; color: white; margin-right: 10px;">
-                                <i class="icon-plus"></i> <span> Nueva Categoría</span>
-                            </button>
+                        </div>
 
+                        <div class="col-12 mt-4">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <button
+                                        type="button"
+                                        class="nav-link"
+                                        :class="{
+                                            active: activeTab === 'noticias',
+                                        }"
+                                        @click="activeTab = 'noticias'"
+                                    >
+                                        Noticias
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button
+                                        type="button"
+                                        class="nav-link"
+                                        :class="{
+                                            active: activeTab === 'categorias',
+                                        }"
+                                        @click="activeTab = 'categorias'"
+                                    >
+                                        Categorías
+                                    </button>
+                                </li>
+                            </ul>
                         </div>
 
                         <div class="col-12 tab-content padding-0">
-
-                            <div class="tab-pane active" id="español">
+                            <div
+                                v-show="activeTab === 'noticias'"
+                                class="tab-pane active"
+                                id="español"
+                            >
                                 <div class="body">
-                                    <div class="table-responsive" style="padding-top: 20px;">
-
-                                        <table class="table table-hover js-basic-example table-striped">
-                                            <thead style="color: #fff; background-color: #545b62;">
+                                    <div
+                                        class="table-responsive"
+                                        style="padding-top: 20px"
+                                    >
+                                        <table
+                                            class="table table-hover js-basic-example table-striped"
+                                        >
+                                            <thead
+                                                style="
+                                                    color: #fff;
+                                                    background-color: #545b62;
+                                                "
+                                            >
                                                 <tr>
-                                                    <th style="text-align: center">#</th>
-                                                    <th style="text-align: center">Categoría</th>
-                                                    <th style="text-align: center">Título</th>
-                                                    <th style="text-align: center">Fecha</th>
-                                                    <th style="text-align: center">Descripción Corta</th>
-                                                    <th style="text-align: center">Imagen</th>
-                                                    <th style="text-align: center">Acciones</th>
+                                                    <th
+                                                        style="
+                                                            text-align: center;
+                                                        "
+                                                    >
+                                                        #
+                                                    </th>
+                                                    <th
+                                                        style="
+                                                            text-align: center;
+                                                        "
+                                                    >
+                                                        Categoría
+                                                    </th>
+                                                    <th
+                                                        style="
+                                                            text-align: center;
+                                                        "
+                                                    >
+                                                        Título
+                                                    </th>
+                                                    <th
+                                                        style="
+                                                            text-align: center;
+                                                        "
+                                                    >
+                                                        Fecha
+                                                    </th>
+                                                    <th
+                                                        style="
+                                                            text-align: center;
+                                                        "
+                                                    >
+                                                        Estado
+                                                    </th>
+                                                    <th
+                                                        style="
+                                                            text-align: center;
+                                                        "
+                                                    >
+                                                        Descripción Corta
+                                                    </th>
+                                                    <th
+                                                        style="
+                                                            text-align: center;
+                                                        "
+                                                    >
+                                                        Imagen
+                                                    </th>
+                                                    <th
+                                                        style="
+                                                            text-align: center;
+                                                        "
+                                                    >
+                                                        Acciones
+                                                    </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-
-                                                <tr v-for="(item, index) in noticias" :key="item.id">
-                                                    <td style="text-align: center">{{ index + 1 }}</td>
-                                                    <td style="text-align: center">{{ item.categoria_noticia.nombre }}
+                                                <tr
+                                                    v-for="(
+                                                        item, index
+                                                    ) in noticias"
+                                                    :key="item.id"
+                                                >
+                                                    <td
+                                                        style="
+                                                            text-align: center;
+                                                        "
+                                                    >
+                                                        {{ index + 1 }}
                                                     </td>
-                                                    <td style="text-align: center">{{ item.titulo }}</td>
-                                                    <td style="text-align: center">{{ formatFecha(item.fecha) }}</td>
+                                                    <td
+                                                        style="
+                                                            text-align: center;
+                                                        "
+                                                    >
+                                                        {{
+                                                            item
+                                                                .categoria_noticia
+                                                                .nombre
+                                                        }}
+                                                    </td>
+                                                    <td
+                                                        style="
+                                                            text-align: center;
+                                                        "
+                                                    >
+                                                        {{ item.titulo }}
+                                                    </td>
+                                                    <td
+                                                        style="
+                                                            text-align: center;
+                                                        "
+                                                    >
+                                                        {{
+                                                            formatFecha(
+                                                                item.fecha,
+                                                            )
+                                                        }}
+                                                    </td>
+                                                    <td
+                                                        style="
+                                                            text-align: center;
+                                                        "
+                                                    >
+                                                        <span
+                                                            :class="
+                                                                item.estado
+                                                                    ? 'badge badge-success'
+                                                                    : 'badge badge-secondary'
+                                                            "
+                                                            >{{
+                                                                item.estado
+                                                                    ? "Publicada"
+                                                                    : "Oculta"
+                                                            }}</span
+                                                        >
+                                                    </td>
 
                                                     <td
-                                                        style="text-align: center; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                                                        {{ item.descripcion_corta }}</td>
-                                                    <td style="text-align: center; vertical-align: middle;">
-                                                        <img v-if="item.imagen"
-                                                            :src="asset('noticias_imagenes/' + item.imagen)"
-                                                            alt="Imagen" width="80"
-                                                            style="border-radius: 8px; object-fit: cover; border: 1px solid #ddd;">
+                                                        style="
+                                                            text-align: center;
+                                                            max-width: 150px;
+                                                            overflow: hidden;
+                                                            text-overflow: ellipsis;
+                                                            white-space: nowrap;
+                                                        "
+                                                    >
+                                                        {{
+                                                            item.descripcion_corta
+                                                        }}
+                                                    </td>
+                                                    <td
+                                                        style="
+                                                            text-align: center;
+                                                            vertical-align: middle;
+                                                        "
+                                                    >
+                                                        <img
+                                                            v-if="item.imagen"
+                                                            :src="
+                                                                asset(
+                                                                    'noticias_imagenes/' +
+                                                                        item.imagen,
+                                                                )
+                                                            "
+                                                            alt="Imagen"
+                                                            width="80"
+                                                            style="
+                                                                border-radius: 8px;
+                                                                object-fit: cover;
+                                                                border: 1px
+                                                                    solid #ddd;
+                                                            "
+                                                        />
 
-                                                        <span v-else class="text-muted">
+                                                        <span
+                                                            v-else
+                                                            class="text-muted"
+                                                        >
                                                             No disponible
                                                         </span>
                                                     </td>
 
-
-                                                    <td style="text-align: center" class="text-nowrap">
-                                                        <a href="javascript:;" @click="showEdit(item)"
-                                                            class="btn btn-info esp-dere" title="Editar">
-                                                            <i class="fa fa-edit"></i>
+                                                    <td
+                                                        style="
+                                                            text-align: center;
+                                                        "
+                                                        class="text-nowrap"
+                                                    >
+                                                        <a
+                                                            href="javascript:;"
+                                                            @click="
+                                                                showEdit(item)
+                                                            "
+                                                            class="btn btn-info esp-dere"
+                                                            title="Editar"
+                                                        >
+                                                            <i
+                                                                class="fa fa-edit"
+                                                            ></i>
                                                         </a>
 
-                                                        <a href="javascript:;" @click="eliminar(item.id)"
-                                                            class="btn btn-danger">
-                                                            <i class="fa fa-trash-o"></i>
+                                                        <a
+                                                            href="javascript:;"
+                                                            @click="
+                                                                eliminar(
+                                                                    item.id,
+                                                                )
+                                                            "
+                                                            class="btn btn-danger"
+                                                        >
+                                                            <i
+                                                                class="fa fa-trash-o"
+                                                            ></i>
                                                         </a>
                                                     </td>
                                                 </tr>
-
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal fade" id="mdlNuevaNoticia" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div
+                                v-show="activeTab === 'categorias'"
+                                class="col-12 mt-4"
+                            >
+                                <div class="card border">
+                                    <div class="body">
+                                        <h5 class="mb-3">
+                                            Categorías de noticias
+                                        </h5>
+                                        <form
+                                            @submit.prevent="storeCatNoticia"
+                                            class="row align-items-end mb-4"
+                                        >
+                                            <div class="col-md-9">
+                                                <label
+                                                    >Nombre de la
+                                                    categoría</label
+                                                ><input
+                                                    v-model.trim="
+                                                        cat_noticia.nombre
+                                                    "
+                                                    required
+                                                    class="form-control"
+                                                    placeholder="Ej.: Investigación, Eventos, Comunidad"
+                                                />
+                                            </div>
+                                            <div class="col-md-3 mt-2 mt-md-0">
+                                                <button
+                                                    type="submit"
+                                                    class="btn btn-primary btn-block"
+                                                >
+                                                    <i class="fa fa-plus"></i>
+                                                    Agregar categoría
+                                                </button>
+                                            </div>
+                                        </form>
+                                        <p class="text-muted small">
+                                            <i class="fa fa-arrows"></i>
+                                            Arrastra una categoría para cambiar
+                                            su orden.
+                                        </p>
+                                        <div class="table-responsive">
+                                            <table
+                                                class="table table-hover table-bordered mb-0"
+                                            >
+                                                <thead
+                                                    style="
+                                                        color: #fff;
+                                                        background: #545b62;
+                                                    "
+                                                >
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Categoría</th>
+                                                        <th class="text-center">
+                                                            Acciones
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr
+                                                        v-if="
+                                                            !cat_noticias.length
+                                                        "
+                                                    >
+                                                        <td
+                                                            colspan="3"
+                                                            class="text-center text-muted"
+                                                        >
+                                                            No hay categorías
+                                                            registradas.
+                                                        </td>
+                                                    </tr>
+                                                    <tr
+                                                        v-for="(
+                                                            cat, index
+                                                        ) in cat_noticias"
+                                                        :key="cat.id"
+                                                        :draggable="
+                                                            !savingCategoryOrder
+                                                        "
+                                                        @dragstart="
+                                                            categoryDragIndex =
+                                                                index
+                                                        "
+                                                        @dragover.prevent
+                                                        @drop="
+                                                            dropCategory(index)
+                                                        "
+                                                        @dragend="
+                                                            categoryDragIndex =
+                                                                null
+                                                        "
+                                                        :class="{
+                                                            'category-dragging':
+                                                                categoryDragIndex ===
+                                                                index,
+                                                        }"
+                                                    >
+                                                        <td>
+                                                            <i
+                                                                class="fa fa-arrows text-muted mr-1"
+                                                            ></i
+                                                            >{{ index + 1 }}
+                                                        </td>
+                                                        <td>
+                                                            <input
+                                                                v-model="
+                                                                    cat.nombre
+                                                                "
+                                                                class="form-control"
+                                                            />
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <button
+                                                                type="button"
+                                                                class="btn btn-warning btn-sm mr-1"
+                                                                @click="
+                                                                    updateCategoria(
+                                                                        cat,
+                                                                    )
+                                                                "
+                                                                title="Guardar"
+                                                            >
+                                                                <i
+                                                                    class="fa fa-save"
+                                                                ></i></button
+                                                            ><button
+                                                                type="button"
+                                                                class="btn btn-danger btn-sm"
+                                                                @click="
+                                                                    deleteCategoria(
+                                                                        cat.id,
+                                                                    )
+                                                                "
+                                                                title="Eliminar"
+                                                            >
+                                                                <i
+                                                                    class="fa fa-trash-o"
+                                                                ></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="modal fade"
+                                id="mdlNuevaNoticia"
+                                tabindex="-1"
+                                role="dialog"
+                                aria-labelledby="exampleModalCenterTitle"
+                                aria-hidden="true"
+                            >
+                                <div
+                                    class="modal-dialog modal-dialog-centered modal-lg"
+                                    role="document"
+                                >
                                     <div class="modal-content">
-                                        <form v-on:submit.prevent="storeNoticia()" enctype="multipart/form-data">
-
+                                        <form
+                                            v-on:submit.prevent="storeNoticia()"
+                                            enctype="multipart/form-data"
+                                        >
                                             <div class="modal-header">
-                                                <h4 class="modal-title">Agregar Noticia</h4> <button type="button"
-                                                    data-dismiss="modal" aria-label="Close" class="close"></button>
+                                                <h4 class="modal-title">
+                                                    Agregar Noticia
+                                                </h4>
+                                                <button
+                                                    type="button"
+                                                    data-dismiss="modal"
+                                                    aria-label="Close"
+                                                    class="close"
+                                                ></button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="row">
-                                                    <div class="col-md-5  ml-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Categoría<span
-                                                                        style="color: red;">
-                                                                        *</span></label>
-                                                                <select v-model="noticia.categoria_noticia_id" required
-                                                                    class="form-control">
-                                                                    <option value="">Seleccionar Categoría</option>
-                                                                    <option v-for="cat in cat_noticias" :key="cat.id"
-                                                                        :value="cat.id">
-                                                                        {{ cat.nombre }}
+                                                    <div
+                                                        class="col-md-10 ml-auto mr-auto"
+                                                    >
+                                                        <div class="row">
+                                                            <div
+                                                                class="col-md-6"
+                                                            >
+                                                                <div
+                                                                    class="form-group row"
+                                                                >
+                                                                    <div
+                                                                        class="col-12"
+                                                                    >
+                                                                        <label
+                                                                            >Fecha<span
+                                                                                style="
+                                                                                    color: red;
+                                                                                "
+                                                                            >
+                                                                                *</span
+                                                                            ></label
+                                                                        >
+                                                                        <input
+                                                                            type="date"
+                                                                            v-model="
+                                                                                noticia.fecha
+                                                                            "
+                                                                            required
+                                                                            class="form-control"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="col-md-6"
+                                                            >
+                                                                <div
+                                                                    class="form-group row"
+                                                                >
+                                                                    <div
+                                                                        class="col-12"
+                                                                    >
+                                                                        <label
+                                                                            >Fecha
+                                                                            final
+                                                                            <small
+                                                                                class="text-muted"
+                                                                                >(opcional)</small
+                                                                            ></label
+                                                                        ><input
+                                                                            type="date"
+                                                                            v-model="
+                                                                                noticia.fecha_fin
+                                                                            "
+                                                                            :min="
+                                                                                noticia.fecha
+                                                                            "
+                                                                            class="form-control"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-10 mr-auto ml-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Título<span
+                                                                        style="
+                                                                            color: red;
+                                                                        "
+                                                                        >*</span
+                                                                    ></label
+                                                                >
+                                                                <input
+                                                                    type="text"
+                                                                    v-model="
+                                                                        noticia.titulo
+                                                                    "
+                                                                    required
+                                                                    class="form-control"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-10 mr-auto ml-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Slug
+                                                                    <small
+                                                                        class="text-muted"
+                                                                        >(opcional)</small
+                                                                    ></label
+                                                                >
+                                                                <input
+                                                                    type="text"
+                                                                    v-model.trim="
+                                                                        noticia.slug
+                                                                    "
+                                                                    class="form-control"
+                                                                    placeholder="congreso-internacional-de-investigacion"
+                                                                />
+                                                                <small
+                                                                    class="form-text text-muted"
+                                                                    >Se genera automáticamente desde el título si lo dejas vacío. Usa solo letras, números y guiones.</small
+                                                                >
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-10 mr-auto ml-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Categoría<span
+                                                                        style="
+                                                                            color: red;
+                                                                        "
+                                                                    >
+                                                                        *</span
+                                                                    ></label
+                                                                >
+                                                                <select
+                                                                    v-model="
+                                                                        noticia.categoria_noticia_id
+                                                                    "
+                                                                    required
+                                                                    class="form-control"
+                                                                >
+                                                                    <option
+                                                                        value=""
+                                                                    >
+                                                                        Seleccionar
+                                                                        Categoría
+                                                                    </option>
+                                                                    <option
+                                                                        v-for="cat in cat_noticias"
+                                                                        :key="
+                                                                            cat.id
+                                                                        "
+                                                                        :value="
+                                                                            cat.id
+                                                                        "
+                                                                    >
+                                                                        {{
+                                                                            cat.nombre
+                                                                        }}
                                                                     </option>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-5   mr-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Fecha<span style="color: red;">
-                                                                        *</span></label>
-                                                                <input type="date" v-model="noticia.fecha" required
-                                                                    class="form-control">
+                                                    <div
+                                                        class="col-md-10 mr-auto ml-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Descripción
+                                                                    Corta<span
+                                                                        style="
+                                                                            color: red;
+                                                                        "
+                                                                    >
+                                                                        *</span
+                                                                    ></label
+                                                                >
+                                                                <textarea
+                                                                    v-model="
+                                                                        noticia.descripcion_corta
+                                                                    "
+                                                                    required
+                                                                    class="form-control"
+                                                                    rows="3"
+                                                                ></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-10  ml-auto mr-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Título<span style="color: red;">
-                                                                        *</span></label>
-                                                                <input type="text" v-model="noticia.titulo" required
-                                                                    class="form-control">
-                                                            </div>
+                                                    <div
+                                                        class="col-md-10 mr-auto ml-auto"
+                                                    >
+                                                        <div class="form-group">
+                                                            <label
+                                                                >Enlace externo
+                                                                (opcional)</label
+                                                            ><input
+                                                                v-model.trim="
+                                                                    noticia.enlace_externo
+                                                                "
+                                                                type="url"
+                                                                class="form-control"
+                                                                placeholder="https://ejemplo.com/inscripcion"
+                                                            /><small
+                                                                class="text-muted"
+                                                                >Si se completa,
+                                                                la noticia
+                                                                redirige a este
+                                                                enlace.</small
+                                                            >
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-10 mr-auto ml-auto d-flex"
+                                                    >
+                                                        <div
+                                                            class="custom-control custom-checkbox mr-4"
+                                                        >
+                                                            <input
+                                                                id="noticiaEstadoCrear"
+                                                                v-model="
+                                                                    noticia.estado
+                                                                "
+                                                                type="checkbox"
+                                                                class="custom-control-input"
+                                                            /><label
+                                                                for="noticiaEstadoCrear"
+                                                                class="custom-control-label"
+                                                                >Publicar
+                                                                noticia</label
+                                                            >
+                                                        </div>
+                                                        <div
+                                                            class="custom-control custom-checkbox"
+                                                        >
+                                                            <input
+                                                                id="noticiaPestanaCrear"
+                                                                v-model="
+                                                                    noticia.abrir_nueva_pestana
+                                                                "
+                                                                type="checkbox"
+                                                                class="custom-control-input"
+                                                            /><label
+                                                                for="noticiaPestanaCrear"
+                                                                class="custom-control-label"
+                                                                >Abrir enlace en
+                                                                otra
+                                                                pestaña</label
+                                                            >
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-10 mr-auto ml-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Descripción Corta<span
-                                                                        style="color: red;">
-                                                                        *</span></label>
-                                                                <textarea v-model="noticia.descripcion_corta" required
-                                                                    class="form-control" rows="3"></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-10 mr-auto ml-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Imagen</label>
-                                                                <input type="file" class="dropify" @change="imagen"
+                                                    <div
+                                                        class="col-md-10 mr-auto ml-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Imagen</label
+                                                                >
+                                                                <input
+                                                                    type="file"
+                                                                    class="dropify"
+                                                                    @change="
+                                                                        imagen
+                                                                    "
                                                                     accept=".jpg,.jpeg,.png,.webp"
                                                                     data-allowed-file-extensions="jpg jpeg png webp"
-                                                                    name="imagen">
+                                                                    name="imagen"
+                                                                />
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-10  ml-auto mr-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Tags</label>
-                                                                <input type="text" id="tags" class="form-control"
-                                                                    ref="tagsCreate">
+                                                    <div
+                                                        class="col-md-10 ml-auto mr-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Tags</label
+                                                                >
+                                                                <input
+                                                                    type="text"
+                                                                    id="tags"
+                                                                    class="form-control"
+                                                                    ref="tagsCreate"
+                                                                />
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-10  ml-auto mr-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Nombre del Autor</label>
-                                                                <input type="text" v-model="noticia.autor_nombre"
-                                                                    class="form-control">
+                                                    <div
+                                                        class="col-md-10 ml-auto mr-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Nombre del
+                                                                    Autor</label
+                                                                >
+                                                                <input
+                                                                    type="text"
+                                                                    v-model="
+                                                                        noticia.autor_nombre
+                                                                    "
+                                                                    class="form-control"
+                                                                />
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-10  ml-auto mr-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Descripción del Autor</label>
-                                                                <textarea v-model="noticia.autor_descripcion"
-                                                                    class="form-control" rows="3"></textarea>
+                                                    <div
+                                                        class="col-md-10 ml-auto mr-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Descripción
+                                                                    del
+                                                                    Autor</label
+                                                                >
+                                                                <textarea
+                                                                    v-model="
+                                                                        noticia.autor_descripcion
+                                                                    "
+                                                                    class="form-control"
+                                                                    rows="3"
+                                                                ></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-10 mr-auto ml-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Imagen Autor</label>
-                                                                <input type="file" class="dropify"
-                                                                    @change="imagen_autor"
+                                                    <div
+                                                        class="col-md-10 mr-auto ml-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Imagen
+                                                                    Autor</label
+                                                                >
+                                                                <input
+                                                                    type="file"
+                                                                    class="dropify"
+                                                                    @change="
+                                                                        imagen_autor
+                                                                    "
                                                                     accept=".jpg,.jpeg,.png,.webp"
                                                                     data-allowed-file-extensions="jpg jpeg png webp"
-                                                                    name="autor_imagen">
+                                                                    name="autor_imagen"
+                                                                />
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-10  ml-auto mr-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Descripción Completa</label>
-                                                                <textarea ref="editorCreate" class="form-control"
-                                                                    rows="6"></textarea>
-
+                                                    <div
+                                                        class="col-md-10 ml-auto mr-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Descripción
+                                                                    Completa</label
+                                                                >
+                                                                <textarea
+                                                                    ref="editorCreate"
+                                                                    class="form-control"
+                                                                    rows="6"
+                                                                ></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="submit" class="btn btn-primary">Guardar</button>
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Cerrar</button>
+                                                <button
+                                                    type="submit"
+                                                    class="btn btn-primary"
+                                                >
+                                                    Guardar
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-secondary"
+                                                    data-dismiss="modal"
+                                                >
+                                                    Cerrar
+                                                </button>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal fade" id="modEditarNoticia" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div
+                                class="modal fade"
+                                id="modEditarNoticia"
+                                tabindex="-1"
+                                role="dialog"
+                                aria-labelledby="exampleModalCenterTitle"
+                                aria-hidden="true"
+                            >
+                                <div
+                                    class="modal-dialog modal-dialog-centered modal-lg"
+                                    role="document"
+                                >
                                     <div class="modal-content">
-                                        <form v-on:submit.prevent="updateNoticia()" enctype="multipart/form-data">
-
+                                        <form
+                                            v-on:submit.prevent="
+                                                updateNoticia()
+                                            "
+                                            enctype="multipart/form-data"
+                                        >
                                             <div class="modal-header">
-                                                <h4 class="modal-title">Editar Noticia</h4>
-                                                <button type="button" data-dismiss="modal" aria-label="Close"
-                                                    class="close"></button>
+                                                <h4 class="modal-title">
+                                                    Editar Noticia
+                                                </h4>
+                                                <button
+                                                    type="button"
+                                                    data-dismiss="modal"
+                                                    aria-label="Close"
+                                                    class="close"
+                                                ></button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="row">
-                                                    <div class="col-md-5  ml-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Categoría<span
-                                                                        style="color: red;">
-                                                                        *</span></label>
-                                                                <select v-model="noticia.categoria_noticia_id" required
-                                                                    class="form-control">
-                                                                    <option value="">Seleccionar Categoría</option>
-                                                                    <option v-for="cat in cat_noticias" :key="cat.id"
-                                                                        :value="cat.id">
-                                                                        {{ cat.nombre }}
+                                                    <div
+                                                        class="col-md-10 ml-auto mr-auto order-md-2"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Categoría<span
+                                                                        style="
+                                                                            color: red;
+                                                                        "
+                                                                    >
+                                                                        *</span
+                                                                    ></label
+                                                                >
+                                                                <select
+                                                                    v-model="
+                                                                        noticia.categoria_noticia_id
+                                                                    "
+                                                                    required
+                                                                    class="form-control"
+                                                                >
+                                                                    <option
+                                                                        value=""
+                                                                    >
+                                                                        Seleccionar
+                                                                        Categoría
+                                                                    </option>
+                                                                    <option
+                                                                        v-for="cat in cat_noticias"
+                                                                        :key="
+                                                                            cat.id
+                                                                        "
+                                                                        :value="
+                                                                            cat.id
+                                                                        "
+                                                                    >
+                                                                        {{
+                                                                            cat.nombre
+                                                                        }}
                                                                     </option>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-5 mr-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Fecha<span style="color: red;">
-                                                                        *</span></label>
-                                                                <input type="date" v-model="noticia.fecha" required
-                                                                    class="form-control">
+                                                    <div
+                                                        class="col-md-5 ml-auto order-md-1"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Fecha<span
+                                                                        style="
+                                                                            color: red;
+                                                                        "
+                                                                    >
+                                                                        *</span
+                                                                    ></label
+                                                                >
+                                                                <input
+                                                                    type="date"
+                                                                    v-model="
+                                                                        noticia.fecha
+                                                                    "
+                                                                    required
+                                                                    class="form-control"
+                                                                />
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-10 ml-auto mr-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Título<span style="color: red;">
-                                                                        *</span></label>
-                                                                <input type="text" v-model="noticia.titulo" required
-                                                                    class="form-control">
+                                                    <div
+                                                        class="col-md-5 mr-auto order-md-1"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Fecha final
+                                                                    <small
+                                                                        class="text-muted"
+                                                                        >(opcional)</small
+                                                                    ></label
+                                                                ><input
+                                                                    type="date"
+                                                                    v-model="
+                                                                        noticia.fecha_fin
+                                                                    "
+                                                                    :min="
+                                                                        noticia.fecha
+                                                                    "
+                                                                    class="form-control"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-10 ml-auto mr-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Título<span
+                                                                        style="
+                                                                            color: red;
+                                                                        "
+                                                                    >
+                                                                        *</span
+                                                                    ></label
+                                                                >
+                                                                <input
+                                                                    type="text"
+                                                                    v-model="
+                                                                        noticia.titulo
+                                                                    "
+                                                                    required
+                                                                    class="form-control"
+                                                                />
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-10 mr-auto ml-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Descripción Corta<span
-                                                                        style="color: red;">
-                                                                        *</span></label>
-                                                                <textarea v-model="noticia.descripcion_corta" required
-                                                                    class="form-control" rows="3"></textarea>
+                                                    <div
+                                                        class="col-md-10 mr-auto ml-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Slug
+                                                                    <small
+                                                                        class="text-muted"
+                                                                        >(opcional)</small
+                                                                    ></label
+                                                                >
+                                                                <input
+                                                                    type="text"
+                                                                    v-model.trim="
+                                                                        noticia.slug
+                                                                    "
+                                                                    class="form-control"
+                                                                    placeholder="congreso-internacional-de-investigacion"
+                                                                />
+                                                                <small
+                                                                    class="form-text text-muted"
+                                                                    >Se genera automáticamente desde el título si lo dejas vacío. Usa solo letras, números y guiones.</small
+                                                                >
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-10 mr-auto ml-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Imagen</label>
-                                                                <input type="file" class="dropify dropify-edit-imagen"
-                                                                    @change="imagen_edit" accept=".jpg,.jpeg,.png,.webp"
-                                                                    data-allowed-file-extensions="jpg jpeg png webp"
-                                                                    name="imagen">
+                                                    <div
+                                                        class="col-md-10 mr-auto ml-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Descripción
+                                                                    Corta<span
+                                                                        style="
+                                                                            color: red;
+                                                                        "
+                                                                    >
+                                                                        *</span
+                                                                    ></label
+                                                                >
+                                                                <textarea
+                                                                    v-model="
+                                                                        noticia.descripcion_corta
+                                                                    "
+                                                                    required
+                                                                    class="form-control"
+                                                                    rows="3"
+                                                                ></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-10  ml-auto mr-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Tags</label>
-                                                                <input type="text" class="form-control tags-input"
-                                                                    ref="tagsEdit">
+                                                    <div
+                                                        class="col-md-10 mr-auto ml-auto"
+                                                    >
+                                                        <div class="form-group">
+                                                            <label
+                                                                >Enlace externo
+                                                                (opcional)</label
+                                                            ><input
+                                                                v-model.trim="
+                                                                    noticia.enlace_externo
+                                                                "
+                                                                type="url"
+                                                                class="form-control"
+                                                                placeholder="https://ejemplo.com/inscripcion"
+                                                            /><small
+                                                                class="text-muted"
+                                                                >Si se completa,
+                                                                la noticia
+                                                                redirige a este
+                                                                enlace.</small
+                                                            >
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-10 mr-auto ml-auto d-flex"
+                                                    >
+                                                        <div
+                                                            class="custom-control custom-checkbox mr-4"
+                                                        >
+                                                            <input
+                                                                id="noticiaEstadoEditar"
+                                                                v-model="
+                                                                    noticia.estado
+                                                                "
+                                                                type="checkbox"
+                                                                class="custom-control-input"
+                                                            /><label
+                                                                for="noticiaEstadoEditar"
+                                                                class="custom-control-label"
+                                                                >Publicar
+                                                                noticia</label
+                                                            >
+                                                        </div>
+                                                        <div
+                                                            class="custom-control custom-checkbox"
+                                                        >
+                                                            <input
+                                                                id="noticiaPestanaEditar"
+                                                                v-model="
+                                                                    noticia.abrir_nueva_pestana
+                                                                "
+                                                                type="checkbox"
+                                                                class="custom-control-input"
+                                                            /><label
+                                                                for="noticiaPestanaEditar"
+                                                                class="custom-control-label"
+                                                                >Abrir enlace en
+                                                                otra
+                                                                pestaña</label
+                                                            >
+                                                        </div>
+                                                    </div>
 
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-10  ml-auto mr-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Nombre del Autor</label>
-                                                                <input type="text" v-model="noticia.autor_nombre"
-                                                                    class="form-control">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-10  ml-auto mr-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Descripción del Autor</label>
-                                                                <textarea v-model="noticia.autor_descripcion"
-                                                                    class="form-control" rows="3"></textarea>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-10 mr-auto ml-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Imagen Autor</label>
-                                                                <input type="file" class="dropify dropify-edit-autor"
-                                                                    @change="imagen_autor_edit"
+                                                    <div
+                                                        class="col-md-10 mr-auto ml-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Imagen</label
+                                                                >
+                                                                <input
+                                                                    type="file"
+                                                                    class="dropify dropify-edit-imagen"
+                                                                    @change="
+                                                                        imagen_edit
+                                                                    "
                                                                     accept=".jpg,.jpeg,.png,.webp"
                                                                     data-allowed-file-extensions="jpg jpeg png webp"
-                                                                    name="autor_imagen">
+                                                                    name="imagen"
+                                                                />
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-10  ml-auto mr-auto">
-                                                        <div class="form-group row">
-                                                            <div class="col-12"><label>Descripción Completa</label>
-                                                                <textarea ref="editorEdit" class="form-control ckeditor"
-                                                                    rows="6"></textarea>
-
+                                                    <div
+                                                        class="col-md-10 ml-auto mr-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Tags</label
+                                                                >
+                                                                <input
+                                                                    type="text"
+                                                                    class="form-control tags-input"
+                                                                    ref="tagsEdit"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-10 ml-auto mr-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Nombre del
+                                                                    Autor</label
+                                                                >
+                                                                <input
+                                                                    type="text"
+                                                                    v-model="
+                                                                        noticia.autor_nombre
+                                                                    "
+                                                                    class="form-control"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-10 ml-auto mr-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Descripción
+                                                                    del
+                                                                    Autor</label
+                                                                >
+                                                                <textarea
+                                                                    v-model="
+                                                                        noticia.autor_descripcion
+                                                                    "
+                                                                    class="form-control"
+                                                                    rows="3"
+                                                                ></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
 
+                                                    <div
+                                                        class="col-md-10 mr-auto ml-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Imagen
+                                                                    Autor</label
+                                                                >
+                                                                <input
+                                                                    type="file"
+                                                                    class="dropify dropify-edit-autor"
+                                                                    @change="
+                                                                        imagen_autor_edit
+                                                                    "
+                                                                    accept=".jpg,.jpeg,.png,.webp"
+                                                                    data-allowed-file-extensions="jpg jpeg png webp"
+                                                                    name="autor_imagen"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-10 ml-auto mr-auto"
+                                                    >
+                                                        <div
+                                                            class="form-group row"
+                                                        >
+                                                            <div class="col-12">
+                                                                <label
+                                                                    >Descripción
+                                                                    Completa</label
+                                                                >
+                                                                <textarea
+                                                                    ref="editorEdit"
+                                                                    class="form-control ckeditor"
+                                                                    rows="6"
+                                                                ></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="submit" class="btn btn-primary">Guardar</button>
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Cerrar</button>
+                                                <button
+                                                    type="submit"
+                                                    class="btn btn-primary"
+                                                >
+                                                    Guardar
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-secondary"
+                                                    data-dismiss="modal"
+                                                >
+                                                    Cerrar
+                                                </button>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal fade" id="mdlNuevaCategoria" tabindex="-1" role="dialog">
-
-                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div
+                                class="modal fade"
+                                id="mdlNuevaCategoria"
+                                tabindex="-1"
+                                role="dialog"
+                            >
+                                <div
+                                    class="modal-dialog modal-dialog-centered modal-lg"
+                                >
                                     <div class="modal-content">
-
                                         <div class="modal-header">
                                             <h4 class="modal-title">
                                                 Administrar Categorías
                                             </h4>
 
-                                            <button type="button" class="close" data-dismiss="modal">
-                                            </button>
+                                            <button
+                                                type="button"
+                                                class="close"
+                                                data-dismiss="modal"
+                                            ></button>
                                         </div>
 
                                         <div class="modal-body">
-
-                                            <form @submit.prevent="storeCatNoticia">
-
-                                                <div class="row mb-4 align-items-end">
-
+                                            <form
+                                                @submit.prevent="
+                                                    storeCatNoticia
+                                                "
+                                            >
+                                                <div
+                                                    class="row mb-4 align-items-end"
+                                                >
                                                     <div class="col-md-10">
-
                                                         <label>
-                                                            Nombre de la Categoría
-                                                            <span style="color:red">*</span>
+                                                            Nombre de la
+                                                            Categoría
+                                                            <span
+                                                                style="
+                                                                    color: red;
+                                                                "
+                                                                >*</span
+                                                            >
                                                         </label>
 
-                                                        <input v-model="cat_noticia.nombre" type="text" required
-                                                            class="form-control">
+                                                        <input
+                                                            v-model="
+                                                                cat_noticia.nombre
+                                                            "
+                                                            type="text"
+                                                            required
+                                                            class="form-control"
+                                                        />
                                                     </div>
 
                                                     <div class="col-md-2">
-
-                                                        <button type="submit" class="btn btn-primary btn-block">
-
-                                                            <i class="fa fa-plus"></i>
+                                                        <button
+                                                            type="submit"
+                                                            class="btn btn-primary btn-block"
+                                                        >
+                                                            <i
+                                                                class="fa fa-plus"
+                                                            ></i>
                                                             Agregar
-
                                                         </button>
-
                                                     </div>
-
                                                 </div>
-
                                             </form>
 
                                             <div class="table-responsive">
-
-                                                <table class="table table-bordered table-hover">
-
-                                                    <thead style="color:#fff;background:#545b62">
-
+                                                <table
+                                                    class="table table-bordered table-hover"
+                                                >
+                                                    <thead
+                                                        style="
+                                                            color: #fff;
+                                                            background: #545b62;
+                                                        "
+                                                    >
                                                         <tr>
-                                                            <th class="text-center">#</th>
-                                                            <th class="text-center">Categoría</th>
-                                                            <th class="text-center">Acciones</th>
+                                                            <th
+                                                                class="text-center"
+                                                            >
+                                                                #
+                                                            </th>
+                                                            <th
+                                                                class="text-center"
+                                                            >
+                                                                Categoría
+                                                            </th>
+                                                            <th
+                                                                class="text-center"
+                                                            >
+                                                                Acciones
+                                                            </th>
                                                         </tr>
-
                                                     </thead>
 
                                                     <tbody>
-
-                                                        <tr v-for="(cat, index) in cat_noticias" :key="cat.id">
-
-                                                            <td class="text-center">
+                                                        <tr
+                                                            v-for="(
+                                                                cat, index
+                                                            ) in cat_noticias"
+                                                            :key="cat.id"
+                                                        >
+                                                            <td
+                                                                class="text-center"
+                                                            >
                                                                 {{ index + 1 }}
                                                             </td>
 
                                                             <td>
-
-                                                                <input v-model="cat.nombre" class="form-control">
-
+                                                                <input
+                                                                    v-model="
+                                                                        cat.nombre
+                                                                    "
+                                                                    class="form-control"
+                                                                />
                                                             </td>
 
-                                                            <td class="text-center">
-
-                                                                <button class="btn btn-warning btn-sm mr-1"
-                                                                    @click="updateCategoria(cat)">
-
-                                                                    <i class="fa fa-pencil"></i>
-
+                                                            <td
+                                                                class="text-center"
+                                                            >
+                                                                <button
+                                                                    class="btn btn-warning btn-sm mr-1"
+                                                                    @click="
+                                                                        updateCategoria(
+                                                                            cat,
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        class="fa fa-pencil"
+                                                                    ></i>
                                                                 </button>
 
-                                                                <button class="btn btn-danger btn-sm"
-                                                                    @click="deleteCategoria(cat.id)">
-
-                                                                    <i class="fa fa-trash-o"></i>
-
+                                                                <button
+                                                                    class="btn btn-danger btn-sm"
+                                                                    @click="
+                                                                        deleteCategoria(
+                                                                            cat.id,
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        class="fa fa-trash-o"
+                                                                    ></i>
                                                                 </button>
-
                                                             </td>
-
                                                         </tr>
 
-                                                        <tr v-if="!cat_noticias.length">
-
-                                                            <td colspan="3" class="text-center">
-                                                                No hay categorías registradas
+                                                        <tr
+                                                            v-if="
+                                                                !cat_noticias.length
+                                                            "
+                                                        >
+                                                            <td
+                                                                colspan="3"
+                                                                class="text-center"
+                                                            >
+                                                                No hay
+                                                                categorías
+                                                                registradas
                                                             </td>
-
                                                         </tr>
-
                                                     </tbody>
-
                                                 </table>
-
                                             </div>
-
                                         </div>
 
                                         <div class="modal-footer">
-
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-
+                                            <button
+                                                type="button"
+                                                class="btn btn-secondary"
+                                                data-dismiss="modal"
+                                            >
                                                 Cerrar
-
                                             </button>
-
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-
-
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
     data() {
         return {
@@ -479,8 +1491,10 @@ export default {
             cat_noticia: {},
             tagifyCreate: null,
             tagifyEdit: null,
-
-        }
+            activeTab: "noticias",
+            categoryDragIndex: null,
+            savingCategoryOrder: false,
+        };
     },
     mounted() {
         this.getNoticias();
@@ -492,113 +1506,136 @@ export default {
         resetForm() {
             this.noticia = {
                 id: null,
-                categoria_noticia_id: '',
-                titulo: '',
-                fecha: '',
-                descripcion_corta: '',
+                categoria_noticia_id: "",
+                titulo: "",
+                slug: "",
+                fecha: "",
+                fecha_fin: "",
+                descripcion_corta: "",
                 imagen: null,
-                tags: '',
-                autor_nombre: '',
-                autor_descripcion: '',
+                tags: "",
+                autor_nombre: "",
+                autor_descripcion: "",
                 autor_imagen: null,
-                descripcion_total: '',
+                descripcion_total: "",
+                estado: true,
+                enlace_externo: "",
+                abrir_nueva_pestana: false,
             };
             this.cat_noticia = {
                 id: null,
-                nombre: '',
+                nombre: "",
             };
-
         },
         formatFecha(fecha) {
-            if (!fecha) return '-';
+            if (!fecha) return "-";
 
-            return new Date(fecha).toLocaleDateString('es-PE', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric'
+            return new Date(fecha).toLocaleDateString("es-PE", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
             });
         },
         initDropify() {
             this.$nextTick(() => {
-                $('.dropify').dropify();
+                $(".dropify").dropify();
             });
         },
         async initCreateEditor() {
-
             if (this.editorCreate) {
                 await this.editorCreate.destroy();
             }
 
             this.editorCreate = await ClassicEditor.create(
-                this.$refs.editorCreate
+                this.$refs.editorCreate,
             );
 
-            this.editorCreate.model.document.on('change:data', () => {
-                this.noticia.descripcion_total =
-                    this.editorCreate.getData();
+            this.editorCreate.model.document.on("change:data", () => {
+                this.noticia.descripcion_total = this.editorCreate.getData();
             });
-
         },
         async initEditEditor() {
-
             if (this.editorEdit) {
                 await this.editorEdit.destroy();
             }
 
-            this.editorEdit = await ClassicEditor.create(
-                this.$refs.editorEdit
-            );
+            this.editorEdit = await ClassicEditor.create(this.$refs.editorEdit);
 
-            this.editorEdit.setData(
-                this.noticia.descripcion_total || ''
-            );
+            this.editorEdit.setData(this.noticia.descripcion_total || "");
 
-            this.editorEdit.model.document.on('change:data', () => {
-                this.noticia.descripcion_total =
-                    this.editorEdit.getData();
+            this.editorEdit.model.document.on("change:data", () => {
+                this.noticia.descripcion_total = this.editorEdit.getData();
             });
-
         },
         getCatNoticias() {
-            axios.get(route('noticias.get.categoria')).then((response) => {
-
-                this.cat_noticias = response.data;
-
-            }).catch(error => {
-                console.log('Error en el Servidor');
-            })
+            axios
+                .get(route("noticias.get.categoria"))
+                .then((response) => {
+                    this.cat_noticias = response.data;
+                })
+                .catch((error) => {
+                    console.log("Error en el Servidor");
+                });
         },
         getNoticias() {
-            axios.get(route('noticias.get')).then((response) => {
-                this.destroyDatatable();
-                this.noticias = response.data;
-                this.initDatatable();
-            }).catch(error => {
-                console.log('Error en el Servidor');
-            })
+            axios
+                .get(route("noticias.get"))
+                .then((response) => {
+                    this.destroyDatatable();
+                    this.noticias = response.data;
+                    this.initDatatable();
+                })
+                .catch((error) => {
+                    console.log("Error en el Servidor");
+                });
+        },
+        dropCategory(targetIndex) {
+            if (
+                this.categoryDragIndex === null ||
+                this.categoryDragIndex === targetIndex ||
+                this.savingCategoryOrder
+            )
+                return;
+            const categories = [...this.cat_noticias];
+            const [moved] = categories.splice(this.categoryDragIndex, 1);
+            categories.splice(targetIndex, 0, moved);
+            this.cat_noticias = categories;
+            this.categoryDragIndex = null;
+            this.savingCategoryOrder = true;
+            axios
+                .post("/admin/noticias/categorias/reorder", {
+                    ids: categories.map((category) => category.id),
+                })
+                .then(() => toastr.success("Orden de categorías actualizado"))
+                .catch(() => {
+                    toastr.error("No se pudo guardar el orden");
+                    this.getCatNoticias();
+                })
+                .finally(() => {
+                    this.savingCategoryOrder = false;
+                });
         },
 
         showNuevoCat() {
             this.resetForm();
-            $("#mdlNuevaCategoria").modal('show');
+            $("#mdlNuevaCategoria").modal("show");
         },
         showNuevo() {
             this.resetForm();
             this.initDropify();
-            $("#mdlNuevaNoticia").modal('show');
+            $("#mdlNuevaNoticia").modal("show");
             this.$nextTick(async () => {
-
                 if (this.tagifyCreate) {
                     this.tagifyCreate.destroy();
                 }
 
                 this.tagifyCreate = new Tagify(this.$refs.tagsCreate, {
-                    delimiters: null
+                    delimiters: null,
                 });
 
-                this.tagifyCreate.on('change', () => {
+                this.tagifyCreate.on("change", () => {
                     this.noticia.tags = JSON.stringify(
-                        this.tagifyCreate.value.map(tag => tag.value)
+                        this.tagifyCreate.value.map((tag) => tag.value),
                     );
                 });
                 await this.initCreateEditor();
@@ -607,235 +1644,293 @@ export default {
 
         storeCatNoticia() {
             let formData = new FormData();
-            formData.append('nombre', this.cat_noticia.nombre);
-            axios.post(route('noticias.categorias.store'), formData).then((response) => {
-                if (response.data) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'CATEGORÍA AGREGADA',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                    this.getCatNoticias();
-                    $('#mdlNuevaCategoria').modal('hide');
-                    this.resetForm();
-                } else {
-                    toastr.warning("No se pudo registrar la Categoría");
-                }
-            }).catch(error => {
-                toastr.error("No se pudo registrar la Categoría, problema de servidor");
-                console.log(error);
-            });
+            formData.append("nombre", this.cat_noticia.nombre);
+            axios
+                .post(route("noticias.categorias.store"), formData)
+                .then((response) => {
+                    if (response.data) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "CATEGORÍA AGREGADA",
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                        this.getCatNoticias();
+                        $("#mdlNuevaCategoria").modal("hide");
+                        this.resetForm();
+                    } else {
+                        toastr.warning("No se pudo registrar la Categoría");
+                    }
+                })
+                .catch((error) => {
+                    toastr.error(
+                        "No se pudo registrar la Categoría, problema de servidor",
+                    );
+                    console.log(error);
+                });
         },
 
         storeNoticia() {
             if (this.tagifyCreate) {
                 this.noticia.tags = JSON.stringify(
-                    this.tagifyCreate.value.map(tag => tag.value)
+                    this.tagifyCreate.value.map((tag) => tag.value),
                 );
             }
             let formData = new FormData();
-            formData.append('categoria_noticia_id', this.noticia.categoria_noticia_id);
-            formData.append('titulo', this.noticia.titulo);
-            formData.append('fecha', this.noticia.fecha);
-            formData.append('descripcion_corta', this.noticia.descripcion_corta);
-            formData.append('imagen', this.noticia.imagen);
-            formData.append('tags', this.noticia.tags);
-            formData.append('autor_nombre', this.noticia.autor_nombre);
-            formData.append('autor_descripcion', this.noticia.autor_descripcion);
-            formData.append('autor_imagen', this.noticia.autor_imagen);
-            formData.append('descripcion_total', this.noticia.descripcion_total);
-            axios.post(route('noticias.store'), formData).then((response) => {
-                if (response.data) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'NOTICIA AGREGADA',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                    this.getNoticias();
-                    $('#mdlNuevaNoticia').modal('hide');
-                    this.resetForm();
-                } else {
-                    toastr.warning("No se pudo registrar la Noticia");
-                }
-            }).catch(error => {
-                toastr.error("No se pudo registrar la Noticia, problema de servidor");
-                console.log(error);
-            });
+            formData.append(
+                "categoria_noticia_id",
+                this.noticia.categoria_noticia_id,
+            );
+            formData.append("titulo", this.noticia.titulo);
+            formData.append("slug", this.noticia.slug || "");
+            formData.append("fecha", this.noticia.fecha);
+            formData.append("fecha_fin", this.noticia.fecha_fin || "");
+            formData.append(
+                "descripcion_corta",
+                this.noticia.descripcion_corta,
+            );
+            if (this.noticia.imagen instanceof File) {
+                formData.append("imagen", this.noticia.imagen);
+            }
+            formData.append("tags", this.noticia.tags);
+            formData.append("autor_nombre", this.noticia.autor_nombre);
+            formData.append(
+                "autor_descripcion",
+                this.noticia.autor_descripcion,
+            );
+            if (this.noticia.autor_imagen instanceof File) {
+                formData.append("autor_imagen", this.noticia.autor_imagen);
+            }
+            formData.append(
+                "descripcion_total",
+                this.noticia.descripcion_total,
+            );
+            formData.append("estado", this.noticia.estado ? "1" : "0");
+            formData.append(
+                "enlace_externo",
+                this.noticia.enlace_externo || "",
+            );
+            formData.append(
+                "abrir_nueva_pestana",
+                this.noticia.abrir_nueva_pestana ? "1" : "0",
+            );
+            axios
+                .post(route("noticias.store"), formData)
+                .then((response) => {
+                    if (response.data) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "NOTICIA AGREGADA",
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                        this.getNoticias();
+                        $("#mdlNuevaNoticia").modal("hide");
+                        this.resetForm();
+                    } else {
+                        toastr.warning("No se pudo registrar la Noticia");
+                    }
+                })
+                .catch((error) => {
+                    toastr.error(
+                        "No se pudo registrar la Noticia, problema de servidor",
+                    );
+                    console.log(error);
+                });
         },
         showEdit(item) {
             this.noticia = { ...item };
             this.$nextTick(async () => {
-
-                let drImagen = $('.dropify-edit-imagen').dropify({
+                let drImagen = $(".dropify-edit-imagen").dropify({
                     defaultFile: item.imagen
-                        ? this.asset('noticias_imagenes/' + item.imagen)
-                        : ''
+                        ? this.asset("noticias_imagenes/" + item.imagen)
+                        : "",
                 });
 
-                drImagen = drImagen.data('dropify');
+                drImagen = drImagen.data("dropify");
 
                 drImagen.resetPreview();
                 drImagen.clearElement();
 
-                drImagen.settings.defaultFile =
-                    item.imagen
-                        ? this.asset('noticias_imagenes/' + item.imagen)
-                        : '';
+                drImagen.settings.defaultFile = item.imagen
+                    ? this.asset("noticias_imagenes/" + item.imagen)
+                    : "";
 
                 drImagen.destroy();
                 drImagen.init();
 
-
-                let drAutor = $('.dropify-edit-autor').dropify({
+                let drAutor = $(".dropify-edit-autor").dropify({
                     defaultFile: item.autor_imagen
-                        ? this.asset('noticias_autor_imagenes/' + item.autor_imagen)
-                        : ''
+                        ? this.asset(
+                              "noticias_autor_imagenes/" + item.autor_imagen,
+                          )
+                        : "",
                 });
 
-                drAutor = drAutor.data('dropify');
+                drAutor = drAutor.data("dropify");
 
                 drAutor.resetPreview();
                 drAutor.clearElement();
 
-                drAutor.settings.defaultFile =
-                    item.autor_imagen
-                        ? this.asset('noticias_autor_imagenes/' + item.autor_imagen)
-                        : '';
+                drAutor.settings.defaultFile = item.autor_imagen
+                    ? this.asset("noticias_autor_imagenes/" + item.autor_imagen)
+                    : "";
 
                 drAutor.destroy();
                 drAutor.init();
-
 
                 if (this.tagifyEdit) {
                     this.tagifyEdit.destroy();
                 }
 
                 this.tagifyEdit = new Tagify(this.$refs.tagsEdit, {
-                    delimiters: null
+                    delimiters: null,
                 });
 
-                this.$refs.tagsEdit.value = '';
+                this.$refs.tagsEdit.value = "";
 
                 const tags = Array.isArray(this.noticia.tags)
                     ? this.noticia.tags
-                    : JSON.parse(this.noticia.tags || '[]');
+                    : JSON.parse(this.noticia.tags || "[]");
 
                 this.tagifyEdit.removeAllTags();
                 this.tagifyEdit.addTags(tags);
 
-                this.tagifyEdit.on('change', () => {
+                this.tagifyEdit.on("change", () => {
                     this.noticia.tags = JSON.stringify(
-                        this.tagifyEdit.value.map(tag => tag.value)
+                        this.tagifyEdit.value.map((tag) => tag.value),
                     );
                 });
 
                 await this.initEditEditor();
-
             });
-            $("#modEditarNoticia").modal('show');
-            
+            $("#modEditarNoticia").modal("show");
         },
         updateCategoria(cat) {
-
             let formData = new FormData();
 
-            formData.append('id', cat.id);
-            formData.append('nombre', cat.nombre);
+            formData.append("id", cat.id);
+            formData.append("nombre", cat.nombre);
 
-            axios.post(
-                route('noticias.categorias.edit'),
-                formData
-            )
+            axios
+                .post(route("noticias.categorias.edit"), formData)
                 .then((response) => {
-
                     if (response.data) {
-
                         Swal.fire({
-                            icon: 'success',
-                            title: 'CATEGORÍA ACTUALIZADA',
+                            icon: "success",
+                            title: "CATEGORÍA ACTUALIZADA",
                             showConfirmButton: false,
-                            timer: 1500
+                            timer: 1500,
                         });
 
                         this.getCatNoticias();
-
                     }
-
                 })
                 .catch((error) => {
                     console.log(error);
-                    toastr.error('No se pudo actualizar la categoría');
+                    toastr.error("No se pudo actualizar la categoría");
                 });
-
         },
         updateNoticia() {
             if (this.tagifyEdit) {
                 this.noticia.tags = JSON.stringify(
-                    this.tagifyEdit.value.map(tag => tag.value)
+                    this.tagifyEdit.value.map((tag) => tag.value),
                 );
             }
 
             let formData = new FormData();
-            formData.append('id', this.noticia.id);
-            formData.append('categoria_noticia_id', this.noticia.categoria_noticia_id);
-            formData.append('titulo', this.noticia.titulo);
-            formData.append('fecha', this.noticia.fecha);
-            formData.append('descripcion_corta', this.noticia.descripcion_corta);
-            formData.append('imagen', this.noticia.imagen);
-            formData.append('tags', this.noticia.tags);
-            formData.append('autor_nombre', this.noticia.autor_nombre);
-            formData.append('autor_descripcion', this.noticia.autor_descripcion);
-            formData.append('autor_imagen', this.noticia.autor_imagen);
-            formData.append('descripcion_total', this.noticia.descripcion_total);
-            axios.post(route('noticias.edit', this.noticia.id), formData).then((response) => {
-                if (response.data) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'NOTICIA EDITADA',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                    this.destroyDatatable();
-                    this.getNoticias();
-                    this.initDatatable();
-                    $("#modEditarNoticia").modal('hide');
-                    this.resetForm();
-                } else {
-                    toastr.error('No se actualizo la Noticia');
-                }
-            }).catch((error) => {
-                console.log(error);
-            });
+            formData.append("id", this.noticia.id);
+            formData.append(
+                "categoria_noticia_id",
+                this.noticia.categoria_noticia_id,
+            );
+            formData.append("titulo", this.noticia.titulo);
+            formData.append("slug", this.noticia.slug || "");
+            formData.append("fecha", this.noticia.fecha);
+            formData.append("fecha_fin", this.noticia.fecha_fin || "");
+            formData.append(
+                "descripcion_corta",
+                this.noticia.descripcion_corta,
+            );
+            if (this.noticia.imagen instanceof File) {
+                formData.append("imagen", this.noticia.imagen);
+            }
+            formData.append("tags", this.noticia.tags);
+            formData.append("autor_nombre", this.noticia.autor_nombre);
+            formData.append(
+                "autor_descripcion",
+                this.noticia.autor_descripcion,
+            );
+            if (this.noticia.autor_imagen instanceof File) {
+                formData.append("autor_imagen", this.noticia.autor_imagen);
+            }
+            formData.append(
+                "descripcion_total",
+                this.noticia.descripcion_total,
+            );
+            formData.append("estado", this.noticia.estado ? "1" : "0");
+            formData.append(
+                "enlace_externo",
+                this.noticia.enlace_externo || "",
+            );
+            formData.append(
+                "abrir_nueva_pestana",
+                this.noticia.abrir_nueva_pestana ? "1" : "0",
+            );
+            axios
+                .post(route("noticias.edit", this.noticia.id), formData)
+                .then((response) => {
+                    if (response.data) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "NOTICIA EDITADA",
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                        this.destroyDatatable();
+                        this.getNoticias();
+                        this.initDatatable();
+                        $("#modEditarNoticia").modal("hide");
+                        this.resetForm();
+                    } else {
+                        toastr.error("No se actualizo la Noticia");
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         },
 
         eliminar(id) {
             Swal.fire({
-                title: 'Estas seguro?',
+                title: "Estas seguro?",
                 text: "No podrás revertir esto!",
-                icon: 'warning',
+                icon: "warning",
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Sí, eliminar!'
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Sí, eliminar!",
             }).then((result) => {
                 if (result.value) {
-                    axios.post(route('noticias.delete', id))
+                    axios
+                        .post(route("noticias.delete", id))
                         .then((response) => {
                             if (response.data) {
                                 this.getNoticias();
                                 Swal.fire({
-                                    icon: 'success',
-                                    title: 'NOTICIA ELIMINADA',
+                                    icon: "success",
+                                    title: "NOTICIA ELIMINADA",
                                     showConfirmButton: false,
-                                    timer: 1500
-                                })
+                                    timer: 1500,
+                                });
                                 this.resetForm();
                             } else {
-                                toastr.warning("No se pudo eliminar la Noticia");
+                                toastr.warning(
+                                    "No se pudo eliminar la Noticia",
+                                );
                             }
-                        }).catch(error => {
+                        })
+                        .catch((error) => {
                             toastr.error("Error al eliminar la Noticia");
                             console.log(error);
                         });
@@ -843,50 +1938,39 @@ export default {
             });
         },
         deleteCategoria(id) {
-
             Swal.fire({
-                title: '¿Eliminar categoría?',
-                text: 'No podrás revertir esto',
-                icon: 'warning',
+                title: "¿Eliminar categoría?",
+                text: "No podrás revertir esto",
+                icon: "warning",
                 showCancelButton: true,
-                confirmButtonText: 'Sí, eliminar'
-            })
-                .then((result) => {
+                confirmButtonText: "Sí, eliminar",
+            }).then((result) => {
+                if (!result.isConfirmed) return;
 
-                    if (!result.isConfirmed) return;
+                axios
+                    .post(route("noticias.categorias.delete", id))
+                    .then((response) => {
+                        if (response.data) {
+                            Swal.fire({
+                                icon: "success",
+                                title: "CATEGORÍA ELIMINADA",
+                                showConfirmButton: false,
+                                timer: 1500,
+                            });
 
-                    axios.post(
-                        route('noticias.categorias.delete', id)
-                    )
-                        .then((response) => {
-
-                            if (response.data) {
-
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'CATEGORÍA ELIMINADA',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-
-                                this.getCatNoticias();
-
-                            }
-
-                        })
-                        .catch((error) => {
-                            console.log(error);
-                            toastr.error('No se pudo eliminar la categoría');
-                        });
-
-                });
-
+                            this.getCatNoticias();
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        toastr.error("No se pudo eliminar la categoría");
+                    });
+            });
         },
 
         imagen(event) {
-            var drEvent = $('.dropify').dropify(
-            );
-            drEvent = drEvent.data('dropify');
+            var drEvent = $(".dropify").dropify();
+            drEvent = drEvent.data("dropify");
             drEvent.resetPreview();
             drEvent.settings.defaultFile = "";
             drEvent.destroy();
@@ -895,9 +1979,8 @@ export default {
         },
 
         imagen_edit(event) {
-            var drEvent = $('.dropify').dropify(
-            );
-            drEvent = drEvent.data('dropify');
+            var drEvent = $(".dropify").dropify();
+            drEvent = drEvent.data("dropify");
             drEvent.resetPreview();
             drEvent.settings.defaultFile = "";
             drEvent.destroy();
@@ -905,9 +1988,8 @@ export default {
             this.noticia.imagen = event.target.files[0];
         },
         imagen_autor(event) {
-            var drEvent = $('.dropify').dropify(
-            );
-            drEvent = drEvent.data('dropify');
+            var drEvent = $(".dropify").dropify();
+            drEvent = drEvent.data("dropify");
             drEvent.resetPreview();
             drEvent.settings.defaultFile = "";
             drEvent.destroy();
@@ -916,18 +1998,28 @@ export default {
         },
 
         imagen_autor_edit(event) {
-            var drEvent = $('.dropify').dropify(
-            );
-            drEvent = drEvent.data('dropify');
+            var drEvent = $(".dropify").dropify();
+            drEvent = drEvent.data("dropify");
             drEvent.resetPreview();
             drEvent.settings.defaultFile = "";
             drEvent.destroy();
             drEvent.init();
             this.noticia.autor_imagen = event.target.files[0];
         },
-
-
-    }
-
-}
+    },
+};
 </script>
+
+<style scoped>
+.modal-body .form-group {
+    margin-bottom: 1.2rem;
+}
+.modal-body label {
+    margin-bottom: 0.45rem;
+    font-weight: 600;
+}
+.modal-body .custom-control {
+    margin-top: 0.2rem;
+    margin-bottom: 1.15rem;
+}
+</style>

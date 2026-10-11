@@ -8,6 +8,7 @@ import NivelAcademicoComponent from "./components/admin/NivelAcademicoComponent.
 import DocenteComponent from "./components/admin/DocenteComponent.vue";
 import SliderComponent from "./components/admin/SliderComponent.vue";
 import SliderCarreraComponent from "./components/admin/SliderCarreraComponent.vue";
+import HomeFlyerComponent from "./components/admin/HomeFlyerComponent.vue";
 import TestimonioComponent from "./components/admin/TestimonioComponent.vue";
 import AutoridadComponent from "./components/admin/AutoridadComponent.vue";
 
@@ -34,6 +35,7 @@ app.component("nivel-academico-component", NivelAcademicoComponent);
 app.component("docente-component", DocenteComponent);
 app.component("slider-component", SliderComponent);
 app.component("slider-carrera-component",SliderCarreraComponent);
+app.component("home-flyer-component", HomeFlyerComponent);
 app.component("testimonio-component", TestimonioComponent);
 app.component("autoridad-component", AutoridadComponent);
 app.component("noticia-component", NoticiaComponent);

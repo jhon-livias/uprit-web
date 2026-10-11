@@ -23,6 +23,10 @@
                             <a href="{{ route('sliders.index') }}"><i class="icon-picture"></i>
                                 <span>Sliders</span></a>
                         </li>
+                        <li id="home-flyers">
+                            <a href="{{ route('home-flyers.index') }}"><i class="icon-picture"></i>
+                                <span>Flyers de inicio</span></a>
+                        </li>
                         <li id="sliderscarrera">
                             <a href="{{ route('sliderscarrera.index') }}"><i class="icon-picture"></i>
                                 <span>Sliders Carrera</span></a>

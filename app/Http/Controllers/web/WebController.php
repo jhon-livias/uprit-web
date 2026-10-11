@@ -9,9 +9,9 @@ use App\Models\Carrera;
 use App\Models\Testimonio;
 use App\Models\Noticia;
 use App\Models\Categoria;
-use App\Models\NivelAcademico;
 use App\Models\CategoriaNoticia;
 use App\Models\SliderCarrera;
+use App\Models\HomeFlyer;
 use App\Models\Reclamo;
 use App\Models\Docente;
 use App\Services\WebNavigationCache;
@@ -28,21 +28,22 @@ class WebController extends Controller
             ->where('video', '!=', '')
             ->orderby('orden', 'asc')
             ->get();
-        $noticias = Noticia::with('categoriaNoticia')
+        $noticias = Noticia::with('categoriaNoticia')->where('estado', true)
             ->orderBy('fecha', 'desc')
             ->get();
         $testimonios = Testimonio::whereNotNull('imagen')
             ->where('imagen', '!=', '')
             ->get();
         $sliderscarrera = SliderCarrera::orderby('orden', 'asc')->get();
-        return view('web.index', compact('sliders', 'noticias', 'testimonios', 'sliderscarrera'));
+        $homeFlyers = HomeFlyer::where('activo', true)->orderBy('orden')->orderBy('id')->get();
+        return view('web.index', compact('sliders', 'noticias', 'testimonios', 'sliderscarrera', 'homeFlyers'));
     }
 
     public function noticias(Request $request, $categoria = null)
     {
-        $categorias = CategoriaNoticia::all();
+        $categorias = CategoriaNoticia::orderBy('orden')->orderBy('id')->get();
 
-        $query = Noticia::with('categoriaNoticia')->orderBy('fecha', 'desc');
+        $query = Noticia::with('categoriaNoticia')->where('estado', true)->orderBy('fecha', 'desc');
 
         if ($categoria) {
 
@@ -65,7 +66,7 @@ class WebController extends Controller
         $noticias = $query->paginate(6)
             ->withQueryString();
 
-        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')
+        $ultimasnoticias = Noticia::where('estado', true)->orderBy('fecha', 'desc')
 
             ->get();
 
@@ -76,9 +77,17 @@ class WebController extends Controller
         ));
     }
 
-    public function detallenoticia(mixed $id)
+    public function detallenoticia(string $slug)
     {
-        $noticia = Noticia::findOrFail($id);
+        $noticia = Noticia::where('estado', true)->where('slug', $slug)->first();
+        if (!$noticia && ctype_digit($slug)) {
+            $noticia = Noticia::where('estado', true)->findOrFail($slug);
+            return redirect()->route('web.detallenoticia', ['slug' => $noticia->slug], 301);
+        }
+        abort_unless($noticia, 404);
+        if ($noticia->enlace_externo) {
+            return redirect()->away($noticia->enlace_externo);
+        }
         $categorias = CategoriaNoticia::all();
         $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
         return view('web.detalle-noticia', compact('noticia', 'categorias', 'ultimasnoticias'));
@@ -88,7 +97,7 @@ class WebController extends Controller
     {
         $carrera = Carrera::findOrFail($id);
         $categoria = Categoria::findOrFail($carrera->categoria_id);
-        
+
         if ($categoria->nivel_academico_id == 5) {
             return redirect()->route('web.carrera.posgrado', ['slug' => $carrera->slug], 301);
         } else {
@@ -133,7 +142,7 @@ class WebController extends Controller
                 ->sortBy(fn(Docente $docente) => $docente->tieneTagCoordinador() ? 0 : 1)
                 ->values()
         );
-        
+
         return view('web.detalle-carrera', compact('carrera', 'categoria'));
     }
 
@@ -154,7 +163,7 @@ class WebController extends Controller
                 ->sortBy(fn(Docente $docente) => $docente->tieneTagCoordinador() ? 0 : 1)
                 ->values()
         );
-        
+
         return view('web.detalle-carrera', compact('carrera', 'categoria'));
     }
 
@@ -660,7 +669,7 @@ class WebController extends Controller
         // Noticias
         foreach ($noticias as $noticia) {
             $urls[] = [
-                'loc' => route('web.detallenoticia', ['id' => $noticia->id]),
+                'loc' => route('web.detallenoticia', ['slug' => $noticia->slug]),
                 'lastmod' => $noticia->updated_at->tz('UTC')->toAtomString(),
                 'changefreq' => 'monthly',
                 'priority' => '0.7',

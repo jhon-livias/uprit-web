@@ -8,6 +8,8 @@ use App\Models\NavLink;
 use App\Services\WebNavigationCache;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class MenuController extends Controller
 {
@@ -61,6 +63,65 @@ class MenuController extends Controller
         WebNavigationCache::forget();
 
         return response()->json($this->formatGroup($group->load('links')));
+    }
+
+    public function storeTopbarGroup(Request $request)
+    {
+        $data = $request->validate([
+            'label' => ['required', 'string', 'max:255'],
+            'key' => ['nullable', 'string', 'max:64', 'unique:nav_groups,key'],
+            'visible' => ['nullable', 'boolean'],
+            'visible_desktop' => ['nullable', 'boolean'],
+            'visible_mobile' => ['nullable', 'boolean'],
+            'route_name' => ['nullable', 'string', 'max:128'],
+            'url' => ['nullable', 'string', 'max:500'],
+            'external' => ['nullable', 'boolean'],
+        ]);
+        $key = $data['key'] ?: Str::slug($data['label']);
+        $key = Str::limit($key, 58, '');
+        $baseKey = $key;
+        $suffix = 2;
+        while (NavGroup::where('key', $key)->exists()) $key = $baseKey . '-' . $suffix++;
+
+        $group = NavGroup::create([
+            'key' => $key,
+            'label' => $data['label'],
+            'tipo' => 'topbar',
+            'show_in_main_nav' => false,
+            'show_in_topbar' => true,
+            'visible' => $request->boolean('visible', true),
+            'visible_desktop' => $request->boolean('visible_desktop', true),
+            'visible_mobile' => $request->boolean('visible_mobile', true),
+            'orden' => (int) NavGroup::where('show_in_topbar', true)->max('orden') + 1,
+        ]);
+        if ($request->filled('route_name') || $request->filled('url')) {
+            NavLink::create([
+                'group_id' => $group->id,
+                'label' => $group->label,
+                'route_name' => $request->route_name ?: null,
+                'url' => $request->url ?: null,
+                'external' => $request->boolean('external'),
+                'orden' => 1,
+            ]);
+        }
+        WebNavigationCache::forget();
+        return response()->json(true);
+    }
+
+    public function reorderGroups(Request $request)
+    {
+        $data = $request->validate(['ids' => ['required', 'array'], 'ids.*' => ['integer', 'distinct', 'exists:nav_groups,id']]);
+        DB::transaction(fn () => collect($data['ids'])->each(fn ($id, $index) => NavGroup::whereKey($id)->update(['orden' => $index + 1])));
+        WebNavigationCache::forget();
+        return response()->json(true);
+    }
+
+    public function reorderLinks(Request $request)
+    {
+        $data = $request->validate(['ids' => ['required', 'array'], 'ids.*' => ['integer', 'distinct', 'exists:nav_links,id']]);
+        DB::transaction(fn () => collect($data['ids'])->each(fn ($id, $index) => NavLink::whereKey($id)->update(['orden' => $index + 1])));
+        WebNavigationCache::forget();
+        return response()->json(true);
     }
 
     public function storeLink(Request $request)

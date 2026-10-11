@@ -32629,7 +32629,7 @@ only screen and (min-width:1401px) and (max-width:1750px) {
 
 .blog-details-content {
     border-bottom: 1px solid var(--color-border);
-    padding-bottom: 70px
+    padding-bottom: 65px
 }
 
 .blog-author {
@@ -32656,10 +32656,6 @@ only screen and (min-width:1401px) and (max-width:1750px) {
 
 .blog-details-content .entry-content .title {
     margin-bottom: 5px
-}
-
-.blog-details-content .entry-content .thumbnail {
-    margin: 50px 0 65px
 }
 
 @media only screen and (max-width:767px) {
@@ -32716,7 +32712,7 @@ only screen and (min-width:1401px) and (max-width:1750px) {
     }
 }
 
-.blog-details-content .blog-share-area {
+.blog-share-area {
     margin-top: 65px
 }
 
@@ -32743,6 +32739,17 @@ only screen and (min-width:1401px) and (max-width:1750px) {
     -webkit-justify-content: flex-end;
     -ms-flex-pack: end;
     justify-content: flex-end
+}
+
+.blog-tags {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.blog-tags .title {
+    margin-bottom: 0;
 }
 
 @media only screen and (max-width:767px) {

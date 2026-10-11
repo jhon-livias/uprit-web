@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\CategoriaController;
 use App\Http\Controllers\admin\CarreraController;
 use App\Http\Controllers\admin\DocenteController;
 use App\Http\Controllers\admin\SliderController;
+use App\Http\Controllers\admin\HomeFlyerController;
 use App\Http\Controllers\admin\TestimonioController;
 use App\Http\Controllers\admin\NoticiaController;
 use App\Http\Controllers\admin\ReclamoController;
@@ -76,6 +77,13 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::post('/sliders/store', [SliderController::class, 'store'])->name('sliders.store');
     Route::post('/sliders/edit', [SliderController::class, 'update'])->name('sliders.edit');
     Route::post('/sliders/delete/{id}', [SliderController::class, 'delete'])->name('sliders.delete');
+    // FLYERS DE INICIO
+    Route::get('/flyers-inicio', [HomeFlyerController::class, 'index'])->name('home-flyers.index');
+    Route::get('/get_flyers_inicio', [HomeFlyerController::class, 'getFlyers'])->name('home-flyers.get');
+    Route::post('/flyers-inicio/store', [HomeFlyerController::class, 'store'])->name('home-flyers.store');
+    Route::post('/flyers-inicio/edit', [HomeFlyerController::class, 'update'])->name('home-flyers.edit');
+    Route::post('/flyers-inicio/reorder', [HomeFlyerController::class, 'reorder'])->name('home-flyers.reorder');
+    Route::post('/flyers-inicio/delete/{id}', [HomeFlyerController::class, 'delete'])->name('home-flyers.delete');
     //SLIDER CARRERA
     Route::get('/listar_sliders_carrera', [SliderController::class, 'indexCarrera'])->name('sliderscarrera.index');
     Route::get('/get_sliders_carrera', [SliderController::class, 'getSliderCarrera'])->name('sliderscarrera.get');
@@ -108,6 +116,7 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::post('/noticias/delete/{id}', [NoticiaController::class, 'delete'])->name('noticias.delete');
     Route::post('/noticias/categorias/store', [NoticiaController::class, 'storeCategoria'])->name('noticias.categorias.store');
     Route::post('/noticias/categorias/edit', [NoticiaController::class, 'updateCategoria'])->name('noticias.categorias.edit');
+    Route::post('/noticias/categorias/reorder', [NoticiaController::class, 'reorderCategorias'])->name('noticias.categorias.reorder');
     Route::post('/noticias/categorias/delete/{id}', [NoticiaController::class, 'deleteCategoria'])->name('noticias.categorias.delete');
 
     // RECLAMO
@@ -149,6 +158,9 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     
     Route::get('/get_menu_routes', [MenuController::class, 'getRouteNames'])->name('menu.routes');
     Route::post('/menu/group/edit', [MenuController::class, 'updateGroup'])->name('menu.group.edit');
+    Route::post('/menu/topbar/store', [MenuController::class, 'storeTopbarGroup'])->name('menu.topbar.store');
+    Route::post('/menu/groups/reorder', [MenuController::class, 'reorderGroups'])->name('menu.groups.reorder');
+    Route::post('/menu/links/reorder', [MenuController::class, 'reorderLinks'])->name('menu.links.reorder');
     Route::post('/menu/link/store', [MenuController::class, 'storeLink'])->name('menu.link.store');
     Route::post('/menu/link/edit', [MenuController::class, 'updateLink'])->name('menu.link.edit');
     Route::post('/menu/link/delete/{id}', [MenuController::class, 'deleteLink'])->name('menu.link.delete');
@@ -160,9 +172,9 @@ Route::get('/admin/get_menu', [App\Http\Controllers\admin\MenuController::class,
 
 Route::get('/', [WebController::class, 'index'])->name('web.index');
 Route::get('/noticias/{categoria?}', [WebController::class, 'noticias'])->name('web.noticias');
-Route::get('/detalle-noticia/{id}', [WebController::class, 'detallenoticia'])
+Route::get('/detalle-noticia/{slug}', [WebController::class, 'detallenoticia'])
     ->name('web.detallenoticia')
-    ->whereNumber('id');
+    ->where('slug', '[a-z0-9\-]+');
 Route::get('/buscador/carreras', [WebController::class, 'buscadorCarreras'])->name('web.buscador.carreras');
 Route::get('/detalle-carrera/{id}', [WebController::class, 'detallecarrera'])
     ->name('web.detallecarrera')

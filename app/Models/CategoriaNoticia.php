@@ -11,7 +11,8 @@ class CategoriaNoticia extends Model
 
     protected $fillable = [
         'id',
-        'nombre'
+        'nombre',
+        'orden',
         
     ];
 

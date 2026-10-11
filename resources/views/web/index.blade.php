@@ -56,6 +56,7 @@
         </div>
     </div>
 </div>
+@include('web.partials.home-flyers')
 <section class="career-finder-band" aria-label="Buscador de carreras">
     <div class="container">
         @include('web.partials.career-finder', [

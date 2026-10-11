@@ -35,11 +35,15 @@
                              :class="{ 'show active': idx === 0 }" 
                              :id="'tab-' + idx">
 
+                            <div v-if="idx === 1" class="text-right mb-3">
+                                <button type="button" class="btn btn-primary" @click="showNewTopbar"><i class="fa fa-plus"></i> Nuevo enlace Topbar</button>
+                            </div>
+
                             <div v-if="tabGroups.length === 0" class="alert alert-light text-center border">
                                 No hay grupos en esta categoría.
                             </div>
 
-                            <div v-for="group in tabGroups" :key="group.id" class="card shadow-sm border-0 mb-4">
+                            <div v-for="(group, groupIndex) in tabGroups" :key="group.id" class="card shadow-sm border-0 mb-4" :draggable="!savingOrder" @dragstart="startGroupDrag(groupIndex)" @dragover.prevent @drop="dropGroup(tabGroups, groupIndex)" @dragend="dragGroupIndex = null" :class="{ 'menu-dragging': dragGroupIndex === groupIndex }">
                                 <div class="card-header bg-light d-flex justify-content-between align-items-start flex-wrap border-bottom-0 pb-0">
                                     <div class="mb-2 mb-md-0">
                                         <span style="font-size: 18px; font-weight: 700; color: #333;">{{ group.label }}</span>
@@ -78,8 +82,8 @@
                                                 <td colspan="5" class="text-center text-muted py-4">Sin enlaces configurados</td>
                                             </tr>
                                             <template v-for="(link, index) in group.links" :key="link.id">
-                                                <tr style="background-color: #f8f9fa; border-top: 2px solid #e9ecef;">
-                                                    <td style="font-weight: bold;">{{ index + 1 }}</td>
+                                                <tr style="background-color: #f8f9fa; border-top: 2px solid #e9ecef;" :draggable="!savingOrder" @dragstart="startLinkDrag(index)" @dragover.prevent @drop="dropLink(group, index)" @dragend="dragLinkIndex = null" :class="{ 'menu-dragging': dragLinkIndex === index }">
+                                                    <td style="font-weight: bold;"><i class="fa fa-arrows text-muted mr-1" title="Arrastrar"></i>{{ index + 1 }}</td>
                                                     <td style="font-weight: bold; color: #2c3e50;">{{ link.label }}</td>
                                                     <td>
                                                         <span v-if="link.route_name" class="badge badge-info">{{ link.route_name }}</span>
@@ -181,6 +185,8 @@
                                             <label>Etiqueta <span style="color:red">*</span></label>
                                             <input type="text" v-model="groupForm.label" required class="form-control">
                                         </div>
+                                        <div v-if="groupForm.isNew" class="form-group"><label>Identificador (opcional)</label><input type="text" v-model="groupForm.key" class="form-control" placeholder="ejemplo: noticias"><small class="text-muted">Se genera automáticamente si lo dejas vacío.</small></div>
+                                        <template v-if="groupForm.isNew"><div class="form-group"><label>Ruta Laravel o URL</label><select v-model="groupForm.route_name" class="form-control"><option value="">— URL manual —</option><option v-for="r in routeNames" :key="r.name" :value="r.name">{{ r.name }} ({{ r.uri }})</option></select></div><div v-if="!groupForm.route_name" class="form-group"><input v-model="groupForm.url" class="form-control" placeholder="https://... o /ruta-interna"></div><label><input type="checkbox" v-model="groupForm.external"> Abrir en nueva pestaña</label></template>
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
@@ -306,6 +312,9 @@ export default {
             routeNames: [],
             groupForm: {},
             linkForm: {},
+            savingOrder: false,
+            dragGroupIndex: null,
+            dragLinkIndex: null,
         };
     },
     computed: {
@@ -356,7 +365,18 @@ export default {
             };
             $('#mdlGroup').modal('show');
         },
+        showNewTopbar() {
+            this.groupForm = { isNew: true, key: '', label: '', route_name: '', url: '', external: false, visible: true, visible_desktop: true, visible_mobile: true };
+            $('#mdlGroup').modal('show');
+        },
         saveGroup() {
+            if (this.groupForm.isNew) {
+                axios.post('/admin/menu/topbar/store', this.groupForm).then(() => {
+                    Swal.fire({ icon: 'success', title: 'Enlace Topbar creado', showConfirmButton: false, timer: 1500 });
+                    this.loadGroups(); $('#mdlGroup').modal('hide');
+                }).catch((error) => toastr.error(error.response?.data?.message || 'No se pudo crear el enlace'));
+                return;
+            }
             const payload = {
                 id: this.groupForm.id,
                 label: this.groupForm.label,
@@ -377,6 +397,32 @@ export default {
             }).catch(() => {
                 toastr.error('No se pudo guardar el grupo');
             });
+        },
+        startGroupDrag(index) { this.dragGroupIndex = index; },
+        dropGroup(tabGroups, targetIndex) {
+            if (this.dragGroupIndex === null || this.dragGroupIndex === targetIndex || this.savingOrder) return;
+            const reordered = [...tabGroups];
+            const [moved] = reordered.splice(this.dragGroupIndex, 1);
+            reordered.splice(targetIndex, 0, moved);
+            this.saveGroupOrder(reordered);
+            this.dragGroupIndex = null;
+        },
+        saveGroupOrder(groups) {
+            this.savingOrder = true;
+            axios.post('/admin/menu/groups/reorder', { ids: groups.map(group => group.id) }).then(() => {
+                toastr.success('Orden actualizado'); this.loadGroups();
+            }).catch(() => toastr.error('No se pudo guardar el orden')).finally(() => { this.savingOrder = false; });
+        },
+        startLinkDrag(index) { this.dragLinkIndex = index; },
+        dropLink(group, targetIndex) {
+            if (this.dragLinkIndex === null || this.dragLinkIndex === targetIndex || this.savingOrder) return;
+            const reordered = [...group.links];
+            const [moved] = reordered.splice(this.dragLinkIndex, 1);
+            reordered.splice(targetIndex, 0, moved);
+            this.savingOrder = true;
+            axios.post('/admin/menu/links/reorder', { ids: reordered.map(link => link.id) }).then(() => {
+                toastr.success('Orden actualizado'); this.loadGroups();
+            }).catch(() => toastr.error('No se pudo guardar el orden')).finally(() => { this.savingOrder = false; this.dragLinkIndex = null; });
         },
         resetLinkForm(groupId = null, parentId = null) {
             this.linkForm = {
