@@ -3,7 +3,7 @@
 return [
     'whatsapp' => '51933248429',
     'whatsapp_url' => 'https://wa.me/51933248429',
-    'email' => 'bienestarinstitucional@uprit.edu.pe',
+    'email' => 'bienestar.universitario@uprit.edu.pe',
     'campus_direccion' => 'Av. Carretera Industrial a Laredo Km 4 (esquina con la Av. Villarreal), en la urbanización Semi Rústica El Bosque, Trujillo, Perú',
 
     'calendario_salud_paho' => 'https://www.paho.org/es/documentos/afiche-calendario-celebraciones-dias-salud-ops-para-2026',
@@ -18,12 +18,12 @@ return [
     ],
 
     'sociales' => [
-        'responsable' => 'Eduardo Alberto Ariza Velásquez',
+        'responsable' => 'Claudia Castillo Miñano',
         'cargo' => 'Responsable de Servicio Social y Programa de Atención a la Diversidad',
     ],
 
     'cultura' => [
-        'responsable' => 'Christian Narro Inante',
+        'responsable' => 'Frans Zielinski Arribasplata',
         'cargo' => 'Responsable de Programas de Actividades Artísticas y Culturales',
         'faq' => [
             [

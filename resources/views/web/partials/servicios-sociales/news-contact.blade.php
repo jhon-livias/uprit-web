@@ -94,10 +94,10 @@
                             <iconify-icon icon="mdi:email-outline" aria-hidden="true"></iconify-icon>
                             <a href="mailto:{{ config('bienestar.email') }}">{{ config('bienestar.email') }}</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <iconify-icon icon="mdi:phone" aria-hidden="true"></iconify-icon>
                             <a href="{{ config('bienestar.whatsapp_url') }}" target="_blank" rel="noopener">+51 933 248 429</a>
-                        </li>
+                        </li> -->
                         <li>
                             <iconify-icon icon="mdi:map-marker-outline" aria-hidden="true"></iconify-icon>
                             <span>{{ config('bienestar.campus_direccion') }}</span>
