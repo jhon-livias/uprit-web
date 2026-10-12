@@ -243,9 +243,10 @@ Route::get('/repositorio-publicaciones', [WebController::class, 'repositorioPubl
 Route::get('/denuncias-etica-investigacion', [WebController::class, 'denunciasEticaInvestigacion'])->name('denuncias_etica_investigacion');
 
 
-Route::get('/contactenos', function () {
-    return view('web.contactenos');
-})->name('contactenos');
+Route::get('/contactenos', [WebController::class, 'contactenos'])->name('contactenos');
+Route::post('/contactenos', [WebController::class, 'enviarContacto'])
+    ->middleware('throttle:5,1')
+    ->name('contactenos.enviar');
 Route::get('/quienes-somos', [App\Http\Controllers\web\WebController::class, 'quienesSomos'])->name('quienes-somos');
 Route::view('/nuestro-campus', 'web.campus')->name('campus');
 Route::view('/politicas-de-privacidad', 'web.privacy-policy')->name('privacy-policy');

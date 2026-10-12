@@ -90,6 +90,7 @@ return [
         ],
         'contactanos' => [
             'items' => [
+                ['route' => 'contactenos'],
                 ['route' => 'convalidacion'],
                 ['route' => 'doble-grado'],
                 ['route' => 'beca18'],
@@ -352,8 +353,8 @@ return [
             'menu_label' => 'Libro de Reclamaciones',
         ],
         'contactenos' => [
-            'title' => 'Contáctenos',
-            'menu_label' => 'Contáctenos',
+            'title' => 'Contáctanos',
+            'menu_label' => 'Contáctanos',
             'url' => '/contactenos',
         ],
         'campus' => [

@@ -17,6 +17,7 @@ use App\Models\Docente;
 use App\Services\WebNavigationCache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 
 
 class WebController extends Controller
@@ -608,6 +609,145 @@ class WebController extends Controller
     public function terminosYCondiciones()
     {
         return view('web.terminos-y-condiciones');
+    }
+
+    public function contactenos()
+    {
+        $programas = $this->programasContacto();
+
+        return view('web.contactenos', [
+            'programas' => $programas,
+            'tiposPrograma' => collect($programas)
+                ->map(fn (array $programa) => ['id' => $programa['nivel'], 'label' => $programa['nivelLabel']])
+                ->unique('id')
+                ->values(),
+            'modalidades' => collect($programas)
+                ->flatMap(fn (array $programa) => $programa['modalidades'])
+                ->unique()
+                ->sort()
+                ->values(),
+        ]);
+    }
+
+    public function enviarContacto(Request $request)
+    {
+        if ($request->filled('website')) {
+            abort(403, 'Spam detectado');
+        }
+
+        if (time() - (int) $request->input('form_started_at') < 3) {
+            return back()->withInput()->withErrors([
+                'spam' => 'No se pudo validar el envío. Inténtalo nuevamente.',
+            ]);
+        }
+
+        $siteKey = config('services.recaptcha.key');
+        $secret = config('services.recaptcha.secret');
+        if (!$siteKey || !$secret) {
+            report('No se configuraron las claves de reCAPTCHA para el formulario de contacto.');
+
+            return back()->withInput()->withErrors([
+                'captcha' => 'El formulario está temporalmente no disponible. Inténtalo por WhatsApp o correo.',
+            ]);
+        }
+
+        $datos = $request->validate([
+            'nombres' => 'required|string|max:120',
+            'apellidos' => 'required|string|max:120',
+            'dni' => 'nullable|string|max:20',
+            'documento' => 'nullable|string|max:50',
+            'correo' => 'required|email:rfc,dns|max:150',
+            'whatsapp' => 'nullable|string|max:30',
+            'modalidad' => 'required|string|max:50',
+            'tipo_programa' => 'required|string|max:50',
+            'programa_interes' => 'required|integer',
+            'acepta_politica' => 'accepted',
+            'g-recaptcha-response' => 'required|string',
+        ], [
+            'nombres.required' => 'Ingresa tus nombres.',
+            'apellidos.required' => 'Ingresa tus apellidos.',
+            'correo.required' => 'Ingresa tu correo electrónico.',
+            'correo.email' => 'Ingresa un correo electrónico válido.',
+            'modalidad.required' => 'Selecciona una modalidad.',
+            'tipo_programa.required' => 'Selecciona un tipo de programa.',
+            'programa_interes.required' => 'Selecciona un programa de interés.',
+            'acepta_politica.accepted' => 'Debes aceptar el tratamiento de tus datos para enviar la consulta.',
+            'g-recaptcha-response.required' => 'Completa la validación de seguridad.',
+        ]);
+
+        $programa = collect($this->programasContacto())
+            ->firstWhere('id', (int) $datos['programa_interes']);
+
+        if (!$programa || $programa['nivel'] !== $datos['tipo_programa'] || !in_array($datos['modalidad'], $programa['modalidades'], true)) {
+            return back()->withInput()->withErrors([
+                'programa_interes' => 'Selecciona un programa disponible para el tipo y modalidad elegidos.',
+            ]);
+        }
+
+        $datos['nombre_completo'] = trim($datos['nombres'] . ' ' . $datos['apellidos']);
+        $datos['telefono'] = $datos['whatsapp'] ?: null;
+        $datos['programa'] = $programa['nombre'];
+        $datos['tipo_programa_label'] = $programa['nivelLabel'];
+        $datos['asunto'] = 'Solicitud de información: ' . $programa['nombre'];
+        $datos['mensaje'] = "Tipo de programa: {$programa['nivelLabel']}\n"
+            . "Programa de interés: {$programa['nombre']}\n"
+            . "Modalidad: {$datos['modalidad']}\n"
+            . 'Documento: ' . ($datos['documento'] ?: 'No indicado') . "\n"
+            . 'DNI: ' . ($datos['dni'] ?: 'No indicado');
+
+        try {
+            $captcha = Http::asForm()->timeout(10)->post('https://www.google.com/recaptcha/api/siteverify', [
+                'secret' => $secret,
+                'response' => $datos['g-recaptcha-response'],
+                'remoteip' => $request->ip(),
+            ]);
+        } catch (\Throwable $exception) {
+            report($exception);
+
+            return back()->withInput()->withErrors([
+                'captcha' => 'No se pudo validar la seguridad del formulario. Inténtalo nuevamente.',
+            ]);
+        }
+
+        $action = config('contacto.recaptcha_action');
+        if (!$captcha->json('success') || $captcha->json('score', 0) < 0.5 || $captcha->json('action') !== $action) {
+            return back()->withInput()->withErrors([
+                'captcha' => 'No se pudo validar la seguridad del formulario. Inténtalo nuevamente.',
+            ]);
+        }
+
+        $contacto = config('contacto');
+        try {
+            Mail::send('emails.contacto', ['datos' => $datos], function ($mail) use ($contacto, $datos) {
+                $mail->to($contacto['email'])
+                    ->replyTo($datos['correo'], $datos['nombres'])
+                    ->subject('Consulta web: ' . $datos['asunto']);
+            });
+        } catch (\Throwable $exception) {
+            report($exception);
+
+            return back()->withInput()->withErrors([
+                'formulario' => 'No pudimos enviar tu consulta. Inténtalo nuevamente o usa nuestros canales directos.',
+            ]);
+        }
+
+        return redirect()->route('contactenos')->with('contacto_enviado', 'ok');
+    }
+
+    /** @return array<int, array{id: int, nombre: string, nivel: string, nivelLabel: string, modalidades: array<int, string>}> */
+    private function programasContacto(): array
+    {
+        return collect(WebNavigationCache::careerSearchCatalog()['carreras'] ?? [])
+            ->map(fn (array $programa) => [
+                'id' => (int) $programa['id'],
+                'nombre' => (string) $programa['nombre'],
+                'nivel' => (string) $programa['nivel'],
+                'nivelLabel' => (string) $programa['nivelLabel'],
+                'modalidades' => array_values($programa['modalidades'] ?? []),
+            ])
+            ->sortBy(['nivelLabel', 'nombre'])
+            ->values()
+            ->all();
     }
 
     public function sitemap()

@@ -38,7 +38,7 @@
         @include('web.partials.menu-nav-links', ['section' => 'conocenos', 'context' => 'mobile'])
     </ul>
 </li>
-<li class="has-droupdown"><a href="#">Contáctanos</a>
+<li class="has-droupdown"><a href="{{ route('contactenos') }}">Contáctanos</a>
     <ul class="submenu">
         @include('web.partials.menu-nav-links', ['section' => 'contactanos', 'context' => 'mobile'])
     </ul>

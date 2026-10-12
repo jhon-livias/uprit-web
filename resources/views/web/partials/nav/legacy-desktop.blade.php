@@ -52,7 +52,7 @@
         </li>
     </ul>
 </li>
-<li class="has-droupdown"><a href="#">Contáctanos</a>
+<li class="has-droupdown"><a href="{{ route('contactenos') }}">Contáctanos</a>
     <ul class="mega-menu servicios">
         <li>
             <ul class="submenu mega-sub-menu mega-sub-menu-01">
