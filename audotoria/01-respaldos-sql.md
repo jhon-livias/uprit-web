@@ -29,6 +29,13 @@ Se detectaron dumps SQL en el árbol local: `database/query/upritedu_bd.sql`, `p
 - Se agregaron patrones para ignorar nuevos archivos SQL, dumps y backups en `.gitignore`.
 - Los dumps existentes no se han eliminado ni alterado; requieren respaldo cifrado, revisión de historial y autorización antes de retirarlos.
 
+## Clasificación inicial (2026-10-15)
+
+- `database/query/upritedu_bd.sql` y `prod_backup.sql` están versionados y aparecen en el historial Git.
+- Los cuatro dumps identificados contienen registros de inserción, correos y patrones de DNI; se deben tratar como información confidencial.
+- No se registran valores de credenciales ni contenido de los dumps en este documento.
+- El retiro de la punta de la rama se realizará ahora. La purga del historial remoto requiere coordinación con quienes tengan clones y con el repositorio remoto.
+
 ## Evidencia requerida
 
 - Hash y ubicación aprobada del respaldo cifrado, si se conserva.
