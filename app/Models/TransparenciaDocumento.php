@@ -14,6 +14,7 @@ class TransparenciaDocumento extends Model
         'etiqueta',
         'url',
         'archivo',
+        'storage_disk',
         'orden',
     ];
 
@@ -24,6 +25,10 @@ class TransparenciaDocumento extends Model
 
     public function enlace(): string
     {
+        if ($this->archivo && $this->storage_disk === 'local') {
+            return route('transparencia.documento.publico', $this);
+        }
+
         if ($this->archivo) {
             return asset('transparencia_documentos/' . $this->archivo);
         }

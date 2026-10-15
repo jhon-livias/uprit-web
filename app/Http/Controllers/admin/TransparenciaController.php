@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\TransparenciaDocumento;
 use App\Models\TransparenciaSeccion;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 
 class TransparenciaController extends Controller
 {
@@ -85,7 +86,7 @@ class TransparenciaController extends Controller
             'etiqueta' => 'required|string|max:255',
             'url' => 'nullable|url|max:1000',
             'orden' => 'nullable|integer',
-            'archivo' => 'nullable|file|max:51200', // 50MB limit
+            'archivo' => 'nullable|file|mimes:pdf|mimetypes:application/pdf|max:25600',
         ]);
 
         $documento = new TransparenciaDocumento();
@@ -96,6 +97,7 @@ class TransparenciaController extends Controller
 
         if ($request->hasFile('archivo')) {
             $documento->archivo = $this->saveUpload($request->file('archivo'));
+            $documento->storage_disk = 'local';
             $documento->url = null;
         }
 
@@ -111,7 +113,7 @@ class TransparenciaController extends Controller
             'etiqueta' => 'required|string|max:255',
             'url' => 'nullable|url|max:1000',
             'orden' => 'nullable|integer',
-            'archivo' => 'nullable|file|max:51200',
+            'archivo' => 'nullable|file|mimes:pdf|mimetypes:application/pdf|max:25600',
         ]);
 
         $documento = TransparenciaDocumento::findOrFail($request->id);
@@ -121,11 +123,13 @@ class TransparenciaController extends Controller
         if ($request->hasFile('archivo')) {
             $this->deleteArchivo($documento->archivo);
             $documento->archivo = $this->saveUpload($request->file('archivo'));
+            $documento->storage_disk = 'local';
             $documento->url = null;
         } elseif ($request->filled('url')) {
             if ($documento->archivo) {
                 $this->deleteArchivo($documento->archivo);
                 $documento->archivo = null;
+                $documento->storage_disk = null;
             }
             $documento->url = $request->url;
         }
@@ -146,12 +150,16 @@ class TransparenciaController extends Controller
 
     private function saveUpload($file): string
     {
-        $path = public_path('transparencia_documentos');
-        File::ensureDirectoryExists($path, 0775);
+        $header = $file->openFile()->fread(5);
 
-        $ext = strtolower($file->extension());
-        $filename = 'transparencia_' . bin2hex(random_bytes(16)) . '.' . $ext;
-        $file->move($path, $filename);
+        if ($header !== '%PDF-') {
+            throw ValidationException::withMessages([
+                'archivo' => 'El archivo debe ser un PDF válido.',
+            ]);
+        }
+
+        $filename = 'transparencia_' . bin2hex(random_bytes(16)) . '.pdf';
+        Storage::disk('local')->putFileAs('transparencia/documentos', $file, $filename);
 
         return $filename;
     }
@@ -162,9 +170,16 @@ class TransparenciaController extends Controller
             return;
         }
 
-        $filePath = public_path('transparencia_documentos/' . $archivo);
-        if (is_file($filePath)) {
-            unlink($filePath);
+        $privatePath = 'transparencia/documentos/' . $archivo;
+        if (Storage::disk('local')->exists($privatePath)) {
+            Storage::disk('local')->delete($privatePath);
+            return;
+        }
+
+        // Compatibilidad temporal con documentos publicados antes de esta mejora.
+        $legacyPath = public_path('transparencia_documentos/' . $archivo);
+        if (is_file($legacyPath)) {
+            unlink($legacyPath);
         }
     }
 }

@@ -4,8 +4,8 @@ namespace App\Console\Commands;
 
 use App\Models\TransparenciaDocumento;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 
 class MigrateTransparenciaCdnToLocal extends Command
 {
@@ -49,9 +49,6 @@ class MigrateTransparenciaCdnToLocal extends Command
             return self::SUCCESS;
         }
 
-        $path = public_path('transparencia_documentos');
-        File::ensureDirectoryExists($path, 0775);
-
         $ok = 0;
         $failed = 0;
 
@@ -59,9 +56,7 @@ class MigrateTransparenciaCdnToLocal extends Command
             $this->line("Migrando #{$documento->id}: {$documento->etiqueta}");
 
             try {
-                $response = Http::timeout(120)
-                    ->withOptions(['verify' => false])
-                    ->get($documento->url);
+                $response = Http::timeout(120)->get($documento->url);
 
                 if (!$response->successful()) {
                     $this->error("  Error HTTP {$response->status()}: {$documento->url}");
@@ -70,13 +65,18 @@ class MigrateTransparenciaCdnToLocal extends Command
                     continue;
                 }
 
-                $extension = $this->resolveExtension($documento->url, $response->header('Content-Type'));
-                $filename = 'transparencia_' . time() . '_' . rand(1, 200) . '.' . $extension;
-                $filePath = $path . DIRECTORY_SEPARATOR . $filename;
+                if (! $this->isPdf($response->header('Content-Type'), $response->body())) {
+                    $this->warn('  Omitido: solo se migran documentos PDF válidos.');
+                    $failed++;
 
-                file_put_contents($filePath, $response->body());
+                    continue;
+                }
+
+                $filename = 'transparencia_' . bin2hex(random_bytes(16)) . '.pdf';
+                Storage::disk('local')->put('transparencia/documentos/' . $filename, $response->body());
 
                 $documento->archivo = $filename;
+                $documento->storage_disk = 'local';
                 $documento->url = null;
                 $documento->save();
 
@@ -94,20 +94,9 @@ class MigrateTransparenciaCdnToLocal extends Command
         return $failed > 0 ? self::FAILURE : self::SUCCESS;
     }
 
-    private function resolveExtension(string $url, ?string $contentType): string
+    private function isPdf(?string $contentType, string $contents): bool
     {
-        $path = parse_url($url, PHP_URL_PATH);
-        $ext = strtolower(pathinfo((string) $path, PATHINFO_EXTENSION));
-
-        if (in_array($ext, ['pdf', 'doc', 'docx', 'xls', 'xlsx'], true)) {
-            return $ext;
-        }
-
-        return match (true) {
-            str_contains((string) $contentType, 'pdf') => 'pdf',
-            str_contains((string) $contentType, 'word') => 'docx',
-            str_contains((string) $contentType, 'excel') || str_contains((string) $contentType, 'spreadsheet') => 'xlsx',
-            default => 'pdf',
-        };
+        return str_contains((string) $contentType, 'application/pdf')
+            && str_starts_with($contents, '%PDF-');
     }
 }

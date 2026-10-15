@@ -31,3 +31,9 @@ Thumbs.db
 /vps/
 /qa/
 /backup
+
+# Backups and data exports must be kept in encrypted storage outside Git.
+*.sql
+*.sql.gz
+*.dump
+*.bak

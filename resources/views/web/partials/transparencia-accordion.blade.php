@@ -34,7 +34,7 @@
                 <div class="accordion-body">
                     <div class="course-lesson espacio-trans">
                         @foreach($seccion->documentos as $documento)
-                            <a href="{{ $documento->enlace() }}" target="_blank"
+                            <a href="{{ $documento->enlace() }}" target="_blank" rel="noopener noreferrer"
                                 class="d-flex align-items-center {{ !$loop->last ? 'mb-2' : '' }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

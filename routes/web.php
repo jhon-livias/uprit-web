@@ -19,6 +19,7 @@ use App\Http\Controllers\admin\ObservacionController;
 
 //web
 use App\Http\Controllers\web\WebController;
+use App\Http\Controllers\web\TransparenciaDocumentoController;
 
 
 
@@ -197,6 +198,9 @@ Route::get('/responsabilidad-social-universitaria', [WebController::class, 'resp
 Route::get('/futbol', [WebController::class, 'futbol'])->name('futbol');
 Route::get('/libro-reclamaciones', [WebController::class, 'libroreclamaciones'])->name('libroreclamaciones');
 Route::get('/transparencia', [WebController::class, 'transparencia'])->name('transparencia');
+Route::get('/transparencia/documentos/{documento}', [TransparenciaDocumentoController::class, 'show'])
+    ->whereNumber('documento')
+    ->name('transparencia.documento.publico');
 Route::post('/reclamos/store', [WebController::class, 'storeReclamo'])->name('reclamos.store');
 Route::get('/talleres', [WebController::class, 'talleres'])->name('talleres');
 Route::get('/becas', [WebController::class, 'becas'])->name('becas');
