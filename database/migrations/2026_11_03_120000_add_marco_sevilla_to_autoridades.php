@@ -14,7 +14,7 @@ return new class extends Migration
         Autoridad::updateOrCreate(
             ['nombre' => 'Dr. Marco Antonio Sevilla Gamarra'],
             [
-                'cargo' => 'Director de Investigación',
+                'cargo' => 'Vicerrector de Investigación',
                 'tipo' => 'Alta Dirección',
                 'foto' => 'investigacion/marco-sevilla-medalla.png',
                 'orden' => 3,
