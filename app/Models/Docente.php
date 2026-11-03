@@ -49,7 +49,7 @@ class Docente extends Model
     public function getRolInvestigacionLabelAttribute(): ?string
     {
         return match ($this->rol_investigacion) {
-            'director' => 'Director de Investigación',
+            'director' => 'Vicerrector de Investigación',
             'coordinadora' => 'Coordinadora de Control de Proyectos de Investigación',
             'docente' => 'Docente Investigador',
             default => null,
