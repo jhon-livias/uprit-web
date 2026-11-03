@@ -135,6 +135,13 @@
                                                                 v-model.number="docente.orden_investigacion"
                                                                 class="form-control mb-3">
                                                         </div>
+                                                        <div class="col-md-8">
+                                                            <label>Ajuste vertical de la foto: {{ docente.posicion_imagen_investigacion }}%</label>
+                                                            <input type="range" min="0" max="100" step="1"
+                                                                v-model.number="docente.posicion_imagen_investigacion"
+                                                                class="form-control-range mb-1">
+                                                            <small class="text-muted">Ajusta el control hasta centrar la foto en la vista previa. Solo se aplica en Vicerrectorado de Investigación.</small>
+                                                        </div>
                                                         <div class="col-12">
                                                             <label>Resumen para Vicerrectorado de Investigación</label>
                                                             <textarea v-model="docente.resumen_investigacion"
@@ -164,6 +171,11 @@
                                                         <input type="file" class="dropify" @change="onImagenChange"
                                                             accept=".jpg,.jpeg,.png"
                                                             data-allowed-file-extensions="jpg jpeg png">
+                                                    </div>
+                                                    <div v-if="docente.es_investigador && imagenPreview()" class="col-12 mt-3 text-center">
+                                                        <label class="d-block">Vista previa del encuadre</label>
+                                                        <img :src="imagenPreview()" alt="Vista previa"
+                                                            :style="{ width: '120px', height: '120px', borderRadius: '50%', objectFit: 'cover', objectPosition: 'center ' + docente.posicion_imagen_investigacion + '%' }">
                                                     </div>
                                                 </div>
                                             </div>
@@ -249,6 +261,13 @@
                                                                 v-model.number="docente.orden_investigacion"
                                                                 class="form-control mb-3">
                                                         </div>
+                                                        <div class="col-md-8">
+                                                            <label>Ajuste vertical de la foto: {{ docente.posicion_imagen_investigacion }}%</label>
+                                                            <input type="range" min="0" max="100" step="1"
+                                                                v-model.number="docente.posicion_imagen_investigacion"
+                                                                class="form-control-range mb-1">
+                                                            <small class="text-muted">Ajusta el control hasta centrar la foto en la vista previa. Solo se aplica en Vicerrectorado de Investigación.</small>
+                                                        </div>
                                                         <div class="col-12">
                                                             <label>Resumen para Vicerrectorado de Investigación</label>
                                                             <textarea v-model="docente.resumen_investigacion"
@@ -282,6 +301,11 @@
                                                         <input type="file" class="dropify-edit" @change="onImagenChange"
                                                             accept=".jpg,.jpeg,.png"
                                                             data-allowed-file-extensions="jpg jpeg png">
+                                                    </div>
+                                                    <div v-if="docente.es_investigador && imagenPreview()" class="col-12 mt-3 text-center">
+                                                        <label class="d-block">Vista previa del encuadre</label>
+                                                        <img :src="imagenPreview()" alt="Vista previa"
+                                                            :style="{ width: '120px', height: '120px', borderRadius: '50%', objectFit: 'cover', objectPosition: 'center ' + docente.posicion_imagen_investigacion + '%' }">
                                                     </div>
                                                 </div>
                                             </div>
@@ -340,6 +364,8 @@ export default {
                 es_investigador: false,
                 orden_investigacion: null,
                 resumen_investigacion: '',
+                posicion_imagen_investigacion: 50,
+                imagen_preview: null,
             };
             this.carrerasSeleccionadas = [];
         },
@@ -429,6 +455,8 @@ export default {
                 es_investigador: !!item.es_investigador,
                 orden_investigacion: item.orden_investigacion ?? null,
                 resumen_investigacion: item.resumen_investigacion ?? '',
+                posicion_imagen_investigacion: item.posicion_imagen_investigacion ?? 50,
+                imagen_preview: null,
             };
             this.carrerasSeleccionadas = item.carreras?.length
                 ? item.carreras.map(c => String(c.id))
@@ -441,6 +469,13 @@ export default {
         },
         onImagenChange(event) {
             this.docente.imagen = event.target.files[0] ?? null;
+            this.docente.imagen_preview = this.docente.imagen
+                ? URL.createObjectURL(this.docente.imagen)
+                : null;
+        },
+        imagenPreview() {
+            if (this.docente.imagen_preview) return this.docente.imagen_preview;
+            return this.docente.imagen_actual ? this.asset(this.docente.imagen_actual) : null;
         },
         agregarTag(event) {
             const input = event.target.closest('.input-group').querySelector('input');
@@ -464,6 +499,7 @@ export default {
             if (this.docente.es_investigador) {
                 formData.append('orden_investigacion', this.docente.orden_investigacion ?? '');
                 formData.append('resumen_investigacion', this.docente.resumen_investigacion ?? '');
+                formData.append('posicion_imagen_investigacion', this.docente.posicion_imagen_investigacion ?? 50);
             }
             if (this.docente.imagen) {
                 formData.append('imagen', this.docente.imagen);

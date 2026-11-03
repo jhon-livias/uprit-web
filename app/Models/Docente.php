@@ -23,12 +23,14 @@ class Docente extends Model
         'genero',
         'titulo_academico',
         'resumen_investigacion',
+        'posicion_imagen_investigacion',
         'orcid',
     ];
 
     protected $casts = [
         'tags' => 'array',
         'es_investigador' => 'boolean',
+        'posicion_imagen_investigacion' => 'integer',
     ];
 
     public function getNombreConTituloAttribute(): string

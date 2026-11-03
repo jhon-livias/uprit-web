@@ -46,7 +46,7 @@
             @foreach($docentesInvestigadores as $docente)
             <div style="width:260px;border:1px solid #e5e5e5;border-radius:18px;padding:30px 20px;text-align:center;background:#fff;transition:.3s;">
                 @if($docente->imagen)
-                <img src="{{ asset($docente->imagen) }}" alt="{{ $docente->nombre_con_titulo }}" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:20px;">
+                <img src="{{ asset($docente->imagen) }}" alt="{{ $docente->nombre_con_titulo }}" style="width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:center {{ $docente->posicion_imagen_investigacion ?? 50 }}%;margin-bottom:20px;">
                 @endif
                 <h5 style="font-weight:700;margin-bottom:10px;">{{ $docente->nombre_con_titulo }}</h5>
                 @if($docente->rol_investigacion_label)

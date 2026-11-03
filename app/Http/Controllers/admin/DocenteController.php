@@ -36,6 +36,7 @@ class DocenteController extends Controller
             'imagen' => 'nullable|image|max:5120',
             'es_investigador' => 'nullable|boolean',
             'orden_investigacion' => 'nullable|integer|min:1|max:999',
+            'posicion_imagen_investigacion' => 'nullable|integer|between:0,100',
             'resumen_investigacion' => 'nullable|string',
             'descripcion' => 'nullable|string',
             'carrera_ids' => 'nullable|array',
@@ -52,6 +53,9 @@ class DocenteController extends Controller
         $docente->es_investigador = $request->boolean('es_investigador');
         $docente->orden_investigacion = $docente->es_investigador ? $request->orden_investigacion : null;
         $docente->resumen_investigacion = $docente->es_investigador ? $request->resumen_investigacion : null;
+        $docente->posicion_imagen_investigacion = $docente->es_investigador
+            ? $request->integer('posicion_imagen_investigacion', 50)
+            : 50;
 
         $imagen = $this->savePublicUpload($request, 'imagen');
         if ($imagen !== null) {
@@ -76,6 +80,7 @@ class DocenteController extends Controller
             'imagen' => 'nullable|image|max:5120',
             'es_investigador' => 'nullable|boolean',
             'orden_investigacion' => 'nullable|integer|min:1|max:999',
+            'posicion_imagen_investigacion' => 'nullable|integer|between:0,100',
             'resumen_investigacion' => 'nullable|string',
             'descripcion' => 'nullable|string',
             'carrera_ids' => 'nullable|array',
@@ -92,6 +97,9 @@ class DocenteController extends Controller
         $docente->es_investigador = $request->boolean('es_investigador');
         $docente->orden_investigacion = $docente->es_investigador ? $request->orden_investigacion : null;
         $docente->resumen_investigacion = $docente->es_investigador ? $request->resumen_investigacion : null;
+        $docente->posicion_imagen_investigacion = $docente->es_investigador
+            ? $request->integer('posicion_imagen_investigacion', 50)
+            : 50;
 
         $imagen = $this->savePublicUpload($request, 'imagen', $docente->imagen);
         if ($imagen !== null) {
