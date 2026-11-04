@@ -8,6 +8,21 @@ return [
 
     'repositorio_url' => 'https://repositorio.uprit.edu.pe/handle/UPRIT/208',
 
+    'mision_vision' => [
+        'mision' => [
+            'titulo' => 'Misión del Vicerrectorado de Investigación',
+            'texto' => '“Impulsar la investigación, transferencia tecnológica e innovación a través de la generación de conocimiento científico que responda a las necesidades y desafíos del entorno, con docentes investigadores que contribuyen al desarrollo sostenible de la sociedad, promoviendo la participación de la comunidad universitaria bajo principios de calidad, pertinencia, responsabilidad social y ética.”',
+        ],
+        'vision' => [
+            'titulo' => 'Visión del Vicerrectorado de Investigación',
+            'texto' => '“Al 2031, ser un referente en investigación científica, tecnológica e innovación, reconocido por la calidad y pertinencia de sus investigaciones y docentes calificados para articular universidad, sector económico, Estado y sociedad en la generación y transferencia de conocimiento para el desarrollo sostenible.”',
+        ],
+        'organigrama' => [
+            'titulo' => 'Organigrama del Vicerrectorado de Investigación UPRIT',
+            'imagen' => 'web/imagenes/investigacion/organigrama-vicerrectorado.png',
+        ],
+    ],
+
     'ejes' => [
         'titulo' => 'Ejes Estratégicos de la Investigación',
         'intro' => 'En este apartado se presentan los ejes estratégicos que orientan y articulan las actividades de investigación de la Vicerrectorado de Investigación.',

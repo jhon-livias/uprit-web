@@ -1,6 +1,7 @@
 @extends('web.layouts.principal')
+@section('body_class', 'page-vicerrectorado-investigacion')
 @section('content')
-@include('web.partials.breadcrumb')
+@include('web.partials.breadcrumb', ['banner_class' => 'list-noticia-bg--investigacion'])
 
 <section class="privacy-policy-area">
     <div class="container">
@@ -11,6 +12,7 @@
                         <h3 class="title">{{ config('direccion_investigacion.hero.titulo') }}</h3>
                         <p>{{ config('direccion_investigacion.hero.descripcion') }}</p>
                     </div>
+                    @include('web.partials.direccion-investigacion.mision-vision')
                     <div class="text-block">
                         @include('web.partials.direccion-investigacion.ejes-accordion')
                     </div>

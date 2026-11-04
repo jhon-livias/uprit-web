@@ -1,4 +1,4 @@
-<div class="edu-breadcrumb-area list-noticia-bg">
+<div class="edu-breadcrumb-area list-noticia-bg {{ $banner_class ?? '' }}">
     <div class="container">
         <div class="breadcrumb-inner">
             <div class="page-title">
