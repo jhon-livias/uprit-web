@@ -17,10 +17,6 @@ return [
             'titulo' => 'Visión del Vicerrectorado de Investigación',
             'texto' => '“Al 2031, ser un referente en investigación científica, tecnológica e innovación, reconocido por la calidad y pertinencia de sus investigaciones y docentes calificados para articular universidad, sector económico, Estado y sociedad en la generación y transferencia de conocimiento para el desarrollo sostenible.”',
         ],
-        'organigrama' => [
-            'titulo' => 'Organigrama del Vicerrectorado de Investigación UPRIT',
-            'imagen' => 'web/imagenes/investigacion/organigrama-vicerrectorado.png',
-        ],
     ],
 
     'ejes' => [

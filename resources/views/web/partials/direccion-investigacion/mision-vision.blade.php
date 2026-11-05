@@ -26,11 +26,4 @@
             <p>{{ $misionVision['vision']['texto'] }}</p>
         </div>
     </article>
-
-    <figure class="direccion-mv__organigrama">
-        <h3 class="title">{{ $misionVision['organigrama']['titulo'] }}</h3>
-        <img
-            src="{{ asset($misionVision['organigrama']['imagen']) }}"
-            alt="{{ $misionVision['organigrama']['titulo'] }}">
-    </figure>
 </div>
