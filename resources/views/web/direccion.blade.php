@@ -39,7 +39,7 @@
 
     @include('web.partials.direccion-investigacion.eventos-noticias')
 
-    <div class="container ">
+    <div class="container direccion-equipo">
         <div class="text-block text-center">
             <h3 class="title">Equipo de Investigación</h3>
             <p style="padding-left: 58px; padding-right: 58px;">Un grupo de profesionales con amplia experiencia académica y de gestión, comprometidos con la investigación científica, la formación de investigadores y el desarrollo de conocimiento con impacto para la sociedad.</p>

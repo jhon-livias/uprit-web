@@ -267,6 +267,29 @@ return [
         'items' => [
             [
                 'categoria' => 'Capacitación',
+                'titulo' => 'Sistema de Información Estadística para el Análisis de Datos y Microdatos',
+                'descripcion' => 'La Universidad Privada de Trujillo (UPRIT), a través del Vicerrectorado de Investigación, en coordinación con el Instituto Nacional de Estadística e Informática (INEI), invita a la comunidad universitaria a participar en esta capacitación virtual. Una oportunidad para conocer las plataformas estadísticas del INEI, aprender a acceder y analizar microdatos, y aprovechar estas herramientas en la investigación científica.',
+                'fecha' => '2026-11-04',
+                'hora' => '3:00 p. m.',
+                'modalidad' => 'Virtual',
+                'lugar' => 'Google Meet',
+                'dirigido' => 'Comunidad universitaria',
+                'imagen' => 'web/imagenes/investigacion/capacitacion-inei-microdatos-card.jpg',
+                'imagen_detalle' => 'web/imagenes/investigacion/capacitacion-inei-microdatos.jpg',
+                'imagen_fit' => 'contain',
+                'links' => [
+                    [
+                        'label' => 'Inscríbete aquí',
+                        'url' => 'https://forms.gle/pnGcwYqLcGC2Z7ceA',
+                    ],
+                    [
+                        'label' => 'Unirse a la sesión',
+                        'url' => 'https://meet.google.com/ods-zdfg-stc',
+                    ],
+                ],
+            ],
+            [
+                'categoria' => 'Capacitación',
                 'titulo' => 'Elaboración y Ejecución en Proyectos de Investigación',
                 'descripcion' => 'Capacitación dirigida a la comunidad universitaria sobre la formulación, planificación y ejecución de proyectos de investigación.',
                 'fecha' => '2026-08-26',
