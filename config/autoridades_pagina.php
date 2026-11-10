@@ -12,6 +12,7 @@ $bios = [
     'sevilla' => 'Doctor en Administración y Maestro en Finanzas por la Universidad Nacional de Trujillo, Contador Público Colegiado y posdoctorado en Educación e Investigación por la Universidad de Oriente, México. Cuenta con amplia experiencia en gestión pública, dirección universitaria, docencia e investigación científica. Investigador RENACYT Nivel VI, con publicaciones académicas y trayectoria en gestión de instituciones públicas y universitarias.',
     'rodriguez-alexander' => 'Abogado, Magíster en Derecho del Trabajo y la Seguridad Social y egresado del doctorado en la Universidad Nacional de Trujillo. Cuenta con más de 25 años de ejercicio profesional en la asesoría empresarial y experiencia como docente universitario de pregrado y posgrado en reconocidas universidades de la ciudad de Trujillo.',
     'zavaleta-dionicio' => 'Profesional de la carrera de Contabilidad, con experiencia en diferentes empresas importantes. Destaca su labor como auditor en su propia empresa, afiliada a la Contraloría General de la República y a la SBS, y como perito contable vigente. Cuenta con experiencia como docente universitario y 15 años en la UPRIT dictando cursos de especialidad. Se caracteriza por una actitud positiva, capacidad de liderazgo, fomento del trabajo en equipo y cumplimiento de objetivos.',
+    'aponte' => 'Doctor en Contabilidad y Finanzas por la Universidad Nacional de Trujillo, Contador Público y Magíster en Ciencias Económicas con mención en Gestión Empresarial. Cuenta con 43 años de experiencia profesional en administración, finanzas, logística y docencia universitaria. Es funcionario del área de Finanzas en EsSalud – Seguro Social del Perú, fue miembro del Consejo Regional del Instituto Peruano del Deporte y es coordinador académico de la carrera profesional de Contabilidad y Finanzas de la Universidad Privada de Trujillo. Realiza estudios de posdoctorado en Ciencias Administrativas y Alta Dirección a través de la Inteligencia Artificial. A lo largo de su carrera ha recibido múltiples reconocimientos, entre ellos felicitaciones por su aporte profesional y por el trabajo realizado durante el COVID-19 en la Red Asistencial La Libertad, y por los óptimos resultados de la evaluación de estudiantes como docente en la Universidad Privada de Trujillo.',
 ];
 
 return [
@@ -116,8 +117,9 @@ return [
                 'nombre' => 'Ciencias Empresariales',
                 'personas' => [
                     [
-                        'nombre' => 'Mg. Santos Pedro Aponte Méndez',
+                        'nombre' => 'Dr. Santos Pedro Aponte Méndez',
                         'match' => 'Aponte',
+                        'detalle' => $bios['aponte'],
                     ],
                     [
                         'nombre' => 'Mg. Dionicio Zavaleta Jorge Alejandro',
