@@ -11,6 +11,7 @@ $bios = [
     'espinoza' => 'Doctora en Educación y Magíster en Docencia y Gestión Educativa por la Universidad César Vallejo, Economista por la Universidad Nacional de Trujillo. Investigadora RENACYT, Nivel VI, con experiencia en docencia universitaria, gestión educativa, asesoría de tesis e investigación científica, y publicaciones académicas nacionales e internacionales.',
     'sevilla' => 'Doctor en Administración y Maestro en Finanzas por la Universidad Nacional de Trujillo, Contador Público Colegiado y posdoctorado en Educación e Investigación por la Universidad de Oriente, México. Cuenta con amplia experiencia en gestión pública, dirección universitaria, docencia e investigación científica. Investigador RENACYT Nivel VI, con publicaciones académicas y trayectoria en gestión de instituciones públicas y universitarias.',
     'rodriguez-alexander' => 'Abogado, Magíster en Derecho del Trabajo y la Seguridad Social y egresado del doctorado en la Universidad Nacional de Trujillo. Cuenta con más de 25 años de ejercicio profesional en la asesoría empresarial y experiencia como docente universitario de pregrado y posgrado en reconocidas universidades de la ciudad de Trujillo.',
+    'zavaleta-dionicio' => 'Profesional de la carrera de Contabilidad, con experiencia en diferentes empresas importantes. Destaca su labor como auditor en su propia empresa, afiliada a la Contraloría General de la República y a la SBS, y como perito contable vigente. Cuenta con experiencia como docente universitario y 15 años en la UPRIT dictando cursos de especialidad. Se caracteriza por una actitud positiva, capacidad de liderazgo, fomento del trabajo en equipo y cumplimiento de objetivos.',
 ];
 
 return [
@@ -121,6 +122,7 @@ return [
                     [
                         'nombre' => 'Mg. Dionicio Zavaleta Jorge Alejandro',
                         'match' => 'Dionicio Zavaleta',
+                        'detalle' => $bios['zavaleta-dionicio'],
                     ],
                     [
                         'nombre' => 'Mg. Juan Mauricio Noriega Escobedo',
