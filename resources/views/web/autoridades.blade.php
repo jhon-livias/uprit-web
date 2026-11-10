@@ -1,101 +1,128 @@
 @extends('web.layouts.principal')
+@section('body_class', 'page-autoridades')
 @section('content')
 @include('web.partials.breadcrumb')
 
-<section class="privacy-policy-area">
+<section class="autoridades-page">
     <div class="container">
-        <div class="row row--30">
-            <div class="col-lg-8">
-                <div class="privacy-policy">
-                    <div class="course-details-content course-details-7 autoridades-tabs">
-                        <ul class="nav nav-tabs" id="autoridadesTab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="directivo-tab" data-bs-toggle="tab" data-bs-target="#directivo" type="button" role="tab" aria-controls="directivo" aria-selected="true">Consejo Directivo</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="academicos-tab" data-bs-toggle="tab" data-bs-target="#academicos" type="button" role="tab" aria-controls="academicos" aria-selected="false">Académicos</button>
-                            </li>
-                        </ul>
+        <p class="autoridades-page__intro">{{ $autoridades['intro'] }}</p>
 
-                        <div class="tab-content" id="autoridadesTabContent">
-                            <div class="tab-pane fade show active" id="directivo" role="tabpanel" aria-labelledby="directivo-tab">
-                                <p class="autoridades-intro">
-                                    Integrantes del Consejo Directivo, máxima instancia de dirección ejecutiva de la Universidad Privada de Trujillo.
-                                </p>
+        <div data-autoridades>
+            <div class="autoridades-tabs__bar" role="tablist" aria-label="Autoridades">
+                @foreach($autoridades['tabs'] as $tab)
+                    <button
+                        type="button"
+                        role="tab"
+                        id="autoridades-tab-{{ $tab['id'] }}"
+                        class="{{ $loop->first ? 'is-active' : '' }}"
+                        data-autoridades-tab="{{ $tab['id'] }}"
+                        aria-controls="autoridades-panel-{{ $tab['id'] }}"
+                        aria-selected="{{ $loop->first ? 'true' : 'false' }}">
+                        {{ $tab['label'] }}
+                    </button>
+                @endforeach
+            </div>
 
-                                @foreach($directivo as $index => $autoridad)
-                                <div class="autoridad-fila{{ $index % 2 === 1 ? ' autoridad-fila--invertida' : '' }}">
-                                    <div class="autoridad-fila__foto">
-                                        <img src="{{ asset($autoridad['foto']) }}"
-                                            alt="{{ $autoridad['nombre'] }}"
-                                            class="autoridad-foto{{ $autoridad['foto'] === 'investigacion/marco-sevilla-medalla.png' ? ' autoridad-foto--medalla' : '' }}">
-                                    </div>
-                                    <div class="autoridad-fila__texto">
-                                        <h3>{{ $autoridad['nombre'] }}</h3>
-                                        <p>{{ $autoridad['cargo'] }}</p>
-                                    </div>
-                                </div>
+            <div
+                class="autoridades-panel is-active"
+                id="autoridades-panel-consejo"
+                role="tabpanel"
+                aria-labelledby="autoridades-tab-consejo"
+                data-autoridades-panel="consejo">
+                <article class="autoridades-president">
+                    <div class="autoridades-president__foto">
+                        @if(!empty($autoridades['presidente']['foto']))
+                            <img src="{{ asset($autoridades['presidente']['foto']) }}" alt="{{ $autoridades['presidente']['nombre'] }}">
+                        @else
+                            <span class="autoridades-iniciales" aria-hidden="true">{{ $autoridades['presidente']['iniciales'] }}</span>
+                        @endif
+                    </div>
+                    <div>
+                        <p class="autoridades-kicker">Consejo Directivo</p>
+                        <h2>{{ $autoridades['presidente']['nombre'] }}</h2>
+                        <p class="autoridades-president__cargo">{{ $autoridades['presidente']['cargo'] }}</p>
+                        @if(!empty($autoridades['presidente']['credenciales']))
+                            <ul class="autoridades-chips">
+                                @foreach($autoridades['presidente']['credenciales'] as $credencial)
+                                    <li>{{ $credencial }}</li>
                                 @endforeach
-                            </div>
+                            </ul>
+                        @endif
+                    </div>
+                </article>
 
-                            <div class="tab-pane fade" id="academicos" role="tabpanel" aria-labelledby="academicos-tab">
-                                <p class="autoridades-intro">
-                                    Equipo académico que conduce las facultades y el gobierno universitario.
-                                </p>
-
-                                @foreach(array_merge($alta_direccion, $gobierno_interno) as $index => $autoridad)
-                                <div class="autoridad-fila{{ $index % 2 === 1 ? ' autoridad-fila--invertida' : '' }}">
-                                    <div class="autoridad-fila__foto">
-                                        <img src="{{ $autoridad['foto'] ? asset($autoridad['foto']) : asset('web/assets/images/svg-icons/instructor.svg') }}"
-                                            alt="{{ $autoridad['nombre'] }}"
-                                            class="autoridad-foto{{ $autoridad['foto'] === 'investigacion/marco-sevilla-medalla.png' ? ' autoridad-foto--medalla' : '' }}">
-                                    </div>
-                                    <div class="autoridad-fila__texto">
-                                        <h3>{{ $autoridad['nombre'] }}</h3>
-                                        <p>{{ $autoridad['cargo'] }}</p>
-                                    </div>
+                <div class="autoridades-directorio">
+                    <h3>Integrantes</h3>
+                    <div class="autoridades-directorio__grid">
+                        @foreach($autoridades['directores'] as $director)
+                            <article class="autoridades-director">
+                                <div class="autoridades-director__foto">
+                                    @if(!empty($director['foto']))
+                                        <img src="{{ asset($director['foto']) }}" alt="{{ $director['nombre'] }}">
+                                    @else
+                                        <span class="autoridades-iniciales" aria-hidden="true">{{ $director['iniciales'] }}</span>
+                                    @endif
                                 </div>
-                                @endforeach
-                            </div>
-                        </div>
+                                <h4>{{ $director['nombre'] }}</h4>
+                                <p>{{ $director['rol'] }}</p>
+                                @if(!empty($director['credenciales']))
+                                    <ul class="autoridades-chips">
+                                        @foreach($director['credenciales'] as $credencial)
+                                            <li>{{ $credencial }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </article>
+                        @endforeach
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="edu-blog-sidebar textos-derecha">
-                    <div class="edu-blog-widget widget-categories">
-                        <div class="inner">
-                            <h4 class="widget-title">Categorias</h4>
-                            <div class="content">
-                                @include('web.partials.section-nav')
-</div>
-                        </div>
+
+            @foreach($autoridades['cargos'] as $cargo)
+                <div
+                    class="autoridades-panel"
+                    id="autoridades-panel-{{ $cargo['id'] }}"
+                    role="tabpanel"
+                    aria-labelledby="autoridades-tab-{{ $cargo['id'] }}"
+                    data-autoridades-panel="{{ $cargo['id'] }}"
+                    hidden>
+                    <p class="autoridades-panel__intro">{{ $cargo['intro'] }}</p>
+                    @include('web.partials.autoridades.cargo', [
+                        'persona' => $cargo['actual'],
+                        'antecesores' => $cargo['antecesores'],
+                    ])
+                </div>
+            @endforeach
+
+            <div
+                class="autoridades-panel"
+                id="autoridades-panel-decanatos"
+                role="tabpanel"
+                aria-labelledby="autoridades-tab-decanatos"
+                data-autoridades-panel="decanatos"
+                hidden>
+                <p class="autoridades-panel__intro">{{ $autoridades['decanatos']['intro'] }}</p>
+                <div data-facultad-group>
+                    <div class="autoridades-facultades" role="tablist" aria-label="Facultades">
+                        @foreach($autoridades['decanatos']['facultades'] as $facultad)
+                            <button
+                                type="button"
+                                role="tab"
+                                class="{{ $loop->first ? 'is-active' : '' }}"
+                                data-facultad="{{ $facultad['id'] }}"
+                                aria-selected="{{ $loop->first ? 'true' : 'false' }}">
+                                {{ $facultad['nombre'] }}
+                            </button>
+                        @endforeach
                     </div>
-                    <!-- End Single Widget  -->
-                    <!-- <div class="edu-blog-widget widget-latest-post">
-                        <div class="inner">
-                            <h4 class="widget-title">Últimas Noticias</h4>
-                            <div class="content latest-post-list">
-                                @foreach($ultimasnoticias as $ultima)
-                                <div class="latest-post">
-                                    <div class="thumbnail">
-                                        <a href="{{route('web.detallenoticia',$ultima->id)}}">
-                                            <img src="{{ asset('noticias_imagenes/' . $ultima->imagen) }}" alt="Blog Images">
-                                        </a>
-                                    </div>
-                                    <div class="post-content">
-                                        <h6 class="title"><a href="{{route('web.detallenoticia',$ultima->id)}}">{{$ultima->titulo}}</a></h6>
-                                        <ul class="blog-meta">
-                                            <li><i class="icon-27"></i>{{ ucfirst(\Carbon\Carbon::parse($ultima->fecha)->locale('es')->translatedFormat('d F, Y')) }}</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                @endforeach
-
-                            </div>
+                    @foreach($autoridades['decanatos']['facultades'] as $facultad)
+                        <div data-facultad-panel="{{ $facultad['id'] }}" @if(!$loop->first) hidden @endif>
+                            @include('web.partials.autoridades.cargo', [
+                                'persona' => $facultad['actual'],
+                                'antecesores' => $facultad['antecesores'],
+                            ])
                         </div>
-                    </div> -->
-
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -103,3 +130,56 @@
 </section>
 @include('web.layouts.marquesina')
 @endsection
+
+@push('scripts')
+<script>
+(function () {
+    var root = document.querySelector('[data-autoridades]');
+    if (!root) return;
+
+    var tabs = root.querySelectorAll('[data-autoridades-tab]');
+    var panels = root.querySelectorAll('[data-autoridades-panel]');
+
+    function activate(id) {
+        tabs.forEach(function (tab) {
+            var on = tab.getAttribute('data-autoridades-tab') === id;
+            tab.classList.toggle('is-active', on);
+            tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        panels.forEach(function (panel) {
+            var on = panel.getAttribute('data-autoridades-panel') === id;
+            panel.hidden = !on;
+            panel.classList.toggle('is-active', on);
+        });
+    }
+
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            activate(tab.getAttribute('data-autoridades-tab'));
+        });
+    });
+
+    root.querySelectorAll('[data-facultad-group]').forEach(function (group) {
+        var buttons = group.querySelectorAll('[data-facultad]');
+        var panes = group.querySelectorAll('[data-facultad-panel]');
+
+        function show(id) {
+            buttons.forEach(function (button) {
+                var on = button.getAttribute('data-facultad') === id;
+                button.classList.toggle('is-active', on);
+                button.setAttribute('aria-selected', on ? 'true' : 'false');
+            });
+            panes.forEach(function (pane) {
+                pane.hidden = pane.getAttribute('data-facultad-panel') !== id;
+            });
+        }
+
+        buttons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                show(button.getAttribute('data-facultad'));
+            });
+        });
+    });
+})();
+</script>
+@endpush

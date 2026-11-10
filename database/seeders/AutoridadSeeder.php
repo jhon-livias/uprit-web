@@ -14,7 +14,7 @@ class AutoridadSeeder extends Seeder
         $directivo = [
             [
                 'nombre' => 'Juan Mauricio Noriega Escobedo',
-                'cargo'  => 'Presidente del Consejo Directivo UPRIT, MBA, Catedrático.',
+                'cargo'  => 'Presidente de la Asamblea General de Asociados y del Consejo Directivo de la UPRIT, MBA, Catedrático.',
                 'tipo'   => 'Consejo Directivo',
                 'foto'   => 'web/imagenes/autoridades/juan-mauricio-noriega.jpg',
                 'orden'  => 1
