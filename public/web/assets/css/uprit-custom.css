@@ -12503,6 +12503,11 @@ body.home-bulletin-open { overflow: hidden; }
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.galeria-muro--columna {
+    grid-template-columns: minmax(0, 560px);
+    gap: 10px;
+}
+
 .galeria-muro--fila {
     grid-template-columns: minmax(0, 720px);
 }
@@ -12521,7 +12526,10 @@ body.home-bulletin-open { overflow: hidden; }
     text-transform: uppercase;
 }
 
-.galeria-autoridad__periodo,
+.galeria-autoridad__periodo {
+    display: none;
+}
+
 .galeria-dialog__periodo {
     display: inline-flex;
     align-self: flex-start;
@@ -12661,6 +12669,49 @@ body.home-bulletin-open { overflow: hidden; }
     font-weight: 600;
 }
 
+.galeria-muro--columna .galeria-autoridad {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 0;
+    border-radius: 18px;
+}
+
+.galeria-muro--columna .galeria-autoridad__foto {
+    flex: none;
+    width: 128px;
+    aspect-ratio: 4 / 5;
+}
+
+.galeria-muro--columna .galeria-autoridad__fecha {
+    display: none;
+}
+
+.galeria-muro--columna .galeria-autoridad__iniciales {
+    font-size: 26px;
+}
+
+.galeria-muro--columna .galeria-autoridad__meta {
+    justify-content: center;
+    gap: 6px;
+    padding: 14px 18px;
+}
+
+.galeria-muro--columna .galeria-autoridad__periodo {
+    display: inline-flex;
+    align-self: flex-start;
+    margin: 0;
+    padding: 4px 9px;
+    border-radius: 999px;
+    background: #f8eef0;
+    color: #91001E;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.galeria-muro--columna .galeria-autoridad__nombre {
+    font-size: 16px;
+}
+
 .galeria-dialog {
     width: min(880px, calc(100vw - 32px));
     padding: 0;
@@ -12771,6 +12822,10 @@ body.home-bulletin-open { overflow: hidden; }
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .galeria-muro--columna {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
     .galeria-autoridad--hero .galeria-autoridad__foto,
     .galeria-dialog__foto {
         aspect-ratio: 4 / 5;
@@ -12802,9 +12857,14 @@ body.home-bulletin-open { overflow: hidden; }
 
     .galeria-consejo__grid,
     .galeria-muro--par,
-    .galeria-muro--trio {
+    .galeria-muro--trio,
+    .galeria-muro--columna {
         grid-template-columns: 1fr;
         max-width: none;
+    }
+
+    .galeria-muro--columna .galeria-autoridad__foto {
+        width: 108px;
     }
 
     .galeria-dialog__texto {

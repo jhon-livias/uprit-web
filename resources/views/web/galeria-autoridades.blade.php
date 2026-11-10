@@ -42,7 +42,7 @@
                                 @if(count($seccion['grupos']) > 1)
                                     <h3>{{ $grupo['titulo'] }}</h3>
                                 @endif
-                                <div class="galeria-muro galeria-muro--trio">
+                                <div class="galeria-muro galeria-muro--columna">
                                     @foreach($grupo['personas'] as $persona)
                                         @include('web.partials.autoridades.retrato', ['persona' => $persona])
                                     @endforeach

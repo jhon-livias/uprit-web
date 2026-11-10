@@ -27,6 +27,9 @@
         @endif
     </span>
     <span class="galeria-autoridad__meta">
+        @if(!empty($persona['periodo']))
+            <span class="galeria-autoridad__periodo">{{ $persona['periodo'] }}</span>
+        @endif
         <span class="galeria-autoridad__kicker">{{ $persona['etiqueta'] ?: ($persona['facultad'] ?: $persona['rol']) }}</span>
         <span class="galeria-autoridad__nombre">{{ $persona['nombre'] }}</span>
         @if(!empty($persona['rol']) && ($persona['etiqueta'] || $persona['facultad']))
