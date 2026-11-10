@@ -155,21 +155,32 @@ return [
     ],
 
     'galeria' => [
+        'consejo' => [
+            [
+                'nombre' => 'Mg. Juan Mauricio Noriega Escobedo',
+                'match' => 'Juan Mauricio Noriega',
+                'periodo' => null,
+                'foto' => 'web/imagenes/autoridades/juan-mauricio-noriega.jpg',
+            ],
+        ],
         'rectores' => [
             [
                 'nombre' => 'Dr. José Miguel Sibina Pereyra',
                 'match' => 'Sibina',
                 'periodo' => 'enero 2026 — diciembre 2026',
+                'foto' => 'web/imagenes/autoridades/sibina-pereyra-jose-miguel.jpg',
             ],
             [
                 'nombre' => 'Dr. Antenor Guerra Martínez',
                 'match' => 'Antenor Guerra',
                 'periodo' => 'abril 2015 — noviembre 2016 y setiembre 2019 — diciembre 2025',
+                'foto' => 'web/imagenes/autoridades/guerra-martinez-antenor.jpg',
             ],
             [
                 'nombre' => 'Dr. Lorenzo Edmundo González Zavaleta',
                 'match' => 'Edmundo González',
                 'periodo' => 'diciembre 2016 — agosto 2019',
+                'foto' => 'web/imagenes/autoridades/gonzalez-zavaleta-lorenzo-edmundo.jpg',
             ],
         ],
         'vicerrectorado-academico' => [
@@ -182,6 +193,7 @@ return [
                 'nombre' => 'Dr. Enrique Manuel Durand Bazán',
                 'match' => 'Durand Bazán',
                 'periodo' => 'enero 2025 — setiembre 2026',
+                'foto' => 'web/imagenes/autoridades/durand-bazan-enrique-manuel.jpg',
             ],
             [
                 'nombre' => 'Dr. Luis Marcelo Oblitas Quispe',
@@ -191,12 +203,14 @@ return [
             [
                 'nombre' => 'Dr. Antenor Guerra Martínez',
                 'match' => 'Antenor Guerra',
-                'periodo' => 'enero 2017 — agosto 2019',
+                'periodo' => 'enero 2017 — junio 2017 y febrero 2018 — agosto 2019',
+                'foto' => 'web/imagenes/autoridades/guerra-martinez-antenor.jpg',
             ],
             [
                 'nombre' => 'Dr. Faustino Ccama Uchiri',
                 'match' => 'Ccama Uchiri',
-                'periodo' => 'junio 2017',
+                'periodo' => 'julio 2017 — enero 2018',
+                'foto' => 'web/imagenes/autoridades/ccama-uchiri-faustino.jpg',
             ],
         ],
         'vicerrectorado-investigacion' => [
@@ -222,6 +236,7 @@ return [
                     [
                         'nombre' => 'Dr. Enrique Manuel Durand Bazán',
                         'match' => 'Durand Bazán',
+                        'foto' => 'web/imagenes/autoridades/durand-bazan-enrique-manuel.jpg',
                     ],
                 ],
             ],
@@ -239,6 +254,7 @@ return [
                     [
                         'nombre' => 'Mg. Juan Mauricio Noriega Escobedo',
                         'match' => 'Juan Mauricio Noriega',
+                        'foto' => 'web/imagenes/autoridades/juan-mauricio-noriega.jpg',
                     ],
                 ],
             ],
@@ -261,6 +277,7 @@ return [
                 'nombre' => 'Dr. Lorenzo Edmundo González Zavaleta',
                 'match' => 'Edmundo González',
                 'periodo' => null,
+                'foto' => 'web/imagenes/autoridades/gonzalez-zavaleta-lorenzo-edmundo.jpg',
             ],
         ],
     ],

@@ -451,20 +451,7 @@ class WebController extends Controller
                     'texto' => 'Presidencia de la Asamblea General de Asociados y del Consejo Directivo.',
                     'layout' => 'muro',
                     'grupos' => [
-                        [
-                            'titulo' => 'Consejo Directivo',
-                            'personas' => [
-                                $this->personaGaleria(
-                                    $page['presidente'],
-                                    $page['presidente']['cargo'],
-                                    null,
-                                    [],
-                                    extras: [
-                                        'periodo' => null,
-                                    ]
-                                ),
-                            ],
-                        ],
+                        $this->grupoGaleriaLista($lista['consejo'], 'Consejo Directivo', $page['presidente']['cargo'], $records),
                     ],
                 ],
                 [
@@ -976,7 +963,7 @@ class WebController extends Controller
     private function origenGaleria(array $item, $records): array
     {
         $encontrada = $this->autoridadPorNombre($records, $item['match'] ?? $item['nombre']);
-        $foto = $encontrada->foto ?? ($item['foto'] ?? null);
+        $foto = $item['foto'] ?? ($encontrada->foto ?? null);
 
         if (! $foto) {
             $docente = $this->docenteAutoridad($item['match'] ?? $item['nombre']);
