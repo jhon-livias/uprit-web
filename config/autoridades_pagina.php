@@ -7,7 +7,7 @@ return [
                 'nombre' => 'Mg. Juan Mauricio Noriega Escobedo',
                 'match' => 'Juan Mauricio Noriega',
                 'periodo' => null,
-                'foto' => 'web/imagenes/autoridades/juan-mauricio-noriega.jpg',
+                'foto' => 'web/imagenes/autoridades/juan-mauricio-noriega-v2.jpg',
             ],
         ],
         'rectores' => [
@@ -101,7 +101,7 @@ return [
                     [
                         'nombre' => 'Mg. Juan Mauricio Noriega Escobedo',
                         'match' => 'Juan Mauricio Noriega',
-                        'foto' => 'web/imagenes/autoridades/juan-mauricio-noriega.jpg',
+                        'foto' => 'web/imagenes/autoridades/juan-mauricio-noriega-v2.jpg',
                     ],
                 ],
             ],

@@ -16,7 +16,7 @@ class AutoridadSeeder extends Seeder
                 'nombre' => 'Juan Mauricio Noriega Escobedo',
                 'cargo'  => 'Presidente de la Asamblea General de Asociados y del Consejo Directivo de la UPRIT, MBA, Catedrático.',
                 'tipo'   => 'Consejo Directivo',
-                'foto'   => 'web/imagenes/autoridades/juan-mauricio-noriega.jpg',
+                'foto'   => 'web/imagenes/autoridades/juan-mauricio-noriega-v2.jpg',
                 'orden'  => 1
             ],
             [
@@ -44,7 +44,7 @@ class AutoridadSeeder extends Seeder
                 'nombre' => 'Juan Carlos Noriega Escobedo',
                 'cargo'  => 'Director, MBA, Gerente Regional Bioreg Pharma, Catedrático.',
                 'tipo'   => 'Consejo Directivo',
-                'foto'   => 'web/imagenes/autoridades/juan-carlos-noriega.jpg',
+                'foto'   => 'web/imagenes/autoridades/juan-carlos-noriega-v2.jpg',
                 'orden'  => 5
             ],
         ];
