@@ -11973,18 +11973,6 @@ body.home-bulletin-open { overflow: hidden; }
     line-height: 1.5;
 }
 
-.galeria-autoridades__ficha {
-    flex: none;
-    color: #91001E;
-    font-size: 14px;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-.galeria-autoridades__ficha:hover {
-    text-decoration: underline;
-}
-
 .galeria-nav {
     display: flex;
     gap: 8px;
