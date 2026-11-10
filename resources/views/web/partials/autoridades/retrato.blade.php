@@ -14,6 +14,9 @@
     data-iniciales="{{ $persona['iniciales'] }}"
     aria-label="Ver retrato de {{ $persona['nombre'] }}">
     <span class="galeria-autoridad__foto">
+        @if(!empty($persona['periodo']))
+            <span class="galeria-autoridad__fecha">{{ $persona['periodo'] }}</span>
+        @endif
         @if(!empty($persona['foto']))
             <img
                 src="{{ asset($persona['foto']) }}"
@@ -28,9 +31,6 @@
         <span class="galeria-autoridad__nombre">{{ $persona['nombre'] }}</span>
         @if(!empty($persona['rol']) && ($persona['etiqueta'] || $persona['facultad']))
             <span class="galeria-autoridad__rol">{{ $persona['rol'] }}</span>
-        @endif
-        @if(!empty($persona['periodo']))
-            <span class="galeria-autoridad__periodo">{{ $persona['periodo'] }}</span>
         @endif
     </span>
 </button>

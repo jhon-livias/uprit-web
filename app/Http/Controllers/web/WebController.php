@@ -441,7 +441,7 @@ class WebController extends Controller
         $cargos = collect($page['cargos'])->keyBy('id');
 
         $galeria = [
-            'intro' => 'Retratos de quienes conducen la Universidad Privada de Trujillo y de quienes ocuparon esos cargos.',
+            'intro' => 'Retratos de quienes conducen la Universidad Privada de Trujillo, ordenados por periodo.',
             'secciones' => [
                 [
                     'id' => 'consejo-directivo',
@@ -472,31 +472,31 @@ class WebController extends Controller
                     'id' => 'rectores',
                     'indice' => '02',
                     'titulo' => 'Rectores',
-                    'texto' => 'Quien ejerce el rectorado y quienes lo ocuparon antes.',
-                    'layout' => 'linaje',
+                    'texto' => 'El rectorado, leído de la gestión actual hacia atrás.',
+                    'layout' => 'muro',
                     'grupos' => [
-                        $this->grupoGaleriaLinaje($cargos['rectorado'], 'Rectorado'),
+                        $this->grupoGaleriaMuro($cargos['rectorado'], 'Rectores'),
                     ],
                 ],
                 [
                     'id' => 'vicerrectores',
                     'indice' => '03',
                     'titulo' => 'Vicerrectores',
-                    'texto' => 'Vicerrectorado Académico y Vicerrectorado de Investigación, con su historial.',
-                    'layout' => 'linaje',
+                    'texto' => 'Académico e investigación, cada retrato con su periodo.',
+                    'layout' => 'muro',
                     'grupos' => [
-                        $this->grupoGaleriaLinaje($cargos['vicerrectorado-academico'], 'Vicerrectorado Académico'),
-                        $this->grupoGaleriaLinaje($cargos['vicerrectorado-investigacion'], 'Vicerrectorado de Investigación'),
+                        $this->grupoGaleriaMuro($cargos['vicerrectorado-academico'], 'Vicerrectorado Académico'),
+                        $this->grupoGaleriaMuro($cargos['vicerrectorado-investigacion'], 'Vicerrectorado de Investigación'),
                     ],
                 ],
                 [
                     'id' => 'decanos',
                     'indice' => '04',
                     'titulo' => 'Decanos',
-                    'texto' => 'Decanos en ejercicio y antecesores de cada facultad.',
-                    'layout' => 'linaje',
+                    'texto' => 'Por facultad, cada retrato con su periodo.',
+                    'layout' => 'muro',
                     'grupos' => array_map(
-                        fn (array $facultad) => $this->grupoGaleriaLinaje($facultad, $facultad['nombre'], $facultad['nombre']),
+                        fn (array $facultad) => $this->grupoGaleriaMuro($facultad, $facultad['nombre'], $facultad['nombre']),
                         $page['decanatos']['facultades']
                     ),
                 ],
@@ -938,37 +938,34 @@ class WebController extends Controller
         ];
     }
 
-    private function grupoGaleriaLinaje(array $cargo, string $titulo, ?string $facultad = null): array
+    private function grupoGaleriaMuro(array $cargo, string $titulo, ?string $facultad = null): array
     {
         $actual = $cargo['actual'];
-
-        return [
-            'titulo' => $titulo,
-            'actual' => $this->personaGaleria(
+        $personas = [
+            $this->personaGaleria(
                 $actual,
                 $actual['cargo'],
                 $actual['resumen'] ?? null,
                 [],
                 $facultad,
-                [
-                    'etiqueta' => 'En el cargo',
-                    'periodo' => $actual['periodo'] ?? 'En ejercicio',
-                ]
+                ['periodo' => $actual['periodo'] ?? 'En ejercicio']
             ),
-            'antecesores' => array_map(
-                fn (array $antecesor) => $this->personaGaleria(
-                    $antecesor,
-                    $actual['cargo'],
-                    $antecesor['resumen'] ?? null,
-                    [],
-                    $facultad,
-                    [
-                        'etiqueta' => 'Antecesor',
-                        'periodo' => $antecesor['periodo'] ?? null,
-                    ]
-                ),
-                $cargo['antecesores'] ?? []
-            ),
+        ];
+
+        foreach ($cargo['antecesores'] ?? [] as $antecesor) {
+            $personas[] = $this->personaGaleria(
+                $antecesor,
+                $actual['cargo'],
+                $antecesor['resumen'] ?? null,
+                [],
+                $facultad,
+                ['periodo' => $antecesor['periodo'] ?? null]
+            );
+        }
+
+        return [
+            'titulo' => $titulo,
+            'personas' => $personas,
         ];
     }
 

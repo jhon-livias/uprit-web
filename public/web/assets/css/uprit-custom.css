@@ -12507,38 +12507,18 @@ body.home-bulletin-open { overflow: hidden; }
     grid-template-columns: minmax(0, 720px);
 }
 
-.galeria-linajes {
+.galeria-muros {
     display: grid;
-    gap: 36px;
+    gap: 40px;
 }
 
-.galeria-linaje h3 {
+.galeria-muro-grupo h3 {
     margin: 0 0 16px;
-    font-size: 20px;
+    color: #3a2c2f;
+    font-size: 15px;
     font-weight: 700;
-}
-
-.galeria-linaje__actual {
-    max-width: 420px;
-}
-
-.galeria-antecesores {
-    margin-top: 22px;
-}
-
-.galeria-antecesores > p {
-    margin: 0 0 12px;
-    color: #91001E;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-}
-
-.galeria-antecesores__grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
 }
 
 .galeria-autoridad__periodo,
@@ -12594,9 +12574,25 @@ body.home-bulletin-open { overflow: hidden; }
 .galeria-autoridad__foto {
     display: grid;
     place-items: center;
+    position: relative;
     aspect-ratio: 4 / 5;
     overflow: hidden;
     background: #ece4e6;
+}
+
+.galeria-autoridad__fecha {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 1;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 8px 20px rgba(40, 8, 14, 0.12);
+    color: #91001E;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
 }
 
 .galeria-autoridad--hero .galeria-autoridad__foto {
@@ -12767,10 +12763,12 @@ body.home-bulletin-open { overflow: hidden; }
 @media (max-width: 991px) {
     .galeria-consejo,
     .galeria-muro--par,
-    .galeria-muro--trio,
-    .galeria-antecesores__grid,
     .galeria-dialog[open] {
         grid-template-columns: 1fr;
+    }
+
+    .galeria-muro--trio {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .galeria-autoridad--hero .galeria-autoridad__foto,
@@ -12804,8 +12802,7 @@ body.home-bulletin-open { overflow: hidden; }
 
     .galeria-consejo__grid,
     .galeria-muro--par,
-    .galeria-muro--trio,
-    .galeria-linaje__actual {
+    .galeria-muro--trio {
         grid-template-columns: 1fr;
         max-width: none;
     }

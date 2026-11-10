@@ -36,25 +36,17 @@
                         </div>
                     </div>
                 @else
-                    <div class="galeria-linajes">
+                    <div class="galeria-muros">
                         @foreach($seccion['grupos'] as $grupo)
-                            <div class="galeria-linaje">
+                            <div class="galeria-muro-grupo">
                                 @if(count($seccion['grupos']) > 1)
                                     <h3>{{ $grupo['titulo'] }}</h3>
                                 @endif
-                                <div class="galeria-linaje__actual">
-                                    @include('web.partials.autoridades.retrato', ['persona' => $grupo['actual'], 'modificador' => 'galeria-autoridad--actual'])
+                                <div class="galeria-muro galeria-muro--trio">
+                                    @foreach($grupo['personas'] as $persona)
+                                        @include('web.partials.autoridades.retrato', ['persona' => $persona])
+                                    @endforeach
                                 </div>
-                                @if(!empty($grupo['antecesores']))
-                                    <div class="galeria-antecesores">
-                                        <p>Antecesores</p>
-                                        <div class="galeria-antecesores__grid">
-                                            @foreach($grupo['antecesores'] as $persona)
-                                                @include('web.partials.autoridades.retrato', ['persona' => $persona, 'modificador' => 'galeria-autoridad--antecesor'])
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                @endif
                             </div>
                         @endforeach
                     </div>
@@ -119,12 +111,12 @@
             iniciales.textContent = boton.getAttribute('data-iniciales') || '';
             foto.appendChild(iniciales);
         }
-        kicker.textContent = [etiqueta, facultad].filter(Boolean).join(' · ') || cargo;
+        kicker.textContent = [etiqueta, facultad, fechas].filter(Boolean).join(' · ') || cargo;
         nombre.textContent = boton.getAttribute('data-nombre') || '';
         rol.textContent = cargo;
         rol.hidden = cargo === '' || cargo === kicker.textContent;
         periodo.textContent = fechas;
-        periodo.hidden = fechas === '';
+        periodo.hidden = fechas === '' || fechas === kicker.textContent;
         detalle.textContent = texto;
         detalle.hidden = texto === '';
         credenciales.innerHTML = '';
