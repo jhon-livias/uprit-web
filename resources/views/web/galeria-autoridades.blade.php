@@ -26,33 +26,20 @@
                     </div>
                 </header>
 
-                @if($seccion['layout'] === 'consejo')
-                    <div class="galeria-consejo {{ empty($seccion['personas']) ? 'galeria-consejo--solo' : '' }}">
-                        @include('web.partials.autoridades.retrato', ['persona' => $seccion['destacado'], 'modificador' => 'galeria-autoridad--hero'])
-                        @if(!empty($seccion['personas']))
-                            <div class="galeria-consejo__grid">
-                                @foreach($seccion['personas'] as $persona)
-                                    @include('web.partials.autoridades.retrato', ['persona' => $persona])
+                <div class="galeria-muros">
+                    @foreach($seccion['grupos'] as $grupo)
+                        <div class="galeria-muro-grupo">
+                            @if(count($seccion['grupos']) > 1)
+                                <h3>{{ $grupo['titulo'] }}</h3>
+                            @endif
+                            <div class="galeria-muro galeria-muro--columna">
+                                @foreach($grupo['personas'] as $persona)
+                                    @include('web.partials.autoridades.retrato', ['persona' => $persona, 'modificador' => 'galeria-autoridad--banda'])
                                 @endforeach
                             </div>
-                        @endif
-                    </div>
-                @else
-                    <div class="galeria-muros">
-                        @foreach($seccion['grupos'] as $grupo)
-                            <div class="galeria-muro-grupo">
-                                @if(count($seccion['grupos']) > 1)
-                                    <h3>{{ $grupo['titulo'] }}</h3>
-                                @endif
-                                <div class="galeria-muro galeria-muro--columna">
-                                    @foreach($grupo['personas'] as $persona)
-                                        @include('web.partials.autoridades.retrato', ['persona' => $persona, 'modificador' => 'galeria-autoridad--banda'])
-                                    @endforeach
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @endif
+                        </div>
+                    @endforeach
+                </div>
             </section>
         @endforeach
     </div>

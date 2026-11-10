@@ -448,17 +448,23 @@ class WebController extends Controller
                     'indice' => '01',
                     'titulo' => 'Consejo Directivo',
                     'texto' => 'Presidencia de la Asamblea General de Asociados y del Consejo Directivo.',
-                    'layout' => 'consejo',
-                    'destacado' => $this->personaGaleria(
-                        $page['presidente'],
-                        $page['presidente']['cargo'],
-                        null,
-                        $page['presidente']['credenciales'],
-                        extras: [
-                            'etiqueta' => 'Consejo Directivo',
-                        ]
-                    ),
-                    'personas' => [],
+                    'layout' => 'muro',
+                    'grupos' => [
+                        [
+                            'titulo' => 'Consejo Directivo',
+                            'personas' => [
+                                $this->personaGaleria(
+                                    $page['presidente'],
+                                    $page['presidente']['cargo'],
+                                    $page['presidente']['cargo'],
+                                    $page['presidente']['credenciales'],
+                                    extras: [
+                                        'periodo' => 'En ejercicio',
+                                    ]
+                                ),
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'id' => 'rectores',

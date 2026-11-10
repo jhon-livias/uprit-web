@@ -12379,6 +12379,10 @@ body.home-bulletin-open { overflow: hidden; }
 }
 
 /* Galería de autoridades */
+.page-galeria-autoridades {
+    overflow-x: clip;
+}
+
 .page-galeria-autoridades .galeria-autoridades {
     background:
         radial-gradient(circle at top right, rgba(145, 0, 30, 0.08), transparent 28%),
@@ -12481,59 +12485,32 @@ body.home-bulletin-open { overflow: hidden; }
     line-height: 1.5;
 }
 
-.galeria-consejo {
-    display: grid;
-    grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.4fr);
-    gap: 16px;
-    align-items: stretch;
-}
-
-.galeria-consejo--solo {
-    grid-template-columns: minmax(0, 420px);
-}
-
+.galeria-consejo,
 .galeria-consejo__grid,
 .galeria-muro {
     display: grid;
     gap: 16px;
 }
 
-.galeria-consejo__grid,
-.galeria-muro--par {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.galeria-muro--trio {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
 .galeria-muro--columna {
     grid-template-columns: minmax(0, 1fr);
     gap: 0;
-    overflow: visible;
-    border-radius: 0;
-}
-
-.galeria-muro--fila {
-    grid-template-columns: minmax(0, 720px);
 }
 
 .galeria-muros {
     display: grid;
-    gap: 36px;
+    gap: 28px;
     width: 100vw;
+    max-width: 100vw;
     margin-left: calc(50% - 50vw);
 }
 
 .galeria-muro-grupo h3 {
-    width: min(1140px, calc(100% - 32px));
-    margin: 0 auto 14px;
-    padding: 0 12px;
+    width: min(820px, calc(100% - 48px));
+    margin: 8px auto 12px;
     color: #91001E;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
-    letter-spacing: 0;
-    text-transform: none;
 }
 
 .galeria-autoridad__periodo {
@@ -12561,32 +12538,21 @@ body.home-bulletin-open { overflow: hidden; }
 }
 
 .galeria-autoridad {
-    display: flex;
-    flex-direction: column;
+    display: block;
     width: 100%;
-    height: 100%;
     padding: 0;
-    overflow: hidden;
-    border: 1px solid #f0e4e7;
-    border-radius: 22px;
-    background: #fff;
-    box-shadow: 0 18px 46px rgba(40, 8, 14, 0.06);
+    overflow: visible;
+    border: 0;
+    background: transparent;
     color: inherit;
     font: inherit;
     text-align: left;
     cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.galeria-autoridad:hover,
-.galeria-autoridad:focus-visible {
-    transform: translateY(-3px);
-    box-shadow: 0 22px 50px rgba(40, 8, 14, 0.12);
 }
 
 .galeria-autoridad:focus-visible {
     outline: 2px solid #91001E;
-    outline-offset: 3px;
+    outline-offset: -2px;
 }
 
 .galeria-autoridad__foto {
@@ -12624,12 +12590,6 @@ body.home-bulletin-open { overflow: hidden; }
     height: 100%;
     object-fit: cover;
     object-position: center 18%;
-    transition: transform 0.45s ease;
-}
-
-.galeria-autoridad:hover .galeria-autoridad__foto img,
-.galeria-autoridad:focus-visible .galeria-autoridad__foto img {
-    transform: scale(1.04);
 }
 
 .galeria-autoridad__foto img.is-medalla,
@@ -12683,133 +12643,98 @@ body.home-bulletin-open { overflow: hidden; }
     display: none;
 }
 
-.galeria-muro--columna .galeria-autoridad,
-.galeria-muro--columna .galeria-autoridad:hover,
-.galeria-muro--columna .galeria-autoridad:focus-visible {
+.galeria-autoridad--banda {
     position: relative;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 28px;
-    width: 100%;
-    min-height: 0;
-    padding: 36px 24px 48px;
-    overflow: visible;
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
-    transform: none;
 }
 
-.galeria-muro--columna .galeria-autoridad:not(:last-child)::after {
+.galeria-autoridad--banda:nth-child(odd) {
+    background: #f3f0f1;
+}
+
+.galeria-autoridad--banda:nth-child(even) {
+    background: #e6e2e3;
+}
+
+.galeria-autoridad--banda:not(:last-child)::after {
     content: "";
     position: absolute;
     left: 50%;
-    bottom: -16px;
+    bottom: -13px;
     z-index: 2;
-    width: 32px;
-    height: 16px;
+    width: 28px;
+    height: 13px;
     transform: translateX(-50%);
     background: inherit;
     clip-path: polygon(0 0, 100% 0, 50% 100%);
+    pointer-events: none;
 }
 
-.galeria-muro--columna .galeria-autoridad:nth-child(odd) {
-    background: #f4f1f2;
+.galeria-autoridad--banda .galeria-autoridad__inner {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    width: min(820px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 42px 0 46px;
 }
 
-.galeria-muro--columna .galeria-autoridad:nth-child(even) {
-    background: #e7e3e4;
-}
-
-.galeria-muro--columna .galeria-autoridad:hover,
-.galeria-muro--columna .galeria-autoridad:focus-visible {
-    background: #e4d6da;
-}
-
-.galeria-muro--columna .galeria-autoridad__foto {
+.galeria-autoridad--banda .galeria-autoridad__foto {
     flex: none;
-    width: 118px;
-    height: 118px;
-    min-height: 0;
+    width: 112px;
+    height: 112px;
     aspect-ratio: auto;
     border-radius: 50%;
-    background: #ddd4d6;
+    background: #d8cfd1;
 }
 
-.galeria-muro--columna .galeria-autoridad__foto img {
+.galeria-autoridad--banda .galeria-autoridad__foto img,
+.galeria-autoridad--banda .galeria-autoridad__foto img.is-medalla {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 12%;
-}
-
-.galeria-muro--columna .galeria-autoridad__foto img.is-medalla {
     padding: 0;
     object-fit: cover;
     object-position: center 12%;
 }
 
-.galeria-muro--columna .galeria-autoridad:hover .galeria-autoridad__foto img,
-.galeria-muro--columna .galeria-autoridad:focus-visible .galeria-autoridad__foto img {
-    transform: none;
+.galeria-autoridad--banda .galeria-autoridad__iniciales {
+    font-size: 28px;
 }
 
-.galeria-muro--columna .galeria-autoridad__fecha,
-.galeria-muro--columna .galeria-autoridad__kicker,
-.galeria-muro--columna .galeria-autoridad__rol {
-    display: none;
-}
-
-.galeria-muro--columna .galeria-autoridad__iniciales {
-    font-size: 34px;
-}
-
-.galeria-muro--columna .galeria-autoridad__meta {
-    flex: 0 1 640px;
-    justify-content: center;
+.galeria-autoridad--banda .galeria-autoridad__meta {
+    flex: 1;
     gap: 0;
-    width: min(640px, 100%);
     min-width: 0;
     padding: 0;
 }
 
-.galeria-muro--columna .galeria-autoridad__nombre {
-    order: 1;
+.galeria-autoridad--banda .galeria-autoridad__nombre {
     color: #91001E;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 700;
     line-height: 1.2;
 }
 
-.galeria-muro--columna .galeria-autoridad__periodo {
+.galeria-autoridad--banda .galeria-autoridad__periodo {
     display: block;
-    order: 2;
-    width: auto;
-    max-width: none;
-    margin: 2px 0 0;
+    margin: 4px 0 0;
     padding: 0;
     border: 0;
-    border-radius: 0;
     background: transparent;
-    color: #6d6164;
-    font-size: 15px;
+    color: #7a6c70;
+    font-size: 14px;
     font-weight: 400;
 }
 
-.galeria-muro--columna .galeria-autoridad__reseña {
+.galeria-autoridad--banda .galeria-autoridad__reseña {
     display: -webkit-box;
-    order: 3;
     margin-top: 10px;
     overflow: hidden;
-    color: #3e3437;
-    font-size: 15px;
+    color: #4a3f42;
+    font-size: 14.5px;
     font-weight: 400;
     line-height: 1.55;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 4;
 }
 
 .galeria-dialog {
@@ -12912,21 +12837,10 @@ body.home-bulletin-open { overflow: hidden; }
 }
 
 @media (max-width: 991px) {
-    .galeria-consejo,
-    .galeria-muro--par,
     .galeria-dialog[open] {
         grid-template-columns: 1fr;
     }
 
-    .galeria-muro--trio {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .galeria-muro--columna {
-        grid-template-columns: minmax(0, 1fr);
-    }
-
-    .galeria-autoridad--hero .galeria-autoridad__foto,
     .galeria-dialog__foto {
         aspect-ratio: 4 / 5;
         min-height: 0;
@@ -12955,35 +12869,22 @@ body.home-bulletin-open { overflow: hidden; }
         border-radius: 18px;
     }
 
-    .galeria-consejo__grid,
-    .galeria-muro--par,
-    .galeria-muro--trio,
-    .galeria-muro--columna {
-        grid-template-columns: 1fr;
-        max-width: none;
-    }
-
-    .galeria-muro--columna .galeria-autoridad,
-    .galeria-muro--columna .galeria-autoridad:hover,
-    .galeria-muro--columna .galeria-autoridad:focus-visible {
+    .galeria-autoridad--banda .galeria-autoridad__inner {
         gap: 16px;
-        padding: 24px 16px 36px;
+        width: calc(100% - 32px);
+        padding: 28px 0 36px;
     }
 
-    .galeria-muro--columna .galeria-autoridad__foto {
-        width: 88px;
-        height: 88px;
+    .galeria-autoridad--banda .galeria-autoridad__foto {
+        width: 84px;
+        height: 84px;
     }
 
-    .galeria-muro--columna .galeria-autoridad__nombre {
-        font-size: 20px;
+    .galeria-autoridad--banda .galeria-autoridad__nombre {
+        font-size: 19px;
     }
 
-    .galeria-muro--columna .galeria-autoridad__meta {
-        flex-basis: auto;
-    }
-
-    .galeria-muro--columna .galeria-autoridad__reseña {
+    .galeria-autoridad--banda .galeria-autoridad__reseña {
         font-size: 14px;
         -webkit-line-clamp: 5;
     }
