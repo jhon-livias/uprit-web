@@ -35,5 +35,8 @@
         @if(!empty($persona['rol']) && ($persona['etiqueta'] || $persona['facultad']))
             <span class="galeria-autoridad__rol">{{ $persona['rol'] }}</span>
         @endif
+        @if(!empty($persona['detalle']))
+            <span class="galeria-autoridad__reseña">{{ $persona['detalle'] }}</span>
+        @endif
     </span>
 </button>

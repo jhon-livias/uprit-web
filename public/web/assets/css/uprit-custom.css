@@ -12505,7 +12505,9 @@ body.home-bulletin-open { overflow: hidden; }
 
 .galeria-muro--columna {
     grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
+    gap: 0;
+    overflow: hidden;
+    border-radius: 4px;
 }
 
 .galeria-muro--fila {
@@ -12518,12 +12520,12 @@ body.home-bulletin-open { overflow: hidden; }
 }
 
 .galeria-muro-grupo h3 {
-    margin: 0 0 16px;
-    color: #3a2c2f;
-    font-size: 15px;
+    margin: 0 0 12px;
+    color: #91001E;
+    font-size: 22px;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    letter-spacing: 0;
+    text-transform: none;
 }
 
 .galeria-autoridad__periodo {
@@ -12669,19 +12671,46 @@ body.home-bulletin-open { overflow: hidden; }
     font-weight: 600;
 }
 
-.galeria-muro--columna .galeria-autoridad {
+.galeria-autoridad__reseña {
+    display: none;
+}
+
+.galeria-muro--columna .galeria-autoridad,
+.galeria-muro--columna .galeria-autoridad:hover,
+.galeria-muro--columna .galeria-autoridad:focus-visible {
     flex-direction: row;
-    align-items: stretch;
-    min-height: 176px;
-    border-radius: 18px;
+    align-items: center;
+    gap: 36px;
+    min-height: 0;
+    padding: 36px 40px;
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    transform: none;
+}
+
+.galeria-muro--columna .galeria-autoridad:nth-child(odd) {
+    background: #f4ecee;
+}
+
+.galeria-muro--columna .galeria-autoridad:nth-child(even) {
+    background: #ebe2e5;
+}
+
+.galeria-muro--columna .galeria-autoridad:hover,
+.galeria-muro--columna .galeria-autoridad:focus-visible {
+    background: #e4d6da;
 }
 
 .galeria-muro--columna .galeria-autoridad__foto {
     flex: none;
-    align-self: stretch;
-    width: 200px;
-    min-height: 176px;
+    width: 148px;
+    height: 148px;
+    min-height: 0;
     aspect-ratio: auto;
+    border-radius: 50%;
+    background: #e6d5d9;
 }
 
 .galeria-muro--columna .galeria-autoridad__foto img {
@@ -12690,6 +12719,7 @@ body.home-bulletin-open { overflow: hidden; }
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 12%;
 }
 
 .galeria-muro--columna .galeria-autoridad__foto img.is-medalla {
@@ -12698,40 +12728,65 @@ body.home-bulletin-open { overflow: hidden; }
     object-position: center 12%;
 }
 
-.galeria-muro--columna .galeria-autoridad__fecha {
+.galeria-muro--columna .galeria-autoridad:hover .galeria-autoridad__foto img,
+.galeria-muro--columna .galeria-autoridad:focus-visible .galeria-autoridad__foto img {
+    transform: none;
+}
+
+.galeria-muro--columna .galeria-autoridad__fecha,
+.galeria-muro--columna .galeria-autoridad__kicker,
+.galeria-muro--columna .galeria-autoridad__rol {
     display: none;
 }
 
 .galeria-muro--columna .galeria-autoridad__iniciales {
-    font-size: 32px;
+    font-size: 34px;
 }
 
 .galeria-muro--columna .galeria-autoridad__meta {
     flex: 1;
     justify-content: center;
-    gap: 8px;
+    gap: 0;
     min-width: 0;
-    padding: 20px 24px;
-}
-
-.galeria-muro--columna .galeria-autoridad__periodo {
-    display: inline-flex;
-    align-self: flex-start;
-    margin: 0;
-    padding: 4px 9px;
-    border-radius: 999px;
-    background: #f8eef0;
-    color: #91001E;
-    font-size: 11px;
-    font-weight: 700;
+    padding: 0;
 }
 
 .galeria-muro--columna .galeria-autoridad__nombre {
-    font-size: 20px;
+    order: 1;
+    color: #91001E;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
-.galeria-muro--columna .galeria-autoridad__kicker {
-    font-size: 13px;
+.galeria-muro--columna .galeria-autoridad__periodo {
+    display: block;
+    order: 2;
+    align-self: stretch;
+    width: 100%;
+    max-width: 42ch;
+    margin: 10px 0 0;
+    padding: 0 0 10px;
+    border: 0;
+    border-bottom: 1px solid #d7c6ca;
+    border-radius: 0;
+    background: transparent;
+    color: #8a7378;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.galeria-muro--columna .galeria-autoridad__reseña {
+    display: -webkit-box;
+    order: 3;
+    margin-top: 12px;
+    overflow: hidden;
+    color: #4d3b3f;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.55;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
 }
 
 .galeria-dialog {
@@ -12885,21 +12940,25 @@ body.home-bulletin-open { overflow: hidden; }
         max-width: none;
     }
 
-    .galeria-muro--columna .galeria-autoridad {
-        min-height: 148px;
+    .galeria-muro--columna .galeria-autoridad,
+    .galeria-muro--columna .galeria-autoridad:hover,
+    .galeria-muro--columna .galeria-autoridad:focus-visible {
+        gap: 18px;
+        padding: 24px 18px;
     }
 
     .galeria-muro--columna .galeria-autoridad__foto {
-        width: 132px;
-        min-height: 148px;
-    }
-
-    .galeria-muro--columna .galeria-autoridad__meta {
-        padding: 16px 16px;
+        width: 96px;
+        height: 96px;
     }
 
     .galeria-muro--columna .galeria-autoridad__nombre {
-        font-size: 17px;
+        font-size: 20px;
+    }
+
+    .galeria-muro--columna .galeria-autoridad__reseña {
+        font-size: 14px;
+        -webkit-line-clamp: 5;
     }
 
     .galeria-dialog__texto {

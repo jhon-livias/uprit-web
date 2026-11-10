@@ -44,7 +44,7 @@
                                 @endif
                                 <div class="galeria-muro galeria-muro--columna">
                                     @foreach($grupo['personas'] as $persona)
-                                        @include('web.partials.autoridades.retrato', ['persona' => $persona])
+                                        @include('web.partials.autoridades.retrato', ['persona' => $persona, 'modificador' => 'galeria-autoridad--banda'])
                                     @endforeach
                                 </div>
                             </div>
