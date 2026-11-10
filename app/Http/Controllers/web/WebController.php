@@ -439,12 +439,9 @@ class WebController extends Controller
     {
         $page = $this->autoridadesPage();
         $cargos = collect($page['cargos'])->keyBy('id');
-        $rector = $cargos['rectorado']['actual'];
-        $academico = $cargos['vicerrectorado-academico']['actual'];
-        $investigacion = $cargos['vicerrectorado-investigacion']['actual'];
 
         $galeria = [
-            'intro' => 'Retratos de quienes conducen la Universidad Privada de Trujillo.',
+            'intro' => 'Retratos de quienes conducen la Universidad Privada de Trujillo y de quienes ocuparon esos cargos.',
             'secciones' => [
                 [
                     'id' => 'consejo-directivo',
@@ -454,9 +451,12 @@ class WebController extends Controller
                     'layout' => 'consejo',
                     'destacado' => $this->personaGaleria(
                         $page['presidente'],
-                        'Presidente',
                         $page['presidente']['cargo'],
-                        $page['presidente']['credenciales']
+                        null,
+                        $page['presidente']['credenciales'],
+                        extras: [
+                            'etiqueta' => 'Consejo Directivo',
+                        ]
                     ),
                     'personas' => array_map(
                         fn (array $director) => $this->personaGaleria(
@@ -469,43 +469,36 @@ class WebController extends Controller
                     ),
                 ],
                 [
-                    'id' => 'rectorado',
+                    'id' => 'rectores',
                     'indice' => '02',
-                    'titulo' => 'Rectorado',
-                    'texto' => 'La representación institucional de la universidad.',
-                    'layout' => 'fila',
-                    'personas' => [
-                        $this->personaGaleria($rector, $rector['cargo'], $rector['resumen']),
+                    'titulo' => 'Rectores',
+                    'texto' => 'Quien ejerce el rectorado y quienes lo ocuparon antes.',
+                    'layout' => 'linaje',
+                    'grupos' => [
+                        $this->grupoGaleriaLinaje($cargos['rectorado'], 'Rectorado'),
                     ],
                 ],
                 [
                     'id' => 'vicerrectores',
                     'indice' => '03',
                     'titulo' => 'Vicerrectores',
-                    'texto' => 'Vicerrectorado Académico y Vicerrectorado de Investigación.',
-                    'layout' => 'par',
-                    'personas' => [
-                        $this->personaGaleria($academico, $academico['cargo'], $academico['resumen']),
-                        $this->personaGaleria($investigacion, $investigacion['cargo'], $investigacion['resumen']),
+                    'texto' => 'Vicerrectorado Académico y Vicerrectorado de Investigación, con su historial.',
+                    'layout' => 'linaje',
+                    'grupos' => [
+                        $this->grupoGaleriaLinaje($cargos['vicerrectorado-academico'], 'Vicerrectorado Académico'),
+                        $this->grupoGaleriaLinaje($cargos['vicerrectorado-investigacion'], 'Vicerrectorado de Investigación'),
                     ],
                 ],
                 [
                     'id' => 'decanos',
                     'indice' => '04',
                     'titulo' => 'Decanos',
-                    'texto' => 'Quienes conducen cada facultad.',
-                    'layout' => 'trio',
-                    'personas' => array_map(function (array $facultad) {
-                        $actual = $facultad['actual'];
-
-                        return $this->personaGaleria(
-                            $actual,
-                            $actual['cargo'],
-                            $actual['resumen'],
-                            [],
-                            $facultad['nombre']
-                        );
-                    }, $page['decanatos']['facultades']),
+                    'texto' => 'Decanos en ejercicio y antecesores de cada facultad.',
+                    'layout' => 'linaje',
+                    'grupos' => array_map(
+                        fn (array $facultad) => $this->grupoGaleriaLinaje($facultad, $facultad['nombre'], $facultad['nombre']),
+                        $page['decanatos']['facultades']
+                    ),
                 ],
             ],
         ];
@@ -945,14 +938,50 @@ class WebController extends Controller
         ];
     }
 
-    private function personaGaleria(array $origen, string $rol, ?string $detalle = null, array $credenciales = [], ?string $facultad = null): array
+    private function grupoGaleriaLinaje(array $cargo, string $titulo, ?string $facultad = null): array
+    {
+        $actual = $cargo['actual'];
+
+        return [
+            'titulo' => $titulo,
+            'actual' => $this->personaGaleria(
+                $actual,
+                $actual['cargo'],
+                $actual['resumen'] ?? null,
+                [],
+                $facultad,
+                [
+                    'etiqueta' => 'En el cargo',
+                    'periodo' => $actual['periodo'] ?? 'En ejercicio',
+                ]
+            ),
+            'antecesores' => array_map(
+                fn (array $antecesor) => $this->personaGaleria(
+                    $antecesor,
+                    $actual['cargo'],
+                    $antecesor['resumen'] ?? null,
+                    [],
+                    $facultad,
+                    [
+                        'etiqueta' => 'Antecesor',
+                        'periodo' => $antecesor['periodo'] ?? null,
+                    ]
+                ),
+                $cargo['antecesores'] ?? []
+            ),
+        ];
+    }
+
+    private function personaGaleria(array $origen, string $rol, ?string $detalle = null, array $credenciales = [], ?string $facultad = null, array $extras = []): array
     {
         return [
             'nombre' => $origen['nombre'],
             'foto' => $origen['foto'] ?? null,
             'medalla' => (bool) ($origen['medalla'] ?? false),
             'iniciales' => $origen['iniciales'] ?? $this->autoridadIniciales($origen['nombre']),
+            'etiqueta' => $extras['etiqueta'] ?? null,
             'rol' => $rol,
+            'periodo' => $extras['periodo'] ?? ($origen['periodo'] ?? null),
             'detalle' => $detalle,
             'credenciales' => array_values(array_filter($credenciales)),
             'facultad' => $facultad,

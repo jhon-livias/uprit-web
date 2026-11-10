@@ -36,9 +36,26 @@
                         </div>
                     </div>
                 @else
-                    <div class="galeria-muro galeria-muro--{{ $seccion['layout'] }}">
-                        @foreach($seccion['personas'] as $persona)
-                            @include('web.partials.autoridades.retrato', ['persona' => $persona])
+                    <div class="galeria-linajes">
+                        @foreach($seccion['grupos'] as $grupo)
+                            <div class="galeria-linaje">
+                                @if(count($seccion['grupos']) > 1)
+                                    <h3>{{ $grupo['titulo'] }}</h3>
+                                @endif
+                                <div class="galeria-linaje__actual">
+                                    @include('web.partials.autoridades.retrato', ['persona' => $grupo['actual'], 'modificador' => 'galeria-autoridad--actual'])
+                                </div>
+                                @if(!empty($grupo['antecesores']))
+                                    <div class="galeria-antecesores">
+                                        <p>Antecesores</p>
+                                        <div class="galeria-antecesores__grid">
+                                            @foreach($grupo['antecesores'] as $persona)
+                                                @include('web.partials.autoridades.retrato', ['persona' => $persona, 'modificador' => 'galeria-autoridad--antecesor'])
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
                         @endforeach
                     </div>
                 @endif
@@ -54,6 +71,7 @@
         <p class="galeria-dialog__kicker" data-galeria-dialog-kicker></p>
         <h2 id="galeria-dialog-nombre" data-galeria-dialog-nombre></h2>
         <p class="galeria-dialog__rol" data-galeria-dialog-rol></p>
+        <p class="galeria-dialog__periodo" data-galeria-dialog-periodo hidden></p>
         <p class="galeria-dialog__detalle" data-galeria-dialog-detalle hidden></p>
         <ul class="galeria-dialog__credenciales" data-galeria-dialog-credenciales hidden></ul>
     </div>
@@ -72,6 +90,7 @@
     var kicker = dialog.querySelector('[data-galeria-dialog-kicker]');
     var nombre = dialog.querySelector('[data-galeria-dialog-nombre]');
     var rol = dialog.querySelector('[data-galeria-dialog-rol]');
+    var periodo = dialog.querySelector('[data-galeria-dialog-periodo]');
     var detalle = dialog.querySelector('[data-galeria-dialog-detalle]');
     var credenciales = dialog.querySelector('[data-galeria-dialog-credenciales]');
     var links = document.querySelectorAll('[data-galeria-nav]');
@@ -83,6 +102,9 @@
         var lista = (boton.getAttribute('data-credenciales') || '').split('|').filter(Boolean);
         var texto = boton.getAttribute('data-detalle') || '';
         var facultad = boton.getAttribute('data-facultad') || '';
+        var etiqueta = boton.getAttribute('data-etiqueta') || '';
+        var cargo = boton.getAttribute('data-rol') || '';
+        var fechas = boton.getAttribute('data-periodo') || '';
 
         foto.replaceChildren();
         if (src) {
@@ -97,10 +119,12 @@
             iniciales.textContent = boton.getAttribute('data-iniciales') || '';
             foto.appendChild(iniciales);
         }
-        kicker.textContent = facultad || boton.getAttribute('data-rol') || '';
+        kicker.textContent = [etiqueta, facultad].filter(Boolean).join(' · ') || cargo;
         nombre.textContent = boton.getAttribute('data-nombre') || '';
-        rol.textContent = facultad ? (boton.getAttribute('data-rol') || '') : '';
-        rol.hidden = !facultad;
+        rol.textContent = cargo;
+        rol.hidden = cargo === '' || cargo === kicker.textContent;
+        periodo.textContent = fechas;
+        periodo.hidden = fechas === '';
         detalle.textContent = texto;
         detalle.hidden = texto === '';
         credenciales.innerHTML = '';

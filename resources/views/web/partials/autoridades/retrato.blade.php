@@ -3,8 +3,10 @@
     class="galeria-autoridad {{ $modificador ?? '' }}"
     data-galeria-persona
     data-nombre="{{ $persona['nombre'] }}"
+    data-etiqueta="{{ $persona['etiqueta'] }}"
     data-rol="{{ $persona['rol'] }}"
     data-facultad="{{ $persona['facultad'] }}"
+    data-periodo="{{ $persona['periodo'] }}"
     data-detalle="{{ $persona['detalle'] }}"
     data-credenciales="{{ implode('|', $persona['credenciales']) }}"
     data-foto="{{ !empty($persona['foto']) ? asset($persona['foto']) : '' }}"
@@ -22,10 +24,13 @@
         @endif
     </span>
     <span class="galeria-autoridad__meta">
-        <span class="galeria-autoridad__kicker">{{ $persona['facultad'] ?: $persona['rol'] }}</span>
+        <span class="galeria-autoridad__kicker">{{ $persona['etiqueta'] ?: ($persona['facultad'] ?: $persona['rol']) }}</span>
         <span class="galeria-autoridad__nombre">{{ $persona['nombre'] }}</span>
-        @if(!empty($persona['facultad']))
+        @if(!empty($persona['rol']) && ($persona['etiqueta'] || $persona['facultad']))
             <span class="galeria-autoridad__rol">{{ $persona['rol'] }}</span>
+        @endif
+        @if(!empty($persona['periodo']))
+            <span class="galeria-autoridad__periodo">{{ $persona['periodo'] }}</span>
         @endif
     </span>
 </button>

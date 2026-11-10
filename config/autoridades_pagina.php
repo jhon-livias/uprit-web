@@ -12,7 +12,7 @@ return [
     'cargos' => [
         [
             'id' => 'rectorado',
-            'tab' => 'Rectorado',
+            'tab' => 'Rectores',
             'match' => 'Sibina',
             'cargo' => 'Rector',
             'periodo' => 'En ejercicio',
