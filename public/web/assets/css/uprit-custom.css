@@ -12213,6 +12213,7 @@ body.home-bulletin-open { overflow: hidden; }
 }
 
 .autoridades-director .autoridades-chips li {
+    margin: 0;
     padding: 0;
     border-radius: 0;
     background: transparent;
