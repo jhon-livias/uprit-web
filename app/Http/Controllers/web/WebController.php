@@ -459,7 +459,6 @@ class WebController extends Controller
         $records = Autoridad::query()->where('estado', 1)->orderBy('orden')->get();
 
         $galeria = [
-            'intro' => 'Retratos de las autoridades de la Universidad Privada de Trujillo.',
             'secciones' => [
                 [
                     'id' => 'consejo-directivo',

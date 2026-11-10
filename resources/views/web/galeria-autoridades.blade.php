@@ -6,7 +6,7 @@
 <section class="galeria-autoridades">
     <div class="container">
         <div class="galeria-autoridades__head">
-            <p class="galeria-autoridades__intro">{{ $galeria['intro'] }}</p>
+            <a class="galeria-autoridades__ficha" href="{{ route('autoridades') }}">Ver fichas y cargos</a>
         </div>
 
         <nav class="galeria-nav" aria-label="Secciones de la galería">

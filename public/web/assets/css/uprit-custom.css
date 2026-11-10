@@ -11961,16 +11961,20 @@ body.home-bulletin-open { overflow: hidden; }
 .galeria-autoridades__head {
     display: flex;
     align-items: flex-end;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 24px;
-    max-width: 920px;
 }
 
-.galeria-autoridades__intro {
-    margin: 0;
-    color: #5c4a4e;
-    font-size: 20px;
-    line-height: 1.5;
+.galeria-autoridades__ficha {
+    flex: none;
+    color: #91001E;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.galeria-autoridades__ficha:hover {
+    text-decoration: underline;
 }
 
 .galeria-nav {
@@ -12410,11 +12414,9 @@ body.home-bulletin-open { overflow: hidden; }
     }
 
     .galeria-autoridades__head {
-        flex-direction: column;
-        align-items: flex-start;
+        justify-content: flex-start;
     }
 
-    .galeria-autoridades__intro,
     .galeria-bloque__head h2,
     .galeria-dialog h2 {
         font-size: 26px;
