@@ -58,6 +58,7 @@ return [
                 'porque',
                 'modelo-educativo',
                 'autoridades',
+                'galeria-autoridades',
                 'red-nexo',
                 'a2iprograma',
                 'defensoria',
@@ -217,8 +218,8 @@ return [
         ],
         'galeria-autoridades' => [
             'title' => 'Galería de autoridades',
-            'menu_label' => 'Galería de autoridades',
-            'parent' => ['label' => 'Conócenos'],
+            'menu_label' => 'Galería Autoridades',
+            'parent' => ['label' => 'Quiénes Somos'],
         ],
         'red-nexo' => [
             'title' => 'Nuestra Red Nexo Uprit',
