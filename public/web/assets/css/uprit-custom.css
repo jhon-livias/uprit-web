@@ -12693,9 +12693,9 @@ body.home-bulletin-open { overflow: hidden; }
 }
 
 .galeria-muro--columna .galeria-autoridad__foto img.is-medalla {
-    padding: 10px;
-    object-fit: contain;
-    object-position: center top;
+    padding: 0;
+    object-fit: cover;
+    object-position: center 12%;
 }
 
 .galeria-muro--columna .galeria-autoridad__fecha {
