@@ -7,6 +7,7 @@ return [
         'match' => 'Juan Mauricio Noriega',
         'cargo' => 'Presidente de la Asamblea General de Asociados y del Consejo Directivo de la UPRIT',
         'credenciales' => ['MBA', 'Catedrático'],
+        'inicio' => null,
     ],
 
     'cargos' => [
@@ -15,6 +16,7 @@ return [
             'tab' => 'Rectores',
             'match' => 'Sibina',
             'cargo' => 'Rector',
+            'inicio' => '2025',
             'periodo' => 'En ejercicio',
             'resumen' => 'Responsable de la dirección académica y de la representación institucional de la universidad.',
             'intro' => 'Quien ejerce el rectorado y quienes lo ocuparon antes.',
@@ -36,6 +38,7 @@ return [
             'tab' => 'Vr. Académico',
             'match' => 'Olenka',
             'cargo' => 'Vicerrectora Académica',
+            'inicio' => null,
             'periodo' => 'En ejercicio',
             'resumen' => 'Conduce la gestión académica, la calidad formativa y el acompañamiento de las facultades.',
             'intro' => 'Vicerrectorado Académico y su historial.',
@@ -57,6 +60,7 @@ return [
             'tab' => 'Vr. Investigación',
             'match' => 'Marco Antonio Sevilla',
             'cargo' => 'Vicerrector de Investigación',
+            'inicio' => null,
             'periodo' => 'En ejercicio',
             'resumen' => 'Impulsa la investigación, la producción científica y la vinculación con el entorno.',
             'intro' => 'Vicerrectorado de Investigación y su historial.',
@@ -89,6 +93,7 @@ return [
                 'nombre' => 'Derecho y Ciencias Sociales',
                 'match' => 'Alexander Máximo',
                 'cargo' => 'Decano',
+                'inicio' => null,
                 'periodo' => 'En ejercicio',
                 'resumen' => 'Conduce la facultad y representa a su comunidad académica.',
                 'antecesores' => [
@@ -109,6 +114,7 @@ return [
                 'nombre' => 'Ciencias Empresariales',
                 'match' => 'Aponte',
                 'cargo' => 'Decano',
+                'inicio' => null,
                 'periodo' => 'En ejercicio',
                 'resumen' => 'Conduce la facultad y representa a su comunidad académica.',
                 'antecesores' => [
@@ -129,6 +135,7 @@ return [
                 'nombre' => 'Ingeniería y Arquitectura',
                 'match' => 'Acosta',
                 'cargo' => 'Decano',
+                'inicio' => null,
                 'periodo' => 'En ejercicio',
                 'resumen' => 'Conduce la facultad y representa a su comunidad académica.',
                 'antecesores' => [

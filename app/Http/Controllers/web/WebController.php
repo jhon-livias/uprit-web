@@ -459,7 +459,7 @@ class WebController extends Controller
                                     $page['presidente']['cargo'],
                                     $page['presidente']['credenciales'],
                                     extras: [
-                                        'periodo' => 'En ejercicio',
+                                        'periodo' => $this->periodoVigente($page['presidente']),
                                     ]
                                 ),
                             ],
@@ -926,6 +926,8 @@ class WebController extends Controller
                 'iniciales' => $this->autoridadIniciales($presidente->nombre ?? 'Juan Mauricio'),
                 'cargo' => $presidenteConfig['cargo'],
                 'credenciales' => $presidenteConfig['credenciales'],
+                'inicio' => $presidenteConfig['inicio'] ?? null,
+                'periodo' => $this->periodoVigente($presidenteConfig),
             ],
             'directores' => $directores,
             'cargos' => $cargos,
@@ -946,7 +948,7 @@ class WebController extends Controller
                 $actual['resumen'] ?? null,
                 [],
                 $facultad,
-                ['periodo' => $actual['periodo'] ?? 'En ejercicio']
+                ['periodo' => $actual['periodo'] ?? $this->periodoVigente($actual)]
             ),
         ];
 
@@ -995,7 +997,7 @@ class WebController extends Controller
             'medalla' => is_string($foto) && str_contains($foto, 'medalla'),
             'iniciales' => $this->autoridadIniciales($nombre),
             'cargo' => $cargo['cargo'],
-            'periodo' => $cargo['periodo'],
+            'periodo' => $this->periodoVigente($cargo),
             'resumen' => $cargo['resumen'],
         ];
     }
@@ -1033,6 +1035,17 @@ class WebController extends Controller
         return $records->first(function (Autoridad $autoridad) use ($needle) {
             return str_contains(mb_strtolower($autoridad->nombre), $needle);
         });
+    }
+
+    private function periodoVigente(array $origen): string
+    {
+        $inicio = $origen['inicio'] ?? null;
+
+        if (is_string($inicio) && $inicio !== '') {
+            return $inicio . ' — presente';
+        }
+
+        return 'presente';
     }
 
     private function autoridadIniciales(string $nombre): string
