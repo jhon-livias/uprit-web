@@ -13,6 +13,7 @@ $bios = [
     'rodriguez-alexander' => 'Abogado, Magíster en Derecho del Trabajo y la Seguridad Social y egresado del doctorado en la Universidad Nacional de Trujillo. Cuenta con más de 25 años de ejercicio profesional en la asesoría empresarial y experiencia como docente universitario de pregrado y posgrado en reconocidas universidades de la ciudad de Trujillo.',
     'zavaleta-dionicio' => 'Profesional de la carrera de Contabilidad, con experiencia en diferentes empresas importantes. Destaca su labor como auditor en su propia empresa, afiliada a la Contraloría General de la República y a la SBS, y como perito contable vigente. Cuenta con experiencia como docente universitario y 15 años en la UPRIT dictando cursos de especialidad. Se caracteriza por una actitud positiva, capacidad de liderazgo, fomento del trabajo en equipo y cumplimiento de objetivos.',
     'aponte' => 'Doctor en Contabilidad y Finanzas por la Universidad Nacional de Trujillo, Contador Público y Magíster en Ciencias Económicas con mención en Gestión Empresarial. Cuenta con 43 años de experiencia profesional en administración, finanzas, logística y docencia universitaria. Es funcionario del área de Finanzas en EsSalud – Seguro Social del Perú, fue miembro del Consejo Regional del Instituto Peruano del Deporte y es coordinador académico de la carrera profesional de Contabilidad y Finanzas de la Universidad Privada de Trujillo. Realiza estudios de posdoctorado en Ciencias Administrativas y Alta Dirección a través de la Inteligencia Artificial. A lo largo de su carrera ha recibido múltiples reconocimientos, entre ellos felicitaciones por su aporte profesional y por el trabajo realizado durante el COVID-19 en la Red Asistencial La Libertad, y por los óptimos resultados de la evaluación de estudiantes como docente en la Universidad Privada de Trujillo.',
+    'fuentes' => 'Ingeniero Civil, Magíster y Doctor en Gestión Pública y Gobernabilidad, con más de 25 años de experiencia en la supervisión, ejecución y gestión de obras civiles. Ha sido Decano de la Facultad de Ingeniería y Arquitectura de la Universidad Privada de Trujillo (UPRIT) y coordinador de la carrera de Ingeniería Civil en la misma institución. Ha dictado cursos en programas de maestría en Transportes y Conservación Vial en la UPAO. Profesionalmente, ha trabajado en proyectos de agua potable, infraestructura vial, edificaciones y saneamiento para entidades como el Banco de la Nación, Provías Descentralizado, PNSR y SENCICO. Cuenta con especializaciones en supervisión, pavimentos, calidad, arbitraje y contrataciones públicas, y maneja herramientas como MS Project, SAP, AutoCAD, S10 y plataformas académicas.',
 ];
 
 return [
@@ -104,6 +105,7 @@ return [
                     [
                         'nombre' => 'Dr. Rolando Fuentes Llave',
                         'match' => 'Fuentes Llave',
+                        'detalle' => $bios['fuentes'],
                     ],
                     [
                         'nombre' => 'Dr. Enrique Manuel Durand Bazán',
