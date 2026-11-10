@@ -10,6 +10,7 @@ $bios = [
     'durand' => 'Doctor en Ciencias, con trayectoria académica y profesional en el ámbito de la Ingeniería y la educación superior universitaria. Docente ordinario principal de UPRIT y autor de investigaciones científicas sobre calidad y gestión de programas universitarios.',
     'espinoza' => 'Doctora en Educación y Magíster en Docencia y Gestión Educativa por la Universidad César Vallejo, Economista por la Universidad Nacional de Trujillo. Investigadora RENACYT, Nivel VI, con experiencia en docencia universitaria, gestión educativa, asesoría de tesis e investigación científica, y publicaciones académicas nacionales e internacionales.',
     'sevilla' => 'Doctor en Administración y Maestro en Finanzas por la Universidad Nacional de Trujillo, Contador Público Colegiado y posdoctorado en Educación e Investigación por la Universidad de Oriente, México. Cuenta con amplia experiencia en gestión pública, dirección universitaria, docencia e investigación científica. Investigador RENACYT Nivel VI, con publicaciones académicas y trayectoria en gestión de instituciones públicas y universitarias.',
+    'rodriguez-alexander' => 'Abogado, Magíster en Derecho del Trabajo y la Seguridad Social y egresado del doctorado en la Universidad Nacional de Trujillo. Cuenta con más de 25 años de ejercicio profesional en la asesoría empresarial y experiencia como docente universitario de pregrado y posgrado en reconocidas universidades de la ciudad de Trujillo.',
 ];
 
 return [
@@ -133,8 +134,9 @@ return [
                 'nombre' => 'Derecho y Ciencias Sociales',
                 'personas' => [
                     [
-                        'nombre' => 'Mg. Rodríguez García Alexander Máximo',
+                        'nombre' => 'Mg. Alexander Máximo Rodríguez García',
                         'match' => 'Alexander Máximo',
+                        'detalle' => $bios['rodriguez-alexander'],
                     ],
                     [
                         'nombre' => 'Dr. Marco Antonio Moreno Gálvez',
