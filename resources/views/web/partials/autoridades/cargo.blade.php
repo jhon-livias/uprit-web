@@ -21,7 +21,6 @@
     <div class="autoridades-historial">
         <div class="autoridades-historial__head">
             <h3>Antecesores</h3>
-            <p>Los nombres, periodos y reseñas con la marca «Ejemplo» son una muestra visual. Se reemplazan con el historial real.</p>
         </div>
         <ol class="autoridades-timeline">
             @foreach($antecesores as $antecesor)
