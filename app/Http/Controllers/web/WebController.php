@@ -430,14 +430,31 @@ class WebController extends Controller
 
     public function autoridades()
     {
-        $autoridades = $this->autoridadesPage();
+        $ultimasnoticias = Noticia::orderBy('fecha', 'desc')->get();
 
-        return view('web.autoridades', compact('autoridades'));
+        $directivo = Autoridad::where('estado', 1)
+            ->where('tipo', 'Consejo Directivo')
+            ->orderBy('orden')
+            ->get()
+            ->toArray();
+
+        $alta_direccion = Autoridad::where('estado', 1)
+            ->where('tipo', 'Alta Dirección')
+            ->orderBy('orden')
+            ->get()
+            ->toArray();
+
+        $gobierno_interno = Autoridad::where('estado', 1)
+            ->where('tipo', 'Gobierno Interno')
+            ->orderBy('orden')
+            ->get()
+            ->toArray();
+
+        return view('web.autoridades', compact('ultimasnoticias', 'directivo', 'alta_direccion', 'gobierno_interno'));
     }
 
     public function galeriaAutoridades()
     {
-        $page = $this->autoridadesPage();
         $lista = config('autoridades_pagina.galeria');
         $records = Autoridad::query()->where('estado', 1)->orderBy('orden')->get();
 
@@ -451,7 +468,12 @@ class WebController extends Controller
                     'texto' => 'Presidencia de la Asamblea General de Asociados y del Consejo Directivo.',
                     'layout' => 'muro',
                     'grupos' => [
-                        $this->grupoGaleriaLista($lista['consejo'], 'Consejo Directivo', $page['presidente']['cargo'], $records),
+                        $this->grupoGaleriaLista(
+                            $lista['consejo'],
+                            'Consejo Directivo',
+                            'Presidente de la Asamblea General de Asociados y del Consejo Directivo de la UPRIT',
+                            $records
+                        ),
                     ],
                 ],
                 [
@@ -875,73 +897,6 @@ class WebController extends Controller
         return response()->view('web.sitemap', compact('urls'))->header('Content-Type', 'text/xml');
     }
 
-    private function autoridadesPage(): array
-    {
-        $config = config('autoridades_pagina');
-        $records = Autoridad::query()->where('estado', 1)->orderBy('orden')->get();
-        $directivo = $records->where('tipo', 'Consejo Directivo')->values();
-        $presidenteConfig = $config['presidente'];
-        $presidente = $this->autoridadPorNombre($directivo, $presidenteConfig['match']) ?? $directivo->first();
-
-        $directores = $directivo
-            ->reject(fn (Autoridad $autoridad) => $presidente && $autoridad->id === $presidente->id)
-            ->map(fn (Autoridad $autoridad) => $this->presentarDirector($autoridad))
-            ->values()
-            ->all();
-
-        $cargos = collect($config['cargos'])->map(function (array $cargo) use ($records) {
-            $actual = $this->autoridadPorNombre($records, $cargo['match']);
-
-            return [
-                'id' => $cargo['id'],
-                'intro' => $cargo['intro'],
-                'actual' => $this->presentarActual($actual, $cargo),
-                'antecesores' => $this->presentarAntecesores($cargo['antecesores']),
-            ];
-        })->all();
-
-        $decanatos = $config['decanatos'];
-        $facultades = collect($decanatos['facultades'])->map(function (array $facultad) use ($records) {
-            $actual = $this->autoridadPorNombre($records, $facultad['match']);
-
-            return [
-                'id' => $facultad['id'],
-                'nombre' => $facultad['nombre'],
-                'actual' => $this->presentarActual($actual, $facultad),
-                'antecesores' => $this->presentarAntecesores($facultad['antecesores']),
-            ];
-        })->all();
-
-        $tabs = array_merge(
-            [['id' => 'consejo', 'label' => 'Consejo Directivo']],
-            collect($config['cargos'])->map(fn (array $cargo) => [
-                'id' => $cargo['id'],
-                'label' => $cargo['tab'],
-            ])->all(),
-            [['id' => 'decanatos', 'label' => $decanatos['tab']]]
-        );
-
-        return [
-            'intro' => $config['intro'],
-            'tabs' => $tabs,
-            'presidente' => [
-                'nombre' => $presidente->nombre ?? 'Juan Mauricio Noriega Escobedo',
-                'foto' => $presidente->foto ?? 'web/imagenes/autoridades/juan-mauricio-noriega.jpg',
-                'iniciales' => $this->autoridadIniciales($presidente->nombre ?? 'Juan Mauricio'),
-                'cargo' => $presidenteConfig['cargo'],
-                'credenciales' => $presidenteConfig['credenciales'],
-                'inicio' => $presidenteConfig['inicio'] ?? null,
-                'periodo' => $this->periodoVigente($presidenteConfig),
-            ],
-            'directores' => $directores,
-            'cargos' => $cargos,
-            'decanatos' => [
-                'intro' => $decanatos['intro'],
-                'facultades' => $facultades,
-            ],
-        ];
-    }
-
     private function grupoGaleriaLista(array $personas, string $titulo, string $rol, $records, ?string $facultad = null): array
     {
         return [
@@ -995,49 +950,6 @@ class WebController extends Controller
         ];
     }
 
-    private function presentarActual(?Autoridad $actual, array $cargo): array
-    {
-        $respaldo = $cargo['respaldo'] ?? [];
-        $nombre = $actual->nombre ?? ($respaldo['nombre'] ?? $cargo['cargo']);
-        $foto = $actual->foto ?? ($respaldo['foto'] ?? null);
-
-        return [
-            'nombre' => $nombre,
-            'foto' => $foto,
-            'medalla' => is_string($foto) && str_contains($foto, 'medalla'),
-            'iniciales' => $this->autoridadIniciales($nombre),
-            'cargo' => $cargo['cargo'],
-            'periodo' => $this->periodoVigente($cargo),
-            'resumen' => $cargo['resumen'],
-        ];
-    }
-
-    private function presentarDirector(Autoridad $autoridad): array
-    {
-        $partes = array_values(array_filter(array_map(
-            fn (string $parte) => trim($parte, " \t\n\r\0\x0B."),
-            explode(',', $autoridad->cargo)
-        )));
-
-        return [
-            'nombre' => $autoridad->nombre,
-            'foto' => $autoridad->foto,
-            'iniciales' => $this->autoridadIniciales($autoridad->nombre),
-            'rol' => $partes[0] ?? 'Director',
-            'credenciales' => array_slice($partes, 1),
-        ];
-    }
-
-    private function presentarAntecesores(array $antecesores): array
-    {
-        return array_map(function (array $antecesor) {
-            $antecesor['ejemplo'] = true;
-            $antecesor['iniciales'] = $this->autoridadIniciales($antecesor['nombre']);
-
-            return $antecesor;
-        }, $antecesores);
-    }
-
     private function autoridadPorNombre($records, string $needle): ?Autoridad
     {
         $needle = mb_strtolower($needle);
@@ -1045,17 +957,6 @@ class WebController extends Controller
         return $records->first(function (Autoridad $autoridad) use ($needle) {
             return str_contains(mb_strtolower($autoridad->nombre), $needle);
         });
-    }
-
-    private function periodoVigente(array $origen): string
-    {
-        $inicio = $origen['inicio'] ?? null;
-
-        if (is_string($inicio) && $inicio !== '') {
-            return $inicio . ' — presente';
-        }
-
-        return 'presente';
     }
 
     private function autoridadIniciales(string $nombre): string
