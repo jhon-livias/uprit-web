@@ -447,7 +447,7 @@ class WebController extends Controller
                     'id' => 'consejo-directivo',
                     'indice' => '01',
                     'titulo' => 'Consejo Directivo',
-                    'texto' => 'Presidencia y directores de la máxima instancia de dirección ejecutiva.',
+                    'texto' => 'Presidencia de la Asamblea General de Asociados y del Consejo Directivo.',
                     'layout' => 'consejo',
                     'destacado' => $this->personaGaleria(
                         $page['presidente'],
@@ -458,15 +458,7 @@ class WebController extends Controller
                             'etiqueta' => 'Consejo Directivo',
                         ]
                     ),
-                    'personas' => array_map(
-                        fn (array $director) => $this->personaGaleria(
-                            $director,
-                            $director['rol'],
-                            null,
-                            $director['credenciales']
-                        ),
-                        $page['directores']
-                    ),
+                    'personas' => [],
                 ],
                 [
                     'id' => 'rectores',

@@ -27,13 +27,15 @@
                 </header>
 
                 @if($seccion['layout'] === 'consejo')
-                    <div class="galeria-consejo">
+                    <div class="galeria-consejo {{ empty($seccion['personas']) ? 'galeria-consejo--solo' : '' }}">
                         @include('web.partials.autoridades.retrato', ['persona' => $seccion['destacado'], 'modificador' => 'galeria-autoridad--hero'])
-                        <div class="galeria-consejo__grid">
-                            @foreach($seccion['personas'] as $persona)
-                                @include('web.partials.autoridades.retrato', ['persona' => $persona])
-                            @endforeach
-                        </div>
+                        @if(!empty($seccion['personas']))
+                            <div class="galeria-consejo__grid">
+                                @foreach($seccion['personas'] as $persona)
+                                    @include('web.partials.autoridades.retrato', ['persona' => $persona])
+                                @endforeach
+                            </div>
+                        @endif
                     </div>
                 @else
                     <div class="galeria-muros">

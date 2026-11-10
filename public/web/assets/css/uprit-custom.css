@@ -12488,6 +12488,10 @@ body.home-bulletin-open { overflow: hidden; }
     align-items: stretch;
 }
 
+.galeria-consejo--solo {
+    grid-template-columns: minmax(0, 420px);
+}
+
 .galeria-consejo__grid,
 .galeria-muro {
     display: grid;
