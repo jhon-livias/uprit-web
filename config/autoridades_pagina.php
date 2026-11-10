@@ -212,6 +212,10 @@ return [
                 'nombre' => 'Ingeniería y Arquitectura',
                 'personas' => [
                     [
+                        'nombre' => 'Dr. Luis Alberto Acosta Sánchez',
+                        'match' => 'Acosta',
+                    ],
+                    [
                         'nombre' => 'Dr. Rolando Fuentes Llave',
                         'match' => 'Fuentes Llave',
                     ],
