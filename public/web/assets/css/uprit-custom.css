@@ -12506,8 +12506,8 @@ body.home-bulletin-open { overflow: hidden; }
 .galeria-muro--columna {
     grid-template-columns: minmax(0, 1fr);
     gap: 0;
-    overflow: hidden;
-    border-radius: 4px;
+    overflow: visible;
+    border-radius: 0;
 }
 
 .galeria-muro--fila {
@@ -12516,11 +12516,15 @@ body.home-bulletin-open { overflow: hidden; }
 
 .galeria-muros {
     display: grid;
-    gap: 40px;
+    gap: 36px;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
 }
 
 .galeria-muro-grupo h3 {
-    margin: 0 0 12px;
+    width: min(1140px, calc(100% - 32px));
+    margin: 0 auto 14px;
+    padding: 0 12px;
     color: #91001E;
     font-size: 22px;
     font-weight: 700;
@@ -12678,11 +12682,14 @@ body.home-bulletin-open { overflow: hidden; }
 .galeria-muro--columna .galeria-autoridad,
 .galeria-muro--columna .galeria-autoridad:hover,
 .galeria-muro--columna .galeria-autoridad:focus-visible {
+    position: relative;
     flex-direction: row;
     align-items: center;
-    gap: 36px;
+    justify-content: center;
+    gap: 28px;
+    width: 100%;
     min-height: 0;
-    padding: 36px 40px;
+    padding: 36px 24px 48px;
     overflow: visible;
     border: 0;
     border-radius: 0;
@@ -12690,12 +12697,25 @@ body.home-bulletin-open { overflow: hidden; }
     transform: none;
 }
 
+.galeria-muro--columna .galeria-autoridad:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -16px;
+    z-index: 2;
+    width: 32px;
+    height: 16px;
+    transform: translateX(-50%);
+    background: inherit;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
 .galeria-muro--columna .galeria-autoridad:nth-child(odd) {
-    background: #f4ecee;
+    background: #f4f1f2;
 }
 
 .galeria-muro--columna .galeria-autoridad:nth-child(even) {
-    background: #ebe2e5;
+    background: #e7e3e4;
 }
 
 .galeria-muro--columna .galeria-autoridad:hover,
@@ -12705,12 +12725,12 @@ body.home-bulletin-open { overflow: hidden; }
 
 .galeria-muro--columna .galeria-autoridad__foto {
     flex: none;
-    width: 148px;
-    height: 148px;
+    width: 118px;
+    height: 118px;
     min-height: 0;
     aspect-ratio: auto;
     border-radius: 50%;
-    background: #e6d5d9;
+    background: #ddd4d6;
 }
 
 .galeria-muro--columna .galeria-autoridad__foto img {
@@ -12744,9 +12764,10 @@ body.home-bulletin-open { overflow: hidden; }
 }
 
 .galeria-muro--columna .galeria-autoridad__meta {
-    flex: 1;
+    flex: 0 1 640px;
     justify-content: center;
     gap: 0;
+    width: min(640px, 100%);
     min-width: 0;
     padding: 0;
 }
@@ -12754,7 +12775,7 @@ body.home-bulletin-open { overflow: hidden; }
 .galeria-muro--columna .galeria-autoridad__nombre {
     order: 1;
     color: #91001E;
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
     line-height: 1.2;
 }
@@ -12762,31 +12783,29 @@ body.home-bulletin-open { overflow: hidden; }
 .galeria-muro--columna .galeria-autoridad__periodo {
     display: block;
     order: 2;
-    align-self: stretch;
-    width: 100%;
-    max-width: 42ch;
-    margin: 10px 0 0;
-    padding: 0 0 10px;
+    width: auto;
+    max-width: none;
+    margin: 2px 0 0;
+    padding: 0;
     border: 0;
-    border-bottom: 1px solid #d7c6ca;
     border-radius: 0;
     background: transparent;
-    color: #8a7378;
-    font-size: 16px;
-    font-weight: 500;
+    color: #6d6164;
+    font-size: 15px;
+    font-weight: 400;
 }
 
 .galeria-muro--columna .galeria-autoridad__reseña {
     display: -webkit-box;
     order: 3;
-    margin-top: 12px;
+    margin-top: 10px;
     overflow: hidden;
-    color: #4d3b3f;
-    font-size: 16px;
+    color: #3e3437;
+    font-size: 15px;
     font-weight: 400;
     line-height: 1.55;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 5;
 }
 
 .galeria-dialog {
@@ -12943,17 +12962,21 @@ body.home-bulletin-open { overflow: hidden; }
     .galeria-muro--columna .galeria-autoridad,
     .galeria-muro--columna .galeria-autoridad:hover,
     .galeria-muro--columna .galeria-autoridad:focus-visible {
-        gap: 18px;
-        padding: 24px 18px;
+        gap: 16px;
+        padding: 24px 16px 36px;
     }
 
     .galeria-muro--columna .galeria-autoridad__foto {
-        width: 96px;
-        height: 96px;
+        width: 88px;
+        height: 88px;
     }
 
     .galeria-muro--columna .galeria-autoridad__nombre {
         font-size: 20px;
+    }
+
+    .galeria-muro--columna .galeria-autoridad__meta {
+        flex-basis: auto;
     }
 
     .galeria-muro--columna .galeria-autoridad__reseña {
