@@ -905,7 +905,7 @@ class WebController extends Controller
                 fn (array $item) => $this->personaGaleria(
                     $this->origenGaleria($item, $records),
                     $rol,
-                    null,
+                    $item['detalle'] ?? null,
                     [],
                     $facultad,
                     ['periodo' => $item['periodo'] ?? null]
