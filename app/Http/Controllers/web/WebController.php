@@ -438,10 +438,11 @@ class WebController extends Controller
     public function galeriaAutoridades()
     {
         $page = $this->autoridadesPage();
-        $cargos = collect($page['cargos'])->keyBy('id');
+        $lista = config('autoridades_pagina.galeria');
+        $records = Autoridad::query()->where('estado', 1)->orderBy('orden')->get();
 
         $galeria = [
-            'intro' => 'Retratos de quienes conducen la Universidad Privada de Trujillo, ordenados por periodo.',
+            'intro' => 'Retratos de las autoridades de la Universidad Privada de Trujillo.',
             'secciones' => [
                 [
                     'id' => 'consejo-directivo',
@@ -456,10 +457,10 @@ class WebController extends Controller
                                 $this->personaGaleria(
                                     $page['presidente'],
                                     $page['presidente']['cargo'],
-                                    $page['presidente']['cargo'],
-                                    $page['presidente']['credenciales'],
+                                    null,
+                                    [],
                                     extras: [
-                                        'periodo' => $this->periodoVigente($page['presidente']),
+                                        'periodo' => null,
                                     ]
                                 ),
                             ],
@@ -470,33 +471,49 @@ class WebController extends Controller
                     'id' => 'rectores',
                     'indice' => '02',
                     'titulo' => 'Rectores',
-                    'texto' => 'El rectorado, leído de la gestión actual hacia atrás.',
+                    'texto' => 'Quienes han ocupado el rectorado de la UPRIT.',
                     'layout' => 'muro',
                     'grupos' => [
-                        $this->grupoGaleriaMuro($cargos['rectorado'], 'Rectores'),
+                        $this->grupoGaleriaLista($lista['rectores'], 'Rectores', 'Rector', $records),
                     ],
                 ],
                 [
                     'id' => 'vicerrectores',
                     'indice' => '03',
                     'titulo' => 'Vicerrectores',
-                    'texto' => 'Académico e investigación, cada retrato con su periodo.',
+                    'texto' => 'Vicerrectorado Académico y Vicerrectorado de Investigación.',
                     'layout' => 'muro',
                     'grupos' => [
-                        $this->grupoGaleriaMuro($cargos['vicerrectorado-academico'], 'Vicerrectorado Académico'),
-                        $this->grupoGaleriaMuro($cargos['vicerrectorado-investigacion'], 'Vicerrectorado de Investigación'),
+                        $this->grupoGaleriaLista($lista['vicerrectorado-academico'], 'Vicerrectorado Académico', 'Vicerrector Académico', $records),
+                        $this->grupoGaleriaLista($lista['vicerrectorado-investigacion'], 'Vicerrectorado de Investigación', 'Vicerrector de Investigación', $records),
                     ],
                 ],
                 [
                     'id' => 'decanos',
                     'indice' => '04',
                     'titulo' => 'Decanos',
-                    'texto' => 'Por facultad, cada retrato con su periodo.',
+                    'texto' => 'Decanos de cada facultad.',
                     'layout' => 'muro',
                     'grupos' => array_map(
-                        fn (array $facultad) => $this->grupoGaleriaMuro($facultad, $facultad['nombre'], $facultad['nombre']),
-                        $page['decanatos']['facultades']
+                        fn (array $facultad) => $this->grupoGaleriaLista(
+                            $facultad['personas'],
+                            $facultad['nombre'],
+                            'Decano',
+                            $records,
+                            $facultad['nombre']
+                        ),
+                        $lista['decanatos']
                     ),
+                ],
+                [
+                    'id' => 'posgrado',
+                    'indice' => '05',
+                    'titulo' => 'Posgrado',
+                    'texto' => 'Dirección General de la Escuela de Posgrado.',
+                    'layout' => 'muro',
+                    'grupos' => [
+                        $this->grupoGaleriaLista($lista['posgrado'], 'Escuela de Posgrado', 'Director General de la Escuela de Posgrado', $records),
+                    ],
                 ],
             ],
         ];
@@ -938,34 +955,38 @@ class WebController extends Controller
         ];
     }
 
-    private function grupoGaleriaMuro(array $cargo, string $titulo, ?string $facultad = null): array
+    private function grupoGaleriaLista(array $personas, string $titulo, string $rol, $records, ?string $facultad = null): array
     {
-        $actual = $cargo['actual'];
-        $personas = [
-            $this->personaGaleria(
-                $actual,
-                $actual['cargo'],
-                $actual['resumen'] ?? null,
-                [],
-                $facultad,
-                ['periodo' => $actual['periodo'] ?? $this->periodoVigente($actual)]
+        return [
+            'titulo' => $titulo,
+            'personas' => array_map(
+                fn (array $item) => $this->personaGaleria(
+                    $this->origenGaleria($item, $records),
+                    $rol,
+                    null,
+                    [],
+                    $facultad,
+                    ['periodo' => $item['periodo'] ?? null]
+                ),
+                $personas
             ),
         ];
+    }
 
-        foreach ($cargo['antecesores'] ?? [] as $antecesor) {
-            $personas[] = $this->personaGaleria(
-                $antecesor,
-                $actual['cargo'],
-                $antecesor['resumen'] ?? null,
-                [],
-                $facultad,
-                ['periodo' => $antecesor['periodo'] ?? null]
-            );
+    private function origenGaleria(array $item, $records): array
+    {
+        $encontrada = $this->autoridadPorNombre($records, $item['match'] ?? $item['nombre']);
+        $foto = $encontrada->foto ?? ($item['foto'] ?? null);
+
+        if (! $foto) {
+            $docente = $this->docenteAutoridad($item['match'] ?? $item['nombre']);
+            $foto = $docente->imagen ?? null;
         }
 
         return [
-            'titulo' => $titulo,
-            'personas' => $personas,
+            'nombre' => $item['nombre'],
+            'foto' => $foto,
+            'medalla' => is_string($foto) && str_contains($foto, 'medalla'),
         ];
     }
 

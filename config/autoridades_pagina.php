@@ -153,4 +153,111 @@ return [
             ],
         ],
     ],
+
+    'galeria' => [
+        'rectores' => [
+            [
+                'nombre' => 'Dr. Antenor Guerra Martínez',
+                'match' => 'Antenor Guerra',
+                'periodo' => 'abril 2015 — noviembre 2016 y setiembre 2019 — diciembre 2025',
+            ],
+            [
+                'nombre' => 'Dr. Lorenzo Edmundo González Zavaleta',
+                'match' => 'Edmundo González',
+                'periodo' => 'diciembre 2016 — agosto 2019',
+            ],
+            [
+                'nombre' => 'Dr. José Miguel Sibina Pereyra',
+                'match' => 'Sibina',
+                'periodo' => 'enero 2026 — diciembre 2026',
+            ],
+        ],
+        'vicerrectorado-academico' => [
+            [
+                'nombre' => 'Dr. Antenor Guerra Martínez',
+                'match' => 'Antenor Guerra',
+                'periodo' => 'enero 2017 — agosto 2019',
+            ],
+            [
+                'nombre' => 'Dr. Faustino Ccama Uchiri',
+                'match' => 'Ccama Uchiri',
+                'periodo' => 'junio 2017',
+            ],
+            [
+                'nombre' => 'Dr. Luis Marcelo Oblitas Quispe',
+                'match' => 'Oblitas Quispe',
+                'periodo' => 'setiembre 2019 — diciembre 2024',
+            ],
+            [
+                'nombre' => 'Dr. Enrique Manuel Durand Bazán',
+                'match' => 'Durand Bazán',
+                'periodo' => 'enero 2025 — setiembre 2026',
+            ],
+            [
+                'nombre' => 'Dra. Olenka Ana Catherine Espinoza Rodríguez',
+                'match' => 'Olenka',
+                'periodo' => 'setiembre 2026 — diciembre 2028',
+            ],
+        ],
+        'vicerrectorado-investigacion' => [
+            [
+                'nombre' => 'Dr. Marco Antonio Sevilla Gamarra',
+                'match' => 'Marco Antonio Sevilla',
+                'periodo' => null,
+                'foto' => 'investigacion/marco-sevilla-medalla.png',
+            ],
+        ],
+        'decanatos' => [
+            [
+                'nombre' => 'Ingeniería y Arquitectura',
+                'personas' => [
+                    [
+                        'nombre' => 'Dr. Enrique Manuel Durand Bazán',
+                        'match' => 'Durand Bazán',
+                    ],
+                    [
+                        'nombre' => 'Dr. Rolando Fuentes Llave',
+                        'match' => 'Fuentes Llave',
+                    ],
+                ],
+            ],
+            [
+                'nombre' => 'Ciencias Empresariales',
+                'personas' => [
+                    [
+                        'nombre' => 'Mg. Juan Mauricio Noriega Escobedo',
+                        'match' => 'Juan Mauricio Noriega',
+                    ],
+                    [
+                        'nombre' => 'Mg. Dionicio Zavaleta Jorge Alejandro',
+                        'match' => 'Dionicio Zavaleta',
+                    ],
+                    [
+                        'nombre' => 'Mg. Santos Pedro Aponte Méndez',
+                        'match' => 'Aponte',
+                    ],
+                ],
+            ],
+            [
+                'nombre' => 'Derecho y Ciencias Sociales',
+                'personas' => [
+                    [
+                        'nombre' => 'Dr. Marco Antonio Moreno Gálvez',
+                        'match' => 'Moreno Gálvez',
+                    ],
+                    [
+                        'nombre' => 'Mg. Rodríguez García Alexander Máximo',
+                        'match' => 'Alexander Máximo',
+                    ],
+                ],
+            ],
+        ],
+        'posgrado' => [
+            [
+                'nombre' => 'Dr. Lorenzo Edmundo González Zavaleta',
+                'match' => 'Edmundo González',
+                'periodo' => null,
+            ],
+        ],
+    ],
 ];
