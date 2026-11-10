@@ -215,6 +215,11 @@ return [
             'menu_label' => 'Nuestras autoridades',
             'parent' => ['label' => 'Conócenos'],
         ],
+        'galeria-autoridades' => [
+            'title' => 'Galería de autoridades',
+            'menu_label' => 'Galería de autoridades',
+            'parent' => ['label' => 'Conócenos'],
+        ],
         'red-nexo' => [
             'title' => 'Nuestra Red Nexo Uprit',
             'menu_label' => 'Nuestra Red Nexo Uprit',

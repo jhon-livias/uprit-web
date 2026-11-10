@@ -223,6 +223,7 @@ Route::get('/porque', [WebController::class, 'porque'])->name('porque');
 Route::get('/modelo-educativo', [WebController::class, 'modeloeducativo'])->name('modelo-educativo');
 
 Route::get('/autoridades', [WebController::class, 'autoridades'])->name('autoridades');
+Route::get('/galeria-autoridades', [WebController::class, 'galeriaAutoridades'])->name('galeria-autoridades');
 Route::get('/biblioteca-virtual', [WebController::class, 'bibliotecaVirtual'])->name('biblioteca-virtual');
 Route::get('/red-nexo', [WebController::class, 'rednexo'])->name('red-nexo');
 Route::get('/a2iprograma', [WebController::class, 'a2iprograma'])->name('a2iprograma');

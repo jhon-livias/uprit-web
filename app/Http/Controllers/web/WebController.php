@@ -435,6 +435,84 @@ class WebController extends Controller
         return view('web.autoridades', compact('autoridades'));
     }
 
+    public function galeriaAutoridades()
+    {
+        $page = $this->autoridadesPage();
+        $cargos = collect($page['cargos'])->keyBy('id');
+        $rector = $cargos['rectorado']['actual'];
+        $academico = $cargos['vicerrectorado-academico']['actual'];
+        $investigacion = $cargos['vicerrectorado-investigacion']['actual'];
+
+        $galeria = [
+            'intro' => 'Retratos de quienes conducen la Universidad Privada de Trujillo.',
+            'secciones' => [
+                [
+                    'id' => 'consejo-directivo',
+                    'indice' => '01',
+                    'titulo' => 'Consejo Directivo',
+                    'texto' => 'Presidencia y directores de la máxima instancia de dirección ejecutiva.',
+                    'layout' => 'consejo',
+                    'destacado' => $this->personaGaleria(
+                        $page['presidente'],
+                        'Presidente',
+                        $page['presidente']['cargo'],
+                        $page['presidente']['credenciales']
+                    ),
+                    'personas' => array_map(
+                        fn (array $director) => $this->personaGaleria(
+                            $director,
+                            $director['rol'],
+                            null,
+                            $director['credenciales']
+                        ),
+                        $page['directores']
+                    ),
+                ],
+                [
+                    'id' => 'rectorado',
+                    'indice' => '02',
+                    'titulo' => 'Rectorado',
+                    'texto' => 'La representación institucional de la universidad.',
+                    'layout' => 'fila',
+                    'personas' => [
+                        $this->personaGaleria($rector, $rector['cargo'], $rector['resumen']),
+                    ],
+                ],
+                [
+                    'id' => 'vicerrectores',
+                    'indice' => '03',
+                    'titulo' => 'Vicerrectores',
+                    'texto' => 'Vicerrectorado Académico y Vicerrectorado de Investigación.',
+                    'layout' => 'par',
+                    'personas' => [
+                        $this->personaGaleria($academico, $academico['cargo'], $academico['resumen']),
+                        $this->personaGaleria($investigacion, $investigacion['cargo'], $investigacion['resumen']),
+                    ],
+                ],
+                [
+                    'id' => 'decanos',
+                    'indice' => '04',
+                    'titulo' => 'Decanos',
+                    'texto' => 'Quienes conducen cada facultad.',
+                    'layout' => 'trio',
+                    'personas' => array_map(function (array $facultad) {
+                        $actual = $facultad['actual'];
+
+                        return $this->personaGaleria(
+                            $actual,
+                            $actual['cargo'],
+                            $actual['resumen'],
+                            [],
+                            $facultad['nombre']
+                        );
+                    }, $page['decanatos']['facultades']),
+                ],
+            ],
+        ];
+
+        return view('web.galeria-autoridades', compact('galeria'));
+    }
+
     private function docenteAutoridad(string $nombre): ?Docente
     {
         return Docente::query()
@@ -744,7 +822,7 @@ class WebController extends Controller
         $staticRoutes = [
             'web.index', 'quienes-somos', 'campus', 'privacy-policy', 'terminos', 'eliminacion-datos',
             'contactenos', 'transparencia', 'libroreclamaciones',
-            'web.noticias', 'autoridades', 'red-nexo'
+            'web.noticias', 'autoridades', 'galeria-autoridades', 'red-nexo'
         ];
 
         foreach ($staticRoutes as $routeName) {
@@ -864,6 +942,20 @@ class WebController extends Controller
                 'intro' => $decanatos['intro'],
                 'facultades' => $facultades,
             ],
+        ];
+    }
+
+    private function personaGaleria(array $origen, string $rol, ?string $detalle = null, array $credenciales = [], ?string $facultad = null): array
+    {
+        return [
+            'nombre' => $origen['nombre'],
+            'foto' => $origen['foto'] ?? null,
+            'medalla' => (bool) ($origen['medalla'] ?? false),
+            'iniciales' => $origen['iniciales'] ?? $this->autoridadIniciales($origen['nombre']),
+            'rol' => $rol,
+            'detalle' => $detalle,
+            'credenciales' => array_values(array_filter($credenciales)),
+            'facultad' => $facultad,
         ];
     }
 

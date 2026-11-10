@@ -6,6 +6,7 @@
 <section class="autoridades-page">
     <div class="container">
         <p class="autoridades-page__intro">{{ $autoridades['intro'] }}</p>
+        <p class="autoridades-page__galeria"><a href="{{ route('galeria-autoridades') }}">Ver galería de autoridades</a></p>
 
         <div data-autoridades>
             <div class="autoridades-tabs__bar" role="tablist" aria-label="Autoridades">

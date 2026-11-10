@@ -11969,6 +11969,22 @@ body.home-bulletin-open { overflow: hidden; }
     line-height: 1.6;
 }
 
+.autoridades-page__galeria {
+    margin: 0 0 8px;
+    text-align: center;
+}
+
+.autoridades-page__galeria a {
+    color: #91001E;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.autoridades-page__galeria a:hover {
+    text-decoration: underline;
+}
+
 .autoridades-tabs__bar,
 .autoridades-facultades {
     display: flex;
@@ -12359,6 +12375,381 @@ body.home-bulletin-open { overflow: hidden; }
 
     .autoridades-timeline__item {
         grid-template-columns: 52px minmax(0, 1fr);
+    }
+}
+
+/* Galería de autoridades */
+.page-galeria-autoridades .galeria-autoridades {
+    background:
+        radial-gradient(circle at top right, rgba(145, 0, 30, 0.08), transparent 28%),
+        linear-gradient(180deg, #fbf6f7 0%, #fff 280px);
+    padding: 48px 0 88px;
+}
+
+.galeria-autoridades__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    max-width: 920px;
+}
+
+.galeria-autoridades__intro {
+    margin: 0;
+    color: #5c4a4e;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.galeria-autoridades__ficha {
+    flex: none;
+    color: #91001E;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.galeria-autoridades__ficha:hover {
+    text-decoration: underline;
+}
+
+.galeria-nav {
+    display: flex;
+    gap: 8px;
+    position: sticky;
+    top: 78px;
+    z-index: 30;
+    overflow-x: auto;
+    margin: 28px 0 8px;
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid #f0e4e7;
+    border-radius: 999px;
+    box-shadow: 0 12px 32px rgba(80, 12, 24, 0.06);
+    backdrop-filter: blur(10px);
+}
+
+.galeria-nav a {
+    border-radius: 999px;
+    padding: 12px 18px;
+    color: #4d3b3f;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.galeria-nav a.is-active {
+    background: #91001E;
+    color: #fff;
+}
+
+.galeria-bloque {
+    scroll-margin-top: 150px;
+    padding-top: 42px;
+}
+
+.galeria-bloque__head {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 8px;
+    align-items: start;
+    margin-bottom: 22px;
+}
+
+.galeria-bloque__head > p {
+    margin: 6px 0 0;
+    color: #91001E;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+.galeria-bloque__head h2 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.galeria-bloque__head h2 + p {
+    max-width: 560px;
+    margin: 8px 0 0;
+    color: #5c4a4e;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.galeria-consejo {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.4fr);
+    gap: 16px;
+    align-items: stretch;
+}
+
+.galeria-consejo__grid,
+.galeria-muro {
+    display: grid;
+    gap: 16px;
+}
+
+.galeria-consejo__grid,
+.galeria-muro--par {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.galeria-muro--trio {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.galeria-muro--fila {
+    grid-template-columns: minmax(0, 720px);
+}
+
+.galeria-autoridad {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #f0e4e7;
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: 0 18px 46px rgba(40, 8, 14, 0.06);
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.galeria-autoridad:hover,
+.galeria-autoridad:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 22px 50px rgba(40, 8, 14, 0.12);
+}
+
+.galeria-autoridad:focus-visible {
+    outline: 2px solid #91001E;
+    outline-offset: 3px;
+}
+
+.galeria-autoridad__foto {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: #ece4e6;
+}
+
+.galeria-autoridad--hero .galeria-autoridad__foto {
+    flex: 1;
+    aspect-ratio: auto;
+    min-height: 360px;
+}
+
+.galeria-autoridad__foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 18%;
+    transition: transform 0.45s ease;
+}
+
+.galeria-autoridad:hover .galeria-autoridad__foto img,
+.galeria-autoridad:focus-visible .galeria-autoridad__foto img {
+    transform: scale(1.04);
+}
+
+.galeria-autoridad__foto img.is-medalla,
+.galeria-dialog__foto img.is-medalla {
+    object-fit: contain;
+    object-position: center;
+    padding: 28px;
+    background: #f6eef0;
+}
+
+.galeria-autoridad__iniciales,
+.galeria-dialog__foto .galeria-autoridad__iniciales {
+    color: #91001E;
+    font-size: 42px;
+    font-weight: 700;
+}
+
+.galeria-autoridad__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 16px 18px;
+}
+
+.galeria-autoridad__kicker,
+.galeria-dialog__kicker {
+    color: #91001E;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.galeria-autoridad__nombre {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.galeria-autoridad--hero .galeria-autoridad__nombre {
+    font-size: 26px;
+}
+
+.galeria-autoridad__rol {
+    color: #5c4a4e;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.galeria-dialog {
+    width: min(880px, calc(100vw - 32px));
+    padding: 0;
+    border: 0;
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0 30px 80px rgba(20, 4, 8, 0.28);
+}
+
+.galeria-dialog::backdrop {
+    background: rgba(28, 8, 12, 0.72);
+}
+
+.galeria-dialog[open] {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.1fr);
+}
+
+.galeria-dialog__foto {
+    display: grid;
+    place-items: center;
+    min-height: 420px;
+    background: #ece4e6;
+}
+
+.galeria-dialog__foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 18%;
+}
+
+.galeria-dialog__texto {
+    position: relative;
+    padding: 28px 28px 32px;
+}
+
+.galeria-dialog__cerrar {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border: 0;
+    border-radius: 999px;
+    padding: 8px 12px;
+    background: #f8eef0;
+    color: #91001E;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.galeria-dialog__kicker {
+    margin: 18px 48px 10px 0;
+}
+
+.galeria-dialog h2 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.galeria-dialog__rol,
+.galeria-dialog__detalle {
+    margin: 12px 0 0;
+    color: #2c2224;
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+.galeria-dialog__detalle {
+    color: #5c4a4e;
+    font-size: 16px;
+}
+
+.galeria-dialog__credenciales {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.galeria-dialog__credenciales li {
+    margin: 0;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #f8eef0;
+    color: #91001E;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+@media (max-width: 991px) {
+    .galeria-consejo,
+    .galeria-muro--par,
+    .galeria-muro--trio,
+    .galeria-dialog[open] {
+        grid-template-columns: 1fr;
+    }
+
+    .galeria-autoridad--hero .galeria-autoridad__foto,
+    .galeria-dialog__foto {
+        aspect-ratio: 4 / 5;
+        min-height: 0;
+        flex: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .page-galeria-autoridades .galeria-autoridades {
+        padding: 28px 0 56px;
+    }
+
+    .galeria-autoridades__head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .galeria-autoridades__intro,
+    .galeria-bloque__head h2,
+    .galeria-dialog h2 {
+        font-size: 26px;
+    }
+
+    .galeria-nav {
+        top: 68px;
+        border-radius: 18px;
+    }
+
+    .galeria-consejo__grid,
+    .galeria-muro--par,
+    .galeria-muro--trio {
+        grid-template-columns: 1fr;
+    }
+
+    .galeria-dialog__texto {
+        padding: 20px 18px 24px;
     }
 }
 
