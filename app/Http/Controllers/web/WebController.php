@@ -999,7 +999,9 @@ class WebController extends Controller
             'iniciales' => $origen['iniciales'] ?? $this->autoridadIniciales($origen['nombre']),
             'etiqueta' => $extras['etiqueta'] ?? null,
             'rol' => $rol,
-            'periodo' => $extras['periodo'] ?? ($origen['periodo'] ?? null),
+            'periodo' => array_key_exists('periodo', $extras)
+                ? $extras['periodo']
+                : ($origen['periodo'] ?? null),
             'detalle' => $detalle,
             'credenciales' => array_values(array_filter($credenciales)),
             'facultad' => $facultad,
